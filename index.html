@@ -1,252 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI News Dashboard</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 2rem;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        header {
-            text-align: center;
-            margin-bottom: 3rem;
-            color: white;
-        }
-        
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
-        
-        .last-updated {
-            font-size: 0.9rem;
-            opacity: 0.9;
-            margin-top: 0.5rem;
-        }
-        
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 1.5rem;
-        }
-        
-        .news-card {
-            background: white;
-            border-radius: 12px;
-            padding: 1.5rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.2s, box-shadow 0.2s;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .news-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-        
-        .news-source {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: #667eea;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-        
-        .news-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #1a202c;
-            margin-bottom: 0.75rem;
-            line-height: 1.4;
-        }
-        
-        .news-title a {
-            color: inherit;
-            text-decoration: none;
-        }
-        
-        .news-title a:hover {
-            color: #667eea;
-        }
-        
-        .news-summary {
-            font-size: 0.9rem;
-            color: #4a5568;
-            line-height: 1.6;
-            margin-bottom: 1rem;
-            flex-grow: 1;
-        }
-        
-        .news-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.8rem;
-            color: #718096;
-            border-top: 1px solid #e2e8f0;
-            padding-top: 0.75rem;
-        }
-        
-        .news-date {
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
-        }
-        
-        .read-more {
-            color: #667eea;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        
-        .read-more:hover {
-            text-decoration: underline;
-        }
-        
-        @media (max-width: 768px) {
-            .news-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            h1 {
-                font-size: 1.8rem;
-            }
-            
-            body {
-                padding: 1rem;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI News Dashboard</title>
+<style>
+  :root {
+    --bg1: #f6f3ff;
+    --bg2: #ece6ff;
+    --card: #ffffff;
+    --accent: #7c3aed;
+    --accent-2: #a855f7;
+    --text: #2b2340;
+    --muted: #6b6480;
+    --border: #e6def7;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: linear-gradient(160deg, var(--bg1), var(--bg2));
+    color: var(--text);
+    min-height: 100vh;
+    padding: 40px 20px;
+  }
+  .wrap { max-width: 960px; margin: 0 auto; }
+  header { margin-bottom: 28px; }
+  header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  header p { color: var(--muted); margin-top: 6px; font-size: 0.95rem; }
+  .timestamp {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 0.8rem;
+    color: var(--muted);
+    background: rgba(124,58,237,0.08);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 4px 12px;
+  }
+  .grid { display: grid; gap: 16px; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 16px rgba(124,58,237,0.06);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(124,58,237,0.12); }
+  .card h2 { font-size: 1.1rem; font-weight: 650; line-height: 1.35; }
+  .card h2 a { color: var(--text); text-decoration: none; }
+  .card h2 a:hover { color: var(--accent); }
+  .card p.summary { color: var(--muted); font-size: 0.9rem; margin-top: 8px; line-height: 1.5; }
+  .meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+  .source { color: var(--accent-2); font-weight: 600; }
+  .source-link { color: var(--accent); text-decoration: none; font-weight: 500; }
+  .source-link:hover { text-decoration: underline; }
+  footer { text-align: center; margin-top: 32px; color: var(--muted); font-size: 0.8rem; }
+</style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>AI News Dashboard</h1>
-            <p class="last-updated">Last updated: September 7, 2026 at 11:28 PM SAST</p>
-        </header>
-        
-        <div class="news-grid">
-            
-            <article class="news-card">
-                <div class="news-source">OpenAI</div>
-                <h2 class="news-title"><a href="https://openai.com/index/gpt-6-astra/" target="_blank">GPT-6 Astra: A new generation of intelligence</a></h2>
-                <p class="news-summary">Introducing GPT-6 Astra, our most intelligent and aligned model yet, with state-of-the-art capabilities across computer use, coding, cybersecurity...</p>
-                <div class="news-meta">
-                    <span class="news-date">2 hours ago</span>
-                    <a href="https://openai.com/index/gpt-6-astra/" class="read-more" target="_blank">Read more</a>
-                </div>
-            </article>
-            
-            <article class="news-card">
-                <div class="news-source">WSJ</div>
-                <h2 class="news-title"><a href="https://www.wsj.com/cio-journal/yes-were-entering-the-era-of-artificial-general-intelligence-d9b0920e" target="_blank">Yes, We're Entering the Era of Artificial General Intelligence</a></h2>
-                <p class="news-summary">Good morning. OpenAI proclaimed yesterday that the release of its GPT-6 Astra model may be regarded in the near future as the beginning of artificial...</p>
-                <div class="news-meta">
-                    <span class="news-date">2 hours ago</span>
-                    <a href="https://www.wsj.com/cio-journal/yes-were-entering-the-era-of-artificial-general-intelligence-d9b0920e" class="read-more" target="_blank">Read more</a>
-                </div>
-            </article>
-            
-            <article class="news-card">
-                <div class="news-source">Gates Notes</div>
-                <h2 class="news-title"><a href="https://www.gatesnotes.com/a-turbulent-ai-era-and-critical-choices-to-make" target="_blank">The turbulent AI era is here. The choices we make now are critical.</a></h2>
-                <p class="news-summary">During my entire life I've only had two jobs. In the first one, I played a role in developing software to empower people through my work at Microsoft.</p>
-                <div class="news-meta">
-                    <span class="news-date">3 hours ago</span>
-                    <a href="https://www.gatesnotes.com/a-turbulent-ai-era-and-critical-choices-to-make" class="read-more" target="_blank">Read more</a>
-                </div>
-            </article>
-            
-            <article class="news-card">
-                <div class="news-source">WNYC</div>
-                <h2 class="news-title"><a href="https://wnyc.org/browse/shows/episode/simplecast/f5794230-aa49-4b0e-8273-e9b26763c5a6" target="_blank">Why New York City Is Restricting Artificial Intelligence in Public Schools</a></h2>
-                <p class="news-summary">New York City is restricting AI across public schools, including a one year ban for students through eighth grade and new limits on screen time for younger...</p>
-                <div class="news-meta">
-                    <span class="news-date">59 minutes ago</span>
-                    <a href="https://wnyc.org/browse/shows/episode/simplecast/f5794230-aa49-4b0e-8273-e9b26763c5a6" class="read-more" target="_blank">Read more</a>
-                </div>
-            </article>
-            
-            <article class="news-card">
-                <div class="news-source">KTXS</div>
-                <h2 class="news-title"><a href="https://ktxs.com/news/nation-world/trump-backs-data-centers-as-voter-concerns-grow-ahead-of-midterm-elections-armstrong-williams-republicans-democrats-artificial-intelligence-china-politics-energy-technology" target="_blank">Trump backs data centers as voter concerns grow ahead of midterm elections</a></h2>
-                <p class="news-summary">Artificial intelligence and the massive data centers needed to power it are becoming an increasingly contentious political issue.</p>
-                <div class="news-meta">
-                    <span class="news-date">2 hours ago</span>
-                    <a href="https://ktxs.com/news/nation-world/trump-backs-data-centers-as-voter-concerns-grow-ahead-of-midterm-elections-armstrong-williams-republicans-democrats-artificial-intelligence-china-politics-energy-technology" class="read-more" target="_blank">Read more</a>
-                </div>
-            </article>
-            
-            <article class="news-card">
-                <div class="news-source">Bruegel</div>
-                <h2 class="news-title"><a href="https://www.bruegel.org/first-glance/tough-choices-ahead-us-pushes-global-artificial-intelligence-divide" target="_blank">Tough choices ahead as the US pushes a global artificial-intelligence divide</a></h2>
-                <p class="news-summary">Though proliferation of AI models is essentially uncontrollable, the US is trying to force a split with China, pushing allies into a no-win bind.</p>
-                <div class="news-meta">
-                    <span class="news-date">13 hours ago</span>
-                    <a href="https://www.bruegel.org/first-glance/tough-choices-ahead-us-pushes-global-artificial-intelligence-divide" class="read-more" target="_blank">Read more</a>
-                </div>
-            </article>
-            
-            <article class="news-card">
-                <div class="news-source">KY3</div>
-                <h2 class="news-title"><a href="https://www.ky3.com/video/2026/09/07/artificial-intelligence-healthcare-how-doctors-mercy-hospital-use-it-protect-patient-information/" target="_blank">Artificial Intelligence in Healthcare: How doctors at Mercy Hospital use it and protect patient information</a></h2>
-                <p class="news-summary">Artificial Intelligence in Healthcare: How doctors at Mercy Hospital use it and protect patient information. Published: Sep.</p>
-                <div class="news-meta">
-                    <span class="news-date">3 hours ago</span>
-                    <a href="https://www.ky3.com/video/2026/09/07/artificial-intelligence-healthcare-how-doctors-mercy-hospital-use-it-protect-patient-information/" class="read-more" target="_blank">Read more</a>
-                </div>
-            </article>
-            
-            <article class="news-card">
-                <div class="news-source">Indiana Gazette Online</div>
-                <h2 class="news-title"><a href="https://www.indianagazette.com/opinion/commentary-how-do-i-have-the-ai-talk-in-my-classroom/article_0699d40c-631c-539c-bf34-495943b1deee.html" target="_blank">Commentary: How do I have 'the AI talk' in my classroom?</a></h2>
-                <p class="news-summary">I've been back to school for a week, and I still haven't had "the AI talk." To me, it's almost as bad as the sex talk I avoided with my.</p>
-                <div class="news-meta">
-                    <span class="news-date">23 minutes ago</span>
-                    <a href="https://www.indianagazette.com/opinion/commentary-how-do-i-have-the-ai-talk-in-my-classroom/article_0699d40c-631c-539c-bf34-495943b1deee.html" class="read-more" target="_blank">Read more</a>
-                </div>
-            </article>
-            
-            <article class="news-card">
-                <div class="news-source">Commonweal Magazine</div>
-                <h2 class="news-title"><a href="https://www.commonwealmagazine.org/reynolds-ai-posters-susan-artificial-intelligence" target="_blank">Cheap Tricks</a></h2>
-                <p class="news-summary">"As a professor, the ingression of artificial intelligence into academic writing troubles me. But nothing depresses me quite like the AI takeover of...</p>
-                <div class="news-meta">
-                    <span class="news-date">8 hours ago</span>
-                    <a href="https://www.commonwealmagazine.org/reynolds-ai-posters-susan-artificial-intelligence" class="read-more" target="_blank">Read more</a>
-                </div>
-            </article>
-            
-            <article class="news-card">
-                <div class="news-source">Jesuits Global</div>
-                <h2 class="news-title"><a href="https://www.jesuits.global/2026/09/07/artificial-intelligence-and-jesuit-formation/" target="_blank">Artificial Intelligence and Jesuit Formation</a></h2>
-                <p class="news-summary">By Sean van Staden, SJ. How do we integrate Artificial Intelligence (AI) and other virtual technologies into Jesuit formation? This was the question that...</p>
-                <div class="news-meta">
-                    <span class="news-date">6 hours ago</span>
-                    <a href="https://www.jesuits.global/2026/09/07/artificial-intelligence-and-jesuit-formation/" class="read-more" target="_blank">Read more</a>
-                </div>
-            </article>
-            
-        </div>
-    </div>
+<div class="wrap">
+  <header>
+    <h1>AI News Dashboard</h1>
+    <p>Recent global artificial intelligence headlines, updated every 5 hours.</p>
+    <span class="timestamp">Last updated: 2026-09-07 11:34 PM SAST</span>
+  </header>
+
+  <div class="grid">
+    <article class="card">
+      <h2><a href="https://openai.com/index/gpt-6-astra/">GPT-6 Astra: A new generation of intelligence</a></h2>
+      <p class="summary">OpenAI introduces GPT-6 Astra, its most intelligent and aligned model yet, with advanced capabilities across computer use, coding, and cybersecurity.</p>
+      <div class="meta"><span class="source">OpenAI</span><a class="source-link" href="https://openai.com/index/gpt-6-astra/">Read more</a></div>
+    </article>
+    <article class="card">
+      <h2><a href="https://www.wsj.com/cio-journal/yes-were-entering-the-era-of-artificial-general-intelligence-d9b0920e">Yes, We're Entering the Era of Artificial General Intelligence</a></h2>
+      <p class="summary">The Wall Street Journal argues that the release of GPT-6 Astra may in the near future be seen as the beginning of artificial general intelligence.</p>
+      <div class="meta"><span class="source">WSJ</span><a class="source-link" href="https://www.wsj.com/cio-journal/yes-were-entering-the-era-of-artificial-general-intelligence-d9b0920e">Read more</a></div>
+    </article>
+    <article class="card">
+      <h2><a href="https://www.gatesnotes.com/a-turbulent-ai-era-and-critical-choices-to-make">The turbulent AI era is here. The choices we make now are critical.</a></h2>
+      <p class="summary">Bill Gates reflects on the turbulent AI era and urges thoughtful decisions as artificial intelligence reshapes society and the economy.</p>
+      <div class="meta"><span class="source">Gates Notes</span><a class="source-link" href="https://www.gatesnotes.com/a-turbulent-ai-era-and-critical-choices-to-make">Read more</a></div>
+    </article>
+    <article class="card">
+      <h2><a href="https://wnyc.org/browse/shows/episode/simplecast/f5794230-aa49-4b0e-8273-e9b26763c5a6">Why New York City Is Restricting Artificial Intelligence in Public Schools</a></h2>
+      <p class="summary">New York City is restricting AI across public schools, including a one-year ban for students through eighth grade and new screen-time limits for younger students.</p>
+      <div class="meta"><span class="source">WNYC</span><a class="source-link" href="https://wnyc.org/browse/shows/episode/simplecast/f5794230-aa49-4b0e-8273-e9b26763c5a6">Read more</a></div>
+    </article>
+    <article class="card">
+      <h2><a href="https://www.ky3.com/video/2026/09/07/artificial-intelligence-healthcare-how-doctors-mercy-hospital-use-it-protect-patient-information/">Artificial Intelligence in Healthcare</a></h2>
+      <p class="summary">A look at how doctors at Mercy Hospital use AI to support care while protecting patient information.</p>
+      <div class="meta"><span class="source">KY3</span><a class="source-link" href="https://www.ky3.com/video/2026/09/07/artificial-intelligence-healthcare-how-doctors-mercy-hospital-use-it-protect-patient-information/">Read more</a></div>
+    </article>
+    <article class="card">
+      <h2><a href="https://www.bruegel.org/first-glance/tough-choices-ahead-us-pushes-global-artificial-intelligence-divide">Tough choices ahead as the US pushes a global artificial-intelligence divide</a></h2>
+      <p class="summary">Bruegel examines how the US is pressuring allies into a split with China over AI, creating difficult geopolitical choices.</p>
+      <div class="meta"><span class="source">Bruegel</span><a class="source-link" href="https://www.bruegel.org/first-glance/tough-choices-ahead-us-pushes-global-artificial-intelligence-divide">Read more</a></div>
+    </article>
+    <article class="card">
+      <h2><a href="https://ktxs.com/news/nation-world/trump-backs-data-centers-as-voter-concerns-grow-ahead-of-midterm-elections-armstrong-williams-republicans-democrats-artificial-intelligence-china-politics-energy-technology">Trump backs data centers as voter concerns grow ahead of midterm elections</a></h2>
+      <p class="summary">AI and the massive data centers powering it are becoming an increasingly contentious political issue heading into the midterms.</p>
+      <div class="meta"><span class="source">KTXS</span><a class="source-link" href="https://ktxs.com/news/nation-world/trump-backs-data-centers-as-voter-concerns-grow-ahead-of-midterm-elections-armstrong-williams-republicans-democrats-artificial-intelligence-china-politics-energy-technology">Read more</a></div>
+    </article>
+    <article class="card">
+      <h2><a href="https://www.jesuits.global/2026/09/07/artificial-intelligence-and-jesuit-formation/">Artificial Intelligence and Jesuit Formation</a></h2>
+      <p class="summary">A discussion on integrating AI and virtual technologies into Jesuit formation and education.</p>
+      <div class="meta"><span class="source">Jesuits Global</span><a class="source-link" href="https://www.jesuits.global/2026/09/07/artificial-intelligence-and-jesuit-formation/">Read more</a></div>
+    </article>
+    <article class="card">
+      <h2><a href="https://www.indianagazette.com/opinion/commentary-how-do-i-have-the-ai-talk-in-my-classroom/article_0699d40c-631c-539c-bf34-495943b1deee.html">Commentary: How do I have 'the AI talk' in my classroom?</a></h2>
+      <p class="summary">A teacher reflects on the challenge of addressing AI with students as the new school year begins.</p>
+      <div class="meta"><span class="source">Indiana Gazette Online</span><a class="source-link" href="https://www.indianagazette.com/opinion/commentary-how-do-i-have-the-ai-talk-in-my-classroom/article_0699d40c-631c-539c-bf34-495943b1deee.html">Read more</a></div>
+    </article>
+    <article class="card">
+      <h2><a href="https://www.commonwealmagazine.org/reynolds-ai-posters-susan-artificial-intelligence">Cheap Tricks</a></h2>
+      <p class="summary">A professor reflects on the ingression of AI into academic writing and its implications for teaching and creativity.</p>
+      <div class="meta"><span class="source">Commonweal Magazine</span><a class="source-link" href="https://www.commonwealmagazine.org/reynolds-ai-posters-susan-artificial-intelligence">Read more</a></div>
+    </article>
+  </div>
+
+  <footer>Auto-generated by the AI News Dashboard Updater. Sources are linked to their original publishers.</footer>
+</div>
 </body>
 </html>
