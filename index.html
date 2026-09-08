@@ -3,121 +3,196 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI News Dashboard</title>
+<title>Global AI News Dashboard</title>
 <style>
+  :root {
+    --bg1: #f5f3ff;
+    --bg2: #ede9fe;
+    --card: #ffffff;
+    --accent: #7c3aed;
+    --accent2: #a78bfa;
+    --text: #1e1b2e;
+    --muted: #6b6478;
+  }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: linear-gradient(135deg, #4b2e8f 0%, #7b3fa0 50%, #a4508b 100%);
+    background: linear-gradient(160deg, var(--bg1), var(--bg2));
+    color: var(--text);
     min-height: 100vh;
-    color: #1f1f2e;
-    padding: 40px 20px;
+    padding: 2rem 1rem;
   }
-  .container { max-width: 960px; margin: 0 auto; }
-  header { text-align: center; margin-bottom: 36px; color: #fff; }
-  header h1 { font-size: 2.4rem; font-weight: 700; letter-spacing: -0.5px; }
-  header p { margin-top: 8px; opacity: 0.9; font-size: 1.05rem; }
-  .timestamp {
-    display: inline-block; margin-top: 14px; background: rgba(255,255,255,0.18);
-    padding: 6px 16px; border-radius: 999px; font-size: 0.85rem; font-weight: 500;
+  .container { max-width: 920px; margin: 0 auto; }
+  header {
+    text-align: center;
+    margin-bottom: 2rem;
   }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 20px; }
+  header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  header p {
+    color: var(--muted);
+    margin-top: 0.4rem;
+    font-size: 0.95rem;
+  }
+  .badge {
+    display: inline-block;
+    background: #ffffff;
+    border: 1px solid #ddd6fe;
+    color: var(--accent);
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 0.9rem;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.1rem;
+  }
+  @media (min-width: 680px) {
+    .grid { grid-template-columns: 1fr 1fr; }
+  }
   .card {
-    background: #fff; border-radius: 16px; padding: 22px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
-    display: flex; flex-direction: column; gap: 10px;
+    background: var(--card);
+    border-radius: 16px;
+    padding: 1.3rem 1.4rem;
+    box-shadow: 0 8px 24px rgba(124, 58, 237, 0.08);
+    border: 1px solid #f0ebff;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
   }
-  .card:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(0,0,0,0.25); }
-  .card h2 { font-size: 1.1rem; line-height: 1.35; color: #3a1f68; }
-  .card .summary { font-size: 0.92rem; line-height: 1.5; color: #4a4a5a; flex: 1; }
-  .card .meta { display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: #8a8aa0; }
-  .card a { color: #7b3fa0; text-decoration: none; font-weight: 600; font-size: 0.88rem; }
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 32px rgba(124, 58, 237, 0.15);
+  }
+  .card .meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+  .source {
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .card h2 {
+    font-size: 1.05rem;
+    line-height: 1.4;
+    font-weight: 700;
+  }
+  .card p.summary {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.5;
+    flex: 1;
+  }
+  .card a {
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.88rem;
+    align-self: flex-start;
+  }
   .card a:hover { text-decoration: underline; }
-  footer { text-align: center; margin-top: 40px; color: rgba(255,255,255,0.75); font-size: 0.85rem; }
+  footer {
+    text-align: center;
+    margin-top: 2.5rem;
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
 </style>
 </head>
 <body>
   <div class="container">
     <header>
-      <h1>AI News Dashboard</h1>
-      <p>Latest global artificial intelligence headlines, updated automatically</p>
-      <span class="timestamp">Last updated: 08 Sep 2026, 17:00 SAST</span>
+      <h1>Global AI News Dashboard</h1>
+      <p>Recent artificial intelligence headlines, refreshed automatically every 5 hours.</p>
+      <span class="badge">Last updated: 10:00 PM SAST, Tue 8 Sep 2026</span>
     </header>
-
     <div class="grid">
-      <div class="card">
-        <h2>Yes, We're Entering the Era of Artificial General Intelligence</h2>
-        <p class="summary">The Wall Street Journal's CIO Journal says OpenAI's GPT-6 Astra launch may soon be seen as the start of true AGI.</p>
-        <div class="meta"><span>WSJ</span><span>3h ago</span></div>
-        <a href="https://www.wsj.com/cio-journal/yes-were-entering-the-era-of-artificial-general-intelligence-d9b0920e" target="_blank" rel="noopener">Read source →</a>
-      </div>
 
-      <div class="card">
-        <h2>The Pentagon Asked OpenAI for AI Designed to Rarely Say No</h2>
-        <p class="summary">The Intercept reveals, via a FOIA lawsuit, that the U.S. military wanted an AI tool with "minimal refusal rates."</p>
-        <div class="meta"><span>The Intercept</span><span>5h ago</span></div>
-        <a href="https://theintercept.com/2026/09/08/pentagon-openai-military-contract/" target="_blank" rel="noopener">Read source →</a>
-      </div>
+      <article class="card">
+        <div class="meta"><span class="source">OpenAI</span><span>2 hours ago</span></div>
+        <h2>GPT-6 Astra: A new generation of intelligence</h2>
+        <p class="summary">OpenAI introduces GPT-6 Astra, its most intelligent and aligned model yet, with state-of-the-art capabilities across computer use, coding, and cybersecurity.</p>
+        <a href="https://openai.com/index/gpt-6-astra/" target="_blank" rel="noopener">Read more →</a>
+      </article>
 
-      <div class="card">
-        <h2>The Turbulent AI Era Is Here. The Choices We Make Now Are Critical.</h2>
-        <p class="summary">Bill Gates reflects on his career and argues the decisions society makes about AI right now will define the future.</p>
-        <div class="meta"><span>Gates Notes</span><span>3h ago</span></div>
-        <a href="https://www.gatesnotes.com/a-turbulent-ai-era-and-critical-choices-to-make" target="_blank" rel="noopener">Read source →</a>
-      </div>
+      <article class="card">
+        <div class="meta"><span class="source">Gates Notes</span><span>5 hours ago</span></div>
+        <h2>The turbulent AI era is here. The choices we make now are critical.</h2>
+        <p class="summary">Bill Gates reflects on a fast-arriving AI era and argues the decisions society makes now will define the technology's trajectory and impact.</p>
+        <a href="https://www.gatesnotes.com/a-turbulent-ai-era-and-critical-choices-to-make" target="_blank" rel="noopener">Read more →</a>
+      </article>
 
-      <div class="card">
-        <h2>Microsoft Brings AI Vulnerability-Hunting Tool to Government Cloud</h2>
-        <p class="summary">Select agencies can preview MDASH, which uses teams of AI agents to find software flaws and test for exploits.</p>
-        <div class="meta"><span>Nextgov/FCW</span><span>26m ago</span></div>
-        <a href="https://www.nextgov.com/artificial-intelligence/2026/09/microsoft-brings-ai-vulnerability-hunting-tool-government-cloud/415834/" target="_blank" rel="noopener">Read source →</a>
-      </div>
+      <article class="card">
+        <div class="meta"><span class="source">NSA (.gov)</span><span>3 hours ago</span></div>
+        <h2>NSA and others warn China-based AI companies are distilling U.S. frontier models</h2>
+        <p class="summary">NSA, FBI, and CISA issue a joint warning that China-based companies are distilling leading U.S. frontier AI models, raising national security concerns.</p>
+        <a href="https://www.nsa.gov/Press-Room/Press-Releases-Statements/Press-Release-View/Article/4592113/nsa-and-others-warn-china-based-ai-companies-are-distilling-us-frontier-ai-mode/" target="_blank" rel="noopener">Read more →</a>
+      </article>
 
-      <div class="card">
-        <h2>Why Hiding Is Getting Harder, Even for the Most Vulnerable</h2>
-        <p class="summary">The Washington Post examines how AI-driven facial recognition is threatening anonymity for the most at-risk.</p>
-        <div class="meta"><span>The Washington Post</span><span>6m ago</span></div>
-        <a href="https://www.washingtonpost.com/opinions/2026/09/08/artificial-intelligence-facial-recognition-threaten-anonymity/" target="_blank" rel="noopener">Read source →</a>
-      </div>
+      <article class="card">
+        <div class="meta"><span class="source">Amazon Web Services</span><span>48 min ago</span></div>
+        <h2>Pathway's brain-inspired architecture on Amazon SageMaker HyperPod</h2>
+        <p class="summary">AWS explores brain-inspired architecture development on SageMaker HyperPod as the industry moves beyond simple model scale toward more complex AI tasks.</p>
+        <a href="https://aws.amazon.com/blogs/machine-learning/pathways-brain-inspired-architecture-development-on-amazon-sagemaker-hyperpod/" target="_blank" rel="noopener">Read more →</a>
+      </article>
 
-      <div class="card">
-        <h2>Billionaire David Tepper Just Bought These 2 AI Stocks</h2>
-        <p class="summary">Hedge fund founder David Tepper is bullish on AI, snapping up two stocks Wall Street thinks could soar 50% or more.</p>
-        <div class="meta"><span>The Motley Fool</span><span>2h ago</span></div>
-        <a href="https://www.fool.com/investing/2026/09/08/billionaire-david-tepper-just-bought-these-2-artificial-intelligence-ai-stocks-that-wall-street-thinks-could-soar-by-50-or-more/" target="_blank" rel="noopener">Read source →</a>
-      </div>
+      <article class="card">
+        <div class="meta"><span class="source">Nextgov/FCW</span><span>2 hours ago</span></div>
+        <h2>NSA looks to AI to help analysts sift through vast data troves</h2>
+        <p class="summary">The National Security Agency is leaning into AI tools to process mass volumes of collected data, helping analysts sort through enormous datasets more efficiently.</p>
+        <a href="https://www.nextgov.com/artificial-intelligence/2026/09/nsa-looks-ai-help-analysts-sift-through-vast-data-troves/415835/" target="_blank" rel="noopener">Read more →</a>
+      </article>
 
-      <div class="card">
-        <h2>Why Berkshire Hathaway Looks Likely to Invest in More AI Stocks</h2>
-        <p class="summary">Yahoo Finance reports Berkshire now has a better grasp of how AI is impacting its businesses, signaling more investment.</p>
-        <div class="meta"><span>Yahoo Finance</span><span>4h ago</span></div>
-        <a href="https://finance.yahoo.com/technology/ai/articles/why-berkshire-hathaway-looks-likely-112001195.html" target="_blank" rel="noopener">Read source →</a>
-      </div>
+      <article class="card">
+        <div class="meta"><span class="source">The Washington Post</span><span>2 hours ago</span></div>
+        <h2>Why hiding is getting harder, even for the most vulnerable</h2>
+        <p class="summary">A newsletter on AI examines how facial recognition and other AI tools are threatening anonymity, making privacy harder to maintain for everyone.</p>
+        <a href="https://www.washingtonpost.com/opinions/2026/09/08/artificial-intelligence-facial-recognition-threaten-anonymity/" target="_blank" rel="noopener">Read more →</a>
+      </article>
 
-      <div class="card">
-        <h2>Artificial Intelligence and the Future of Maternal and Child Health</h2>
-        <p class="summary">NIH's NICHD contributors discuss the growing role AI plays in improving maternal and child healthcare outcomes.</p>
-        <div class="meta"><span>Open Access Government</span><span>58m ago</span></div>
-        <a href="https://www.openaccessgovernment.org/artificial-intelligence-and-the-future-of-maternal-and-child-health/213968/" target="_blank" rel="noopener">Read source →</a>
-      </div>
+      <article class="card">
+        <div class="meta"><span class="source">UNESCO</span><span>6 hours ago</span></div>
+        <h2>Global consultations on education in the age of AI</h2>
+        <p class="summary">UNESCO publishes a compilation of policy briefs offering analytical tools and AI governance strategies for education grounded in emerging evidence.</p>
+        <a href="https://www.unesco.org/en/digital-education/artificial-intelligence/consultation" target="_blank" rel="noopener">Read more →</a>
+      </article>
 
-      <div class="card">
-        <h2>Does Artificial Intelligence Change the Nature of War?</h2>
-        <p class="summary">IFRI explores how AI and battlefield robots are reshaping conflicts from Gaza to Ukraine and Iran.</p>
-        <div class="meta"><span>IFRI</span><span>5h ago</span></div>
-        <a href="https://www.ifri.org/en/articles-politique-etrangere/politique-etrangere/does-artificial-intelligence-change-nature-war" target="_blank" rel="noopener">Read source →</a>
-      </div>
+      <article class="card">
+        <div class="meta"><span class="source">ABC News</span><span>8 hours ago</span></div>
+        <h2>How AI is affecting our kids</h2>
+        <p class="summary">ABC News takes a first look at the new documentary "Screenagers: Generation AI," examining the risks AI poses to children.</p>
+        <a href="https://abcnews.com/alerts/ArtificialIntelligence" target="_blank" rel="noopener">Read more →</a>
+      </article>
 
-      <div class="card">
-        <h2>Artificial Intelligence: How AI Is Affecting Our Kids</h2>
-        <p class="summary">ABC News previews the documentary "Screenagers: Generation AI," examining the risks AI poses to young people.</p>
-        <div class="meta"><span>ABC News</span><span>11h ago</span></div>
-        <a href="https://abcnews.com/alerts/ArtificialIntelligence" target="_blank" rel="noopener">Read source →</a>
-      </div>
+      <article class="card">
+        <div class="meta"><span class="source">Air Force Reserve Command</span><span>1 hour ago</span></div>
+        <h2>DAF accelerates joint C2 with AI and Space Force integration</h2>
+        <p class="summary">The Department of the Air Force demonstrates human-machine teaming and AI integration in a fast-paced two-week experiment advancing joint command and control.</p>
+        <a href="https://www.afrc.af.mil/News/Article/4592564/daf-accelerates-joint-c2-with-ai-space-force-integration-in-latest-dash-experim/" target="_blank" rel="noopener">Read more →</a>
+      </article>
+
+      <article class="card">
+        <div class="meta"><span class="source">WSMV</span><span>3 hours ago</span></div>
+        <h2>Scammers use AI to mimic children's voices and exploit parents</h2>
+        <p class="summary">Cybersecurity experts warn parents of a new AI-driven scam where criminals mimic children's voices to trick families as kids head back to school.</p>
+        <a href="https://www.wsmv.com/2026/09/08/scammers-are-using-ai-mimic-childrens-voices-exploit-parents-expert-warns-heres-what-know/" target="_blank" rel="noopener">Read more →</a>
+      </article>
+
     </div>
-
-    <footer>Automated dashboard · Refresh cycle: every 5 hours · Hosted via GitHub Pages</footer>
+    <footer>Auto-refreshed every 5 hours · Hosted via GitHub Pages</footer>
   </div>
 </body>
 </html>
