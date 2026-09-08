@@ -1,41 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>AI News Dashboard</title>
 <style>
-  :root {
-    --bg1: #7b2ff7;
-    --bg2: #f107a3;
-    --card: #ffffff;
-    --text: #1f1f2e;
-    --muted: #6b6b7b;
-    --accent: #6a11cb;
-  }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 100%);
+    background: linear-gradient(135deg, #6a3093 0%, #a044ff 50%, #5b2a86 100%);
     min-height: 100vh;
+    color: #1a1a2e;
     padding: 40px 20px;
-    color: var(--text);
   }
-  .container { max-width: 1100px; margin: 0 auto; }
+  .wrap { max-width: 980px; margin: 0 auto; }
   header {
     text-align: center;
     color: #fff;
-    margin-bottom: 32px;
+    margin-bottom: 36px;
   }
-  header h1 { font-size: 2.2rem; font-weight: 700; letter-spacing: -0.5px; }
-  header p { margin-top: 8px; font-size: 0.95rem; opacity: 0.9; }
+  header h1 { font-size: 2.1rem; font-weight: 700; letter-spacing: -0.5px; }
+  header p { margin-top: 8px; opacity: 0.9; font-size: 0.95rem; }
+  .updated {
+    display: inline-block;
+    margin-top: 14px;
+    background: rgba(255,255,255,0.18);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    backdrop-filter: blur(4px);
+  }
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
   }
   .card {
-    background: var(--card);
+    background: #fff;
     border-radius: 14px;
     padding: 22px;
     box-shadow: 0 8px 24px rgba(0,0,0,0.14);
@@ -43,109 +44,92 @@
     flex-direction: column;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
-  .card:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(0,0,0,0.2); }
-  .card .source {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.6px;
-    color: var(--accent);
-    font-weight: 700;
-    margin-bottom: 8px;
-  }
-  .card h2 { font-size: 1.15rem; line-height: 1.35; margin-bottom: 10px; color: var(--text); }
-  .card p { font-size: 0.92rem; line-height: 1.5; color: var(--muted); flex: 1; margin-bottom: 16px; }
-  .card .meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.8rem;
-    color: #8a8a99;
-  }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(0,0,0,0.2); }
+  .card h2 { font-size: 1.05rem; line-height: 1.35; margin-bottom: 10px; color: #6a3093; }
+  .card .summary { font-size: 0.88rem; color: #444; line-height: 1.5; flex: 1; margin-bottom: 16px; }
+  .meta { font-size: 0.75rem; color: #888; margin-bottom: 10px; }
   .card a {
-    color: var(--accent);
+    color: #a044ff;
     font-weight: 600;
+    font-size: 0.85rem;
     text-decoration: none;
   }
   .card a:hover { text-decoration: underline; }
-  footer {
-    text-align: center;
-    color: #fff;
-    margin-top: 40px;
-    font-size: 0.85rem;
-    opacity: 0.9;
-  }
+  footer { text-align: center; color: rgba(255,255,255,0.85); margin-top: 36px; font-size: 0.8rem; }
 </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>AI News Dashboard</h1>
-      <p>Latest global artificial intelligence headlines</p>
-      <p style="margin-top:4px;font-size:0.8rem;opacity:0.75;">Last updated: 8 September 2026, 02:00 SAST</p>
-    </header>
-    <div class="grid">
-      <div class="card">
-        <div class="source">OpenAI</div>
-        <h2>GPT-6 Astra: A new generation of intelligence</h2>
-        <p>OpenAI introduces GPT-6 Astra, its most intelligent and aligned model yet, with advances in computer use, coding, and cybersecurity.</p>
-        <div class="meta"><span>1 hour ago</span><a href="https://openai.com/index/gpt-6-astra/" target="_blank" rel="noopener">Read more</a></div>
-      </div>
-      <div class="card">
-        <div class="source">Gates Notes</div>
-        <h2>The turbulent AI era is here</h2>
-        <p>Bill Gates reflects on the critical choices society faces as AI reshapes work and daily life, and what they mean for the near future.</p>
-        <div class="meta"><span>3 hours ago</span><a href="https://www.gatesnotes.com/a-turbulent-ai-era-and-critical-choices-to-make" target="_blank" rel="noopener">Read more</a></div>
-      </div>
-      <div class="card">
-        <div class="source">WNYC</div>
-        <h2>Why NYC is restricting AI in public schools</h2>
-        <p>New York City limits AI in public schools, including a one-year ban for students through eighth grade and new screen-time caps for younger pupils.</p>
-        <div class="meta"><span>4 hours ago</span><a href="https://wnyc.org/browse/shows/episode/simplecast/f5794230-aa49-4b0e-8273-e9b26763c5a6" target="_blank" rel="noopener">Read more</a></div>
-      </div>
-      <div class="card">
-        <div class="source">Marketplace.org</div>
-        <h2>AI blamed for finance and insurance job cuts</h2>
-        <p>As the finance and insurance sectors lose jobs, economists debate how much of the shift is attributable to AI adoption versus other forces.</p>
-        <div class="meta"><span>2 hours ago</span><a href="https://www.marketplace.org/story/2026/09/07/is-ai-to-blame-for-finance-and-insurance-sector-job-cuts" target="_blank" rel="noopener">Read more</a></div>
-      </div>
-      <div class="card">
-        <div class="source">KY3</div>
-        <h2>AI in healthcare at Mercy Hospital</h2>
-        <p>Doctors at Mercy Hospital explain how they use AI in healthcare while protecting patient information and privacy.</p>
-        <div class="meta"><span>6 hours ago</span><a href="https://www.ky3.com/video/2026/09/07/artificial-intelligence-healthcare-how-doctors-mercy-hospital-use-it-protect-patient-information/" target="_blank" rel="noopener">Read more</a></div>
-      </div>
-      <div class="card">
-        <div class="source">Bruegel</div>
-        <h2>US pushes global AI divide</h2>
-        <p>Bruegel examines how the US is trying to force a split with China on AI, pushing allies toward a difficult set of choices.</p>
-        <div class="meta"><span>16 hours ago</span><a href="https://www.bruegel.org/first-glance/tough-choices-ahead-us-pushes-global-artificial-intelligence-divide" target="_blank" rel="noopener">Read more</a></div>
-      </div>
-      <div class="card">
-        <div class="source">Fort Worth Report</div>
-        <h2>Universities turn to AI degrees</h2>
-        <p>Texas Wesleyan and UT Arlington now offer AI degrees, dubbed "the Excel of the 21st century," with notably different approaches.</p>
-        <div class="meta"><span>3 hours ago</span><a href="https://fortworthreport.org/2026/09/07/the-excel-of-the-21st-century-why-tarrant-county-universities-are-turning-to-ai-degrees/" target="_blank" rel="noopener">Read more</a></div>
-      </div>
-      <div class="card">
-        <div class="source">KTXS</div>
-        <h2>Trump backs data centers ahead of midterms</h2>
-        <p>AI data centers are becoming a contentious political issue, with data-center expansion drawing voter concerns heading into the midterm elections.</p>
-        <div class="meta"><span>4 hours ago</span><a href="https://ktxs.com/news/nation-world/trump-backs-data-centers-as-voter-concerns-grow-ahead-of-midterm-elections-armstrong-williams-republicans-democrats-artificial-intelligence-china-politics-energy-technology" target="_blank" rel="noopener">Read more</a></div>
-      </div>
-      <div class="card">
-        <div class="source">ABC News</div>
-        <h2>AI in the classroom and beyond</h2>
-        <p>ABC News rounds up the role of tech in classrooms and how hikers used AI to plan a trip before being rescued on Mount Shasta.</p>
-        <div class="meta"><span>10 hours ago</span><a href="https://abcnews.com/alerts/ArtificialIntelligence" target="_blank" rel="noopener">Read more</a></div>
-      </div>
-      <div class="card">
-        <div class="source">Jesuits Global</div>
-        <h2>AI and Jesuit formation</h2>
-        <p>Sean van Staden SJ explores how AI and virtual technologies can be integrated into Jesuit formation and education.</p>
-        <div class="meta"><span>8 hours ago</span><a href="https://www.jesuits.global/2026/09/07/artificial-intelligence-and-jesuit-formation/" target="_blank" rel="noopener">Read more</a></div>
-      </div>
+<div class="wrap">
+  <header>
+    <h1>AI News Dashboard</h1>
+    <p>Recent global artificial intelligence headlines, refreshed every 5 hours.</p>
+    <span class="updated">Last updated: 08 September 2026, 07:00 SAST</span>
+  </header>
+
+  <div class="grid">
+    <div class="card">
+      <h2>The turbulent AI era is here. The choices we make now are critical.</h2>
+      <div class="summary">Bill Gates reflects on how artificial intelligence is reshaping work and society, and the critical choices facing the world as the technology accelerates.</div>
+      <div class="meta">Gates Notes · 5 hours ago</div>
+      <a href="https://www.gatesnotes.com/a-turbulent-ai-era-and-critical-choices-to-make" target="_blank" rel="noopener">Read more →</a>
     </div>
-    <footer>Refreshes automatically every 5 hours</footer>
+    <div class="card">
+      <h2>Why New York City Is Restricting Artificial Intelligence in Public Schools</h2>
+      <div class="summary">NYC introduces restrictions on AI in public schools, including a one-year ban for students through eighth grade and new screen-time limits for younger learners.</div>
+      <div class="meta">WNYC · 9 hours ago</div>
+      <a href="https://wnyc.org/browse/shows/episode/simplecast/f5794230-aa49-4b0e-8273-e9b26763c5a6" target="_blank" rel="noopener">Read more →</a>
+    </div>
+    <div class="card">
+      <h2>GTIPA Perspectives: Making AI Policy to Drive Innovation</h2>
+      <div class="summary">The Information Technology and Innovation Foundation argues AI is the general-purpose technology of the decade and lays out policy priorities to sustain innovation.</div>
+      <div class="meta">ITIF · 45 minutes ago</div>
+      <a href="https://itif.org/publications/2026/09/08/gtipa-perspectives-making-ai-policy-to-drive-innovation/" target="_blank" rel="noopener">Read more →</a>
+    </div>
+    <div class="card">
+      <h2>Mentorship first, AI second: How my students solved real engineering problems</h2>
+      <div class="summary">Students at Lennox Math, Science and Technology Academy partnered with Sully Miller to design innovative engineering solutions using AI.</div>
+      <div class="meta">EdSource · 35 minutes ago</div>
+      <a href="https://edsource.org/2026/students-ai-engineering-internship/765542" target="_blank" rel="noopener">Read more →</a>
+    </div>
+    <div class="card">
+      <h2>Airties Introduces Aura: Agentic AI Engine for Connected Intelligence</h2>
+      <div class="summary">A new agentic AI engine aims to help internet service providers improve broadband experiences, driving efficiency and performance across homes and small businesses.</div>
+      <div class="meta">PR Newswire · 60 minutes ago</div>
+      <a href="https://www.prnewswire.com/news-releases/airties-introduces-aura-agentic-ai-engine-for-connected-intelligence-302870301.html" target="_blank" rel="noopener">Read more →</a>
+    </div>
+    <div class="card">
+      <h2>UH launches free 'AI for Hawaiʻi' course for everyone</h2>
+      <div class="summary">The University of Hawaiʻi makes AI education available to everyone with a free course as the technology rapidly transforms the workforce and daily life.</div>
+      <div class="meta">Maui Now · 5 hours ago</div>
+      <a href="https://mauinow.com/2026/09/07/uh-launches-free-ai-for-hawai%CA%BBi-course-for-everyone/" target="_blank" rel="noopener">Read more →</a>
+    </div>
+    <div class="card">
+      <h2>Why I Let My Students Use AI</h2>
+      <div class="summary">In back-to-school commentary, an educator explains why they let students use AI, exploring how its expanding capabilities are transforming education.</div>
+      <div class="meta">The Free Press · 3 hours ago</div>
+      <a href="https://www.thefp.com/p/why-i-let-my-students-use-ai" target="_blank" rel="noopener">Read more →</a>
+    </div>
+    <div class="card">
+      <h2>Artificial Intelligence and Jesuit Formation</h2>
+      <div class="summary">A reflection on how artificial intelligence and virtual technologies can be integrated into Jesuit formation and education.</div>
+      <div class="meta">Jesuits Global · 13 hours ago</div>
+      <a href="https://www.jesuits.global/2026/09/07/artificial-intelligence-and-jesuit-formation/" target="_blank" rel="noopener">Read more →</a>
+    </div>
+    <div class="card">
+      <h2>AAEC Letter to Baltimore Sun Re: Use Of Artificial Intelligence</h2>
+      <div class="summary">The Association of American Editorial Cartoonists writes an open letter to The Baltimore Sun over its use of artificial intelligence in editorial content.</div>
+      <div class="meta">The Daily Cartoonist · 7 hours ago</div>
+      <a href="https://www.dailycartoonist.com/index.php/2026/09/07/aaec-letter-to-baltimore-sun-re-use-of-artificial-intelligence/" target="_blank" rel="noopener">Read more →</a>
+    </div>
+    <div class="card">
+      <h2>Artificial Intelligence</h2>
+      <div class="summary">ABC News' AI roundup covers what role tech should play in the classroom, plus hikers rescued after using AI to plan a trip on Mount Shasta.</div>
+      <div class="meta">ABC News · 15 hours ago</div>
+      <a href="https://abcnews.com/alerts/ArtificialIntelligence" target="_blank" rel="noopener">Read more →</a>
+    </div>
   </div>
+
+  <footer>Automatically updated every 5 hours · Hosted via GitHub Pages</footer>
+</div>
 </body>
 </html>
