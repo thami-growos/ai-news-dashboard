@@ -1,135 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI News Dashboard</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: linear-gradient(135deg, #6a3093 0%, #a044ff 50%, #5b2a86 100%);
+    background: linear-gradient(135deg, #4c1d95 0%, #7c3aed 50%, #a855f7 100%);
     min-height: 100vh;
-    color: #1a1a2e;
-    padding: 40px 20px;
+    color: #1f2937;
+    padding: 32px 20px;
   }
-  .wrap { max-width: 980px; margin: 0 auto; }
-  header {
-    text-align: center;
-    color: #fff;
-    margin-bottom: 36px;
-  }
-  header h1 { font-size: 2.1rem; font-weight: 700; letter-spacing: -0.5px; }
-  header p { margin-top: 8px; opacity: 0.9; font-size: 0.95rem; }
-  .updated {
+  .container { max-width: 980px; margin: 0 auto; }
+  header { text-align: center; margin-bottom: 36px; color: #fff; }
+  header h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 8px; }
+  header p { font-size: 1.05rem; opacity: 0.9; }
+  .timestamp {
     display: inline-block;
     margin-top: 14px;
     background: rgba(255,255,255,0.18);
-    padding: 6px 14px;
+    padding: 8px 16px;
     border-radius: 999px;
-    font-size: 0.82rem;
-    backdrop-filter: blur(4px);
+    font-size: 0.9rem;
   }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-  }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
   .card {
-    background: #fff;
-    border-radius: 14px;
+    background: #ffffff;
+    border-radius: 16px;
     padding: 22px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.14);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
     display: flex;
     flex-direction: column;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
-  .card:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(0,0,0,0.2); }
-  .card h2 { font-size: 1.05rem; line-height: 1.35; margin-bottom: 10px; color: #6a3093; }
-  .card .summary { font-size: 0.88rem; color: #444; line-height: 1.5; flex: 1; margin-bottom: 16px; }
-  .meta { font-size: 0.75rem; color: #888; margin-bottom: 10px; }
-  .card a {
-    color: #a044ff;
+  .card:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(0,0,0,0.24); }
+  .source {
+    font-size: 0.78rem;
     font-weight: 600;
-    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #7c3aed;
+    margin-bottom: 10px;
+  }
+  .card h2 { font-size: 1.15rem; line-height: 1.35; margin-bottom: 10px; color: #1f2937; }
+  .card p { font-size: 0.93rem; line-height: 1.55; color: #4b5563; flex: 1; }
+  .meta {
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.82rem;
+    color: #6b7280;
+  }
+  .card a {
+    color: #7c3aed;
+    font-weight: 600;
     text-decoration: none;
   }
   .card a:hover { text-decoration: underline; }
-  footer { text-align: center; color: rgba(255,255,255,0.85); margin-top: 36px; font-size: 0.8rem; }
+  footer { text-align: center; margin-top: 40px; color: #fff; opacity: 0.85; font-size: 0.85rem; }
 </style>
 </head>
 <body>
-<div class="wrap">
+<div class="container">
   <header>
     <h1>AI News Dashboard</h1>
-    <p>Recent global artificial intelligence headlines, refreshed every 5 hours.</p>
-    <span class="updated">Last updated: 08 September 2026, 07:00 SAST</span>
+    <p>Latest headlines from the world of artificial intelligence</p>
+    <div class="timestamp">Last updated: 08 Sep 2026, 12:00 SAST</div>
   </header>
 
   <div class="grid">
+
     <div class="card">
-      <h2>The turbulent AI era is here. The choices we make now are critical.</h2>
-      <div class="summary">Bill Gates reflects on how artificial intelligence is reshaping work and society, and the critical choices facing the world as the technology accelerates.</div>
-      <div class="meta">Gates Notes · 5 hours ago</div>
-      <a href="https://www.gatesnotes.com/a-turbulent-ai-era-and-critical-choices-to-make" target="_blank" rel="noopener">Read more →</a>
+      <div class="source">OpenAI</div>
+      <h2>GPT-6 Astra: A new generation of intelligence</h2>
+      <p>OpenAI introduces GPT-6 Astra, its most intelligent and aligned model yet, with advanced capabilities across computer use, coding, cybersecurity, and more.</p>
+      <div class="meta"><span>2 hours ago</span><a href="https://openai.com/index/gpt-6-astra/" target="_blank" rel="noopener">Read more</a></div>
     </div>
+
     <div class="card">
+      <div class="source">The New York Times</div>
+      <h2>Key App Developers Have Yet to Embrace Apple's New Siri A.I.</h2>
+      <p>For Apple's new AI system to take off, it will need support from popular app makers, but many have yet to adopt the new Siri integration.</p>
+      <div class="meta"><span>57 minutes ago</span><a href="https://www.nytimes.com/2026/09/08/technology/apple-siri-ai.html" target="_blank" rel="noopener">Read more</a></div>
+    </div>
+
+    <div class="card">
+      <div class="source">Politico</div>
+      <h2>The House Democrat making AI regulation her No. 1 priority</h2>
+      <p>Rep. Lori Trahan passed on a leadership bid to focus on artificial intelligence policy, becoming a key voice on upcoming federal AI regulation.</p>
+      <div class="meta"><span>1 hour ago</span><a href="https://www.politico.com/news/2026/09/08/lori-trahan-ai-regulation-01065989" target="_blank" rel="noopener">Read more</a></div>
+    </div>
+
+    <div class="card">
+      <div class="source">WNYC</div>
       <h2>Why New York City Is Restricting Artificial Intelligence in Public Schools</h2>
-      <div class="summary">NYC introduces restrictions on AI in public schools, including a one-year ban for students through eighth grade and new screen-time limits for younger learners.</div>
-      <div class="meta">WNYC · 9 hours ago</div>
-      <a href="https://wnyc.org/browse/shows/episode/simplecast/f5794230-aa49-4b0e-8273-e9b26763c5a6" target="_blank" rel="noopener">Read more →</a>
+      <p>New York City is restricting AI across public schools, including a one-year ban for students through eighth grade and new screen time limits for younger students.</p>
+      <div class="meta"><span>6 hours ago</span><a href="https://wnyc.org/browse/shows/episode/simplecast/f5794230-aa49-4b0e-8273-e9b26763c5a6" target="_blank" rel="noopener">Read more</a></div>
     </div>
+
     <div class="card">
-      <h2>GTIPA Perspectives: Making AI Policy to Drive Innovation</h2>
-      <div class="summary">The Information Technology and Innovation Foundation argues AI is the general-purpose technology of the decade and lays out policy priorities to sustain innovation.</div>
-      <div class="meta">ITIF · 45 minutes ago</div>
-      <a href="https://itif.org/publications/2026/09/08/gtipa-perspectives-making-ai-policy-to-drive-innovation/" target="_blank" rel="noopener">Read more →</a>
+      <div class="source">Gates Notes</div>
+      <h2>The turbulent AI era is here. The choices we make now are critical.</h2>
+      <p>Bill Gates reflects on a turbulent AI era, arguing the decisions made now will shape the technology's impact for decades to come.</p>
+      <div class="meta"><span>4 hours ago</span><a href="https://www.gatesnotes.com/a-turbulent-ai-era-and-critical-choices-to-make" target="_blank" rel="noopener">Read more</a></div>
     </div>
+
     <div class="card">
+      <div class="source">Industrial Cyber</div>
+      <h2>DOE and Sandia National Lab use AI to boost electric grid cybersecurity</h2>
+      <p>The U.S. Department of Energy and Sandia National Laboratories announced a deal to use AI to detect grid threats with 95% accuracy.</p>
+      <div class="meta"><span>3 hours ago</span><a href="https://industrialcyber.co/utilities-energy-power-water-waste/doe-and-sandia-national-lab-use-ai-to-boost-electric-grid-cybersecurity-detect-threats-with-95-accuracy/" target="_blank" rel="noopener">Read more</a></div>
+    </div>
+
+    <div class="card">
+      <div class="source">The Japan Times</div>
+      <h2>Trump and Xi should align on artificial intelligence</h2>
+      <p>As the U.S. and Chinese presidents prepare to meet in Washington, AI will sit near the top of the agenda between the two powers.</p>
+      <div class="meta"><span>4 hours ago</span><a href="https://www.japantimes.co.jp/commentary/2026/09/08/world/china-us-ai-security-ties/" target="_blank" rel="noopener">Read more</a></div>
+    </div>
+
+    <div class="card">
+      <div class="source">ABC News</div>
+      <h2>Artificial Intelligence: tech in the classroom and AI-planned rescues</h2>
+      <p>Coverage explores the role of AI in schools, plus hikers rescued after using AI to plan a trip who were stranded on Mount Shasta.</p>
+      <div class="meta"><span>20 hours ago</span><a href="https://abcnews.com/alerts/ArtificialIntelligence" target="_blank" rel="noopener">Read more</a></div>
+    </div>
+
+    <div class="card">
+      <div class="source">EdSource</div>
       <h2>Mentorship first, AI second: How my students solved real engineering problems</h2>
-      <div class="summary">Students at Lennox Math, Science and Technology Academy partnered with Sully Miller to design innovative engineering solutions using AI.</div>
-      <div class="meta">EdSource · 35 minutes ago</div>
-      <a href="https://edsource.org/2026/students-ai-engineering-internship/765542" target="_blank" rel="noopener">Read more →</a>
+      <p>Students at a LA-area academy partnered with an engineering firm to design innovative solutions using AI, with mentorship leading the way.</p>
+      <div class="meta"><span>6 hours ago</span><a href="https://edsource.org/2026/students-ai-engineering-internship/765542" target="_blank" rel="noopener">Read more</a></div>
     </div>
+
     <div class="card">
-      <h2>Airties Introduces Aura: Agentic AI Engine for Connected Intelligence</h2>
-      <div class="summary">A new agentic AI engine aims to help internet service providers improve broadband experiences, driving efficiency and performance across homes and small businesses.</div>
-      <div class="meta">PR Newswire · 60 minutes ago</div>
-      <a href="https://www.prnewswire.com/news-releases/airties-introduces-aura-agentic-ai-engine-for-connected-intelligence-302870301.html" target="_blank" rel="noopener">Read more →</a>
+      <div class="source">The Daily Cartoonist</div>
+      <h2>AAEC Letter to Baltimore Sun Re: Use of Artificial Intelligence</h2>
+      <p>The Association of American Editorial Cartoonists wrote an open letter to The Baltimore Sun over its use of artificial intelligence.</p>
+      <div class="meta"><span>12 hours ago</span><a href="https://www.dailycartoonist.com/index.php/2026/09/07/aaec-letter-to-baltimore-sun-re-use-of-artificial-intelligence/" target="_blank" rel="noopener">Read more</a></div>
     </div>
-    <div class="card">
-      <h2>UH launches free 'AI for Hawaiʻi' course for everyone</h2>
-      <div class="summary">The University of Hawaiʻi makes AI education available to everyone with a free course as the technology rapidly transforms the workforce and daily life.</div>
-      <div class="meta">Maui Now · 5 hours ago</div>
-      <a href="https://mauinow.com/2026/09/07/uh-launches-free-ai-for-hawai%CA%BBi-course-for-everyone/" target="_blank" rel="noopener">Read more →</a>
-    </div>
-    <div class="card">
-      <h2>Why I Let My Students Use AI</h2>
-      <div class="summary">In back-to-school commentary, an educator explains why they let students use AI, exploring how its expanding capabilities are transforming education.</div>
-      <div class="meta">The Free Press · 3 hours ago</div>
-      <a href="https://www.thefp.com/p/why-i-let-my-students-use-ai" target="_blank" rel="noopener">Read more →</a>
-    </div>
-    <div class="card">
-      <h2>Artificial Intelligence and Jesuit Formation</h2>
-      <div class="summary">A reflection on how artificial intelligence and virtual technologies can be integrated into Jesuit formation and education.</div>
-      <div class="meta">Jesuits Global · 13 hours ago</div>
-      <a href="https://www.jesuits.global/2026/09/07/artificial-intelligence-and-jesuit-formation/" target="_blank" rel="noopener">Read more →</a>
-    </div>
-    <div class="card">
-      <h2>AAEC Letter to Baltimore Sun Re: Use Of Artificial Intelligence</h2>
-      <div class="summary">The Association of American Editorial Cartoonists writes an open letter to The Baltimore Sun over its use of artificial intelligence in editorial content.</div>
-      <div class="meta">The Daily Cartoonist · 7 hours ago</div>
-      <a href="https://www.dailycartoonist.com/index.php/2026/09/07/aaec-letter-to-baltimore-sun-re-use-of-artificial-intelligence/" target="_blank" rel="noopener">Read more →</a>
-    </div>
-    <div class="card">
-      <h2>Artificial Intelligence</h2>
-      <div class="summary">ABC News' AI roundup covers what role tech should play in the classroom, plus hikers rescued after using AI to plan a trip on Mount Shasta.</div>
-      <div class="meta">ABC News · 15 hours ago</div>
-      <a href="https://abcnews.com/alerts/ArtificialIntelligence" target="_blank" rel="noopener">Read more →</a>
-    </div>
+
   </div>
 
-  <footer>Automatically updated every 5 hours · Hosted via GitHub Pages</footer>
+  <footer>Auto-updated every 5 hours · Sources linked in each card</footer>
 </div>
 </body>
 </html>
