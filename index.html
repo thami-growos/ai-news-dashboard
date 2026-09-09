@@ -5,189 +5,135 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI News Dashboard</title>
 <style>
-  :root {
-    --bg-start: #7b2ff7;
-    --bg-end: #a86bff;
-    --card-bg: #ffffff;
-    --text: #1a1033;
-    --muted: #6b5a8e;
-    --accent: #5b21b6;
-    --link: #4c1d95;
+  :root{
+    --bg1:#1a1029; --bg2:#3b1d6e; --card:#ffffff; --text:#1f1833;
+    --muted:#6b6480; --accent:#7c3aed; --link:#6d28d9;
   }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
-    min-height: 100vh;
-    padding: 40px 20px;
-    color: var(--text);
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:linear-gradient(135deg,var(--bg1),var(--bg2) 60%,#4c2a8a);
+    min-height:100vh;color:#f5f2fb;padding:40px 20px;
   }
-  .header {
-    max-width: 1100px;
-    margin: 0 auto 30px;
-    color: #fff;
-  }
-  .header h1 {
-    font-size: 2.2rem;
-    font-weight: 700;
-    margin-bottom: 6px;
-  }
-  .header p {
-    opacity: 0.9;
-    font-size: 0.95rem;
-  }
-  .badge {
-    display: inline-block;
-    margin-top: 12px;
-    background: rgba(255,255,255,0.2);
-    padding: 6px 14px;
-    border-radius: 999px;
-    font-size: 0.8rem;
-  }
-  .grid {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
-    gap: 20px;
-  }
-  .card {
-    background: var(--card-bg);
-    border-radius: 16px;
-    padding: 22px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-  }
-  .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 36px rgba(0,0,0,0.18);
-  }
-  .card .source {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--accent);
-    font-weight: 700;
-  }
-  .card h2 {
-    font-size: 1.15rem;
-    line-height: 1.3;
-    font-weight: 700;
-  }
-  .card .summary {
-    font-size: 0.9rem;
-    color: var(--muted);
-    line-height: 1.5;
-    flex-grow: 1;
-  }
-  .card .meta {
-    font-size: 0.78rem;
-    color: #9b8db5;
-  }
-  .card a {
-    color: var(--link);
-    font-weight: 600;
-    text-decoration: none;
-    font-size: 0.88rem;
-  }
-  .card a:hover { text-decoration: underline; }
-  .footer {
-    max-width: 1100px;
-    margin: 30px auto 0;
-    color: rgba(255,255,255,0.85);
-    text-align: center;
-    font-size: 0.85rem;
-  }
+  .wrap{max-width:960px;margin:0 auto;}
+  header{margin-bottom:28px;text-align:center;}
+  header h1{font-size:2rem;letter-spacing:-0.02em;margin-bottom:6px;}
+  header .sub{color:#d9cdf2;font-size:0.95rem;}
+  .updated{display:inline-block;margin-top:12px;background:rgba(255,255,255,0.12);
+    padding:6px 14px;border-radius:999px;font-size:0.8rem;color:#efe9fb;}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;}
+  .card{background:var(--card);color:var(--text);border-radius:14px;padding:18px;
+    display:flex;flex-direction:column;gap:10px;box-shadow:0 10px 30px rgba(0,0,0,0.28);
+    transition:transform .15s ease, box-shadow .15s ease;}
+  .card:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(0,0,0,0.34);}
+  .card h2{font-size:1.05rem;line-height:1.3;letter-spacing:-0.01em;}
+  .card p{font-size:0.88rem;color:var(--muted);line-height:1.45;flex:1;}
+  .meta{font-size:0.75rem;color:#a297bd;display:flex;justify-content:space-between;align-items:center;}
+  .card a{color:var(--link);text-decoration:none;font-weight:600;font-size:0.85rem;}
+  .card a:hover{text-decoration:underline;}
 </style>
 </head>
 <body>
-  <div class="header">
+<div class="wrap">
+  <header>
     <h1>AI News Dashboard</h1>
-    <p>Latest headlines from across the world of artificial intelligence.</p>
-    <span class="badge">Last updated: 02:00 SAST, Sep 9 2026</span>
-  </div>
+    <p class="sub">Recent global artificial intelligence headlines</p>
+    <span class="updated">Last updated: Wednesday, 09 September 2026, 07:00 SAST</span>
+  </header>
 
   <div class="grid">
 
     <div class="card">
-      <div class="source">OpenAI</div>
-      <h2>GPT-6 Astra: A new generation of intelligence</h2>
-      <p class="summary">OpenAI introduces GPT-6 Astra, its most intelligent and aligned model yet, with state-of-the-art capabilities across computer use, coding and cybersecurity.</p>
-      <div class="meta">2 hours ago</div>
-      <a href="https://openai.com/index/gpt-6-astra/" target="_blank">Read source</a>
-    </div>
-
-    <div class="card">
-      <div class="source">The New York Times</div>
-      <h2>OpenAI Says It Has Cracked One of Math's 'Millennium Problems'</h2>
-      <p class="summary">OpenAI's announcement marks the most dramatic sign yet that AI is fundamentally transforming the field of higher mathematics.</p>
-      <div class="meta">3 hours ago</div>
-      <a href="https://www.nytimes.com/2026/09/08/science/openai-proof-millennium-problem.html" target="_blank">Read source</a>
-    </div>
-
-    <div class="card">
-      <div class="source">Gates Notes</div>
       <h2>The turbulent AI era is here. The choices we make now are critical.</h2>
-      <p class="summary">Bill Gates reflects on the arrival of a turbulent AI era and the critical choices facing society about how the technology is deployed.</p>
-      <div class="meta">6 hours ago</div>
-      <a href="https://www.gatesnotes.com/a-turbulent-ai-era-and-critical-choices-to-make" target="_blank">Read source</a>
+      <p>Bill Gates reflects on a turning point for artificial intelligence and the decisions shaping its future impact.</p>
+      <div class="meta">
+        <span>Gates Notes</span>
+        <a href="https://www.gatesnotes.com/a-turbulent-ai-era-and-critical-choices-to-make" target="_blank" rel="noopener">Read more</a>
+      </div>
     </div>
 
     <div class="card">
-      <div class="source">Reuters</div>
-      <h2>US accuses Chinese AI firms of 'malicious' copying of AI technology</h2>
-      <p class="summary">The US government accused Chinese AI companies of maliciously copying technology from American AI firms on an industrial scale.</p>
-      <div class="meta">2 hours ago</div>
-      <a href="https://www.reuters.com/technology/us-accuses-chinese-ai-firms-industrial-scale-theft-ai-technology-2026-09-08/" target="_blank">Read source</a>
+      <h2>OpenAI Says It Has Cracked One of Math's 'Millennium Problems'</h2>
+      <p>The company's announcement signals AI is fundamentally transforming the field of higher mathematics.</p>
+      <div class="meta">
+        <span>The New York Times</span>
+        <a href="https://www.nytimes.com/2026/09/08/science/openai-proof-millennium-problem.html" target="_blank" rel="noopener">Read more</a>
+      </div>
     </div>
 
     <div class="card">
-      <div class="source">Nextgov/FCW</div>
       <h2>Intelligence agencies warn of China's large-scale AI model distillation efforts</h2>
-      <p class="summary">Three agencies issued a joint warning that companies including DeepSeek, Moonshot AI and Alibaba have used large-scale model distillation tactics.</p>
-      <div class="meta">2 hours ago</div>
-      <a href="https://www.nextgov.com/artificial-intelligence/2026/09/intelligence-agencies-warn-chinas-large-scale-ai-model-distillation-efforts/415851/" target="_blank">Read source</a>
+      <p>Three agencies warn that Chinese firms DeepSeek, Moonshot AI, Alibaba and others have used targeted distillation tactics.</p>
+      <div class="meta">
+        <span>Nextgov/FCW</span>
+        <a href="https://www.nextgov.com/artificial-intelligence/2026/09/intelligence-agencies-warn-chinas-large-scale-ai-model-distillation-efforts/415851/" target="_blank" rel="noopener">Read more</a>
+      </div>
     </div>
 
     <div class="card">
-      <div class="source">Amazon Web Services</div>
-      <h2>Pathway's brain-inspired architecture on Amazon SageMaker HyperPod</h2>
-      <p class="summary">AWS details how Pathway is developing brain-inspired AI architecture as the industry moves beyond simply increasing model scale and data.</p>
-      <div class="meta">5 hours ago</div>
-      <a href="https://aws.amazon.com/blogs/machine-learning/pathways-brain-inspired-architecture-development-on-amazon-sagemaker-hyperpod/" target="_blank">Read source</a>
-    </div>
-
-    <div class="card">
-      <div class="source">Dallas News</div>
       <h2>UNT to open new college of artificial intelligence with $20 million gift</h2>
-      <p class="summary">The University of North Texas will establish a college of AI and advanced analytics after receiving a $20 million gift from two alumni.</p>
-      <div class="meta">2 hours ago</div>
-      <a href="https://www.dallasnews.com/news/education/article/unt-ai-college-gift-22422960.php" target="_blank">Read source</a>
+      <p>The University of North Texas will establish a college of AI and advanced analytics after a $20 million alumni gift.</p>
+      <div class="meta">
+        <span>Dallas News</span>
+        <a href="https://www.dallasnews.com/news/education/article/unt-ai-college-gift-22422960.php" target="_blank" rel="noopener">Read more</a>
+      </div>
     </div>
 
     <div class="card">
-      <div class="source">NBC 5 Dallas-Fort Worth</div>
       <h2>North Texas universities launch AI degree programs for a changing workforce</h2>
-      <p class="summary">UTA and Texas Wesleyan are teaching students to use AI while recognizing its risks and biases to prepare them for a changing workforce.</p>
-      <div class="meta">1 hour ago</div>
-      <a href="https://www.nbcdfw.com/news/local/north-texas-universities-launch-ai-degree-programs-for-a-changing-workforce/4074218/" target="_blank">Read source</a>
+      <p>UTA and Texas Wesleyan are teaching students to use AI while recognizing its risks and biases.</p>
+      <div class="meta">
+        <span>NBC 5 Dallas-Fort Worth</span>
+        <a href="https://www.nbcdfw.com/news/local/north-texas-universities-launch-ai-degree-programs-for-a-changing-workforce/4074218/" target="_blank" rel="noopener">Read more</a>
+      </div>
     </div>
 
     <div class="card">
-      <div class="source">ABC News</div>
-      <h2>How AI is affecting our kids - 'Screenagers: Generation AI'</h2>
-      <p class="summary">ABC News takes a first look at a new documentary examining the risks AI poses to children and how it is shaping a generation.</p>
-      <div class="meta">12 hours ago</div>
-      <a href="https://abcnews.com/alerts/ArtificialIntelligence" target="_blank">Read source</a>
+      <h2>World Development Report 2026: The Promise of Artificial Intelligence</h2>
+      <p>AI offers developing economies a rare path forward as growth progress hits its weakest pace in 75 years.</p>
+      <div class="meta">
+        <span>Stanford Digital Economy Lab</span>
+        <a href="https://digitaleconomy.stanford.edu/event/world-development-report-2026-the-promise-of-artificial-intelligence/" target="_blank" rel="noopener">Read more</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Artificial Intelligence</h2>
+      <p>ABC News examines how AI is affecting kids, with a first look at the documentary "Screenagers: Generation AI."</p>
+      <div class="meta">
+        <span>ABC News</span>
+        <a href="https://abcnews.com/alerts/ArtificialIntelligence" target="_blank" rel="noopener">Read more</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>DAF accelerates joint C2 with AI, Space Force integration in latest DASH experiment</h2>
+      <p>The Air Force demonstrates human-machine teaming, integrating AI across a two-week joint command-and-control experiment.</p>
+      <div class="meta">
+        <span>Air Force Reserve Command</span>
+        <a href="https://www.afrc.af.mil/News/Article/4592564/daf-accelerates-joint-c2-with-ai-space-force-integration-in-latest-dash-experim/" target="_blank" rel="noopener">Read more</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Pathway's brain-inspired architecture development on Amazon SageMaker HyperPod</h2>
+      <p>AWS explores brain-inspired model architecture as an alternative to simply scaling up data and context length.</p>
+      <div class="meta">
+        <span>Amazon Web Services</span>
+        <a href="https://aws.amazon.com/blogs/machine-learning/pathways-brain-inspired-architecture-development-on-amazon-sagemaker-hyperpod/" target="_blank" rel="noopener">Read more</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>UNT receives $20M gift to launch new college focused on Artificial Intelligence</h2>
+      <p>Two UNT alumni give $20 million to boost AI education in Denton, Texas.</p>
+      <div class="meta">
+        <span>WFAA</span>
+        <a href="https://www.wfaa.com/article/news/education/unt-receives-20m-gift-launch-new-college-focused-artificial-intelligence/287-ed7aeb90-ab07-40e8-99ba-afab92f1b5ab" target="_blank" rel="noopener">Read more</a>
+      </div>
     </div>
 
   </div>
-
-  <div class="footer">
-    Dashboard refreshes automatically every 5 hours.
-  </div>
+</div>
 </body>
 </html>
