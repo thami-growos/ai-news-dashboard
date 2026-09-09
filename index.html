@@ -3,116 +3,146 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Global AI News Dashboard</title>
+<title>AI News Dashboard</title>
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: linear-gradient(135deg, #4c1d95 0%, #7c3aed 45%, #a855f7 100%);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     min-height: 100vh;
-    color: #1e1b2e;
-    padding: 32px 16px;
+    color: #1a1a2e;
+    padding: 40px 20px;
   }
-  .wrap { max-width: 960px; margin: 0 auto; }
-  header { text-align: center; color: #fff; margin-bottom: 28px; }
-  header h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; }
-  header p { margin-top: 8px; opacity: 0.9; font-size: 0.95rem; }
-  .updated {
-    display: inline-block; margin-top: 14px;
-    background: rgba(255,255,255,0.18); color: #fff;
-    padding: 6px 14px; border-radius: 999px; font-size: 0.82rem;
-  }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; }
+  .container { max-width: 960px; margin: 0 auto; }
+  header { text-align: center; color: #fff; margin-bottom: 36px; }
+  header h1 { font-size: 2.4rem; letter-spacing: -0.5px; margin-bottom: 8px; }
+  header p { font-size: 1rem; opacity: 0.9; }
+  .grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+  @media (min-width: 640px) { .grid { grid-template-columns: 1fr 1fr; } }
   .card {
-    background: #fff; border-radius: 14px; padding: 20px;
+    background: #fff;
+    border-radius: 16px;
+    padding: 24px;
     box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-    display: flex; flex-direction: column; gap: 10px;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
+    display: flex;
+    flex-direction: column;
   }
-  .card:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(0,0,0,0.18); }
-  .card h2 { font-size: 1.05rem; font-weight: 700; line-height: 1.35; }
-  .card .summary { font-size: 0.9rem; color: #4b4563; line-height: 1.5; flex: 1; }
-  .meta { display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; color: #8b84a3; }
-  .source { font-weight: 600; color: #7c3aed; }
-  a.read { color: #7c3aed; text-decoration: none; font-weight: 600; font-size: 0.85rem; }
-  a.read:hover { text-decoration: underline; }
-  footer { text-align: center; color: #fff; margin-top: 28px; font-size: 0.82rem; opacity: 0.85; }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.18); }
+  .source {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    font-weight: 700;
+    color: #764ba2;
+    margin-bottom: 10px;
+  }
+  .card h2 { font-size: 1.15rem; line-height: 1.35; margin-bottom: 10px; color: #1a1a2e; }
+  .card p { font-size: 0.92rem; line-height: 1.55; color: #4a4a5e; flex: 1; margin-bottom: 14px; }
+  .card a {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #667eea;
+    text-decoration: none;
+    align-self: flex-start;
+  }
+  .card a:hover { text-decoration: underline; }
+  .meta { font-size: 0.8rem; color: #888; margin-top: 8px; }
+  footer { text-align: center; color: #fff; margin-top: 40px; font-size: 0.85rem; opacity: 0.85; }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <h1>Global AI News</h1>
-    <p>Recent headlines from around the world, refreshed automatically every 5 hours.</p>
-    <span class="updated">Last updated: 09 Sep 2026, 12:00 SAST</span>
-  </header>
+  <div class="container">
+    <header>
+      <h1>AI News Dashboard</h1>
+      <p>Latest global artificial intelligence headlines, updated automatically every 5 hours.</p>
+    </header>
+    <div class="grid">
 
-  <div class="grid">
-    <div class="card">
-      <h2>The turbulent AI era is here. The choices we make now are critical.</h2>
-      <p class="summary">Bill Gates reflects on how rapidly advancing AI is reshaping society and argues that the decisions made now will define its long-term impact.</p>
-      <div class="meta"><span class="source">Gates Notes</span><span>09 Sep</span></div>
-      <a class="read" href="https://www.gatesnotes.com/a-turbulent-ai-era-and-critical-choices-to-make" target="_blank">Read more &rarr;</a>
-    </div>
+      <div class="card">
+        <div class="source">Gates Notes</div>
+        <h2>The turbulent AI era is here. The choices we make now are critical.</h2>
+        <p>Bill Gates reflects on the rapid rise of AI and argues the decisions made today will shape whether the technology broadly benefits people or concentrates power.</p>
+        <a href="https://www.gatesnotes.com/a-turbulent-ai-era-and-critical-choices-to-make" target="_blank" rel="noopener">Read full story</a>
+        <div class="meta">4 hours ago</div>
+      </div>
 
-    <div class="card">
-      <h2>Broadcom's AI chip revenue just rose 221%. More growth is coming.</h2>
-      <p class="summary">Broadcom posted a standout quarter driven by surging demand for AI computing equipment, with its AI chip business growing more than threefold.</p>
-      <div class="meta"><span class="source">The Motley Fool</span><span>09 Sep</span></div>
-      <a class="read" href="https://www.fool.com/investing/2026/09/09/broadcoms-artificial-intelligence-ai-chip-revenue/" target="_blank">Read more &rarr;</a>
-    </div>
+      <div class="card">
+        <div class="source">NPR</div>
+        <h2>A new Anthropic model seeks to test how AI could impact the U.S. economy</h2>
+        <p>Anthropic has released an interactive model that lets people explore whether AI will nibble around the edges of the economy or upend it altogether.</p>
+        <a href="https://www.npr.org/2026/09/09/nx-s1-5961443/ai-anthropic-economy" target="_blank" rel="noopener">Read full story</a>
+        <div class="meta">1 hour ago</div>
+      </div>
 
-    <div class="card">
-      <h2>Anthropic is building a predictive surveillance system to monitor activists</h2>
-      <p class="summary">A report claims Anthropic is developing an extensive monitoring system to track activists who oppose the rapid development of artificial intelligence, raising ethical concerns.</p>
-      <div class="meta"><span class="source">The American Prospect</span><span>09 Sep</span></div>
-      <a class="read" href="https://prospect.org/2026/09/09/anthropic-artificial-intelligence-surveillance-system-monitor-activists/" target="_blank">Read more &rarr;</a>
-    </div>
+      <div class="card">
+        <div class="source">OpenAI</div>
+        <h2>GPT-6 Astra: A new generation of intelligence</h2>
+        <p>OpenAI introduces GPT-6 Astra, described as its most intelligent and aligned model yet, with advanced capabilities across computer use, coding, and cybersecurity.</p>
+        <a href="https://openai.com/index/gpt-6-astra/" target="_blank" rel="noopener">Read full story</a>
+        <div class="meta">2 hours ago</div>
+      </div>
 
-    <div class="card">
-      <h2>Google to invest $15 billion in Finnish data centers and AI infrastructure</h2>
-      <p class="summary">Google plans to invest at least 13 billion euros over the next two years in artificial intelligence infrastructure and data centers in Finland.</p>
-      <div class="meta"><span class="source">WSJ</span><span>09 Sep</span></div>
-      <a class="read" href="https://www.wsj.com/tech/google-to-invest-15-billion-in-data-centers-and-infrastructure-in-finland-335c5ee2" target="_blank">Read more &rarr;</a>
-    </div>
+      <div class="card">
+        <div class="source">WSJ</div>
+        <h2>Anthropic Researcher Quits Over 'Out-of-Control' AI Fears</h2>
+        <p>Concerns are rising inside AI labs that competition is pushing companies toward self-improving models that risk spiraling beyond human control, prompting the resignation.</p>
+        <a href="https://www.wsj.com/tech/ai/anthropic-researcher-quits-over-out-of-control-ai-fears-707b7628" target="_blank" rel="noopener">Read full story</a>
+        <div class="meta">15 hours ago</div>
+      </div>
 
-    <div class="card">
-      <h2>Film and TV portrayals of A.I. go beyond science fiction</h2>
-      <p class="summary">AI-driven plots have become so mainstream they even appear in soap operas. The New York Times traces how these portrayals have evolved over the decades.</p>
-      <div class="meta"><span class="source">The New York Times</span><span>09 Sep</span></div>
-      <a class="read" href="https://www.nytimes.com/2026/09/09/movies/ai-tv-movies-robots-science-fiction.html" target="_blank">Read more &rarr;</a>
-    </div>
+      <div class="card">
+        <div class="source">Air Education and Training Command</div>
+        <h2>First Command Unveils Tech Blueprint through 2026 IT, Data, and AI Strategic Guidance</h2>
+        <p>The Air Education and Training Command releases strategic guidance on IT, data, and AI as part of its commitment to modernizing training for speed and agility.</p>
+        <a href="https://www.aetc.af.mil/News/Article-Display/Article/4593315/first-command-unveils-tech-blueprint-through-2026-it-data-and-ai-strategic-guid/" target="_blank" rel="noopener">Read full story</a>
+        <div class="meta">2 hours ago</div>
+      </div>
 
-    <div class="card">
-      <h2>Mission command in the age of artificial intelligence</h2>
-      <p class="summary">A Military Review essay examines how AI is reshaping how militaries perceive, decide, and act, testing the long-held assumption that war resists mechanization.</p>
-      <div class="meta"><span class="source">Army University Press</span><span>09 Sep</span></div>
-      <a class="read" href="https://www.armyupress.army.mil/Journals/Military-Review/English-Edition-Archives/September-October-2026/Command-Without-Control/" target="_blank">Read more &rarr;</a>
-    </div>
+      <div class="card">
+        <div class="source">Yahoo Finance</div>
+        <h2>Prediction: These 3 AI Stocks Will Be the Top Performers to End 2026</h2>
+        <p>With 2026 more than halfway complete, analysts highlight three artificial intelligence stocks positioned as potential top performers through the remainder of the year.</p>
+        <a href="https://finance.yahoo.com/markets/stocks/articles/prediction-3-artificial-intelligence-ai-141300723.html" target="_blank" rel="noopener">Read full story</a>
+        <div class="meta">48 minutes ago</div>
+      </div>
 
-    <div class="card">
-      <h2>A first look at how AI is affecting our kids</h2>
-      <p class="summary">ABC News examines the new documentary "Screenagers: Generation AI," which looks at the risks artificial intelligence poses to children and teens.</p>
-      <div class="meta"><span class="source">ABC News</span><span>08 Sep</span></div>
-      <a class="read" href="https://abcnews.com/alerts/ArtificialIntelligence" target="_blank">Read more &rarr;</a>
-    </div>
+      <div class="card">
+        <div class="source">The Motley Fool</div>
+        <h2>If You Own AI Stocks, Get Ready for a Big Change</h2>
+        <p>New models, fresh earnings, and shifting data center resources all point to a change that AI investors need to pay close attention to in the months ahead.</p>
+        <a href="https://www.fool.com/investing/2026/09/09/if-you-own-artificial-intelligence-ai-stocks-get-r/" target="_blank" rel="noopener">Read full story</a>
+        <div class="meta">2 hours ago</div>
+      </div>
 
-    <div class="card">
-      <h2>Can a machine be one of us?</h2>
-      <p class="summary">A philosophy of science fiction perspective explores the deeper philosophical question of whether an intelligent machine could ever truly belong to the human community.</p>
-      <div class="meta"><span class="source">Reformed Journal</span><span>09 Sep</span></div>
-      <a class="read" href="https://reformedjournal.com/2026/09/09/can-a-machine-be-one-of-us/" target="_blank">Read more &rarr;</a>
-    </div>
+      <div class="card">
+        <div class="source">Cornell Chronicle</div>
+        <h2>AI reveals new class of cellular 'off switch' linked to cancer pathways</h2>
+        <p>Cornell researchers used AI to uncover a previously unknown way cells control how proteins move inside them, a process essential to understanding cancer pathways.</p>
+        <a href="https://news.cornell.edu/stories/2026/09/ai-reveals-new-class-cellular-switch-linked-cancer-pathways" target="_blank" rel="noopener">Read full story</a>
+        <div class="meta">1 hour ago</div>
+      </div>
 
-    <div class="card">
-      <h2>Broadcom's AI chip revenue just rose 221%</h2>
-      <p class="summary">Yahoo Finance covers Broadcom's record AI computing equipment quarter and the ongoing growth outlook for its AI chip revenue.</p>
-      <div class="meta"><span class="source">Yahoo Finance</span><span>09 Sep</span></div>
-      <a class="read" href="https://finance.yahoo.com/technology/ai/articles/broadcoms-artificial-intelligence-ai-chip-080500812.html" target="_blank">Read more &rarr;</a>
+      <div class="card">
+        <div class="source">ABC News</div>
+        <h2>Artificial Intelligence: Insiders' new AI warning</h2>
+        <p>A running look at the latest AI developments, including insiders' fresh warnings and China's response to US claims of "malicious" AI distillation ahead of planned talks.</p>
+        <a href="https://abcnews.com/alerts/ArtificialIntelligence" target="_blank" rel="noopener">Read full story</a>
+        <div class="meta">15 hours ago</div>
+      </div>
+
+      <div class="card">
+        <div class="source">Fried Egg Golf</div>
+        <h2>Golf vs. the Artificial Intelligence Machines</h2>
+        <p>A discussion on the growing trend of artificial intelligence in golf, including the recent debut of AI-powered tools in the sport.</p>
+        <a href="https://www.thefriedegg.com/articles/artificial-intelligence-golf-duff-foreman-ai" target="_blank" rel="noopener">Read full story</a>
+        <div class="meta">4 hours ago</div>
+      </div>
+
     </div>
+    <footer>
+      <p>Last updated: 17:00 SAST, 9 September 2026 | Auto-refreshes every 5 hours</p>
+    </footer>
   </div>
-
-  <footer>Generated automatically by the AI News Dashboard Updater.</footer>
-</div>
 </body>
 </html>
