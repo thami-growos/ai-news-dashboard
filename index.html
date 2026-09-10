@@ -8,180 +8,118 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #9333ea 100%);
+    background: linear-gradient(135deg, #4b2e83 0%, #7b4397 50%, #a25b91 100%);
     min-height: 100vh;
-    color: #1f2937;
+    color: #1f1a2e;
     padding: 2rem 1rem;
   }
-  .container { max-width: 980px; margin: 0 auto; }
+  .container { max-width: 900px; margin: 0 auto; }
   header {
     text-align: center;
     color: #fff;
     margin-bottom: 2rem;
   }
-  header h1 {
-    font-size: 2.25rem;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    margin-bottom: 0.5rem;
-  }
-  header p {
-    font-size: 1rem;
-    opacity: 0.9;
-  }
-  .timestamp {
-    display: inline-block;
-    background: rgba(255,255,255,0.18);
-    color: #fff;
-    padding: 0.35rem 0.9rem;
-    border-radius: 999px;
-    font-size: 0.85rem;
-    margin-top: 0.75rem;
-  }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.25rem;
-  }
+  header h1 { font-size: 2.2rem; letter-spacing: -0.5px; }
+  header p { margin-top: 0.5rem; opacity: 0.85; font-size: 0.95rem; }
+  .grid { display: grid; gap: 1rem; grid-template-columns: 1fr; }
+  @media (min-width: 620px) { .grid { grid-template-columns: 1fr 1fr; } }
   .card {
-    background: #ffffff;
+    background: #fff;
     border-radius: 14px;
-    padding: 1.25rem 1.35rem;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    padding: 1.25rem 1.3rem;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.18);
     display: flex;
     flex-direction: column;
-    transition: transform 0.18s ease, box-shadow 0.18s ease;
+    gap: 0.6rem;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
-  .card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 14px 30px rgba(0,0,0,0.18);
-  }
-  .card .source {
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: #7c3aed;
-    margin-bottom: 0.5rem;
-  }
-  .card h2 {
-    font-size: 1.1rem;
-    font-weight: 700;
-    line-height: 1.3;
-    margin-bottom: 0.6rem;
-    color: #111827;
-  }
-  .card p.summary {
-    font-size: 0.9rem;
-    line-height: 1.5;
-    color: #4b5563;
-    flex-grow: 1;
-    margin-bottom: 1rem;
-  }
-  .card .meta {
+  .card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.24); }
+  .card h2 { font-size: 1.05rem; line-height: 1.35; }
+  .card h2 a { color: #4b2e83; text-decoration: none; }
+  .card h2 a:hover { text-decoration: underline; }
+  .card p { font-size: 0.88rem; color: #4a4458; line-height: 1.5; }
+  .meta {
+    margin-top: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 0.78rem;
-    color: #6b7280;
+    font-size: 0.75rem;
+    color: #8a8398;
   }
-  .card a {
-    color: #4f46e5;
-    font-weight: 600;
-    text-decoration: none;
-  }
-  .card a:hover { text-decoration: underline; }
-  footer {
-    text-align: center;
-    color: rgba(255,255,255,0.85);
-    font-size: 0.8rem;
-    margin-top: 2.5rem;
-  }
+  .source { font-weight: 600; color: #6b5b95; }
+  footer { text-align: center; color: #fff; margin-top: 2rem; opacity: 0.8; font-size: 0.85rem; }
 </style>
 </head>
 <body>
 <div class="container">
   <header>
     <h1>AI News Dashboard</h1>
-    <p>Recent global artificial intelligence headlines</p>
-    <span class="timestamp">Last updated: 22:00 SAST · 9 Sep 2026</span>
+    <p>Latest global artificial intelligence headlines, refreshed automatically.</p>
   </header>
-
   <div class="grid">
+
     <div class="card">
-      <div class="source">WSJ</div>
-      <h2>Anthropic Researcher Quits Over 'Out-of-Control' AI Fears</h2>
-      <p class="summary">Concerns are rising inside AI labs that competition is pushing companies toward self-improving models that risk spiraling beyond human control, prompting a senior researcher's exit.</p>
-      <div class="meta"><span>3h ago</span><a href="https://www.wsj.com/tech/ai/anthropic-researcher-quits-over-out-of-control-ai-fears-707b7628" target="_blank">Read more →</a></div>
+      <h2><a href="https://www.gatesnotes.com/a-turbulent-ai-era-and-critical-choices-to-make" target="_blank" rel="noopener">The turbulent AI era is here. The choices we make now are critical.</a></h2>
+      <p>Bill Gates reflects on the arrival of a turbulent AI era and argues that the decisions society makes now will shape the technology's long-term impact.</p>
+      <div class="meta"><span class="source">Gates Notes</span><span>Sep 9, 2026</span></div>
     </div>
 
     <div class="card">
-      <div class="source">The New York Times</div>
-      <h2>Anthropic Researchers Raise Alarm Over A.I. Acceleration</h2>
-      <p class="summary">Their warnings echo growing concerns from AI experts in recent months as calls increase for a slowdown in the pace of artificial intelligence development.</p>
-      <div class="meta"><span>2h ago</span><a href="https://www.nytimes.com/2026/09/09/technology/anthropic-researchers-raise-alarm.html" target="_blank">Read more →</a></div>
+      <h2><a href="https://www.wsj.com/tech/ai/anthropic-researcher-quits-over-out-of-control-ai-fears-707b7628" target="_blank" rel="noopener">Anthropic Researcher Quits Over ‘Out-of-Control’ AI Fears</a></h2>
+      <p>An Anthropic researcher has resigned over concerns that competition is pushing labs to race toward self-improving models that risk spiraling beyond human control.</p>
+      <div class="meta"><span class="source">WSJ</span><span>Sep 9, 2026</span></div>
     </div>
 
     <div class="card">
-      <div class="source">Gates Notes</div>
-      <h2>The Turbulent AI Era Is Here</h2>
-      <p class="summary">Bill Gates reflects on his career and argues the choices made now around artificial intelligence will prove critical for how the technology shapes society.</p>
-      <div class="meta"><span>5h ago</span><a href="https://www.gatesnotes.com/a-turbulent-ai-era-and-critical-choices-to-make" target="_blank">Read more →</a></div>
+      <h2><a href="https://www.washingtonpost.com/opinions/2026/09/09/artificial-intelligence-will-not-kill-us-all/" target="_blank" rel="noopener">AI hysteria jumps the shark</a></h2>
+      <p>A Washington Post opinion piece argues frontier labs are spreading fear of the future, arguing they should instead fear liability for their products.</p>
+      <div class="meta"><span class="source">The Washington Post</span><span>Sep 9, 2026</span></div>
     </div>
 
     <div class="card">
-      <div class="source">WLOS</div>
-      <h2>Anthropic Researchers Warn AI Could Threaten Humanity</h2>
-      <p class="summary">Researchers at Anthropic are sounding alarms, warning that artificial intelligence could destroy humanity if its acceleration is not carefully managed.</p>
-      <div class="meta"><span>2h ago</span><a href="https://wlos.com/news/nation-world/anthropic-researchers-warn-artificial-intelligence-could-destroy-humanity-in-the-future-ai-openai-anthropic" target="_blank">Read more →</a></div>
+      <h2><a href="https://thenationaldesk.com/news/americas-news-now/anthropic-researchers-warn-artificial-intelligence-could-destroy-humanity-in-the-future-ai-openai-anthropic" target="_blank" rel="noopener">Anthropic researchers warn AI could destroy humanity</a></h2>
+      <p>Researchers at Anthropic have been sounding alarms, warning that advanced artificial intelligence could pose an existential threat to humanity in the future.</p>
+      <div class="meta"><span class="source">The National Desk</span><span>Sep 9, 2026</span></div>
     </div>
 
     <div class="card">
-      <div class="source">Tech Xplore</div>
-      <h2>Americans Use AI but Prefer Humans Make Big Decisions</h2>
-      <p class="summary">AI is becoming part of everyday life in the U.S., yet Americans remain far less comfortable when it shifts from a tool they use to one making consequential choices.</p>
-      <div class="meta"><span>4h ago</span><a href="https://techxplore.com/news/2026-09-americans-artificial-intelligence-humans-consequential.html" target="_blank">Read more →</a></div>
+      <h2><a href="https://techxplore.com/news/2026-09-americans-artificial-intelligence-humans-consequential.html" target="_blank" rel="noopener">Americans use AI, but still prefer humans for consequential decisions</a></h2>
+      <p>New research shows AI is now part of everyday American life, yet people remain far less comfortable when it makes consequential decisions instead of simply helping.</p>
+      <div class="meta"><span class="source">Tech Xplore</span><span>Sep 9, 2026</span></div>
     </div>
 
     <div class="card">
-      <div class="source">WTMJ</div>
-      <h2>Viral AI Warning Sparks Debate</h2>
-      <p class="summary">A viral post from a former Anthropic employee, Jacob Coxon, has ignited a broader public conversation about the risks and future of artificial intelligence.</p>
-      <div class="meta"><span>44m ago</span><a href="https://wtmj.com/shows/point-taken/2026/09/09/viral-ai-warning-sparks-debate-over-artificial-intelligence/" target="_blank">Read more →</a></div>
+      <h2><a href="https://www.cancernetwork.com/view/the-evolution-of-artificial-intelligence-in-oncology-impact-on-trials-workflows-and-outcomes" target="_blank" rel="noopener">The Evolution of AI in Oncology</a></h2>
+      <p>AI is increasingly used in mammography and lung cancer screening to better identify early-stage cancers, reshaping oncology trials, workflows, and outcomes.</p>
+      <div class="meta"><span class="source">CancerNetwork</span><span>Sep 9, 2026</span></div>
     </div>
 
     <div class="card">
-      <div class="source">Prairie View A&M University</div>
-      <h2>PVAMU Awarded Nearly $10M for AI National Defense</h2>
-      <p class="summary">Prairie View A&M University secured funding to advance artificial intelligence research for national defense, spanning cybersecurity and related fields.</p>
-      <div class="meta"><span>5h ago</span><a href="https://www.pvamu.edu/blog/pvamu-awarded-nearly-10-million-to-advance-artificial-intelligence-for-national-defense/" target="_blank">Read more →</a></div>
+      <h2><a href="https://aws.amazon.com/blogs/machine-learning/icymi-what-landed-for-ai-builders-in-august-2026/" target="_blank" rel="noopener">What landed for AI builders in August 2026</a></h2>
+      <p>AWS recaps the biggest Amazon Bedrock, AgentCore, and Strands updates from August 2026 for developers building on its AI stack.</p>
+      <div class="meta"><span class="source">Amazon Web Services</span><span>Sep 9, 2026</span></div>
     </div>
 
     <div class="card">
-      <div class="source">2 Minute Medicine</div>
-      <h2>AI Clinical Exam Training Boosts Medical Student Scores</h2>
-      <p class="summary">An AI-powered training platform significantly improved medical students' performance on standardized Objective Structured Clinical Examinations (OSCE).</p>
-      <div class="meta"><span>4h ago</span><a href="https://www.2minutemedicine.com/artificial-intelligence-ai-based-clinical-exam-training-significantly-improved-medical-students-standardized-clinical-exam-performance/" target="_blank">Read more →</a></div>
+      <h2><a href="https://www.brownfieldagnews.com/two-cents/artificial-intelligence-the-next-tool-in-the-farm-toolbox/" target="_blank" rel="noopener">AI: The Next Tool in the Farm Toolbox</a></h2>
+      <p>At the 2026 Farm Progress Show, agriculture is increasingly adopting artificial intelligence as the next major tool for modern farming.</p>
+      <div class="meta"><span class="source">Brownfield Ag News</span><span>Sep 9, 2026</span></div>
     </div>
 
     <div class="card">
-      <div class="source">JD Supra</div>
-      <h2>AI and Labor/Employee Relations: What Employers Need to Know</h2>
-      <p class="summary">As AI transforms workplaces, HR professionals and employers face new challenges navigating the intersection of artificial intelligence and employee relations.</p>
-      <div class="meta"><span>3h ago</span><a href="https://www.jdsupra.com/legalnews/webinar-artificial-intelligence-and-3179602/" target="_blank">Read more →</a></div>
+      <h2><a href="https://www.alfred.edu/about/news/pressreleases/general/2026/alfred-university-team-showcases-battery-artificial-intelligence-at-new-york-state-fair.cfm" target="_blank" rel="noopener">University team showcases battery AI at New York State Fair</a></h2>
+      <p>Alfred University faculty and students demonstrated artificial intelligence applications in battery technology and microgrid simulation at the state fair.</p>
+      <div class="meta"><span class="source">Alfred University</span><span>Sep 9, 2026</span></div>
     </div>
 
     <div class="card">
-      <div class="source">ABC News</div>
-      <h2>New AI Warnings and What They Mean for the Future</h2>
-      <p class="summary">Insiders issue fresh warnings about AI as China pushes back on U.S. claims of "malicious" AI activity, raising questions about the technology's trajectory.</p>
-      <div class="meta"><span>14h ago</span><a href="https://abcnews.com/alerts/ArtificialIntelligence" target="_blank">Read more →</a></div>
+      <h2><a href="https://wtmj.com/shows/point-taken/2026/09/09/viral-ai-warning-sparks-debate-over-artificial-intelligence/" target="_blank" rel="noopener">Viral AI warning sparks debate</a></h2>
+      <p>A viral post from a former Anthropic employee naming Jacob Coxon has sparked a wider conversation about the risks of artificial intelligence.</p>
+      <div class="meta"><span class="source">WTMJ</span><span>Sep 9, 2026</span></div>
     </div>
+
   </div>
-
-  <footer>
-    <p>Automatically refreshed every 5 hours · Powered by GrowOS</p>
-  </footer>
+  <footer>Last updated: Thursday, September 10, 2026 at 02:00 AM SAST</footer>
 </div>
 </body>
 </html>
