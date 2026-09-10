@@ -5,128 +5,143 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI News Dashboard</title>
 <style>
+  :root {
+    --bg1: #1a0b2e;
+    --bg2: #3b1d6e;
+    --card: #ffffff;
+    --text: #1f1833;
+    --muted: #6b6385;
+    --accent: #7c3aed;
+  }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: linear-gradient(135deg, #6b21a8 0%, #7c3aed 40%, #4f46e5 100%);
+    background: linear-gradient(160deg, var(--bg1) 0%, var(--bg2) 100%);
     min-height: 100vh;
-    color: #1f2937;
+    color: var(--text);
     padding: 40px 20px;
   }
   .wrap { max-width: 960px; margin: 0 auto; }
-  header { text-align: center; margin-bottom: 32px; color: #ffffff; }
-  header h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; }
-  header .sub { margin-top: 8px; font-size: 0.95rem; opacity: 0.9; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+  header { text-align: center; color: #fff; margin-bottom: 36px; }
+  header h1 { font-size: 2.2rem; font-weight: 700; letter-spacing: -0.5px; }
+  header p { color: rgba(255,255,255,0.75); margin-top: 8px; font-size: 0.95rem; }
+  .timestamp {
+    display: inline-block;
+    background: rgba(255,255,255,0.14);
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    margin-top: 12px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
   .card {
-    background: #ffffff;
-    border-radius: 14px;
-    padding: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    background: var(--card);
+    border-radius: 16px;
+    padding: 22px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
     display: flex;
     flex-direction: column;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
-  .card:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(0,0,0,0.2); }
-  .card .source {
-    font-size: 0.72rem;
-    font-weight: 700;
+  .card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.32); }
+  .source {
+    font-size: 0.75rem;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: #7c3aed;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    font-weight: 700;
     margin-bottom: 8px;
   }
-  .card h2 { font-size: 1.05rem; line-height: 1.3; color: #111827; margin-bottom: 10px; }
-  .card p { font-size: 0.88rem; line-height: 1.5; color: #4b5563; flex: 1; }
-  .card .meta { margin-top: 14px; display: flex; justify-content: space-between; align-items: center; }
-  .card .date { font-size: 0.75rem; color: #9ca3af; }
-  .card a { font-size: 0.8rem; font-weight: 600; color: #7c3aed; text-decoration: none; }
+  .card h2 { font-size: 1.1rem; line-height: 1.35; margin-bottom: 10px; }
+  .card p { font-size: 0.9rem; color: var(--muted); line-height: 1.5; flex-grow: 1; }
+  .card a {
+    margin-top: 16px;
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
   .card a:hover { text-decoration: underline; }
-  footer { text-align: center; margin-top: 36px; color: #ffffff; font-size: 0.8rem; opacity: 0.85; }
+  footer { text-align: center; color: rgba(255,255,255,0.6); margin-top: 40px; font-size: 0.85rem; }
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
     <h1>AI News Dashboard</h1>
-    <p class="sub">Latest global artificial intelligence headlines</p>
+    <p>Recent global artificial intelligence headlines</p>
+    <span class="timestamp">Last updated: 10:00 PM SAST, 10 Sep 2026</span>
   </header>
 
   <div class="grid">
-
     <div class="card">
       <div class="source">Gates Notes</div>
       <h2>The turbulent AI era is here. The choices we make now are critical.</h2>
-      <p>Bill Gates reflects on how the current wave of AI is reshaping work and society, and argues the decisions made now will shape its long-term impact.</p>
-      <div class="meta"><span class="date">2 hours ago</span><a href="https://www.gatesnotes.com/a-turbulent-ai-era-and-critical-choices-to-make" target="_blank" rel="noopener">Read more</a></div>
+      <p>Bill Gates reflects on how the AI era is reshaping work and society, and argues the choices made now will determine how broadly its benefits are shared.</p>
+      <a href="https://www.gatesnotes.com/a-turbulent-ai-era-and-critical-choices-to-make" target="_blank">Read more &rarr;</a>
     </div>
-
     <div class="card">
-      <div class="source">Baltimore Sun</div>
-      <h2>OpenAI changes stance, calls for national artificial intelligence safety rules</h2>
-      <p>OpenAI now backs mandatory national safety rules and legislation it had previously opposed, citing recent advances in AI capabilities.</p>
-      <div class="meta"><span class="date">14 minutes ago</span><a href="https://www.baltimoresun.com/2026/09/10/openai-changes-stance-calls-for-national-artificial-intelligence-safety-rules/" target="_blank" rel="noopener">Read more</a></div>
+      <div class="source">The Conversation</div>
+      <h2>The next frontier is not artificial intelligence, it's artificial societies</h2>
+      <p>An argument to move the debate from intelligent machines toward building "intelligent societies" that can responsibly absorb AI's impact.</p>
+      <a href="https://theconversation.com/the-next-frontier-is-not-artificial-intelligence-its-artificial-societies-291586" target="_blank">Read more &rarr;</a>
     </div>
-
     <div class="card">
-      <div class="source">The New York Times</div>
-      <h2>Voters Are Asking A.I. About Elections. The Answers Can Vary by User.</h2>
-      <p>AI chatbots are becoming a go-to source for voters researching political races, and researchers are studying how answers differ across users.</p>
-      <div class="meta"><span class="date">2 hours ago</span><a href="https://www.nytimes.com/2026/09/10/business/media/ai-chatbots-election-misinformation.html" target="_blank" rel="noopener">Read more</a></div>
+      <div class="source">The Tanzania Times</div>
+      <h2>Nuclear power can meet Africa's Artificial Intelligence energy demands</h2>
+      <p>AI's growing energy appetite is pushing analysts to consider how nuclear power could help Africa meet power needs tied to AI adoption.</p>
+      <a href="https://tanzaniatimes.net/nuclear-power-can-meet-africas-artificial-intelligence-energy-demands/" target="_blank">Read more &rarr;</a>
     </div>
-
-    <div class="card">
-      <div class="source">WSJ</div>
-      <h2>Anthropic Researcher Quits Over 'Out-of-Control' AI Fears</h2>
-      <p>Concerns are rising inside AI labs that competitive pressure is driving a race toward self-improving models that risk spiraling out of human control.</p>
-      <div class="meta"><span class="date">21 hours ago</span><a href="https://www.wsj.com/tech/ai/anthropic-researcher-quits-over-out-of-control-ai-fears-707b7628" target="_blank" rel="noopener">Read more</a></div>
-    </div>
-
     <div class="card">
       <div class="source">Bruegel</div>
       <h2>China's artificial intelligence goals and strategic choices for Europe</h2>
-      <p>China's 15th Five-Year Plan puts AI at the centre of its industrial strategy, raising strategic questions for Europe's policy response.</p>
-      <div class="meta"><span class="date">7 hours ago</span><a href="https://www.bruegel.org/analysis/chinas-artificial-intelligence-goals-and-strategic-choices-europe" target="_blank" rel="noopener">Read more</a></div>
+      <p>China's 15th Five-Year Plan places AI at the centre of industrial strategy, with implications and strategic choices for European policymakers.</p>
+      <a href="https://www.bruegel.org/analysis/chinas-artificial-intelligence-goals-and-strategic-choices-europe" target="_blank">Read more &rarr;</a>
     </div>
-
     <div class="card">
-      <div class="source">KQED</div>
-      <h2>A New Anthropic Model Seeks to Test How AI Could Impact the US Economy</h2>
-      <p>Anthropic has created an interactive tool to model how AI might affect the U.S. economy, expanding analysis beyond simple job-displacement estimates.</p>
-      <div class="meta"><span class="date">1 hour ago</span><a href="https://www.kqed.org/news/12098863/a-new-anthropic-model-seeks-to-test-how-ai-could-impact-the-us-economy" target="_blank" rel="noopener">Read more</a></div>
+      <div class="source">France 24</div>
+      <h2>South Korea to boost artificial intelligence ties with Africa</h2>
+      <p>Seoul hosted 45 African states at the Korea Africa Economic Cooperation conference to strengthen AI cooperation across the continent.</p>
+      <a href="https://www.france24.com/en/video/20260910-south-korea-to-boost-artificial-intelligence-ties-with-africa" target="_blank">Read more &rarr;</a>
     </div>
-
     <div class="card">
-      <div class="source">The Motley Fool</div>
-      <h2>Got $5,000? 3 No-Brainer AI Stocks to Buy Right Now.</h2>
-      <p>AI investing remains a top market theme since 2023, and this piece highlights three stocks positioned to keep benefiting from the trend.</p>
-      <div class="meta"><span class="date">1 hour ago</span><a href="https://www.fool.com/investing/2026/09/10/got-5000-3-no-brainer-artificial-intelligence-ai/" target="_blank" rel="noopener">Read more</a></div>
+      <div class="source">TodayPress.tv</div>
+      <h2>Anthropic researcher resigns, warning of dangers of AI surpassing humans</h2>
+      <p>Anthropic researcher Jacob Coxon has resigned, joining a growing number of voices raising alarm about the risks of out-of-control AI.</p>
+      <a href="https://todaypress.tv/en/world/dozmeyib-istefa-etdi-suni-intellekt-insanlari-usteleyir-hamimizin-heyati-boyuk-tehlukededir" target="_blank">Read more &rarr;</a>
     </div>
-
-    <div class="card">
-      <div class="source">Business Wire</div>
-      <h2>Riverbed Wins 'Best Innovation in AI' at 2026 Globee Awards</h2>
-      <p>Riverbed took home the award for Best Innovation in Artificial Intelligence Products and Services at the second annual Globee Awards for AI.</p>
-      <div class="meta"><span class="date">3 hours ago</span><a href="https://www.businesswire.com/news/home/20260910901503/en/Riverbed-Wins-Best-Innovation-in-Artificial-Intelligence-Products-and-Services-at-the-2nd-Annual-2026-Globee-Awards-for-Artificial-Intelligence" target="_blank" rel="noopener">Read more</a></div>
-    </div>
-
-    <div class="card">
-      <div class="source">FOX 29 Philadelphia</div>
-      <h2>Artificial Intelligence Concerns</h2>
-      <p>A tech expert discusses rising public concerns about AI after a researcher recently quit his job over fears the technology is advancing too fast.</p>
-      <div class="meta"><span class="date">2 hours ago</span><a href="https://www.fox29.com/video/fmc-m7ma5pwbgc47yisx" target="_blank" rel="noopener">Read more</a></div>
-    </div>
-
     <div class="card">
       <div class="source">Catholic Stand</div>
       <h2>Artificial Intelligence and Spiritual Intelligence</h2>
-      <p>An essay exploring the relationship between artificial intelligence and spiritual intelligence, and the questions AI raises about human consciousness.</p>
-      <div class="meta"><span class="date">8 hours ago</span><a href="https://catholicstand.com/artificial-intelligence-and-spiritual-intelligence/" target="_blank" rel="noopener">Read more</a></div>
+      <p>An essay exploring the relationship between artificial intelligence and spiritual intelligence, and what distinguishes genuine human wisdom.</p>
+      <a href="https://catholicstand.com/artificial-intelligence-and-spiritual-intelligence/" target="_blank">Read more &rarr;</a>
     </div>
-
+    <div class="card">
+      <div class="source">Mezha</div>
+      <h2>Logitech has unveiled its AI control centre - the MX Keypad</h2>
+      <p>Logitech's first AI control centre lets users manage workflows, run commands, and execute prompt macros from a dedicated keypad.</p>
+      <a href="https://mezha.ua/en/news/logitech-mx-keypad-315087/" target="_blank">Read more &rarr;</a>
+    </div>
+    <div class="card">
+      <div class="source">dev.ua</div>
+      <h2>NASA and IBM created artificial intelligence to explore the Moon</h2>
+      <p>NASA and IBM unveiled the Lunar Foundation Model, an AI model designed specifically for lunar exploration and scientific discovery.</p>
+      <a href="https://dev.ua/en/news/shtuchnyi-intelekt-dlia-doslidzhennia-misiatsia-1789045285" target="_blank">Read more &rarr;</a>
+    </div>
+    <div class="card">
+      <div class="source">Freedom Broker</div>
+      <h2>Stilla acquisition to strengthen Meta's enterprise AI products</h2>
+      <p>Meta has acquired Swedish startup Stilla, whose digital assistant for enterprise clients will bolster Meta's business AI offerings.</p>
+      <a href="https://fbroker.kz/en/news/51939-stilla-acquisition-to-strengthen-metas-enterprise-ai-products-freedom-en-2" target="_blank">Read more &rarr;</a>
+    </div>
   </div>
 
-  <footer>Last updated: Thursday, September 10, 2026 5:00 PM SAST · Refreshes every 5 hours</footer>
+  <footer>Automatically refreshed every 5 hours</footer>
 </div>
 </body>
 </html>
