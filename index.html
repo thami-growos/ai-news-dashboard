@@ -6,123 +6,200 @@
 <title>AI News Dashboard</title>
 <style>
   :root {
-    --bg1: #2b1a5e;
-    --bg2: #6d28d9;
-    --card: #ffffff;
-    --ink: #1f2937;
-    --muted: #6b7280;
+    --bg-1: #2b1b54;
+    --bg-2: #4c2a8a;
+    --card: rgba(255,255,255,0.96);
+    --text: #1e1b2e;
+    --muted: #6b6580;
     --accent: #7c3aed;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: linear-gradient(135deg, var(--bg1), var(--bg2));
+    background: linear-gradient(160deg, var(--bg-1), var(--bg-2));
     min-height: 100vh;
-    padding: 40px 20px;
     color: #fff;
+    padding: 0 16px 56px;
   }
-  .wrap { max-width: 900px; margin: 0 auto; }
-  header { text-align: center; margin-bottom: 32px; }
-  header h1 { font-size: 2.2rem; font-weight: 700; letter-spacing: -0.5px; }
-  header p { color: rgba(255,255,255,0.8); margin-top: 8px; font-size: 0.95rem; }
+  header {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 40px 0 28px;
+  }
+  h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+  .subtitle {
+    color: rgba(255,255,255,0.8);
+    font-size: 0.95rem;
+    margin-top: 8px;
+  }
   .updated {
-    display: inline-block; margin-top: 12px; font-size: 0.8rem;
-    background: rgba(255,255,255,0.15); padding: 6px 14px; border-radius: 999px;
+    display: inline-block;
+    margin-top: 14px;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 0.82rem;
+    font-weight: 600;
   }
-  .grid { display: grid; gap: 18px; }
+  .grid {
+    max-width: 1040px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+    gap: 18px;
+  }
   .card {
-    background: var(--card); color: var(--ink); border-radius: 14px;
-    padding: 22px 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+    background: var(--card);
+    color: var(--text);
+    border-radius: 16px;
+    padding: 20px 20px 18px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    display: flex;
+    flex-direction: column;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
-    display: flex; flex-direction: column; gap: 10px;
   }
-  .card:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(0,0,0,0.25); }
-  .card-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 38px rgba(0,0,0,0.32);
+  }
   .source {
-    font-size: 0.75rem; font-weight: 700; color: var(--accent);
-    text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+    margin-bottom: 10px;
   }
-  .date { font-size: 0.75rem; color: var(--muted); white-space: nowrap; }
-  .card h2 { font-size: 1.15rem; line-height: 1.35; font-weight: 700; }
-  .card h2 a { color: inherit; text-decoration: none; }
-  .card h2 a:hover { color: var(--accent); }
-  .card p { font-size: 0.92rem; color: var(--muted); line-height: 1.5; }
-  footer { text-align: center; margin-top: 36px; color: rgba(255,255,255,0.7); font-size: 0.8rem; }
+  .source .dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .card h2 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 10px;
+  }
+  .card p {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.5;
+    flex-grow: 1;
+    margin-bottom: 14px;
+  }
+  .meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.78rem;
+    color: var(--muted);
+    border-top: 1px solid #eee;
+    padding-top: 12px;
+  }
+  .meta a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 700;
+  }
+  .meta a:hover { text-decoration: underline; }
+  footer {
+    text-align: center;
+    color: rgba(255,255,255,0.65);
+    font-size: 0.8rem;
+    margin-top: 40px;
+  }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <h1>AI News Dashboard</h1>
-    <p>The latest global artificial intelligence headlines, refreshed every 5 hours.</p>
-    <span class="updated">Last updated: 07:00 AM SAST, 10 September 2026</span>
-  </header>
+<header>
+  <h1>AI News Dashboard</h1>
+  <p class="subtitle">The latest global headlines on artificial intelligence, refreshed automatically every 5 hours.</p>
+  <span class="updated">Last updated: 12:00 PM SAST · September 10, 2026</span>
+</header>
 
-  <div class="grid">
+<main class="grid">
 
-    <div class="card">
-      <div class="card-top"><span class="source">Gates Notes</span><span class="date">4h ago</span></div>
-      <h2><a href="https://www.gatesnotes.com/a-turbulent-ai-era-and-critical-choices-to-make" target="_blank" rel="noopener">The turbulent AI era is here. The choices we make now are critical.</a></h2>
-      <p>Bill Gates reflects on AI's rapid rise and argues the decisions made today will shape how the technology empowers people for decades.</p>
-    </div>
+  <article class="card">
+    <div class="source"><span class="dot"></span>Catholic Stand</div>
+    <h2>Artificial Intelligence and Spiritual Intelligence</h2>
+    <p>A Gospel study group discussion explores whether AI can ever replicate the deeper dimensions of human spiritual intelligence and moral discernment.</p>
+    <div class="meta"><span>3 hrs ago</span><a href="https://catholicstand.com/artificial-intelligence-and-spiritual-intelligence/" target="_blank" rel="noopener">Read →</a></div>
+  </article>
 
-    <div class="card">
-      <div class="card-top"><span class="source">WSJ</span><span class="date">11h ago</span></div>
-      <h2><a href="https://www.wsj.com/tech/ai/anthropic-researcher-quits-over-out-of-control-ai-fears-707b7628" target="_blank" rel="noopener">Anthropic Researcher Quits Over 'Out-of-Control' AI Fears</a></h2>
-      <p>Concerns are rising inside AI labs that competition is pushing companies to race toward self-improving models that risk spiraling out of human control.</p>
-    </div>
+  <article class="card">
+    <div class="source"><span class="dot"></span>Gates Notes</div>
+    <h2>The turbulent AI era is here. The choices we make now are critical.</h2>
+    <p>Bill Gates reflects on the rapid, turbulent transformation driven by AI and argues the decisions society makes today will shape the technology's long-term impact.</p>
+    <div class="meta"><span>14 hrs ago</span><a href="https://www.gatesnotes.com/a-turbulent-ai-era-and-critical-choices-to-make" target="_blank" rel="noopener">Read →</a></div>
+  </article>
 
-    <div class="card">
-      <div class="card-top"><span class="source">The Guardian</span><span class="date">3h ago</span></div>
-      <h2><a href="https://www.theguardian.com/technology/2026/sep/09/ai-superintelligence-risks-warnings-scientists-politicians" target="_blank" rel="noopener">AI could kill all humans in next decade, warn experts: but how seriously should we take them?</a></h2>
-      <p>Scientists and politicians weigh the risk of artificial superintelligence, questioning whether the warnings merit a "Chornobyl-sized catastrophe" comparison.</p>
-    </div>
+  <article class="card">
+    <div class="source"><span class="dot"></span>Bruegel</div>
+    <h2>China's artificial intelligence goals and strategic choices for Europe</h2>
+    <p>China places AI at the centre of its 15th Five-Year Plan, and a new Bruegel analysis weighs the strategic choices Europe faces in response.</p>
+    <div class="meta"><span>2 hrs ago</span><a href="https://www.bruegel.org/analysis/chinas-artificial-intelligence-goals-and-strategic-choices-europe" target="_blank" rel="noopener">Read →</a></div>
+  </article>
 
-    <div class="card">
-      <div class="card-top"><span class="source">The Washington Post</span><span class="date">2h ago</span></div>
-      <h2><a href="https://www.washingtonpost.com/opinions/2026/09/09/artificial-intelligence-will-not-kill-us-all/" target="_blank" rel="noopener">AI hysteria jumps the shark</a></h2>
-      <p>Opinion: Frontier labs have become good at spreading fear of the future, but they should instead fear liability for their products.</p>
-    </div>
+  <article class="card">
+    <div class="source"><span class="dot"></span>CancerNetwork</div>
+    <h2>The Evolution of AI in Oncology: Impact on Trials, Workflows, and Outcomes</h2>
+    <p>AI is helping clinicians identify early-stage cancers more effectively in mammography and lung cancer screening, reshaping clinical trials and workflows.</p>
+    <div class="meta"><span>14 hrs ago</span><a href="https://www.cancernetwork.com/view/the-evolution-of-artificial-intelligence-in-oncology-impact-on-trials-workflows-and-outcomes" target="_blank" rel="noopener">Read →</a></div>
+  </article>
 
-    <div class="card">
-      <div class="card-top"><span class="source">LakelandToday.ca</span><span class="date">6h ago</span></div>
-      <h2><a href="https://www.lakelandtoday.ca/beyond-local/ai-minister-says-solutions-exist-after-anthropic-researcher-quits-over-safety-fears-12761181" target="_blank" rel="noopener">AI minister says solutions exist after Anthropic researcher quits over safety fears</a></h2>
-      <p>Canada's Artificial Intelligence Minister Evan Solomon says the government is closely following the situation at Anthropic after a researcher resigned over safety concerns.</p>
-    </div>
+  <article class="card">
+    <div class="source"><span class="dot"></span>Wall Street Journal</div>
+    <h2>Anthropic Researcher Quits Over 'Out-of-Control' AI Fears</h2>
+    <p>Concerns are rising inside AI labs that competition is pushing companies to race toward self-improving models that risk spiraling out of human control.</p>
+    <div class="meta"><span>16 hrs ago</span><a href="https://www.wsj.com/tech/ai/anthropic-researcher-quits-over-out-of-control-ai-fears-707b7628" target="_blank" rel="noopener">Read →</a></div>
+  </article>
 
-    <div class="card">
-      <div class="card-top"><span class="source">CBC</span><span class="date">10h ago</span></div>
-      <h2><a href="https://www.cbc.ca/news/politics/ai-essentials-government-courses-solomon-9.7337417" target="_blank" rel="noopener">Free course covering basics of AI to be available to all Canadians by end of the year</a></h2>
-      <p>The federal government is rolling out free AI fundamentals courses to help Canadians keep pace with the ongoing AI boom.</p>
-    </div>
+  <article class="card">
+    <div class="source"><span class="dot"></span>The Motley Fool</div>
+    <h2>President Trump Sold 2 Popular AI Stocks. Wall Street Says Buy Both.</h2>
+    <p>President Trump sold stock in Palantir and Meta Platforms in June, but Wall Street analysts still recommend investors buy both AI names.</p>
+    <div class="meta"><span>24 min ago</span><a href="https://www.fool.com/investing/2026/09/10/president-trump-sell-2-ai-stocks-wall-street-says-buy/" target="_blank" rel="noopener">Read →</a></div>
+  </article>
 
-    <div class="card">
-      <div class="card-top"><span class="source">CancerNetwork</span><span class="date">8h ago</span></div>
-      <h2><a href="https://www.cancernetwork.com/view/the-evolution-of-artificial-intelligence-in-oncology-impact-on-trials-workflows-and-outcomes" target="_blank" rel="noopener">The Evolution of Artificial Intelligence in Oncology: Impact on Trials, Workflows, and Outcomes</a></h2>
-      <p>AI is being used to better identify early-stage cancers, aligning with major trends in mammography and lung cancer screening.</p>
-    </div>
+  <article class="card">
+    <div class="source"><span class="dot"></span>Research Information</div>
+    <h2>Springer Nature launches framework on use of AI</h2>
+    <p>Springer Nature updates its editorial policies with a framework designed to help researchers use artificial intelligence responsibly in scholarly publishing.</p>
+    <div class="meta"><span>2 hrs ago</span><a href="https://www.researchinformation.info/news/springer-nature-launches-framework-on-use-of-artificial-intelligence/" target="_blank" rel="noopener">Read →</a></div>
+  </article>
 
-    <div class="card">
-      <div class="card-top"><span class="source">Tech Xplore</span><span class="date">13h ago</span></div>
-      <h2><a href="https://techxplore.com/news/2026-09-americans-artificial-intelligence-humans-consequential.html" target="_blank" rel="noopener">Americans use artificial intelligence, but still prefer that humans make consequential decisions</a></h2>
-      <p>As AI becomes part of everyday life, Americans remain far less comfortable when it shifts from a tool they use to a decision-maker.</p>
-    </div>
+  <article class="card">
+    <div class="source"><span class="dot"></span>KTLA</div>
+    <h2>Artificial Intelligence: A threat to humanity?</h2>
+    <p>A former Anthropic researcher is sounding the alarm, asserting that artificial intelligence poses what some are calling an existential threat to humanity.</p>
+    <div class="meta"><span>4 hrs ago</span><a href="https://ktla.com/video/artificial-intelligence-a-threat-to-humanity/12154932/" target="_blank" rel="noopener">Read →</a></div>
+  </article>
 
-    <div class="card">
-      <div class="card-top"><span class="source">Globe and Mail</span><span class="date">14h ago</span></div>
-      <h2><a href="https://www.theglobeandmail.com/investing/markets/stocks/MU/pressreleases/4515724/prediction-these-3-artificial-intelligence-ai-stocks-will-be-the-top-performers-to-end-2026/" target="_blank" rel="noopener">Prediction: These 3 AI Stocks Will Be the Top Performers to End 2026</a></h2>
-      <p>Analysts highlight emerging artificial intelligence stocks, including Micron Technology, expected to lead performance through the end of the year.</p>
-    </div>
+  <article class="card">
+    <div class="source"><span class="dot"></span>Reuters</div>
+    <h2>AI boom poses new financial stability risks, BIS head says</h2>
+    <p>Bank for International Settlements head Pablo Hernandez de Cos warns the rapid rise of AI is creating new financial stability risks as related spending surges.</p>
+    <div class="meta"><span>4 hrs ago</span><a href="https://www.reuters.com/business/finance/ai-boom-poses-new-financial-stability-risks-bis-head-says-2026-09-10/" target="_blank" rel="noopener">Read →</a></div>
+  </article>
 
-    <div class="card">
-      <div class="card-top"><span class="source">Lethbridge News Now</span><span class="date">7h ago</span></div>
-      <h2><a href="https://lethbridgenewsnow.com/2026/09/09/ai-minister-says-solutions-exist-after-anthropic-researcher-quits-over-safety-fears/" target="_blank" rel="noopener">AI minister says solutions exist after Anthropic researcher quits over safety fears</a></h2>
-      <p>The federal artificial intelligence minister says the government is closely following Anthropic after a researcher resigned over AI safety fears.</p>
-    </div>
+  <article class="card">
+    <div class="source"><span class="dot"></span>Alfred University</div>
+    <h2>Alfred University team showcases battery AI at New York State Fair</h2>
+    <p>Faculty and students demonstrate artificial intelligence applications in battery technology and microgrid simulation at the New York State Fair.</p>
+    <div class="meta"><span>15 hrs ago</span><a href="https://www.alfred.edu/about/news/pressreleases/general/2026/alfred-university-team-showcases-battery-artificial-intelligence-at-new-york-state-fair.cfm" target="_blank" rel="noopener">Read →</a></div>
+  </article>
 
-  </div>
+</main>
 
-  <footer>Generated automatically every 5 hours. Hosted on GitHub Pages.</footer>
-</div>
+<footer>AI News Dashboard · Auto-updates every 5 hours · Built with GrowOS</footer>
 </body>
 </html>
