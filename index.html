@@ -5,162 +5,123 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI News Dashboard</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: linear-gradient(135deg, #4a1d96 0%, #7c3aed 45%, #9333ea 100%);
+    background: linear-gradient(135deg, #4b2d8e 0%, #7b3fae 45%, #a855f7 100%);
     min-height: 100vh;
-    padding: 40px 20px;
-    color: #1f2937;
+    color: #1f1633;
+    padding: 2rem 1.25rem;
   }
-  .header {
-    text-align: center;
-    color: #ffffff;
-    margin-bottom: 36px;
+  .wrap { max-width: 980px; margin: 0 auto; }
+  header { text-align: center; margin-bottom: 2rem; color: #fff; }
+  header h1 { font-size: 2.2rem; font-weight: 700; letter-spacing: -0.02em; }
+  header p { margin-top: 0.5rem; opacity: 0.9; font-size: 0.95rem; }
+  .updated {
+    display: inline-block; margin-top: 0.75rem; padding: 0.35rem 0.9rem;
+    background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 999px; font-size: 0.85rem;
   }
-  .header h1 {
-    font-size: 2.4rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-  }
-  .header p {
-    margin-top: 8px;
-    opacity: 0.9;
-    font-size: 0.95rem;
-  }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1.1rem; }
   .card {
-    background: #ffffff;
-    border-radius: 16px;
-    padding: 22px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.18);
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+    background: #fff; border-radius: 16px; padding: 1.2rem 1.25rem;
+    box-shadow: 0 10px 24px rgba(20,10,40,0.18);
+    display: flex; flex-direction: column; gap: 0.6rem;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
-  .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 40px rgba(0,0,0,0.25);
-  }
-  .card .source {
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: #7c3aed;
-  }
-  .card h2 {
-    font-size: 1.15rem;
-    line-height: 1.35;
-    font-weight: 700;
-    color: #111827;
-  }
-  .card .summary {
-    font-size: 0.9rem;
-    line-height: 1.55;
-    color: #4b5563;
-    flex-grow: 1;
-  }
-  .card .meta {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 0.78rem;
-    color: #9ca3af;
-  }
-  .card a {
-    color: #7c3aed;
-    font-weight: 600;
-    text-decoration: none;
-    font-size: 0.85rem;
-  }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 16px 32px rgba(20,10,40,0.26); }
+  .card h2 { font-size: 1.05rem; line-height: 1.3; color: #3b1f7a; }
+  .card p { font-size: 0.9rem; line-height: 1.45; color: #4a4458; flex: 1; }
+  .meta { display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; color: #7a7290; }
+  .source { font-weight: 600; color: #6d28d9; }
+  .card a { font-size: 0.85rem; font-weight: 600; color: #6d28d9; text-decoration: none; }
   .card a:hover { text-decoration: underline; }
-  .footer {
-    text-align: center;
-    color: #ffffff;
-    margin-top: 40px;
-    font-size: 0.85rem;
-    opacity: 0.85;
-  }
+  footer { text-align: center; color: #fff; margin-top: 2.5rem; opacity: 0.85; font-size: 0.85rem; }
 </style>
 </head>
 <body>
-  <div class="header">
+<div class="wrap">
+  <header>
     <h1>AI News Dashboard</h1>
-    <p>Recent global artificial intelligence headlines</p>
-    <p style="margin-top:4px; font-size:0.8rem;">Last updated: 5:00 PM SAST</p>
-  </div>
+    <p>Recent global headlines on artificial intelligence</p>
+    <span class="updated">Last updated: 10:00 PM SAST, September 11, 2026</span>
+  </header>
 
   <div class="grid">
+
     <div class="card">
-      <div class="source">Gates Notes</div>
       <h2>The turbulent AI era is here. The choices we make now are critical.</h2>
-      <p class="summary">Bill Gates reflects on a defining moment for AI, arguing the decisions made today will shape whether the technology empowers people broadly.</p>
-      <div class="meta"><span>2 hours ago</span><a href="https://www.gatesnotes.com/a-turbulent-ai-era-and-critical-choices-to-make" target="_blank">Read more</a></div>
+      <p>Bill Gates reflects on a pivotal moment for AI, arguing that the decisions made today will shape whether the technology broadly benefits humanity.</p>
+      <div class="meta"><span class="source">Gates Notes</span><span>4 hours ago</span></div>
+      <a href="https://www.gatesnotes.com/a-turbulent-ai-era-and-critical-choices-to-make" target="_blank" rel="noopener">Read more</a>
     </div>
+
     <div class="card">
-      <div class="source">Anthropic</div>
-      <h2>Detecting and countering misuse of AI: September 2026</h2>
-      <p class="summary">Anthropic's Threat Intelligence team reports disrupting operations where threat actors attempted to misuse Claude for malicious purposes over eight months.</p>
-      <div class="meta"><span>22 hours ago</span><a href="https://www.anthropic.com/threat-intelligence-report-september-2026" target="_blank">Read more</a></div>
+      <h2>Rebels used Anthropic's AI bot to develop guided weapons, report says</h2>
+      <p>Militants in Yemen sought to use an AI coding tool to produce guided rockets and missiles, according to Anthropic, which says it blocked some but not all attempts.</p>
+      <div class="meta"><span class="source">The Washington Post</span><span>6 minutes ago</span></div>
+      <a href="https://www.washingtonpost.com/technology/2026/09/11/rebels-used-anthropics-ai-bot-develop-guided-weapons-report-says/" target="_blank" rel="noopener">Read more</a>
     </div>
+
     <div class="card">
-      <div class="source">The New York Times</div>
-      <h2>A.I. Could Possibly End Humanity. How Are Humans Supposed to Process That?</h2>
-      <p class="summary">The Times explores how people weigh existential AI risk against other threats, a mind-bending exercise in long-term thinking.</p>
-      <div class="meta"><span>3 hours ago</span><a href="https://www.nytimes.com/2026/09/10/science/ai-humanity-risk.html" target="_blank">Read more</a></div>
+      <h2>US Senate negotiators consider requiring AI firms to mitigate known major risks</h2>
+      <p>Senate negotiators are debating legislation that would place responsibility on tech companies to design safe AI products, according to two Senate aides.</p>
+      <div class="meta"><span class="source">Reuters</span><span>36 minutes ago</span></div>
+      <a href="https://www.reuters.com/legal/litigation/us-senate-negotiators-consider-requiring-ai-firms-mitigate-known-major-risks-2026-09-11/" target="_blank" rel="noopener">Read more</a>
     </div>
+
     <div class="card">
-      <div class="source">Baltimore Sun</div>
+      <h2>AI chatbot reduced depression, anxiety, and eating disorder risk symptoms</h2>
+      <p>Researchers evaluated a generative AI chatbot for adults with clinically significant depression, anxiety, or elevated eating disorder risk, finding symptom reduction.</p>
+      <div class="meta"><span class="source">2 Minute Medicine</span><span>5 hours ago</span></div>
+      <a href="https://www.2minutemedicine.com/artificial-intelligence-ai-chatbot-reduced-depression-anxiety-and-eating-disorder-risk-symptoms/" target="_blank" rel="noopener">Read more</a>
+    </div>
+
+    <div class="card">
       <h2>Risks of artificial intelligence are getting harder for Congress to ignore</h2>
-      <p class="summary">Fresh AI warnings are adding urgency in Congress to confront an issue lawmakers have struggled with for years.</p>
-      <div class="meta"><span>3 hours ago</span><a href="https://www.baltimoresun.com/2026/09/11/risks-of-artificial-intelligence-are-getting-harder-for-congress-to-ignore/" target="_blank">Read more</a></div>
+      <p>Lawmakers in both parties are stepping up calls for Congress to act on AI amid new warnings from researchers about the rapidly advancing technology.</p>
+      <div class="meta"><span class="source">Baltimore Sun</span><span>2 hours ago</span></div>
+      <a href="https://www.baltimoresun.com/2026/09/11/risks-of-artificial-intelligence-are-getting-harder-for-congress-to-ignore/" target="_blank" rel="noopener">Read more</a>
     </div>
+
     <div class="card">
-      <div class="source">Smithsonian Magazine</div>
-      <h2>Could Artificial Intelligence Help With Early Diagnosis of Schizophrenia?</h2>
-      <p class="summary">A new AI tool may detect subtle speech differences in people with the condition better than human psychiatrists.</p>
-      <div class="meta"><span>1 hour ago</span><a href="https://www.smithsonianmag.com/innovation/could-artificial-intelligence-help-with-early-diagnosis-of-schizophrenia-180989486/" target="_blank">Read more</a></div>
+      <h2>AI Inequity Is Developing in Schools</h2>
+      <p>New research highlights a growing divide in how AI tools are adopted across U.S. schools, potentially widening existing educational inequalities.</p>
+      <div class="meta"><span class="source">Chicago Booth</span><span>4 hours ago</span></div>
+      <a href="https://www.chicagobooth.edu/review/2026/september/ai-inequity-is-developing-schools" target="_blank" rel="noopener">Read more</a>
     </div>
+
     <div class="card">
-      <div class="source">San Francisco Chronicle</div>
-      <h2>Letters: Don't cavalierly dismiss the dangers of AI. Here's why we should worry</h2>
-      <p class="summary">Readers weigh in on AI's societal impact alongside housing and policy concerns affecting San Francisco.</p>
-      <div class="meta"><span>4 hours ago</span><a href="https://www.sfchronicle.com/opinion/letterstotheeditor/article/ai-data-center-artificial-intelligence-22426374.php" target="_blank">Read more</a></div>
+      <h2>Building trust in the AI era: MUSC creates Acceptable Use Framework</h2>
+      <p>The Medical University of South Carolina is taking a deliberate approach to AI, rooted in two strategic priorities to guide its acceptable use.</p>
+      <div class="meta"><span class="source">MUSC</span><span>3 hours ago</span></div>
+      <a href="https://www.musc.edu/content-hub/News/2026/09/11/building-trust-in-the-ai-era-musc-creates-acceptable-use-framework" target="_blank" rel="noopener">Read more</a>
     </div>
+
     <div class="card">
-      <div class="source">WAKA 8</div>
+      <h2>For Finavia's HR professional, artificial intelligence is part of the job description</h2>
+      <p>When Petra Koskinen joined Finavia in 2023, she was immediately included in a major HR system project, reflecting how AI is reshaping HR roles.</p>
+      <div class="meta"><span class="source">WebWire</span><span>2 hours ago</span></div>
+      <a href="https://www.webwire.com/ViewPressRel.asp?aId=360380" target="_blank" rel="noopener">Read more</a>
+    </div>
+
+    <div class="card">
+      <h2>Supply Chain Visibility AI Market Revenue To Cross $16.4 Billion By 2030</h2>
+      <p>A new market report projects the supply chain visibility AI sector will exceed $16.4 billion by 2030, supported by rising demand.</p>
+      <div class="meta"><span class="source">EIN News</span><span>3 hours ago</span></div>
+      <a href="https://tech.einnews.com/pr_news/941419798/supply-chain-visibility-artificial-intelligence-market-revenue-to-cross-16-4-billion-by-2030-supported-by-rising-demand" target="_blank" rel="noopener">Read more</a>
+    </div>
+
+    <div class="card">
       <h2>What The Tech: A new warning about Artificial Intelligence</h2>
-      <p class="summary">Consumer tech coverage on warnings that AI could become so powerful humans can no longer control it.</p>
-      <div class="meta"><span>2 hours ago</span><a href="https://www.waka.com/2026/09/11/what-the-tech-a-new-warning-about-artificial-intelligence/" target="_blank">Read more</a></div>
+      <p>A consumer tech report looks at warnings that AI could become so powerful that humans can no longer control it.</p>
+      <div class="meta"><span class="source">WAKA 8</span><span>7 hours ago</span></div>
+      <a href="https://www.waka.com/2026/09/11/what-the-tech-a-new-warning-about-artificial-intelligence/" target="_blank" rel="noopener">Read more</a>
     </div>
-    <div class="card">
-      <div class="source">Dentons</div>
-      <h2>Doing business in Canada: Artificial intelligence and data</h2>
-      <p class="summary">A legal guide on Canada's fast-moving AI landscape, including the Artificial Intelligence and Data Act (AIDA).</p>
-      <div class="meta"><span>34 minutes ago</span><a href="https://www.dentons.com/en/insights/articles/2026/september/11/doing-business-in-canada-artificial-intelligence-and-data" target="_blank">Read more</a></div>
-    </div>
-    <div class="card">
-      <div class="source">KRWC 1360 AM</div>
-      <h2>State Fair Poll Show Concerns Regarding Artificial Intelligence</h2>
-      <p class="summary">Minnesota's State Fair Poll reveals growing public concern about technology, including AI, among respondents this year.</p>
-      <div class="meta"><span>40 minutes ago</span><a href="https://krwc1360.com/state-fair-poll-show-concerns-regarding-artificial-intelligence/" target="_blank">Read more</a></div>
-    </div>
-    <div class="card">
-      <div class="source">Catholic Stand</div>
-      <h2>Artificial Intelligence and Spiritual Intelligence</h2>
-      <p class="summary">An essay exploring the relationship between AI capabilities and the distinctly human idea of spiritual intelligence.</p>
-      <div class="meta"><span>16 hours ago</span><a href="https://catholicstand.com/artificial-intelligence-and-spiritual-intelligence/" target="_blank">Read more</a></div>
-    </div>
+
   </div>
 
-  <div class="footer">Auto-refreshing every 5 hours · Hosted on GitHub Pages</div>
+  <footer>Updates automatically every 5 hours.</footer>
+</div>
 </body>
 </html>
