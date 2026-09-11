@@ -5,174 +5,178 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI News Dashboard</title>
 <style>
-  :root {
-    --bg-1: #2b1b4d;
-    --bg-2: #1a1030;
-    --card: #ffffff;
-    --text: #1f1533;
-    --muted: #6b5f85;
-    --accent: #7c3aed;
-    --accent-2: #c084fc;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: linear-gradient(160deg, var(--bg-1), var(--bg-2));
+    background: linear-gradient(135deg, #4a148c 0%, #7b1fa2 45%, #ab47bc 100%);
     min-height: 100vh;
-    color: #fff;
+    color: #1a1a2e;
     padding: 2rem 1rem;
   }
-  .wrap { max-width: 980px; margin: 0 auto; }
-  header { text-align: center; margin-bottom: 2rem; }
+  .container { max-width: 900px; margin: 0 auto; }
+  header {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 2rem;
+  }
   header h1 {
     font-size: 2.2rem;
-    font-weight: 700;
     letter-spacing: -0.02em;
-    background: linear-gradient(90deg, #fff, var(--accent-2));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    margin-bottom: 0.5rem;
   }
-  header p { color: #d8cff0; margin-top: 0.5rem; font-size: 0.95rem; }
-  .stamp {
-    display: inline-block;
-    margin-top: 0.75rem;
-    font-size: 0.8rem;
-    color: #e9dffa;
-    background: rgba(255,255,255,0.1);
-    padding: 0.35rem 0.9rem;
-    border-radius: 999px;
-  }
+  header p { opacity: 0.85; font-size: 0.95rem; }
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1.25rem;
   }
   .card {
-    background: var(--card);
-    color: var(--text);
-    border-radius: 16px;
-    padding: 1.3rem 1.4rem;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 1.25rem;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
-  .card:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(0,0,0,0.35); }
-  .source {
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.24);
+  }
+  .card .source {
     font-size: 0.75rem;
-    font-weight: 600;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.04em;
-    color: var(--accent);
+    color: #7b1fa2;
+    margin-bottom: 0.5rem;
   }
-  .card h2 { font-size: 1.15rem; line-height: 1.35; color: var(--text); }
-  .card p { font-size: 0.92rem; line-height: 1.5; color: var(--muted); flex: 1; }
-  .meta { font-size: 0.78rem; color: #9a8fb5; }
+  .card h2 {
+    font-size: 1.05rem;
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+    color: #1a1a2e;
+  }
+  .card p.summary {
+    font-size: 0.88rem;
+    line-height: 1.45;
+    color: #4a4a5a;
+    flex: 1;
+    margin-bottom: 0.75rem;
+  }
   .card a {
-    text-decoration: none;
-    color: var(--accent);
-    font-weight: 600;
     font-size: 0.85rem;
+    font-weight: 600;
+    color: #7b1fa2;
+    text-decoration: none;
   }
   .card a:hover { text-decoration: underline; }
-  footer { text-align: center; margin-top: 2.5rem; color: #b9aed6; font-size: 0.8rem; }
+  .card .date {
+    font-size: 0.72rem;
+    color: #999;
+    margin-top: 0.5rem;
+  }
+  footer {
+    text-align: center;
+    color: #ffffff;
+    opacity: 0.85;
+    margin-top: 2.5rem;
+    font-size: 0.85rem;
+  }
 </style>
 </head>
 <body>
-<div class="wrap">
+<div class="container">
   <header>
     <h1>AI News Dashboard</h1>
-    <p>The latest global artificial intelligence headlines, refreshed automatically every 5 hours.</p>
-    <span class="stamp">Last updated: 11 Sep 2026, 07:00 AM SAST</span>
+    <p>Latest global artificial intelligence headlines, refreshed every 5 hours.</p>
   </header>
 
   <div class="grid">
+    <div class="card">
+      <div class="source">The Washington Post</div>
+      <h2>The race to build smarter machines ran into a dangerous problem</h2>
+      <p class="summary">The same techniques that made chatbots more capable can also embed a tendency to hack, cheat, and evade human oversight, AI experts warn.</p>
+      <a href="https://www.washingtonpost.com/technology/2026/09/11/ai-experts-warn-technology-is-learning-cheat-hack/" target="_blank" rel="noopener">Read article</a>
+      <div class="date">58 minutes ago</div>
+    </div>
 
-    <article class="card">
-      <span class="source">OpenAI</span>
-      <h2>GPT-6 Astra: A new generation of intelligence</h2>
-      <p>OpenAI introduces GPT-6 Astra, its most intelligent and aligned model yet, with advanced capabilities across computer use, coding and cybersecurity.</p>
-      <span class="meta">11 Sep 2026 · 44 min ago</span>
-      <a href="https://openai.com/index/gpt-6-astra/" target="_blank" rel="noopener">Read story</a>
-    </article>
+    <div class="card">
+      <div class="source">Axios</div>
+      <h2>How AI makes biological research more dangerous</h2>
+      <p class="summary">This week's dire warnings about unchecked AI are refocusing attention on how models are already being used across biological research.</p>
+      <a href="https://www.axios.com/2026/09/11/ai-warnings-biological-research-dangerous" target="_blank" rel="noopener">Read article</a>
+      <div class="date">27 minutes ago</div>
+    </div>
 
-    <article class="card">
-      <span class="source">voz.us</span>
-      <h2>Republican leaders take a stand on artificial intelligence</h2>
-      <p>US Republican leaders demand security oversight of AI development while cautioning against giving China a competitive advantage.</p>
-      <span class="meta">11 Sep 2026 · 1 hour ago</span>
-      <a href="https://voz.us/en/technology/260911/39027/republican-leaders-take-stand-on-artificial-intelligence-they-demand-security-oversight-without-giving-china-an-advantage.html" target="_blank" rel="noopener">Read story</a>
-    </article>
+    <div class="card">
+      <div class="source">AI News</div>
+      <h2>M&T Bank expands enterprise AI after years of technology overhaul</h2>
+      <p class="summary">M&T Bank has deployed AI copilots to more than 15,000 employees across customer service, coding, and risk management.</p>
+      <a href="https://www.artificialintelligence-news.com/news/mt-bank-enterprise-ai-15000-employees/" target="_blank" rel="noopener">Read article</a>
+      <div class="date">1 hour ago</div>
+    </div>
 
-    <article class="card">
-      <span class="source">CBS News</span>
+    <div class="card">
+      <div class="source">CBS News</div>
       <h2>Newsom signs new AI safeguards requiring independent reviews</h2>
-      <p>California Governor Gavin Newsom signs new AI safeguards mandating independent reviews of artificial intelligence systems.</p>
-      <span class="meta">11 Sep 2026 · 3 hours ago</span>
-      <a href="https://www.cbsnews.com/sacramento/video/newsom-signs-new-ai-safeguards-requiring-independent-reviews-of-artificial-intelligence/" target="_blank" rel="noopener">Read story</a>
-    </article>
+      <p class="summary">California Governor Gavin Newsom signed new AI safeguards that require independent reviews of artificial intelligence systems.</p>
+      <a href="https://www.cbsnews.com/sacramento/video/newsom-signs-new-ai-safeguards-requiring-independent-reviews-of-artificial-intelligence/" target="_blank" rel="noopener">Read article</a>
+      <div class="date">9 hours ago</div>
+    </div>
 
-    <article class="card">
-      <span class="source">Ferris State University</span>
-      <h2>Ferris State's Tech Week sessions focus on the growing role of AI</h2>
-      <p>Ferris State University plays a key role in Tech Week Grand Rapids with presentations exploring how artificial intelligence is playing a growing role in industry.</p>
-      <span class="meta">11 Sep 2026 · 3 hours ago</span>
-      <a href="https://www.ferris.edu/news/archive/2026/ferris-state-encourages-ai-conversations-during-tech-week.htm" target="_blank" rel="noopener">Read story</a>
-    </article>
-
-    <article class="card">
-      <span class="source">Gates Notes</span>
+    <div class="card">
+      <div class="source">Gates Notes</div>
       <h2>The turbulent AI era is here. The choices we make now are critical.</h2>
-      <p>Bill Gates reflects on the rapid AI transition and argues the choices society makes now will shape a turbulent new era.</p>
-      <span class="meta">11 Sep 2026 · 4 hours ago</span>
-      <a href="https://www.gatesnotes.com/a-turbulent-ai-era-and-critical-choices-to-make" target="_blank" rel="noopener">Read story</a>
-    </article>
+      <p class="summary">Bill Gates reflects on the turbulent AI era ahead and the critical choices that will shape its impact.</p>
+      <a href="https://www.gatesnotes.com/a-turbulent-ai-era-and-critical-choices-to-make" target="_blank" rel="noopener">Read article</a>
+      <div class="date">3 hours ago</div>
+    </div>
 
-    <article class="card">
-      <span class="source">InForum</span>
-      <h2>Artificial intelligence is everywhere. But what exactly counts as AI?</h2>
-      <p>As AI writes emails and fuels demand for massive data centers, a closer look at what genuinely qualifies as artificial intelligence.</p>
-      <span class="meta">11 Sep 2026 · 5 hours ago</span>
-      <a href="https://www.inforum.com/business/artificial-intelligence-is-everywhere-but-what-exactly-counts-as-ai" target="_blank" rel="noopener">Read story</a>
-    </article>
+    <div class="card">
+      <div class="source">The Bowdoin Orient</div>
+      <h2>Students reimagine AI through Hastings Initiative</h2>
+      <p class="summary">The Hastings Initiative for AI and Humanity, funded by Reed Hastings with $50 million, engages students in reimagining AI.</p>
+      <a href="https://bowdoinorient.com/2026/09/11/students-reimagine-ai-through-hastings-initiative/" target="_blank" rel="noopener">Read article</a>
+      <div class="date">5 hours ago</div>
+    </div>
 
-    <article class="card">
-      <span class="source">Community Impact</span>
+    <div class="card">
+      <div class="source">Community Impact</div>
       <h2>UNT launches artificial intelligence college after $20M donation</h2>
-      <p>The University of North Texas opens a new College of Artificial Intelligence and Advanced Analytics following a $20 million gift.</p>
-      <span class="meta">10 Sep 2026 · 6 hours ago</span>
-      <a href="https://communityimpact.com/denton/education/unt-launches-artificial-intelligence-college-after-20m-donation/" target="_blank" rel="noopener">Read story</a>
-    </article>
+      <p class="summary">The University of North Texas will open the Sinha College of AI and Advanced Analytics following a $20 million gift.</p>
+      <a href="https://communityimpact.com/denton/education/unt-launches-artificial-intelligence-college-after-20m-donation/" target="_blank" rel="noopener">Read article</a>
+      <div class="date">11 hours ago</div>
+    </div>
 
-    <article class="card">
-      <span class="source">The National Constitution Center</span>
+    <div class="card">
+      <div class="source">The National Constitution Center</div>
       <h2>The First Amendment and Artificial Intelligence</h2>
-      <p>Scholar Jonathan Zittrain and Professor Ellen Goodman examine the intersection of the First Amendment and AI technology.</p>
-      <span class="meta">10 Sep 2026 · 7 hours ago</span>
-      <a href="https://constitutioncenter.org/news-debate/americas-town-hall-programs/the-first-amendment-and-artificial-intelligence" target="_blank" rel="noopener">Read story</a>
-    </article>
+      <p class="summary">Scholars Jonathan Zittrain and Ellen Goodman examine the intersection of technology, free speech, and artificial intelligence.</p>
+      <a href="https://constitutioncenter.org/news-debate/americas-town-hall-programs/the-first-amendment-and-artificial-intelligence" target="_blank" rel="noopener">Read article</a>
+      <div class="date">13 hours ago</div>
+    </div>
 
-    <article class="card">
-      <span class="source">The New York Times</span>
-      <h2>A.I. Could Possibly End Humanity. How Are Humans Supposed to Process That?</h2>
-      <p>The New York Times explores how people are supposed to process the existential risks artificial intelligence could pose to humanity.</p>
-      <span class="meta">10 Sep 2026 · 7 hours ago</span>
-      <a href="https://www.nytimes.com/2026/09/10/science/ai-humanity-risk.html" target="_blank" rel="noopener">Read story</a>
-    </article>
+    <div class="card">
+      <div class="source">Ferris State University</div>
+      <h2>Ferris State's Tech Week sessions focus on the growing role of AI</h2>
+      <p class="summary">Ferris State University is playing a key role in Grand Rapids Tech Week, focusing on AI's growing role in education and work.</p>
+      <a href="https://www.ferris.edu/news/archive/2026/ferris-state-encourages-ai-conversations-during-tech-week.htm" target="_blank" rel="noopener">Read article</a>
+      <div class="date">8 hours ago</div>
+    </div>
 
-    <article class="card">
-      <span class="source">Amazon Web Services (AWS)</span>
-      <h2>Amazon Quick is now generally available on desktop</h2>
-      <p>AWS announces Amazon Quick is now generally available on desktop, giving teams an AI assistant with data that stays in their environment.</p>
-      <span class="meta">10 Sep 2026 · 11 hours ago</span>
-      <a href="https://aws.amazon.com/blogs/machine-learning/amazon-quick-is-now-generally-available-on-desktop/" target="_blank" rel="noopener">Read story</a>
-    </article>
-
+    <div class="card">
+      <div class="source">Catholic Stand</div>
+      <h2>Artificial Intelligence and Spiritual Intelligence</h2>
+      <p class="summary">A reflection on the relationship between artificial intelligence and spiritual intelligence raised in a Gospel study group discussion.</p>
+      <a href="https://catholicstand.com/artificial-intelligence-and-spiritual-intelligence/" target="_blank" rel="noopener">Read article</a>
+      <div class="date">11 hours ago</div>
+    </div>
   </div>
 
-  <footer>Automated by GrowOS · Updates every 5 hours (Africa/Johannesburg)</footer>
+  <footer>
+    <p>Last updated: 12:00 PM SAST, Sep 11 2026</p>
+  </footer>
 </div>
 </body>
 </html>
