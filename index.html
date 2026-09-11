@@ -5,143 +5,105 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI News Dashboard</title>
 <style>
-  :root {
-    --bg1: #1a0b2e;
-    --bg2: #3b1d6e;
-    --card: #ffffff;
-    --text: #1f1833;
-    --muted: #6b6385;
-    --accent: #7c3aed;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: linear-gradient(160deg, var(--bg1) 0%, var(--bg2) 100%);
+    background: linear-gradient(135deg, #4a1d96 0%, #7c3aed 45%, #a855f7 100%);
     min-height: 100vh;
-    color: var(--text);
-    padding: 40px 20px;
+    color: #1f2937;
+    padding: 2rem 1rem;
   }
-  .wrap { max-width: 960px; margin: 0 auto; }
-  header { text-align: center; color: #fff; margin-bottom: 36px; }
-  header h1 { font-size: 2.2rem; font-weight: 700; letter-spacing: -0.5px; }
-  header p { color: rgba(255,255,255,0.75); margin-top: 8px; font-size: 0.95rem; }
-  .timestamp {
-    display: inline-block;
-    background: rgba(255,255,255,0.14);
+  .container { max-width: 1000px; margin: 0 auto; }
+  header {
+    text-align: center;
     color: #fff;
-    padding: 6px 14px;
-    border-radius: 999px;
-    font-size: 0.85rem;
-    margin-top: 12px;
+    margin-bottom: 2rem;
   }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
-  }
+  header h1 { font-size: 2rem; margin-bottom: 0.4rem; }
+  header p { opacity: 0.9; font-size: 0.95rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.25rem; }
   .card {
-    background: var(--card);
-    border-radius: 16px;
-    padding: 22px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 1.25rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
     display: flex;
     flex-direction: column;
+    gap: 0.6rem;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
-  .card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.32); }
-  .source {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--accent);
-    font-weight: 700;
-    margin-bottom: 8px;
-  }
-  .card h2 { font-size: 1.1rem; line-height: 1.35; margin-bottom: 10px; }
-  .card p { font-size: 0.9rem; color: var(--muted); line-height: 1.5; flex-grow: 1; }
-  .card a {
-    margin-top: 16px;
-    color: var(--accent);
-    font-weight: 600;
-    text-decoration: none;
-    font-size: 0.9rem;
-  }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(0,0,0,0.2); }
+  .card h2 { font-size: 1.05rem; line-height: 1.3; color: #1f2937; }
+  .card p { font-size: 0.9rem; line-height: 1.5; color: #4b5563; flex: 1; }
+  .card .meta { font-size: 0.78rem; color: #6b7280; display: flex; justify-content: space-between; align-items: center; }
+  .card a { color: #7c3aed; font-weight: 600; text-decoration: none; font-size: 0.88rem; }
   .card a:hover { text-decoration: underline; }
-  footer { text-align: center; color: rgba(255,255,255,0.6); margin-top: 40px; font-size: 0.85rem; }
+  footer { text-align: center; color: #fff; margin-top: 2rem; font-size: 0.85rem; opacity: 0.85; }
 </style>
 </head>
 <body>
-<div class="wrap">
+<div class="container">
   <header>
     <h1>AI News Dashboard</h1>
-    <p>Recent global artificial intelligence headlines</p>
-    <span class="timestamp">Last updated: 10:00 PM SAST, 10 Sep 2026</span>
+    <p>Recent global artificial intelligence headlines, refreshed every 5 hours.</p>
   </header>
 
   <div class="grid">
     <div class="card">
-      <div class="source">Gates Notes</div>
       <h2>The turbulent AI era is here. The choices we make now are critical.</h2>
-      <p>Bill Gates reflects on how the AI era is reshaping work and society, and argues the choices made now will determine how broadly its benefits are shared.</p>
-      <a href="https://www.gatesnotes.com/a-turbulent-ai-era-and-critical-choices-to-make" target="_blank">Read more &rarr;</a>
+      <p>Bill Gates reflects on a fast-shifting AI era and argues the decisions made today will shape its consequences.</p>
+      <div class="meta"><span>Gates Notes &middot; 2h ago</span><a href="https://www.gatesnotes.com/a-turbulent-ai-era-and-critical-choices-to-make">Read more</a></div>
     </div>
     <div class="card">
-      <div class="source">The Conversation</div>
-      <h2>The next frontier is not artificial intelligence, it's artificial societies</h2>
-      <p>An argument to move the debate from intelligent machines toward building "intelligent societies" that can responsibly absorb AI's impact.</p>
-      <a href="https://theconversation.com/the-next-frontier-is-not-artificial-intelligence-its-artificial-societies-291586" target="_blank">Read more &rarr;</a>
+      <h2>The First Amendment and Artificial Intelligence</h2>
+      <p>Legal scholars Jonathan Zittrain and Ellen Goodman examine how free-speech law applies to AI-generated content.</p>
+      <div class="meta"><span>The National Constitution Center &middot; 3h ago</span><a href="https://constitutioncenter.org/news-debate/americas-town-hall-programs/the-first-amendment-and-artificial-intelligence">Read more</a></div>
     </div>
     <div class="card">
-      <div class="source">The Tanzania Times</div>
-      <h2>Nuclear power can meet Africa's Artificial Intelligence energy demands</h2>
-      <p>AI's growing energy appetite is pushing analysts to consider how nuclear power could help Africa meet power needs tied to AI adoption.</p>
-      <a href="https://tanzaniatimes.net/nuclear-power-can-meet-africas-artificial-intelligence-energy-demands/" target="_blank">Read more &rarr;</a>
+      <h2>Amazon Quick is now generally available on desktop</h2>
+      <p>AWS launches its AI assistant for desktop, handling real work while keeping data in the customer's environment.</p>
+      <div class="meta"><span>Amazon Web Services (AWS) &middot; 6h ago</span><a href="https://aws.amazon.com/blogs/machine-learning/amazon-quick-is-now-generally-available-on-desktop/">Read more</a></div>
     </div>
     <div class="card">
-      <div class="source">Bruegel</div>
-      <h2>China's artificial intelligence goals and strategic choices for Europe</h2>
-      <p>China's 15th Five-Year Plan places AI at the centre of industrial strategy, with implications and strategic choices for European policymakers.</p>
-      <a href="https://www.bruegel.org/analysis/chinas-artificial-intelligence-goals-and-strategic-choices-europe" target="_blank">Read more &rarr;</a>
+      <h2>Artificial intelligence is everywhere. But what exactly counts as AI?</h2>
+      <p>A look at how loosely "AI" is defined as the technology spreads into email, video, and data centers.</p>
+      <div class="meta"><span>InForum &middot; 2m ago</span><a href="https://www.inforum.com/business/artificial-intelligence-is-everywhere-but-what-exactly-counts-as-ai">Read more</a></div>
     </div>
     <div class="card">
-      <div class="source">France 24</div>
-      <h2>South Korea to boost artificial intelligence ties with Africa</h2>
-      <p>Seoul hosted 45 African states at the Korea Africa Economic Cooperation conference to strengthen AI cooperation across the continent.</p>
-      <a href="https://www.france24.com/en/video/20260910-south-korea-to-boost-artificial-intelligence-ties-with-africa" target="_blank">Read more &rarr;</a>
+      <h2>The BR Privacy, Security &amp; AI Download: September 2026</h2>
+      <p>A monthly roundup of privacy and AI legal developments, from California rulings to AI in litigation.</p>
+      <div class="meta"><span>The National Law Review &middot; 4h ago</span><a href="https://natlawreview.com/article/br-privacy-security-ai-download-september-2026">Read more</a></div>
     </div>
     <div class="card">
-      <div class="source">TodayPress.tv</div>
-      <h2>Anthropic researcher resigns, warning of dangers of AI surpassing humans</h2>
-      <p>Anthropic researcher Jacob Coxon has resigned, joining a growing number of voices raising alarm about the risks of out-of-control AI.</p>
-      <a href="https://todaypress.tv/en/world/dozmeyib-istefa-etdi-suni-intellekt-insanlari-usteleyir-hamimizin-heyati-boyuk-tehlukededir" target="_blank">Read more &rarr;</a>
+      <h2>How dangerous is artificial intelligence?</h2>
+      <p>Experts weigh in on AI risk after an Anthropic researcher issued a dire warning about potential dangers.</p>
+      <div class="meta"><span>FOX 9 Minneapolis-St. Paul &middot; 5h ago</span><a href="https://www.fox9.com/video/fmc-blytpm490z1olzrl">Read more</a></div>
     </div>
     <div class="card">
-      <div class="source">Catholic Stand</div>
-      <h2>Artificial Intelligence and Spiritual Intelligence</h2>
-      <p>An essay exploring the relationship between artificial intelligence and spiritual intelligence, and what distinguishes genuine human wisdom.</p>
-      <a href="https://catholicstand.com/artificial-intelligence-and-spiritual-intelligence/" target="_blank">Read more &rarr;</a>
+      <h2>M&amp;T Bank expands enterprise AI after years of technology overhaul</h2>
+      <p>The bank deploys AI copilots to more than 15,000 employees across customer service, coding, and risk.</p>
+      <div class="meta"><span>AI News &middot; 3h ago</span><a href="https://www.artificialintelligence-news.com/news/mt-bank-enterprise-ai-15000-employees/">Read more</a></div>
     </div>
     <div class="card">
-      <div class="source">Mezha</div>
-      <h2>Logitech has unveiled its AI control centre - the MX Keypad</h2>
-      <p>Logitech's first AI control centre lets users manage workflows, run commands, and execute prompt macros from a dedicated keypad.</p>
-      <a href="https://mezha.ua/en/news/logitech-mx-keypad-315087/" target="_blank">Read more &rarr;</a>
+      <h2>Parents navigate AI&rsquo;s role in kids&rsquo; learning</h2>
+      <p>Families work to understand artificial intelligence and how it will shape their children's education and future.</p>
+      <div class="meta"><span>WWBT &middot; 2h ago</span><a href="https://www.12onyourside.com/2026/09/10/parents-navigate-ais-role-kids-learning/">Read more</a></div>
     </div>
     <div class="card">
-      <div class="source">dev.ua</div>
-      <h2>NASA and IBM created artificial intelligence to explore the Moon</h2>
-      <p>NASA and IBM unveiled the Lunar Foundation Model, an AI model designed specifically for lunar exploration and scientific discovery.</p>
-      <a href="https://dev.ua/en/news/shtuchnyi-intelekt-dlia-doslidzhennia-misiatsia-1789045285" target="_blank">Read more &rarr;</a>
+      <h2>Senators from both parties question OpenAI on breach of AI startup Hugging Face</h2>
+      <p>Bipartisan lawmakers demand answers from OpenAI over a Hugging Face breach, reflecting rising Washington concern.</p>
+      <div class="meta"><span>Bozeman Daily Chronicle &middot; 31m ago</span><a href="https://www.bozemandailychronicle.com/wire/business/senators-from-both-parties-question-openai-on-breach-of-ai-startup-hugging-face/article_6b8c4223-e28e-5950-8337-6db8c787bc45.html">Read more</a></div>
     </div>
     <div class="card">
-      <div class="source">Freedom Broker</div>
-      <h2>Stilla acquisition to strengthen Meta's enterprise AI products</h2>
-      <p>Meta has acquired Swedish startup Stilla, whose digital assistant for enterprise clients will bolster Meta's business AI offerings.</p>
-      <a href="https://fbroker.kz/en/news/51939-stilla-acquisition-to-strengthen-metas-enterprise-ai-products-freedom-en-2" target="_blank">Read more &rarr;</a>
+      <h2>NIH seeks to engage patients as it scales use of AI with Bio Genesis Mission</h2>
+      <p>The NIH begins planning how it will collaborate with other agencies on its AI-driven Bio Genesis Mission.</p>
+      <div class="meta"><span>Nextgov/FCW &middot; 2h ago</span><a href="https://www.nextgov.com/artificial-intelligence/2026/09/nih-seeks-engage-patients-it-scales-use-ai-bio-genesis-mission/415923/">Read more</a></div>
     </div>
   </div>
 
-  <footer>Automatically refreshed every 5 hours</footer>
+  <footer>
+    <p>Last updated: Friday, September 11, 2026 &middot; 2:00 AM SAST</p>
+  </footer>
 </div>
 </body>
 </html>
