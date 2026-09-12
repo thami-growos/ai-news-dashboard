@@ -5,120 +5,160 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI News Dashboard</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg1: #f5f3ff;
+    --bg2: #ede9fe;
+    --card: #ffffff;
+    --accent: #7c3aed;
+    --accent2: #a855f7;
+    --text: #1f2937;
+    --muted: #6b7280;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: linear-gradient(135deg, #4c1d95 0%, #7c3aed 50%, #9333ea 100%);
+    background: linear-gradient(135deg, var(--bg1), var(--bg2));
+    color: var(--text);
     min-height: 100vh;
-    padding: 40px 20px;
-    color: #1f2937;
+    padding: 2rem 1rem;
   }
-  .container { max-width: 1100px; margin: 0 auto; }
-  header { text-align: center; color: #fff; margin-bottom: 36px; }
-  header h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 8px; }
-  header p { font-size: 1rem; opacity: 0.9; }
-  .last-updated {
-    display: inline-block; margin-top: 12px; padding: 6px 16px;
-    background: rgba(255,255,255,0.18); border-radius: 999px; font-size: 0.85rem;
+  .container { max-width: 900px; margin: 0 auto; }
+  header { text-align: center; margin-bottom: 2rem; }
+  header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+  header p { color: var(--muted); margin-top: 0.5rem; font-size: 0.95rem; }
+  .timestamp {
+    display: inline-block;
+    margin-top: 0.75rem;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 999px;
+    padding: 0.35rem 1rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem; }
   .card {
-    background: #ffffff; border-radius: 16px; padding: 20px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.16); display: flex; flex-direction: column;
+    background: var(--card);
+    border-radius: 16px;
+    padding: 1.25rem;
+    box-shadow: 0 4px 16px rgba(124, 58, 237, 0.08);
+    border: 1px solid #f0edff;
+    display: flex;
+    flex-direction: column;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
-  .card:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(0,0,0,0.22); }
-  .card .source { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: #7c3aed; margin-bottom: 8px; }
-  .card h3 { font-size: 1.15rem; line-height: 1.35; margin-bottom: 10px; color: #111827; }
-  .card p.summary { font-size: 0.92rem; line-height: 1.5; color: #4b5563; flex-grow: 1; margin-bottom: 14px; }
-  .card .meta { display: flex; justify-content: space-between; align-items: center; }
-  .card .date { font-size: 0.78rem; color: #9ca3af; }
-  .card a { font-size: 0.85rem; font-weight: 600; color: #7c3aed; text-decoration: none; }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(124, 58, 237, 0.14); }
+  .card .source {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+  .card h2 { font-size: 1.05rem; line-height: 1.35; margin-bottom: 0.6rem; }
+  .card p { font-size: 0.88rem; color: var(--muted); line-height: 1.5; flex-grow: 1; }
+  .card .meta { margin-top: 1rem; display: flex; justify-content: space-between; align-items: center; }
+  .card .date { font-size: 0.75rem; color: var(--muted); }
+  .card a {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+  }
   .card a:hover { text-decoration: underline; }
-  footer { text-align: center; color: #fff; margin-top: 40px; font-size: 0.85rem; opacity: 0.85; }
+  footer { text-align: center; margin-top: 2.5rem; color: var(--muted); font-size: 0.8rem; }
 </style>
 </head>
 <body>
 <div class="container">
   <header>
     <h1>AI News Dashboard</h1>
-    <p>Recent global artificial intelligence headlines, refreshed automatically.</p>
-    <span class="last-updated">Last updated: 12:00 PM SAST, 12 Sep 2026</span>
+    <p>The latest global artificial intelligence headlines</p>
+    <span class="timestamp">Last updated: 17:00 SAST &middot; 12 Sep 2026</span>
   </header>
 
   <div class="grid">
     <div class="card">
       <div class="source">Gates Notes</div>
-      <h3>The turbulent AI era is here. The choices we make now are critical.</h3>
-      <p class="summary">Bill Gates reflects on his career and argues the current AI transition demands deliberate choices, warning that the decisions made now will shape the technology's impact for decades.</p>
-      <div class="meta"><span class="date">3 hours ago</span><a href="https://www.gatesnotes.com/a-turbulent-ai-era-and-critical-choices-to-make" target="_blank" rel="noopener">Read more</a></div>
+      <h2>The turbulent AI era is here. The choices we make now are critical.</h2>
+      <p>Bill Gates reflects on a career in software and argues that the next chapter of AI demands urgent, deliberate choices.</p>
+      <div class="meta"><span class="date">2h ago</span><a href="https://www.gatesnotes.com/a-turbulent-ai-era-and-critical-choices-to-make" target="_blank" rel="noopener">Read more</a></div>
     </div>
 
     <div class="card">
       <div class="source">The Washington Post</div>
-      <h3>As AI fears grow, lawmakers are racing to turn alarm into action</h3>
-      <p class="summary">A former Anthropic researcher's dire warning has awakened Washington lawmakers to AI's risks, but translating urgency into concrete legislation remains a long shot.</p>
-      <div class="meta"><span class="date">48 minutes ago</span><a href="https://www.washingtonpost.com/technology/2026/09/12/ais-existential-threatsuddenly-has-washingtonsattention/" target="_blank" rel="noopener">Read more</a></div>
+      <h2>As AI fears grow, lawmakers are racing to turn alarm into action</h2>
+      <p>A former Anthropic researcher's warning has awakened US lawmakers to AI risks, but turning urgency into law remains difficult.</p>
+      <div class="meta"><span class="date">1h ago</span><a href="https://www.washingtonpost.com/technology/2026/09/12/ais-existential-threatsuddenly-has-washingtonsattention/" target="_blank" rel="noopener">Read more</a></div>
     </div>
 
     <div class="card">
-      <div class="source">The New York Times</div>
-      <h3>Why It's Tough for Tech Companies to Keep A.I. Out of Trouble</h3>
-      <p class="summary">Researchers say artificial intelligence is advancing faster than the monitoring and control systems built to govern it, leaving tech companies struggling to manage risks.</p>
-      <div class="meta"><span class="date">58 minutes ago</span><a href="https://www.nytimes.com/2026/09/12/technology/why-its-tough-for-tech-companies-to-keep-ai-out-of-trouble.html" target="_blank" rel="noopener">Read more</a></div>
+      <div class="source">The Next Web</div>
+      <h2>China's AI industry is moving from models to agents, a state report says</h2>
+      <p>A China Telecom report predicts inference will make up 80% of the country's compute market by 2029 as AI shifts toward autonomous agents.</p>
+      <div class="meta"><span class="date">4h ago</span><a href="https://thenextweb.com/news/china-agents-inference-eu-compute" target="_blank" rel="noopener">Read more</a></div>
     </div>
 
     <div class="card">
-      <div class="source">Northwest Arkansas Democrat-Gazette</div>
-      <h3>Senators across party lines question OpenAI over hacking incident</h3>
-      <p class="summary">Lawmakers concerned about existential risk from new AI products demanded information from OpenAI following a hacking incident, signalling rare bipartisan scrutiny.</p>
-      <div class="meta"><span class="date">3 hours ago</span><a href="https://www.nwaonline.com/news/2026/sep/12/senators-across-party-lines-question-openai-over/" target="_blank" rel="noopener">Read more</a></div>
+      <div class="source">AI News</div>
+      <h2>M&T Bank expands enterprise AI after years of technology overhaul</h2>
+      <p>M&T Bank has rolled out AI copilots to over 15,000 employees across customer service, coding, and risk management.</p>
+      <div class="meta"><span class="date">5h ago</span><a href="https://www.artificialintelligence-news.com/news/mt-bank-enterprise-ai-15000-employees/" target="_blank" rel="noopener">Read more</a></div>
+    </div>
+
+    <div class="card">
+      <div class="source">WCM Newsroom</div>
+      <h2>How Will AI Impact the Future of the Clinical Workforce?</h2>
+      <p>Contrary to some forecasts, AI agents may lead to more, not fewer, healthcare professionals working in the United States.</p>
+      <div class="meta"><span class="date">3h ago</span><a href="https://news.weill.cornell.edu/news/2026/09/how-will-ai-impact-the-future-of-the-clinical-workforce" target="_blank" rel="noopener">Read more</a></div>
+    </div>
+
+    <div class="card">
+      <div class="source">Mad In America</div>
+      <h2>Mental Health in the Age of Artificial Intelligence</h2>
+      <p>Research points to the need to watch our well-being and relationship with digital tools as AI becomes embedded in daily life.</p>
+      <div class="meta"><span class="date">2h ago</span><a href="https://www.madinamerica.com/2026/09/mental-health-in-the-age-of-artificial-intelligence/" target="_blank" rel="noopener">Read more</a></div>
     </div>
 
     <div class="card">
       <div class="source">2 Minute Medicine</div>
-      <h3>AI chatbot reduced depression, anxiety, and eating disorder risk symptoms</h3>
-      <p class="summary">Researchers evaluated a generative AI chatbot for adults with clinically significant depression, anxiety, or elevated eating disorder risk, finding meaningful symptom reductions.</p>
-      <div class="meta"><span class="date">6 hours ago</span><a href="https://www.2minutemedicine.com/artificial-intelligence-ai-chatbot-reduced-depression-anxiety-and-eating-disorder-risk-symptoms/" target="_blank" rel="noopener">Read more</a></div>
+      <h2>AI chatbot reduced depression, anxiety, and eating disorder risk symptoms</h2>
+      <p>A study evaluated a generative AI chatbot for adults with clinically significant depression, anxiety, or eating-disorder risk.</p>
+      <div class="meta"><span class="date">11h ago</span><a href="https://www.2minutemedicine.com/artificial-intelligence-ai-chatbot-reduced-depression-anxiety-and-eating-disorder-risk-symptoms/" target="_blank" rel="noopener">Read more</a></div>
     </div>
 
     <div class="card">
-      <div class="source">The Presidential Prayer Team</div>
-      <h3>Congress Considers Guardrails for AI After Researcher's Warning</h3>
-      <p class="summary">Senator Cruz said legislation is needed to protect the nation and the world from AI's potentially catastrophic risks, as Congress weighs new safeguards.</p>
-      <div class="meta"><span class="date">2 hours ago</span><a href="https://www.presidentialprayerteam.org/2026/09/12/congress-considers-guardrails-for-ai-after-researchers-warning/" target="_blank" rel="noopener">Read more</a></div>
-    </div>
-
-    <div class="card">
-      <div class="source">Scotsman Guide</div>
-      <h3>Could artificial intelligence actually lead to more office sector demand?</h3>
-      <p class="summary">While many experts warn AI could cut jobs and reduce office space needs, a new CBRE report argues the opposite case for commercial real estate demand.</p>
-      <div class="meta"><span class="date">12 hours ago</span><a href="https://www.scotsmanguide.com/news/could-artificial-intelligence-actually-lead-to-more-office-sector-demand/" target="_blank" rel="noopener">Read more</a></div>
-    </div>
-
-    <div class="card">
-      <div class="source">Nature</div>
-      <h3>AI in neonatal hemodynamics: earlier and more reliable detection of pulmonary hypertension</h3>
-      <p class="summary">A Pediatric Research study explores how AI can detect pulmonary hypertension in newborns earlier and more reliably, improving neonatal care.</p>
-      <div class="meta"><span class="date">11 hours ago</span><a href="https://www.nature.com/articles/s41390-026-05461-y" target="_blank" rel="noopener">Read more</a></div>
-    </div>
-
-    <div class="card">
-      <div class="source">finchannel</div>
-      <h3>Founder and former CEO of AI company pleads guilty to securities fraud</h3>
-      <p class="summary">Ilit Raz pleaded guilty in connection with a scheme to obtain $27 million in investments by misrepresenting her company's customers and revenue.</p>
-      <div class="meta"><span class="date">1 hour ago</span><a href="https://finchannel.com/founder-and-former-ceo-of-artificial-intelligence-company-pleads-guilty-to-securities-fraud/135011/america/2026/09/" target="_blank" rel="noopener">Read more</a></div>
+      <div class="source">Boston University</div>
+      <h2>BU's New Online MS in Software Engineering for AI Prepares Engineers for the Age of AI</h2>
+      <p>AI is reshaping what engineers build and how they build it; a new online master's program aims to prepare them for the shift.</p>
+      <div class="meta"><span class="date">6h ago</span><a href="https://www.bu.edu/online/2026/09/11/bus-new-online-ms-in-software-engineering-for-ai-prepares-engineers-for-the-age-of-ai/" target="_blank" rel="noopener">Read more</a></div>
     </div>
 
     <div class="card">
       <div class="source">New Ulm Journal</div>
-      <h3>From employee retention to artificial intelligence</h3>
-      <p class="summary">A chamber of commerce CEO panel discussed workforce topics spanning employee retention to the growing role of artificial intelligence in local business.</p>
-      <div class="meta"><span class="date">4 hours ago</span><a href="https://www.nujournal.com/news/local-news/2026/09/12/from-employee-retention-to-artificial-intelligence/" target="_blank" rel="noopener">Read more</a></div>
+      <h2>From employee retention to artificial intelligence</h2>
+      <p>A New Ulm Chamber of Commerce CEO panel covered topics spanning employee retention through to the adoption of AI.</p>
+      <div class="meta"><span class="date">9h ago</span><a href="https://www.nujournal.com/news/local-news/2026/09/12/from-employee-retention-to-artificial-intelligence/" target="_blank" rel="noopener">Read more</a></div>
+    </div>
+
+    <div class="card">
+      <div class="source">The Morning Call</div>
+      <h2>Bill White: A different perspective on artificial intelligence</h2>
+      <p>A columnist shares reader responses and offers a fresh personal take on artificial intelligence and its everyday impact.</p>
+      <div class="meta"><span class="date">3h ago</span><a href="https://www.mcall.com/2026/09/12/bill-white-a-different-perspective-on-artificial-intelligence/" target="_blank" rel="noopener">Read more</a></div>
     </div>
   </div>
 
-  <footer>Automatically updated every 5 hours. Sources are linked to original publishers.</footer>
+  <footer>Auto-refreshed every 5 hours &middot; Hosted via GitHub Pages</footer>
 </div>
 </body>
 </html>
