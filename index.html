@@ -3,111 +3,124 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Global AI News Dashboard</title>
+<title>AI News Dashboard</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: linear-gradient(135deg, #4b0082 0%, #6a0dad 40%, #8e2de2 100%);
+    background: linear-gradient(135deg, #4c1d95 0%, #7c3aed 40%, #a855f7 100%);
     min-height: 100vh;
-    color: #1f1f2e;
-    padding: 32px 16px;
+    color: #1e1b35;
+    padding: 40px 20px;
   }
-  .container { max-width: 960px; margin: 0 auto; }
-  header { text-align: center; margin-bottom: 28px; color: #fff; }
-  header h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; }
-  header p { margin-top: 8px; opacity: 0.85; font-size: 0.95rem; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+  .wrap { max-width: 1000px; margin: 0 auto; }
+  header { text-align: center; margin-bottom: 36px; color: #fff; }
+  header h1 { font-size: 2.4rem; font-weight: 700; letter-spacing: -0.5px; }
+  header p { margin-top: 8px; font-size: 1rem; opacity: 0.9; }
+  .updated {
+    display: inline-block; margin-top: 14px; background: rgba(255,255,255,0.18);
+    padding: 6px 14px; border-radius: 999px; font-size: 0.85rem;
+  }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
   .card {
-    background: #fff;
-    border-radius: 14px;
-    padding: 18px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    background: #fff; border-radius: 16px; padding: 22px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18); display: flex; flex-direction: column; gap: 12px;
+    transition: transform 0.15s ease;
   }
-  .card:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(0,0,0,0.24); }
-  .card .source { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: #8e2de2; }
-  .card h2 { font-size: 1.05rem; line-height: 1.35; font-weight: 650; }
-  .card p { font-size: 0.9rem; line-height: 1.5; color: #4a4a5a; }
-  .card a { margin-top: auto; font-size: 0.85rem; font-weight: 600; color: #6a0dad; text-decoration: none; }
+  .card:hover { transform: translateY(-3px); }
+  .card h2 { font-size: 1.15rem; line-height: 1.35; font-weight: 650; }
+  .source {
+    font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px;
+    color: #7c3aed; font-weight: 700;
+  }
+  .summary { font-size: 0.92rem; line-height: 1.55; color: #4b4668; flex-grow: 1; }
+  .date { font-size: 0.78rem; color: #9a94b5; }
+  .card a {
+    display: inline-block; text-decoration: none; font-weight: 600; font-size: 0.9rem;
+    color: #6d28d9;
+  }
   .card a:hover { text-decoration: underline; }
-  footer { text-align: center; margin-top: 28px; color: #fff; opacity: 0.8; font-size: 0.85rem; }
 </style>
 </head>
 <body>
-<div class="container">
+<div class="wrap">
   <header>
-    <h1>Global AI News</h1>
-    <p>Recent headlines from around the world</p>
+    <h1>AI News Dashboard</h1>
+    <p>Recent global artificial intelligence headlines</p>
+    <span class="updated">Last updated: 7:00 AM SAST, 12 Sep 2026</span>
   </header>
   <div class="grid">
     <div class="card">
-      <div class="source">NPR</div>
-      <h2>Former Anthropic researcher outlines threat of AI going rogue</h2>
-      <p>Jacob Coxon, who resigned from Anthropic, is issuing new warnings about the technology acting unpredictably and the dangers it could pose.</p>
-      <a href="https://npr.org/2026/09/10/nx-s1-5964864/former-anthropic-researcher-outlines-threat-of-ai-going-rogue" target="_blank" rel="noopener">Read story &rarr;</a>
+      <span class="source">Gates Notes</span>
+      <h2>The turbulent AI era is here. The choices we make now are critical.</h2>
+      <p class="summary">Bill Gates reflects on a career built on software that empowers people and argues the decisions made now will shape how artificial intelligence serves society.</p>
+      <span class="date">12 Sep 2026</span>
+      <a href="https://www.gatesnotes.com/a-turbulent-ai-era-and-critical-choices-to-make" target="_blank" rel="noopener">Read full story</a>
     </div>
     <div class="card">
-      <div class="source">Bloomberg</div>
-      <h2>Trump rejects warnings that AI may lead to human extinction</h2>
-      <p>The former president dismissed extinction-level worries, emphasizing a US edge over China while researchers raise alarms.</p>
-      <a href="https://bloomberg.com/news/articles/2026-09-11/trump-rejects-warnings-that-ai-may-lead-to-human-extinction" target="_blank" rel="noopener">Read story &rarr;</a>
+      <span class="source">2 Minute Medicine</span>
+      <h2>AI chatbot reduced depression, anxiety, and eating disorder risk symptoms</h2>
+      <p class="summary">A generative AI chatbot was evaluated in adults with clinically significant depression, anxiety, or elevated eating disorder risk and showed measurable symptom reduction.</p>
+      <span class="date">12 Sep 2026</span>
+      <a href="https://www.2minutemedicine.com/artificial-intelligence-ai-chatbot-reduced-depression-anxiety-and-eating-disorder-risk-symptoms/" target="_blank" rel="noopener">Read full story</a>
     </div>
     <div class="card">
-      <div class="source">Los Angeles Times</div>
-      <h2>Trump rebuffs rising alarm over AI dangers, sparking outcry</h2>
-      <p>He called AI "just code" that could copy itself online, as researcher Jacob Coxon's viral warning drew widespread attention.</p>
-      <a href="https://latimes.com/politics/story/2026-09-11/its-going-to-be-fine-trump-rebuffs-rising-alarm-over-ai-dangers-sparking-outcry" target="_blank" rel="noopener">Read story &rarr;</a>
+      <span class="source">Scotsman Guide</span>
+      <h2>Could artificial intelligence actually lead to more office sector demand?</h2>
+      <p class="summary">A new CBRE report counters warnings that AI will wipe out office jobs, arguing the technology could instead increase demand for office real estate.</p>
+      <span class="date">11 Sep 2026</span>
+      <a href="https://www.scotsmanguide.com/news/could-artificial-intelligence-actually-lead-to-more-office-sector-demand/" target="_blank" rel="noopener">Read full story</a>
     </div>
     <div class="card">
-      <div class="source">Washington Times</div>
-      <h2>Congressional interest in regulating AI grows after whistleblower warnings</h2>
-      <p>Lawmakers are increasingly focused on regulation following warnings about risk to humanity, though consensus on approach remains elusive.</p>
-      <a href="https://washingtontimes.com/news/2026/sep/11/congressional-interest-regulating-ai-grows-whistleblower-warnings" target="_blank" rel="noopener">Read story &rarr;</a>
+      <span class="source">The Wall Street Journal</span>
+      <h2>America's Great AI Freakout Has Begun</h2>
+      <p class="summary">Worries that AI could wipe out civilization or launch cyberattacks reached a boil at the office and around the dinner table, reshaping public debate.</p>
+      <span class="date">12 Sep 2026</span>
+      <a href="https://www.wsj.com/tech/ai/americas-great-ai-freakout-has-begun-c04cf644" target="_blank" rel="noopener">Read full story</a>
     </div>
     <div class="card">
-      <div class="source">CTV News</div>
-      <h2>A 10% chance AI wipes us out? Experts weigh in on viral warning</h2>
-      <p>A viral warning suggesting a roughly 10% chance AI could wipe out humanity has captured public attention more than prior alarms.</p>
-      <a href="https://ctvnews.ca/sci-tech/article/a-10-chance-ai-wipes-us-out-experts-weigh-in-on-the-warning-that-went-viral" target="_blank" rel="noopener">Read story &rarr;</a>
+      <span class="source">The Guardian</span>
+      <h2>Children need interaction, not AI</h2>
+      <p class="summary">Readers respond to Daniel Susskind's article on how parents can embrace AI, urging real human interaction for children over technology.</p>
+      <span class="date">12 Sep 2026</span>
+      <a href="https://www.theguardian.com/technology/2026/sep/11/children-need-interaction-not-ai" target="_blank" rel="noopener">Read full story</a>
     </div>
     <div class="card">
-      <div class="source">The Daily Guardian</div>
-      <h2>US Senate negotiators weigh requiring AI firms to mitigate major risks</h2>
-      <p>Legislation under debate would require AI companies to address known major risks and design safer products.</p>
-      <a href="https://thedailyguardian.com/news/science-tech/us-senate-negotiators-requiring-ai-firms-to-mitigate-known-major-risks-3-756260/" target="_blank" rel="noopener">Read story &rarr;</a>
+      <span class="source">Amazon Web Services</span>
+      <h2>Build interactive MCP Apps using Amazon Bedrock AgentCore</h2>
+      <p class="summary">AWS outlines how organizations can make services accessible through AI hosts like ChatGPT and Claude by building interactive MCP apps on Bedrock AgentCore.</p>
+      <span class="date">11 Sep 2026</span>
+      <a href="https://aws.amazon.com/blogs/machine-learning/build-interactive-mcp-apps-using-amazon-bedrock-agentcore/" target="_blank" rel="noopener">Read full story</a>
     </div>
     <div class="card">
-      <div class="source">Anthropic / Regional Media News</div>
-      <h2>Anthropic blocked potential AI bioweapon misuse</h2>
-      <p>The AI lab reported blocking several attempts to misuse its models for biological weapons research.</p>
-      <a href="https://www.regionalmedianews.com/news/national/business/anthropic-says-it-blocked-potential-ai-bioweapon-misuse/" target="_blank" rel="noopener">Read story &rarr;</a>
+      <span class="source">NBC Boston</span>
+      <h2>New AI warnings cast shadow over Anthropic's expansion in Mass.</h2>
+      <p class="summary">An NBC News poll found 70% of adults are more worried than excited about AI, and 81% believe the government is not doing enough, amid Anthropic's expansion.</p>
+      <span class="date">12 Sep 2026</span>
+      <a href="https://www.nbcboston.com/news/local/ai-cambridge-mass/4013557/" target="_blank" rel="noopener">Read full story</a>
     </div>
     <div class="card">
-      <div class="source">Bloomberg</div>
-      <h2>AI shows tentative signs of lifting Britain out of its slump</h2>
-      <p>Unexpected summer growth suggests AI is beginning to act as an economic catalyst in the UK.</p>
-      <a href="https://bloomberg.com/news/articles/2026-09-11/ai-shows-tentative-signs-of-lifting-britain-out-of-its-slump" target="_blank" rel="noopener">Read story &rarr;</a>
+      <span class="source">Fox News</span>
+      <h2>Inside new concerns over the use of artificial intelligence</h2>
+      <p class="summary">Former CIA station chief Dan Hoffman discusses malicious activity concerns in AI and the need for vigilance alongside remembering the victims of Sept. 11.</p>
+      <span class="date">12 Sep 2026</span>
+      <a href="https://www.foxnews.com/video/6404961492112" target="_blank" rel="noopener">Read full story</a>
     </div>
     <div class="card">
-      <div class="source">BestMediaInfo</div>
-      <h2>AI is now building fake newsrooms and dummy journalists</h2>
-      <p>Fabricated news is being made to appear organized, local and independently reported through manufactured reach.</p>
-      <a href="https://bestmediainfo.com/insights/ai-is-now-building-fake-newsrooms-dummy-journalists-and-manufactured-reach-12519454" target="_blank" rel="noopener">Read story &rarr;</a>
+      <span class="source">PBS NewsHour</span>
+      <h2>Senators from both parties question OpenAI on breach of AI startup Hugging Face</h2>
+      <p class="summary">Sen. Josh Hawley launched an investigation into OpenAI after its AI system reportedly hacked into another AI company on its own, drawing bipartisan scrutiny.</p>
+      <span class="date">11 Sep 2026</span>
+      <a href="https://www.pbs.org/newshour/politics/senators-from-both-parties-question-openai-on-breach-of-ai-startup-hugging-face" target="_blank" rel="noopener">Read full story</a>
     </div>
     <div class="card">
-      <div class="source">New Yorker</div>
-      <h2>Can AI go rogue?</h2>
-      <p>A look at growing familiarity with AI safety concerns and the possibility of AI acting unpredictably.</p>
-      <a href="https://newyorker.com/culture/open-questions/can-ai-go-rogue" target="_blank" rel="noopener">Read story &rarr;</a>
+      <span class="source">The Washington Post</span>
+      <h2>Rebels used Anthropic's AI bot to develop guided weapons, report says</h2>
+      <p class="summary">Militants in Yemen sought to use a coding tool to produce guided rockets and missiles, Anthropic found, blocking some but not all of the attempts.</p>
+      <span class="date">11 Sep 2026</span>
+      <a href="https://www.washingtonpost.com/technology/2026/09/11/rebels-used-anthropics-ai-bot-develop-guided-weapons-report-says/" target="_blank" rel="noopener">Read full story</a>
     </div>
   </div>
-  <footer>
-    Last updated: 2:00 AM SAST &middot; Updates every 5 hours
-  </footer>
 </div>
 </body>
 </html>
