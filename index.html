@@ -3,125 +3,111 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI News Dashboard</title>
+<title>Global AI News Dashboard</title>
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: linear-gradient(135deg, #4b2d8e 0%, #7b3fae 45%, #a855f7 100%);
+    background: linear-gradient(135deg, #4b0082 0%, #6a0dad 40%, #8e2de2 100%);
     min-height: 100vh;
-    color: #1f1633;
-    padding: 2rem 1.25rem;
+    color: #1f1f2e;
+    padding: 32px 16px;
   }
-  .wrap { max-width: 980px; margin: 0 auto; }
-  header { text-align: center; margin-bottom: 2rem; color: #fff; }
-  header h1 { font-size: 2.2rem; font-weight: 700; letter-spacing: -0.02em; }
-  header p { margin-top: 0.5rem; opacity: 0.9; font-size: 0.95rem; }
-  .updated {
-    display: inline-block; margin-top: 0.75rem; padding: 0.35rem 0.9rem;
-    background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.35);
-    border-radius: 999px; font-size: 0.85rem;
-  }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1.1rem; }
+  .container { max-width: 960px; margin: 0 auto; }
+  header { text-align: center; margin-bottom: 28px; color: #fff; }
+  header h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; }
+  header p { margin-top: 8px; opacity: 0.85; font-size: 0.95rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
   .card {
-    background: #fff; border-radius: 16px; padding: 1.2rem 1.25rem;
-    box-shadow: 0 10px 24px rgba(20,10,40,0.18);
-    display: flex; flex-direction: column; gap: 0.6rem;
+    background: #fff;
+    border-radius: 14px;
+    padding: 18px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
-  .card:hover { transform: translateY(-3px); box-shadow: 0 16px 32px rgba(20,10,40,0.26); }
-  .card h2 { font-size: 1.05rem; line-height: 1.3; color: #3b1f7a; }
-  .card p { font-size: 0.9rem; line-height: 1.45; color: #4a4458; flex: 1; }
-  .meta { display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; color: #7a7290; }
-  .source { font-weight: 600; color: #6d28d9; }
-  .card a { font-size: 0.85rem; font-weight: 600; color: #6d28d9; text-decoration: none; }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(0,0,0,0.24); }
+  .card .source { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: #8e2de2; }
+  .card h2 { font-size: 1.05rem; line-height: 1.35; font-weight: 650; }
+  .card p { font-size: 0.9rem; line-height: 1.5; color: #4a4a5a; }
+  .card a { margin-top: auto; font-size: 0.85rem; font-weight: 600; color: #6a0dad; text-decoration: none; }
   .card a:hover { text-decoration: underline; }
-  footer { text-align: center; color: #fff; margin-top: 2.5rem; opacity: 0.85; font-size: 0.85rem; }
+  footer { text-align: center; margin-top: 28px; color: #fff; opacity: 0.8; font-size: 0.85rem; }
 </style>
 </head>
 <body>
-<div class="wrap">
+<div class="container">
   <header>
-    <h1>AI News Dashboard</h1>
-    <p>Recent global headlines on artificial intelligence</p>
-    <span class="updated">Last updated: 10:00 PM SAST, September 11, 2026</span>
+    <h1>Global AI News</h1>
+    <p>Recent headlines from around the world</p>
   </header>
-
   <div class="grid">
-
     <div class="card">
-      <h2>The turbulent AI era is here. The choices we make now are critical.</h2>
-      <p>Bill Gates reflects on a pivotal moment for AI, arguing that the decisions made today will shape whether the technology broadly benefits humanity.</p>
-      <div class="meta"><span class="source">Gates Notes</span><span>4 hours ago</span></div>
-      <a href="https://www.gatesnotes.com/a-turbulent-ai-era-and-critical-choices-to-make" target="_blank" rel="noopener">Read more</a>
+      <div class="source">NPR</div>
+      <h2>Former Anthropic researcher outlines threat of AI going rogue</h2>
+      <p>Jacob Coxon, who resigned from Anthropic, is issuing new warnings about the technology acting unpredictably and the dangers it could pose.</p>
+      <a href="https://npr.org/2026/09/10/nx-s1-5964864/former-anthropic-researcher-outlines-threat-of-ai-going-rogue" target="_blank" rel="noopener">Read story &rarr;</a>
     </div>
-
     <div class="card">
-      <h2>Rebels used Anthropic's AI bot to develop guided weapons, report says</h2>
-      <p>Militants in Yemen sought to use an AI coding tool to produce guided rockets and missiles, according to Anthropic, which says it blocked some but not all attempts.</p>
-      <div class="meta"><span class="source">The Washington Post</span><span>6 minutes ago</span></div>
-      <a href="https://www.washingtonpost.com/technology/2026/09/11/rebels-used-anthropics-ai-bot-develop-guided-weapons-report-says/" target="_blank" rel="noopener">Read more</a>
+      <div class="source">Bloomberg</div>
+      <h2>Trump rejects warnings that AI may lead to human extinction</h2>
+      <p>The former president dismissed extinction-level worries, emphasizing a US edge over China while researchers raise alarms.</p>
+      <a href="https://bloomberg.com/news/articles/2026-09-11/trump-rejects-warnings-that-ai-may-lead-to-human-extinction" target="_blank" rel="noopener">Read story &rarr;</a>
     </div>
-
     <div class="card">
-      <h2>US Senate negotiators consider requiring AI firms to mitigate known major risks</h2>
-      <p>Senate negotiators are debating legislation that would place responsibility on tech companies to design safe AI products, according to two Senate aides.</p>
-      <div class="meta"><span class="source">Reuters</span><span>36 minutes ago</span></div>
-      <a href="https://www.reuters.com/legal/litigation/us-senate-negotiators-consider-requiring-ai-firms-mitigate-known-major-risks-2026-09-11/" target="_blank" rel="noopener">Read more</a>
+      <div class="source">Los Angeles Times</div>
+      <h2>Trump rebuffs rising alarm over AI dangers, sparking outcry</h2>
+      <p>He called AI "just code" that could copy itself online, as researcher Jacob Coxon's viral warning drew widespread attention.</p>
+      <a href="https://latimes.com/politics/story/2026-09-11/its-going-to-be-fine-trump-rebuffs-rising-alarm-over-ai-dangers-sparking-outcry" target="_blank" rel="noopener">Read story &rarr;</a>
     </div>
-
     <div class="card">
-      <h2>AI chatbot reduced depression, anxiety, and eating disorder risk symptoms</h2>
-      <p>Researchers evaluated a generative AI chatbot for adults with clinically significant depression, anxiety, or elevated eating disorder risk, finding symptom reduction.</p>
-      <div class="meta"><span class="source">2 Minute Medicine</span><span>5 hours ago</span></div>
-      <a href="https://www.2minutemedicine.com/artificial-intelligence-ai-chatbot-reduced-depression-anxiety-and-eating-disorder-risk-symptoms/" target="_blank" rel="noopener">Read more</a>
+      <div class="source">Washington Times</div>
+      <h2>Congressional interest in regulating AI grows after whistleblower warnings</h2>
+      <p>Lawmakers are increasingly focused on regulation following warnings about risk to humanity, though consensus on approach remains elusive.</p>
+      <a href="https://washingtontimes.com/news/2026/sep/11/congressional-interest-regulating-ai-grows-whistleblower-warnings" target="_blank" rel="noopener">Read story &rarr;</a>
     </div>
-
     <div class="card">
-      <h2>Risks of artificial intelligence are getting harder for Congress to ignore</h2>
-      <p>Lawmakers in both parties are stepping up calls for Congress to act on AI amid new warnings from researchers about the rapidly advancing technology.</p>
-      <div class="meta"><span class="source">Baltimore Sun</span><span>2 hours ago</span></div>
-      <a href="https://www.baltimoresun.com/2026/09/11/risks-of-artificial-intelligence-are-getting-harder-for-congress-to-ignore/" target="_blank" rel="noopener">Read more</a>
+      <div class="source">CTV News</div>
+      <h2>A 10% chance AI wipes us out? Experts weigh in on viral warning</h2>
+      <p>A viral warning suggesting a roughly 10% chance AI could wipe out humanity has captured public attention more than prior alarms.</p>
+      <a href="https://ctvnews.ca/sci-tech/article/a-10-chance-ai-wipes-us-out-experts-weigh-in-on-the-warning-that-went-viral" target="_blank" rel="noopener">Read story &rarr;</a>
     </div>
-
     <div class="card">
-      <h2>AI Inequity Is Developing in Schools</h2>
-      <p>New research highlights a growing divide in how AI tools are adopted across U.S. schools, potentially widening existing educational inequalities.</p>
-      <div class="meta"><span class="source">Chicago Booth</span><span>4 hours ago</span></div>
-      <a href="https://www.chicagobooth.edu/review/2026/september/ai-inequity-is-developing-schools" target="_blank" rel="noopener">Read more</a>
+      <div class="source">The Daily Guardian</div>
+      <h2>US Senate negotiators weigh requiring AI firms to mitigate major risks</h2>
+      <p>Legislation under debate would require AI companies to address known major risks and design safer products.</p>
+      <a href="https://thedailyguardian.com/news/science-tech/us-senate-negotiators-requiring-ai-firms-to-mitigate-known-major-risks-3-756260/" target="_blank" rel="noopener">Read story &rarr;</a>
     </div>
-
     <div class="card">
-      <h2>Building trust in the AI era: MUSC creates Acceptable Use Framework</h2>
-      <p>The Medical University of South Carolina is taking a deliberate approach to AI, rooted in two strategic priorities to guide its acceptable use.</p>
-      <div class="meta"><span class="source">MUSC</span><span>3 hours ago</span></div>
-      <a href="https://www.musc.edu/content-hub/News/2026/09/11/building-trust-in-the-ai-era-musc-creates-acceptable-use-framework" target="_blank" rel="noopener">Read more</a>
+      <div class="source">Anthropic / Regional Media News</div>
+      <h2>Anthropic blocked potential AI bioweapon misuse</h2>
+      <p>The AI lab reported blocking several attempts to misuse its models for biological weapons research.</p>
+      <a href="https://www.regionalmedianews.com/news/national/business/anthropic-says-it-blocked-potential-ai-bioweapon-misuse/" target="_blank" rel="noopener">Read story &rarr;</a>
     </div>
-
     <div class="card">
-      <h2>For Finavia's HR professional, artificial intelligence is part of the job description</h2>
-      <p>When Petra Koskinen joined Finavia in 2023, she was immediately included in a major HR system project, reflecting how AI is reshaping HR roles.</p>
-      <div class="meta"><span class="source">WebWire</span><span>2 hours ago</span></div>
-      <a href="https://www.webwire.com/ViewPressRel.asp?aId=360380" target="_blank" rel="noopener">Read more</a>
+      <div class="source">Bloomberg</div>
+      <h2>AI shows tentative signs of lifting Britain out of its slump</h2>
+      <p>Unexpected summer growth suggests AI is beginning to act as an economic catalyst in the UK.</p>
+      <a href="https://bloomberg.com/news/articles/2026-09-11/ai-shows-tentative-signs-of-lifting-britain-out-of-its-slump" target="_blank" rel="noopener">Read story &rarr;</a>
     </div>
-
     <div class="card">
-      <h2>Supply Chain Visibility AI Market Revenue To Cross $16.4 Billion By 2030</h2>
-      <p>A new market report projects the supply chain visibility AI sector will exceed $16.4 billion by 2030, supported by rising demand.</p>
-      <div class="meta"><span class="source">EIN News</span><span>3 hours ago</span></div>
-      <a href="https://tech.einnews.com/pr_news/941419798/supply-chain-visibility-artificial-intelligence-market-revenue-to-cross-16-4-billion-by-2030-supported-by-rising-demand" target="_blank" rel="noopener">Read more</a>
+      <div class="source">BestMediaInfo</div>
+      <h2>AI is now building fake newsrooms and dummy journalists</h2>
+      <p>Fabricated news is being made to appear organized, local and independently reported through manufactured reach.</p>
+      <a href="https://bestmediainfo.com/insights/ai-is-now-building-fake-newsrooms-dummy-journalists-and-manufactured-reach-12519454" target="_blank" rel="noopener">Read story &rarr;</a>
     </div>
-
     <div class="card">
-      <h2>What The Tech: A new warning about Artificial Intelligence</h2>
-      <p>A consumer tech report looks at warnings that AI could become so powerful that humans can no longer control it.</p>
-      <div class="meta"><span class="source">WAKA 8</span><span>7 hours ago</span></div>
-      <a href="https://www.waka.com/2026/09/11/what-the-tech-a-new-warning-about-artificial-intelligence/" target="_blank" rel="noopener">Read more</a>
+      <div class="source">New Yorker</div>
+      <h2>Can AI go rogue?</h2>
+      <p>A look at growing familiarity with AI safety concerns and the possibility of AI acting unpredictably.</p>
+      <a href="https://newyorker.com/culture/open-questions/can-ai-go-rogue" target="_blank" rel="noopener">Read story &rarr;</a>
     </div>
-
   </div>
-
-  <footer>Updates automatically every 5 hours.</footer>
+  <footer>
+    Last updated: 2:00 AM SAST &middot; Updates every 5 hours
+  </footer>
 </div>
 </body>
 </html>
