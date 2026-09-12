@@ -5,160 +5,173 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI News Dashboard</title>
 <style>
-  :root {
-    --bg1: #f5f3ff;
-    --bg2: #ede9fe;
-    --card: #ffffff;
-    --accent: #7c3aed;
-    --accent2: #a855f7;
-    --text: #1f2937;
-    --muted: #6b7280;
-  }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: linear-gradient(135deg, var(--bg1), var(--bg2));
-    color: var(--text);
+    background: linear-gradient(135deg, #2b0a4e 0%, #4b1d8f 45%, #7b2ff7 100%);
     min-height: 100vh;
+    color: #1f1f2e;
     padding: 2rem 1rem;
   }
-  .container { max-width: 900px; margin: 0 auto; }
-  header { text-align: center; margin-bottom: 2rem; }
-  header h1 {
-    font-size: 2rem;
-    font-weight: 700;
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+  .wrap { max-width: 1000px; margin: 0 auto; }
+  header {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 2.25rem;
   }
-  header p { color: var(--muted); margin-top: 0.5rem; font-size: 0.95rem; }
+  header h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; }
+  header p { margin-top: 0.5rem; font-size: 0.95rem; opacity: 0.85; }
   .timestamp {
     display: inline-block;
-    margin-top: 0.75rem;
-    background: #fff;
-    border: 1px solid #e5e7eb;
+    margin-top: 0.9rem;
+    background: rgba(255,255,255,0.15);
+    padding: 0.35rem 0.9rem;
     border-radius: 999px;
-    padding: 0.35rem 1rem;
-    font-size: 0.8rem;
-    color: var(--muted);
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.85rem;
+    font-weight: 500;
   }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.25rem;
+  }
   .card {
-    background: var(--card);
-    border-radius: 16px;
-    padding: 1.25rem;
-    box-shadow: 0 4px 16px rgba(124, 58, 237, 0.08);
-    border: 1px solid #f0edff;
+    background: #fff;
+    border-radius: 14px;
+    padding: 1.4rem 1.4rem 1.5rem;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.18);
     display: flex;
     flex-direction: column;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
-  .card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(124, 58, 237, 0.14); }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(0,0,0,0.24); }
   .card .source {
     font-size: 0.75rem;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
-    font-weight: 600;
-    color: var(--accent);
-    margin-bottom: 0.6rem;
+    letter-spacing: 0.06em;
+    font-weight: 700;
+    color: #7b2ff7;
+    margin-bottom: 0.5rem;
   }
-  .card h2 { font-size: 1.05rem; line-height: 1.35; margin-bottom: 0.6rem; }
-  .card p { font-size: 0.88rem; color: var(--muted); line-height: 1.5; flex-grow: 1; }
-  .card .meta { margin-top: 1rem; display: flex; justify-content: space-between; align-items: center; }
-  .card .date { font-size: 0.75rem; color: var(--muted); }
+  .card h2 {
+    font-size: 1.1rem;
+    line-height: 1.35;
+    margin-bottom: 0.65rem;
+    color: #1f1f2e;
+  }
+  .card p.summary {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: #4a4a5a;
+    flex: 1;
+    margin-bottom: 1rem;
+  }
+  .card .meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0.25rem;
+  }
+  .card .date { font-size: 0.78rem; color: #8a8a9a; }
   .card a {
-    font-size: 0.82rem;
+    font-size: 0.85rem;
     font-weight: 600;
-    color: var(--accent);
+    color: #7b2ff7;
     text-decoration: none;
   }
   .card a:hover { text-decoration: underline; }
-  footer { text-align: center; margin-top: 2.5rem; color: var(--muted); font-size: 0.8rem; }
+  footer {
+    text-align: center;
+    color: #fff;
+    opacity: 0.7;
+    font-size: 0.8rem;
+    margin-top: 2.5rem;
+  }
 </style>
 </head>
 <body>
-<div class="container">
+<div class="wrap">
   <header>
     <h1>AI News Dashboard</h1>
-    <p>The latest global artificial intelligence headlines</p>
-    <span class="timestamp">Last updated: 17:00 SAST &middot; 12 Sep 2026</span>
+    <p>Recent global artificial intelligence headlines, refreshed automatically.</p>
+    <span class="timestamp">Last updated: 12 September 2026, 22:00 SAST</span>
   </header>
 
   <div class="grid">
-    <div class="card">
-      <div class="source">Gates Notes</div>
-      <h2>The turbulent AI era is here. The choices we make now are critical.</h2>
-      <p>Bill Gates reflects on a career in software and argues that the next chapter of AI demands urgent, deliberate choices.</p>
-      <div class="meta"><span class="date">2h ago</span><a href="https://www.gatesnotes.com/a-turbulent-ai-era-and-critical-choices-to-make" target="_blank" rel="noopener">Read more</a></div>
-    </div>
 
     <div class="card">
       <div class="source">The Washington Post</div>
-      <h2>As AI fears grow, lawmakers are racing to turn alarm into action</h2>
-      <p>A former Anthropic researcher's warning has awakened US lawmakers to AI risks, but turning urgency into law remains difficult.</p>
-      <div class="meta"><span class="date">1h ago</span><a href="https://www.washingtonpost.com/technology/2026/09/12/ais-existential-threatsuddenly-has-washingtonsattention/" target="_blank" rel="noopener">Read more</a></div>
+      <h2>Anthropic CEO calls for the AI industry to slow down</h2>
+      <p class="summary">Anthropic CEO Dario Amodei urged the industry to slow the pace of AI development, warning that safety measures have not kept up with recent advances and rising risk concerns.</p>
+      <div class="meta"><span class="date">2h ago</span><a href="https://www.washingtonpost.com/technology/2026/09/12/anthropic-ceo-dario-amodei-calls-ai-industry-slow-down/" target="_blank" rel="noopener">Read more</a></div>
     </div>
 
     <div class="card">
-      <div class="source">The Next Web</div>
-      <h2>China's AI industry is moving from models to agents, a state report says</h2>
-      <p>A China Telecom report predicts inference will make up 80% of the country's compute market by 2029 as AI shifts toward autonomous agents.</p>
-      <div class="meta"><span class="date">4h ago</span><a href="https://thenextweb.com/news/china-agents-inference-eu-compute" target="_blank" rel="noopener">Read more</a></div>
+      <div class="source">Politico</div>
+      <h2>Anthropic CEO seeks immediate slowdown on AI</h2>
+      <p class="summary">Dario Amodei called for an immediate slowdown of artificial intelligence development on Saturday, citing a warning that recent AI gains have outpaced safety.</p>
+      <div class="meta"><span class="date">2h ago</span><a href="https://www.politico.com/news/2026/09/12/anthropic-ceo-dario-amodei-seeks-immediate-slowdown-artificial-intelligence-01073519" target="_blank" rel="noopener">Read more</a></div>
     </div>
 
     <div class="card">
-      <div class="source">AI News</div>
-      <h2>M&T Bank expands enterprise AI after years of technology overhaul</h2>
-      <p>M&T Bank has rolled out AI copilots to over 15,000 employees across customer service, coding, and risk management.</p>
-      <div class="meta"><span class="date">5h ago</span><a href="https://www.artificialintelligence-news.com/news/mt-bank-enterprise-ai-15000-employees/" target="_blank" rel="noopener">Read more</a></div>
+      <div class="source">BBC</div>
+      <h2>Dramatic insider warnings over AI fall flat with some in Silicon Valley</h2>
+      <p class="summary">A recent spate of stark warnings about AI's dangers has been met with scepticism by executives and investors in the tech sector.</p>
+      <div class="meta"><span class="date">3h ago</span><a href="https://www.bbc.com/news/articles/cq635037g18o" target="_blank" rel="noopener">Read more</a></div>
     </div>
 
     <div class="card">
-      <div class="source">WCM Newsroom</div>
-      <h2>How Will AI Impact the Future of the Clinical Workforce?</h2>
-      <p>Contrary to some forecasts, AI agents may lead to more, not fewer, healthcare professionals working in the United States.</p>
-      <div class="meta"><span class="date">3h ago</span><a href="https://news.weill.cornell.edu/news/2026/09/how-will-ai-impact-the-future-of-the-clinical-workforce" target="_blank" rel="noopener">Read more</a></div>
+      <div class="source">The New York Times</div>
+      <h2>Inside the discussions at AI companies over a superintelligence doomsday</h2>
+      <p class="summary">Researchers at Anthropic, OpenAI, Meta and Google are increasingly trying to raise awareness about the risks of artificial intelligence.</p>
+      <div class="meta"><span class="date">4h ago</span><a href="https://www.nytimes.com/2026/09/12/technology/doomsday-discussions-ai-companies.html" target="_blank" rel="noopener">Read more</a></div>
     </div>
 
     <div class="card">
-      <div class="source">Mad In America</div>
-      <h2>Mental Health in the Age of Artificial Intelligence</h2>
-      <p>Research points to the need to watch our well-being and relationship with digital tools as AI becomes embedded in daily life.</p>
-      <div class="meta"><span class="date">2h ago</span><a href="https://www.madinamerica.com/2026/09/mental-health-in-the-age-of-artificial-intelligence/" target="_blank" rel="noopener">Read more</a></div>
+      <div class="source">Gates Notes</div>
+      <h2>The turbulent AI era is here. The choices we make now are critical.</h2>
+      <p class="summary">Bill Gates reflects on the arrival of a turbulent AI era and stresses that the decisions made now will shape the technology's impact.</p>
+      <div class="meta"><span class="date">4h ago</span><a href="https://www.gatesnotes.com/a-turbulent-ai-era-and-critical-choices-to-make" target="_blank" rel="noopener">Read more</a></div>
     </div>
 
     <div class="card">
-      <div class="source">2 Minute Medicine</div>
-      <h2>AI chatbot reduced depression, anxiety, and eating disorder risk symptoms</h2>
-      <p>A study evaluated a generative AI chatbot for adults with clinically significant depression, anxiety, or eating-disorder risk.</p>
-      <div class="meta"><span class="date">11h ago</span><a href="https://www.2minutemedicine.com/artificial-intelligence-ai-chatbot-reduced-depression-anxiety-and-eating-disorder-risk-symptoms/" target="_blank" rel="noopener">Read more</a></div>
+      <div class="source">San Francisco Examiner</div>
+      <h2>AI could possibly end humanity. How are humans supposed to process that?</h2>
+      <p class="summary">The piece explores the potential threats posed by AI, from bioweapon attacks to economic destabilization, and the ongoing debate over those risks.</p>
+      <div class="meta"><span class="date">3h ago</span><a href="https://www.sfexaminer.com/ai-could-possibly-end-humanity-how-are-humans-supposed-to-process-that/article_a28b08f9-c652-5f16-ae3c-0799bc15d8cb.html" target="_blank" rel="noopener">Read more</a></div>
     </div>
 
     <div class="card">
-      <div class="source">Boston University</div>
-      <h2>BU's New Online MS in Software Engineering for AI Prepares Engineers for the Age of AI</h2>
-      <p>AI is reshaping what engineers build and how they build it; a new online master's program aims to prepare them for the shift.</p>
-      <div class="meta"><span class="date">6h ago</span><a href="https://www.bu.edu/online/2026/09/11/bus-new-online-ms-in-software-engineering-for-ai-prepares-engineers-for-the-age-of-ai/" target="_blank" rel="noopener">Read more</a></div>
-    </div>
-
-    <div class="card">
-      <div class="source">New Ulm Journal</div>
-      <h2>From employee retention to artificial intelligence</h2>
-      <p>A New Ulm Chamber of Commerce CEO panel covered topics spanning employee retention through to the adoption of AI.</p>
-      <div class="meta"><span class="date">9h ago</span><a href="https://www.nujournal.com/news/local-news/2026/09/12/from-employee-retention-to-artificial-intelligence/" target="_blank" rel="noopener">Read more</a></div>
+      <div class="source">Le Monde diplomatique</div>
+      <h2>Artificial intelligence and the left</h2>
+      <p class="summary">An analysis of AI as a synthetic agency that can pacify revolutionary impulses, and what that means for left politics.</p>
+      <div class="meta"><span class="date">5h ago</span><a href="https://mondediplo.com/2026/09/12ai" target="_blank" rel="noopener">Read more</a></div>
     </div>
 
     <div class="card">
       <div class="source">The Morning Call</div>
       <h2>Bill White: A different perspective on artificial intelligence</h2>
-      <p>A columnist shares reader responses and offers a fresh personal take on artificial intelligence and its everyday impact.</p>
-      <div class="meta"><span class="date">3h ago</span><a href="https://www.mcall.com/2026/09/12/bill-white-a-different-perspective-on-artificial-intelligence/" target="_blank" rel="noopener">Read more</a></div>
+      <p class="summary">A columnist shares reader responses and offers an alternative perspective on the societal role of artificial intelligence.</p>
+      <div class="meta"><span class="date">8h ago</span><a href="https://www.mcall.com/2026/09/12/bill-white-a-different-perspective-on-artificial-intelligence/" target="_blank" rel="noopener">Read more</a></div>
     </div>
+
+    <div class="card">
+      <div class="source">Mad In America</div>
+      <h2>Mental health in the age of artificial intelligence</h2>
+      <p class="summary">Research encourages attention to our well-being and relationship with digital tools when using artificial intelligence.</p>
+      <div class="meta"><span class="date">7h ago</span><a href="https://www.madinamerica.com/2026/09/mental-health-in-the-age-of-artificial-intelligence/" target="_blank" rel="noopener">Read more</a></div>
+    </div>
+
+    <div class="card">
+      <div class="source">Boston 25 News</div>
+      <h2>Anthropic CEO warns AI could lead a swarm within 6 to 12 months</h2>
+      <p class="summary">Dario Amodei warned that without safety measures catching up, AI could become capable of leading a swarm within six to twelve months.</p>
+      <div class="meta"><span class="date">2h ago</span><a href="https://www.facebook.com/Boston25News/posts/the-ceo-of-anthropic-said-saturday-the-artificial-intelligence-industry-should-s/1568885861939741/" target="_blank" rel="noopener">Read more</a></div>
+    </div>
+
   </div>
 
-  <footer>Auto-refreshed every 5 hours &middot; Hosted via GitHub Pages</footer>
+  <footer>AI News Dashboard &middot; Automatically refreshed every 5 hours</footer>
 </div>
 </body>
 </html>
