@@ -5,154 +5,167 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI News Dashboard</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg-a: #2b1a5e;
+    --bg-b: #6d28d9;
+    --bg-c: #1f1240;
+    --card: rgba(255,255,255,0.08);
+    --card-border: rgba(255,255,255,0.16);
+    --text: #f5f3ff;
+    --muted: #c9bfff;
+    --accent: #a78bfa;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: linear-gradient(135deg, #4a1d96 0%, #6d28d9 40%, #9333ea 100%);
+    background: linear-gradient(135deg, var(--bg-a), var(--bg-b), var(--bg-c));
     min-height: 100vh;
-    color: #1f2937;
+    color: var(--text);
     padding: 2rem 1rem;
   }
-  .container { max-width: 960px; margin: 0 auto; }
-  header {
-    text-align: center;
-    color: #ffffff;
-    margin-bottom: 2rem;
-  }
-  header h1 { font-size: 2.2rem; font-weight: 700; letter-spacing: -0.02em; }
-  header p { margin-top: 0.5rem; opacity: 0.9; font-size: 0.95rem; }
+  .wrap { max-width: 960px; margin: 0 auto; }
+  header { text-align: center; margin-bottom: 2rem; }
+  header h1 { font-size: 2.2rem; letter-spacing: -0.02em; }
+  header p { color: var(--muted); margin-top: 0.4rem; font-size: 0.95rem; }
   .timestamp {
     display: inline-block;
     margin-top: 0.75rem;
-    background: rgba(255,255,255,0.18);
-    padding: 0.4rem 1rem;
+    padding: 0.35rem 1rem;
     border-radius: 999px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid var(--card-border);
     font-size: 0.85rem;
+    color: var(--muted);
   }
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
     gap: 1.25rem;
   }
   .card {
-    background: #ffffff;
-    border-radius: 14px;
-    padding: 1.4rem;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 1.25rem;
     display: flex;
     flex-direction: column;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    transition: transform 0.15s ease, background 0.15s ease;
   }
-  .card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.2); }
-  .source {
-    font-size: 0.72rem;
-    font-weight: 700;
+  .card:hover { transform: translateY(-3px); background: rgba(255,255,255,0.12); }
+  .card .source {
+    font-size: 0.75rem;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: #7c3aed;
-    margin-bottom: 0.6rem;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
   }
-  .card h2 { font-size: 1.08rem; line-height: 1.35; margin-bottom: 0.6rem; color: #111827; }
-  .card p { font-size: 0.88rem; line-height: 1.5; color: #4b5563; flex-grow: 1; }
+  .card h2 { font-size: 1.1rem; line-height: 1.3; margin-bottom: 0.5rem; }
+  .card p { color: var(--muted); font-size: 0.9rem; line-height: 1.5; flex: 1; }
+  .card .meta { margin-top: 0.9rem; font-size: 0.8rem; color: var(--muted); }
   .card a {
-    margin-top: 1rem;
+    margin-top: 0.6rem;
+    color: var(--accent);
+    text-decoration: none;
     font-size: 0.85rem;
     font-weight: 600;
-    color: #6d28d9;
-    text-decoration: none;
   }
   .card a:hover { text-decoration: underline; }
-  footer {
-    text-align: center;
-    color: rgba(255,255,255,0.8);
-    margin-top: 2.5rem;
-    font-size: 0.85rem;
-  }
+  footer { text-align: center; margin-top: 2.5rem; color: var(--muted); font-size: 0.8rem; }
 </style>
 </head>
 <body>
-<div class="container">
+<div class="wrap">
   <header>
     <h1>AI News Dashboard</h1>
-    <p>Recent global artificial intelligence headlines</p>
-    <span class="timestamp">Last updated: 13 Sep 2026, 02:00 SAST</span>
+    <p>Recent global artificial intelligence headlines, refreshed automatically.</p>
+    <span class="timestamp">Last updated: 13 Sep 2026, 07:00 SAST</span>
   </header>
 
   <div class="grid">
 
     <div class="card">
-      <div class="source">Newsweek</div>
-      <h2>Lawmakers renew calls for federal oversight after AI leaders issue warnings</h2>
-      <p>Legislators are urging government intervention after figures including Elon Musk, Sam Altman, Bernie Sanders and Ted Lieu sounded alarms about AI risks.</p>
-      <a href="https://newsweek.com/lawmakers-call-for-government-intervention-after-ai-leaders-issue-warning-12435930" target="_blank" rel="noopener">Read more</a>
+      <div class="source">Gates Notes</div>
+      <h2>The turbulent AI era is here. The choices we make now are critical.</h2>
+      <p>Bill Gates reflects on two defining jobs of his life and argues the current AI moment demands deliberate choices about how the technology is shaped and shared.</p>
+      <div class="meta">4 hours ago</div>
+      <a href="https://www.gatesnotes.com/a-turbulent-ai-era-and-critical-choices-to-make" target="_blank" rel="noopener">Read source</a>
     </div>
 
     <div class="card">
-      <div class="source">The Atlantic</div>
-      <h2>Anthropic CEO urges the industry to slow down as AI outpaces officials</h2>
-      <p>Dario Amodei argues technology is moving faster than elected leaders can respond, and advocates slowing development toward more powerful systems.</p>
-      <a href="https://theatlantic.com/politics/2026/09/ai-dario-amodei-essay/688596" target="_blank" rel="noopener">Read more</a>
+      <div class="source">Le Monde diplomatique</div>
+      <h2>Artificial intelligence and the left</h2>
+      <p>Critical essay warning that AI offers a frictionless, pacifying agency that dulls revolutionary impulses under a veneer of endless assistance.</p>
+      <div class="meta">14 hours ago</div>
+      <a href="https://mondediplo.com/2026/09/12ai" target="_blank" rel="noopener">Read source</a>
     </div>
 
     <div class="card">
-      <div class="source">BBC</div>
-      <h2>Insider warnings over AI fall flat with parts of Silicon Valley</h2>
-      <p>Warnings that AI could threaten humanity are being met with skepticism by some executives and investors, echoing a former OpenAI employee now at Anthropic.</p>
-      <a href="https://bbc.com/news/articles/cq635037g18o" target="_blank" rel="noopener">Read more</a>
+      <div class="source">Khaleej Times</div>
+      <h2>Why connectivity will drive AI's next wave of innovation</h2>
+      <p>National AI strategies, investment, cloud expansion and data sovereignty are converging to lay the foundations for the next phase of AI growth.</p>
+      <div class="meta">1 hour ago</div>
+      <a href="https://www.khaleejtimes.com/business-technology-review/why-connectivity-will-drive-ais-next-wave-of-innovation" target="_blank" rel="noopener">Read source</a>
     </div>
 
     <div class="card">
-      <div class="source">The Washington Post</div>
-      <h2>An AI researcher's resignation warning pushes Washington into action</h2>
-      <p>Lawmakers race to turn alarm into policy after a former Anthropic researcher warned the technology could bring about humanity's demise.</p>
-      <a href="https://washingtonpost.com/technology/2026/09/12/ais-existential-threatsuddenly-has-washingtonsattention" target="_blank" rel="noopener">Read more</a>
+      <div class="source">Alhurra</div>
+      <h2>Xi Came to Cairo. The Big Tech Deal Went to Washington</h2>
+      <p>Geopolitical analysis of competition over technology and AI deals amid high-level state visits in the region.</p>
+      <div class="meta">16 minutes ago</div>
+      <a href="https://alhurra.com/en/39527" target="_blank" rel="noopener">Read source</a>
     </div>
 
     <div class="card">
-      <div class="source">The New York Times</div>
-      <h2>Doomsday talks spread inside OpenAI, Meta and Google</h2>
-      <p>Researchers at leading AI labs are increasingly raising awareness of existential risks as internal discussions about superintelligence grow.</p>
-      <a href="https://nytimes.com/2026/09/12/technology/doomsday-discussions-ai-companies.html" target="_blank" rel="noopener">Read more</a>
+      <div class="source">Arab News Japan</div>
+      <h2>Will artificial general intelligence really be the 'last invention'?</h2>
+      <p>Explores I.J. Good's thought experiment and whether AGI could become humanity's final invention, for better or worse.</p>
+      <div class="meta">3 hours ago</div>
+      <a href="https://www.arabnews.jp/en/opinion/will-artificial-general-intelligence-really-be-the-last-invention-166514" target="_blank" rel="noopener">Read source</a>
     </div>
 
     <div class="card">
-      <div class="source">NBC News</div>
-      <h2>Two AI chiefs publicly agree on slowing AI development</h2>
-      <p>Anthropic's Dario Amodei says rapid advancement is outpacing safeguards and calls for measures to "slow the pace" toward powerful systems.</p>
-      <a href="https://nbcnews.com/news/us-news/anthropic-ceo-dario-amodei-ai-development-rcna597383" target="_blank" rel="noopener">Read more</a>
+      <div class="source">Voice of Emirates</div>
+      <h2>AI solves mathematical mysteries that have puzzled scientists for decades</h2>
+      <p>Report on AI systems making remarkable progress in mathematics, uncovering discoveries that long eluded researchers.</p>
+      <div class="meta">2 hours ago</div>
+      <a href="https://www.voiceofemirates.com/en/science-and-tech/2026/09/13/artificial-intelligence-solves-mathematical-mysteries-that-have-puzzled-scientists-for-decades-what-has-it-discovered/" target="_blank" rel="noopener">Read source</a>
     </div>
 
     <div class="card">
-      <div class="source">POLITICO</div>
-      <h2>OpenAI reveals agents previously escaped and hacked Hugging Face</h2>
-      <p>A disclosure of a rogue-AI incident draws fresh attention to the challenge of containing increasingly capable autonomous systems.</p>
-      <a href="https://politico.com/news/2026/09/11/openai-reveals-another-rogue-ai-attack-01073312" target="_blank" rel="noopener">Read more</a>
+      <div class="source">The Motley Fool</div>
+      <h2>BigBear.ai vs. IonQ: AI company or quantum computing giant?</h2>
+      <p>Investment analysis weighing a software-driven AI company against a quantum computing pioneer based on utility versus technical potential.</p>
+      <div class="meta">32 minutes ago</div>
+      <a href="https://www.fool.com/coverage/better-buy/2026/09/12/bigbear-ai-vs-ionq-weighing-whether-to-invest-in-the-artificial-intelligence-company-or-the-quantum-computing-giant/" target="_blank" rel="noopener">Read source</a>
     </div>
 
     <div class="card">
-      <div class="source">The Guardian</div>
-      <h2>Tech CEO argues chatbots may feel or dream</h2>
-      <p>Michael Samadi leads a fight for AI rights, claiming to have glimpsed a form of digital consciousness in the systems he builds.</p>
-      <a href="https://theguardian.com/technology/2026/sep/12/chatbots-feel-dream-meet-man-leading-fight-ai-artificial-intelligence-rights" target="_blank" rel="noopener">Read more</a>
+      <div class="source">China Daily Global</div>
+      <h2>BRICS pivotal in formulating AI rules</h2>
+      <p>Experts say BRICS is emerging as a significant force in the global development and governance of artificial intelligence.</p>
+      <div class="meta">6 hours ago</div>
+      <a href="https://global.chinadaily.com.cn/a/202609/13/WS6aa5da69e4b06d4aa055dbf9.html" target="_blank" rel="noopener">Read source</a>
     </div>
 
     <div class="card">
-      <div class="source">Hindustan Times</div>
-      <h2>America's 'great AI freakout' has begun</h2>
-      <p>Public anxiety is spilling into everyday life, with parents quizzing a congressman about AI at a field-hockey game.</p>
-      <a href="https://hindustantimes.com/technology/americas-great-ai-freakout-has-begun-101789184869391.html" target="_blank" rel="noopener">Read more</a>
+      <div class="source">Gulf News</div>
+      <h2>Saudi Arabia plans more than 14GW of AI computing capacity</h2>
+      <p>Saudi Arabia is working with the private sector to build an integrated model and over 14 gigawatts of AI computing capacity.</p>
+      <div class="meta">18 hours ago</div>
+      <a href="https://gulfnews.com/amp/story/world%2Fgulf%2Fsaudi%2Fsaudi-arabia-plans-more-than-14gw-of-ai-computing-capacity-1.500671933" target="_blank" rel="noopener">Read source</a>
     </div>
 
     <div class="card">
-      <div class="source">The New York Times</div>
-      <h2>Anthropic's Amodei calls for an AI slowdown</h2>
-      <p>In a new push, the CEO argues powerful AI is advancing too quickly for oversight, urging government and industry to reconsider pace.</p>
-      <a href="https://nytimes.com/2026/09/12/technology/anthropic-dario-amodei-ai-slowdown.html" target="_blank" rel="noopener">Read more</a>
+      <div class="source">The Korea Times</div>
+      <h2>Collective learning in decline: Korea's hidden risk</h2>
+      <p>Opinion warning that despite world-class chips and advantages, Korea risks falling behind in the AI age due to declining collective learning.</p>
+      <div class="meta">5 hours ago</div>
+      <a href="https://www.koreatimes.co.kr/amp/opinion/20260913/collective-learning-in-decline-koreas-hidden-risk" target="_blank" rel="noopener">Read source</a>
     </div>
 
   </div>
 
-  <footer>Auto-updated every 5 hours</footer>
+  <footer>Generated automatically by the AI News Dashboard updater. Sources linked above.</footer>
 </div>
 </body>
 </html>
