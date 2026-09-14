@@ -5,122 +5,165 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI News Dashboard</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg1: #2b1055;
+    --bg2: #7597de;
+    --card: #ffffff;
+    --ink: #1a1a2e;
+    --muted: #5a5a72;
+    --accent: #6a3de8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: linear-gradient(135deg, #2b1055 0%, #7597de 100%);
+    background: linear-gradient(135deg, var(--bg1), var(--bg2));
     min-height: 100vh;
-    color: #1a1a2e;
-    padding: 40px 20px;
+    color: var(--ink);
+    padding: 2rem 1rem;
   }
-  .container { max-width: 960px; margin: 0 auto; }
-  header { text-align: center; margin-bottom: 36px; color: #fff; }
-  header h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 8px; }
-  header p { font-size: 1rem; opacity: 0.85; }
-  .last-updated {
-    display: inline-block; margin-top: 14px; padding: 6px 16px;
-    background: rgba(255,255,255,0.18); border-radius: 20px; font-size: 0.85rem;
+  .wrap { max-width: 960px; margin: 0 auto; }
+  header { color: #fff; margin-bottom: 1.75rem; }
+  header h1 { font-size: 2rem; font-weight: 700; }
+  header p { margin-top: 0.4rem; opacity: 0.9; font-size: 0.95rem; }
+  .badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.35);
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    margin-top: 0.75rem;
   }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 20px; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.1rem;
+  }
   .card {
-    background: #ffffff; border-radius: 14px; padding: 20px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.18); display: flex; flex-direction: column;
+    background: var(--card);
+    border-radius: 14px;
+    padding: 1.25rem 1.3rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.14);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
-  .card .source {
-    font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
-    letter-spacing: 0.04em; color: #6c50b8; margin-bottom: 8px;
+  .card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,0.2); }
+  .source {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
   }
-  .card h2 { font-size: 1.05rem; line-height: 1.35; margin-bottom: 10px; color: #1a1a2e; }
-  .card p { font-size: 0.9rem; line-height: 1.5; color: #4a4a5e; flex: 1; margin-bottom: 14px; }
-  .card .meta { display: flex; justify-content: space-between; align-items: center; }
-  .card .date { font-size: 0.8rem; color: #8a8a9e; }
+  .card h2 { font-size: 1.05rem; line-height: 1.35; margin-bottom: 0.6rem; color: var(--ink); }
+  .card p { font-size: 0.88rem; color: var(--muted); line-height: 1.5; flex-grow: 1; }
+  .meta { font-size: 0.75rem; color: #9a9ab0; margin-top: 0.8rem; }
   .card a {
-    font-size: 0.85rem; font-weight: 600; color: #4b3ca8; text-decoration: none;
-    border-bottom: 2px solid transparent; transition: border-color 0.2s;
+    margin-top: 0.9rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
   }
-  .card a:hover { border-color: #4b3ca8; }
+  .card a:hover { text-decoration: underline; }
+  footer { color: rgba(255,255,255,0.85); text-align: center; margin-top: 2rem; font-size: 0.8rem; }
 </style>
 </head>
 <body>
-<div class="container">
+<div class="wrap">
   <header>
     <h1>AI News Dashboard</h1>
-    <p>Latest global artificial intelligence headlines</p>
-    <span class="last-updated">Last updated: 13 Sep 2026, 21:00 SAST</span>
+    <p>Recent global headlines on artificial intelligence, refreshed automatically.</p>
+    <span class="badge" id="updated">Last updated: 02:00 SAST · 14 Sep 2026</span>
   </header>
+
   <div class="grid">
 
-    <article class="card">
+    <div class="card">
+      <div class="source">The Washington Post</div>
+      <h2>Trump resists AI slowdown as the political tide turns</h2>
+      <p>Democrats are increasingly attacking the administration's hands-off approach to artificial intelligence regulation as midterms approach.</p>
+      <div class="meta">13 minutes ago</div>
+      <a href="https://www.washingtonpost.com/politics/2026/09/13/trump-rejects-calls-so-slow-ai-development-citing-chinese-competition/" target="_blank" rel="noopener">Read story &rarr;</a>
+    </div>
+
+    <div class="card">
       <div class="source">Gates Notes</div>
       <h2>The turbulent AI era is here. The choices we make now are critical.</h2>
-      <p>Bill Gates reflects on the dramatic acceleration of AI and the pivotal decisions society must confront as the technology reshapes work and daily life.</p>
-      <div class="meta"><span class="date">4h ago</span><a href="https://www.gatesnotes.com/a-turbulent-ai-era-and-critical-choices-to-make" target="_blank">Read more</a></div>
-    </article>
+      <p>Bill Gates reflects on the pivotal decisions ahead as artificial intelligence reshapes work and society.</p>
+      <div class="meta">2 hours ago</div>
+      <a href="https://www.gatesnotes.com/a-turbulent-ai-era-and-critical-choices-to-make" target="_blank" rel="noopener">Read story &rarr;</a>
+    </div>
 
-    <article class="card">
-      <div class="source">BBC</div>
-      <h2>Trump downplays AI risks after dire expert warnings and calls to slow development down</h2>
-      <p>President Trump dismissed expert concerns over AI safety, clashing with researchers urging caution after a week of grim forecasts about unchecked development.</p>
-      <div class="meta"><span class="date">1h ago</span><a href="https://www.bbc.com/news/articles/c7v48vp31mdo" target="_blank">Read more</a></div>
-    </article>
+    <div class="card">
+      <div class="source">Yahoo Finance</div>
+      <h2>Cybersecurity is the next big market for AI, per Jensen Huang</h2>
+      <p>The NVIDIA CEO says cybersecurity is set to become the next major use case for artificial intelligence.</p>
+      <div class="meta">2 hours ago</div>
+      <a href="https://finance.yahoo.com/technology/ai/articles/cybersecurity-next-big-market-artificial-215000090.html" target="_blank" rel="noopener">Read story &rarr;</a>
+    </div>
 
-    <article class="card">
-      <div class="source">The New York Times</div>
-      <h2>Obama Urges Democrats to Move A.I. Oversight to the Center of Their Agenda</h2>
-      <p>The former president warned that AI could be "dangerous" if unregulated and called on his party to prioritize government oversight of the technology.</p>
-      <div class="meta"><span class="date">3h ago</span><a href="https://www.nytimes.com/2026/09/13/us/politics/obama-democrats-ai.html" target="_blank">Read more</a></div>
-    </article>
+    <div class="card">
+      <div class="source">Punchbowl News</div>
+      <h2>Artificial intelligence PACs are growing in number</h2>
+      <p>The count of AI-focused political groups is rising quickly ahead of the midterms, with new spending surfacing.</p>
+      <div class="meta">2 hours ago</div>
+      <a href="https://punchbowl.news/article/tech/ai-pacs-more/" target="_blank" rel="noopener">Read story &rarr;</a>
+    </div>
 
-    <article class="card">
-      <div class="source">Politico</div>
-      <h2>Chip Roy is leaving Congress — but not before warning his colleagues about AI</h2>
-      <p>The departing Texas Republican says he is wrestling with what AI could mean for life, work and governance as he exits office.</p>
-      <div class="meta"><span class="date">1h ago</span><a href="https://www.politico.com/news/2026/09/13/chip-roy-ai-threat-regulation-01073553" target="_blank">Read more</a></div>
-    </article>
+    <div class="card">
+      <div class="source">Avi Loeb – Medium</div>
+      <h2>Defining a new research frontier on the search for extraterrestrial AI (SETAI)</h2>
+      <p>A look at a "code-red" week in AI research and the emerging field of seeking extraterrestrial artificial intelligence.</p>
+      <div class="meta">4 hours ago</div>
+      <a href="https://avi-loeb.medium.com/defining-a-new-research-frontier-on-the-search-for-extraterrestrial-artificial-intelligence-40bad13d1e90" target="_blank" rel="noopener">Read story &rarr;</a>
+    </div>
 
-    <article class="card">
+    <div class="card">
       <div class="source">Al Jazeera</div>
       <h2>What are the five pros and cons of artificial intelligence?</h2>
-      <p>AI unlocks new opportunities in programming and automation, but experts warn of risks to early-career workers and broader societal concerns.</p>
-      <div class="meta"><span class="date">5h ago</span><a href="https://www.aljazeera.com/news/2026/9/13/what-are-the-five-pros-and-cons-of-artificial-intelligence" target="_blank">Read more</a></div>
-    </article>
+      <p>AI creates new opportunities in programming and automation, but experts warn of risks to early-career workers.</p>
+      <div class="meta">9 hours ago</div>
+      <a href="https://www.aljazeera.com/news/2026/9/13/what-are-the-five-pros-and-cons-of-artificial-intelligence" target="_blank" rel="noopener">Read story &rarr;</a>
+    </div>
 
-    <article class="card">
+    <div class="card">
       <div class="source">The Motley Fool</div>
-      <h2>Here Are the Companies in Nvidia's $99 Billion AI Portfolio. These 3 Are the Best of the Bunch</h2>
-      <p>Nvidia held $99 billion in public and private investments at the end of its fiscal quarter, spotlighting three standout holdings.</p>
-      <div class="meta"><span class="date">2h ago</span><a href="https://www.fool.com/investing/2026/09/13/here-are-all-the-companies-in-nvidias-99-billion/" target="_blank">Read more</a></div>
-    </article>
+      <h2>If I could only buy one AI stock, this would be it</h2>
+      <p>A rundown of the artificial intelligence stock landscape and one standout pick among the range of AI-focused companies.</p>
+      <div class="meta">3 hours ago</div>
+      <a href="https://www.fool.com/investing/2026/09/13/if-i-could-only-buy-1-artificial-intelligence-ai-s/" target="_blank" rel="noopener">Read story &rarr;</a>
+    </div>
 
-    <article class="card">
-      <div class="source">The Guardian</div>
-      <h2>AI will transform capitalism – but how?</h2>
-      <p>Technology is set to drastically reshape the economy, and the choices made now will decide what that transformation looks like.</p>
-      <div class="meta"><span class="date">8h ago</span><a href="https://www.theguardian.com/technology/2026/sep/13/ai-will-transform-capitalism-but-how" target="_blank">Read more</a></div>
-    </article>
+    <div class="card">
+      <div class="source">NBC Montana</div>
+      <h2>AI reshaping higher education in Montana</h2>
+      <p>Montana Technological University names its first chief artificial intelligence officer to help students and staff navigate AI.</p>
+      <div class="meta">13 minutes ago</div>
+      <a href="https://nbcmontana.com/news/working-for-you/gallery/ai-reshaping-higher-education-in-montana" target="_blank" rel="noopener">Read story &rarr;</a>
+    </div>
 
-    <article class="card">
-      <div class="source">Lutheran Alliance for Faith, Science and Technology</div>
-      <h2>ELCA releases paper on artificial intelligence considerations</h2>
-      <p>The Evangelical Lutheran Church in America published a theological foundation paper on AI, ethics, human rights and societal well-being.</p>
-      <div class="meta"><span class="date">2h ago</span><a href="https://www.luthscitech.org/elca-artificial-intelligence-social-teaching/" target="_blank">Read more</a></div>
-    </article>
+    <div class="card">
+      <div class="source">Politico</div>
+      <h2>Chip Roy is leaving Congress, but warns colleagues about AI</h2>
+      <p>The Texas Republican says he's wrestling with what the advent of artificial intelligence could mean for life and policy.</p>
+      <div class="meta">5 hours ago</div>
+      <a href="https://www.politico.com/news/2026/09/13/chip-roy-ai-threat-regulation-01073553" target="_blank" rel="noopener">Read story &rarr;</a>
+    </div>
 
-    <article class="card">
+    <div class="card">
       <div class="source">Florida Politics</div>
-      <h2>UNF gets prestigeous grant for AI research used in updating computer software</h2>
-      <p>The University of North Florida secured a grant to advance AI research applied to updating and maintaining research software code.</p>
-      <div class="meta"><span class="date">31m ago</span><a href="https://floridapolitics.com/archives/819787-unf-gets-prestigeous-grant-for-ai-research-used-in-updating-computer-software/" target="_blank">Read more</a></div>
-    </article>
-
-    <article class="card">
-      <div class="source">Yahoo Finance</div>
-      <h2>Prediction: This AI Chip Stock Will Soar After Sept. 30</h2>
-      <p>The memory supercycle driving AI chip demand is the central reason Sandisk and rival memory stocks are drawing fresh investor attention.</p>
-      <div class="meta"><span class="date">7h ago</span><a href="https://finance.yahoo.com/technology/ai/articles/prediction-artificial-intelligence-ai-chip-125500915.html" target="_blank">Read more</a></div>
-    </article>
+      <h2>UNF gets grant for AI research used in updating software</h2>
+      <p>The University of North Florida receives funding for AI use in updating research software code.</p>
+      <div class="meta">5 hours ago</div>
+      <a href="https://floridapolitics.com/archives/819787-unf-gets-prestigeous-grant-for-ai-research-used-in-updating-computer-software/" target="_blank" rel="noopener">Read story &rarr;</a>
+    </div>
 
   </div>
+
+  <footer id="footer">Automatically refreshed every 5 hours.</footer>
 </div>
 </body>
 </html>
