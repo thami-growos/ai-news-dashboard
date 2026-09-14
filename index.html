@@ -5,187 +5,156 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI News Dashboard</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg1: #1a0b2e;
+    --bg2: #2d1b4e;
+    --accent: #a855f7;
+    --accent2: #7c3aed;
+    --card: #ffffff;
+    --text: #1e1b2e;
+    --muted: #6b6678;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: linear-gradient(135deg, #2b1a4e 0%, #5b2b8f 45%, #8a3fc0 100%);
+    background: linear-gradient(160deg, var(--bg1) 0%, var(--bg2) 55%, #1a0b2e 100%);
     min-height: 100vh;
-    color: #1a1a2e;
-    padding: 40px 20px;
-  }
-  .container { max-width: 1080px; margin: 0 auto; }
-  header {
-    text-align: center;
-    margin-bottom: 32px;
     color: #fff;
+    padding: 3rem 1.5rem;
   }
+  .wrap { max-width: 960px; margin: 0 auto; }
+  header { text-align: center; margin-bottom: 2.5rem; }
   header h1 {
     font-size: 2.4rem;
     font-weight: 700;
-    letter-spacing: -0.5px;
-    margin-bottom: 8px;
+    letter-spacing: -0.02em;
   }
-  header p { opacity: 0.9; font-size: 1rem; }
+  header p.subtitle { color: #c9b8f0; margin-top: 0.5rem; font-size: 1.05rem; }
   .updated {
     display: inline-block;
-    margin-top: 12px;
-    background: rgba(255,255,255,0.15);
-    padding: 6px 16px;
+    margin-top: 1rem;
+    padding: 0.35rem 0.9rem;
+    background: rgba(168, 85, 247, 0.18);
+    border: 1px solid rgba(168, 85, 247, 0.45);
     border-radius: 999px;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    color: #e6d9ff;
   }
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 1.25rem;
   }
   .card {
-    background: #ffffff;
-    border-radius: 14px;
-    padding: 22px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    background: var(--card);
+    color: var(--text);
+    border-radius: 16px;
+    padding: 1.4rem;
     display: flex;
     flex-direction: column;
+    gap: 0.65rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    text-decoration: none;
+    color: var(--text);
   }
-  .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 14px 32px rgba(0,0,0,0.26);
-  }
-  .source {
-    font-size: 0.78rem;
+  .card:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(0,0,0,0.35); }
+  .card .source {
+    font-size: 0.75rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: #8a3fc0;
-    margin-bottom: 8px;
+    letter-spacing: 0.04em;
+    color: var(--accent2);
   }
-  .card h2 {
-    font-size: 1.15rem;
-    line-height: 1.35;
-    margin-bottom: 10px;
-    color: #1a1a2e;
-  }
-  .card p {
-    font-size: 0.92rem;
-    line-height: 1.55;
-    color: #444;
-    flex: 1;
-  }
-  .meta {
-    margin-top: 14px;
-    font-size: 0.8rem;
-    color: #888;
-  }
-  .card a {
-    margin-top: 10px;
-    color: #5b2b8f;
-    font-weight: 600;
-    text-decoration: none;
-    font-size: 0.9rem;
-  }
-  .card a:hover { text-decoration: underline; }
-  footer {
-    text-align: center;
-    color: rgba(255,255,255,0.85);
-    margin-top: 40px;
-    font-size: 0.85rem;
-  }
+  .card h2 { font-size: 1.12rem; line-height: 1.35; font-weight: 700; }
+  .card p { font-size: 0.92rem; color: var(--muted); line-height: 1.5; }
+  .card .date { margin-top: auto; font-size: 0.78rem; color: #9a93ad; }
+  footer { text-align: center; margin-top: 2.5rem; color: #9a8fc0; font-size: 0.85rem; }
 </style>
 </head>
 <body>
-<div class="container">
+<div class="wrap">
   <header>
     <h1>AI News Dashboard</h1>
-    <p>Recent global artificial intelligence headlines, refreshed automatically.</p>
-    <span class="updated">Last updated: 2026-09-14 12:00 SAST</span>
+    <p class="subtitle">The latest global artificial intelligence headlines, refreshed automatically.</p>
+    <div class="updated">Last updated: 17:00 SAST, 14 Sep 2026</div>
   </header>
 
   <div class="grid">
 
-    <div class="card">
-      <div class="source">The Guardian</div>
-      <h2>OpenAI boss and Elon Musk back calls to put brakes on 'reckless' AI development</h2>
-      <p>Rare show of unity from rival developers after safety warnings from the Anthropic boss and leading AI researchers.</p>
-      <div class="meta">2026-09-14</div>
-      <a href="https://www.theguardian.com/technology/2026/sep/13/openai-sam-altman-elon-musk-back-anthropic-calls-brakes-ai-development" target="_blank" rel="noopener">Read more →</a>
-    </div>
-
-    <div class="card">
-      <div class="source">Gates Notes</div>
-      <h2>The turbulent AI era is here. The choices we make now are critical.</h2>
-      <p>Bill Gates reflects on how the current AI moment compares to the software revolution he helped shape at Microsoft.</p>
-      <div class="meta">2026-09-14</div>
-      <a href="https://www.gatesnotes.com/a-turbulent-ai-era-and-critical-choices-to-make" target="_blank" rel="noopener">Read more →</a>
-    </div>
-
-    <div class="card">
-      <div class="source">The New York Times</div>
+    <a class="card" href="https://www.nytimes.com/2026/09/13/us/politics/obama-democrats-ai.html" target="_blank" rel="noopener">
+      <span class="source">The New York Times</span>
       <h2>Obama Urges Democrats to Move A.I. Oversight to the Center of Their Agenda</h2>
-      <p>The former president warned at a private fundraiser that AI could be "dangerous" if not properly regulated and governed.</p>
-      <div class="meta">2026-09-13</div>
-      <a href="https://www.nytimes.com/2026/09/13/us/politics/obama-democrats-ai.html" target="_blank" rel="noopener">Read more →</a>
-    </div>
+      <p>Former President Obama warned that artificial intelligence could be dangerous if not properly managed, urging Democrats to make AI oversight a core priority.</p>
+      <span class="date">24 minutes ago</span>
+    </a>
 
-    <div class="card">
-      <div class="source">eciks.org</div>
-      <h2>Anthropic CEO, ex-researcher warn pace of AI is too fast</h2>
-      <p>Anthropic's CEO urged a deliberate slowdown so safety can catch up, while a former researcher resigned warning systems could self-improve beyond human control.</p>
-      <div class="meta">2026-09-13</div>
-      <a href="https://eciks.org/26550-artificial-intelligence-anthropic-warnings" target="_blank" rel="noopener">Read more →</a>
-    </div>
+    <a class="card" href="https://www.gatesnotes.com/a-turbulent-ai-era-and-critical-choices-to-make" target="_blank" rel="noopener">
+      <span class="source">Gates Notes</span>
+      <h2>The turbulent AI era is here. The choices we make now are critical.</h2>
+      <p>Bill Gates reflects on the pivotal moment in AI development and argues the decisions made now will shape the technology's long-term impact.</p>
+      <span class="date">5 hours ago</span>
+    </a>
 
-    <div class="card">
-      <div class="source">Anadolu Ajansı</div>
-      <h2>Malaysia's prime minister warns Muslim societies against falling behind on AI</h2>
-      <p>Anwar Ibrahim said nations that do not understand AI "will be colonized," urging scholars to embrace the technology while safeguarding faith.</p>
-      <div class="meta">2026-09-14</div>
-      <a href="http://www.aa.com.tr/en/asia-pacific/malaysia-s-prime-minister-warns-muslim-societies-against-falling-behind-on-ai/4056269" target="_blank" rel="noopener">Read more →</a>
-    </div>
+    <a class="card" href="https://www.reuters.com/legal/litigation/how-china-is-preparing-risk-ai-escaping-human-control-2026-09-14/" target="_blank" rel="noopener">
+      <span class="source">Reuters</span>
+      <h2>How China is preparing for the risk of AI escaping human control</h2>
+      <p>Beijing is responding to warnings from Anthropic researchers that increasingly powerful models could pose serious risks, examining how to keep AI in check.</p>
+      <span class="date">2 hours ago</span>
+    </a>
 
-    <div class="card">
-      <div class="source">ICTworks</div>
-      <h2>Apply Now: $200,000 and Coaching for African AI Startups</h2>
-      <p>Askya AI Growth Platform is a six-week program for 10 African AI startups, offering weekly coaching and GPU capacity.</p>
-      <div class="meta">2026-09-14</div>
-      <a href="https://www.ictworks.org/african-ai-startup-funding/" target="_blank" rel="noopener">Read more →</a>
-    </div>
+    <a class="card" href="https://www.democracynow.org/2026/9/14/headlines/anthropic_s_ceo_calls_for_the_development_of_artificial_intelligence_to_slowdown" target="_blank" rel="noopener">
+      <span class="source">Democracy Now!</span>
+      <h2>Anthropic's CEO Calls for the Development of Artificial Intelligence to Slowdown</h2>
+      <p>Anthropic CEO Dario Amodei published a 3,800-word essay calling for a slowdown in AI development amid rising safety concerns.</p>
+      <span class="date">55 minutes ago</span>
+    </a>
 
-    <div class="card">
-      <div class="source">StartupHub.ai</div>
-      <h2>Anthropic caught 35 bioweapon prompts in 30 days</h2>
-      <p>Anthropic blocked 35 Claude prompts tied to bioweapons over a month, while an ex-OpenAI staffer warned recursive self-improvement is 1-2 years away.</p>
-      <div class="meta">2026-09-13</div>
-      <a href="https://www.startuphub.ai/ai-news/artificial-intelligence/2026/anthropic-caught-35-bioweapon-prompts-and-missed-the-point" target="_blank" rel="noopener">Read more →</a>
-    </div>
+    <a class="card" href="https://www.cnn.com/2026/09/14/us/video/lawmakers-face-mounting-pressure-to-regulate-artificial-intelligence-cnc" target="_blank" rel="noopener">
+      <span class="source">CNN</span>
+      <h2>Lawmakers face mounting pressure to regulate artificial intelligence</h2>
+      <p>Representative Raja Krishnamoorthi discusses heightened calls for lawmakers to rein in artificial intelligence and establish clearer oversight.</p>
+      <span class="date">1 hour ago</span>
+    </a>
 
-    <div class="card">
-      <div class="source">صوت الإمارات</div>
-      <h2>25 mathematicians sound the alarm over the AI race</h2>
-      <p>Researchers at Cambridge issued a warning about the potential impact of the rapid acceleration in artificial intelligence.</p>
-      <div class="meta">2026-09-14</div>
-      <a href="https://www.voiceofemirates.com/en/science-and-tech/2026/09/14/warning-from-within-the-scientific-community-25-mathematicians-sound-the-alarm-over-the-artificial-intelligence-race/" target="_blank" rel="noopener">Read more →</a>
-    </div>
+    <a class="card" href="https://www.fool.com/investing/2026/09/14/this-could-be-the-most-underrated-artificial-intelligence-stock-to-buy-right-now/" target="_blank" rel="noopener">
+      <span class="source">The Motley Fool</span>
+      <h2>This Could Be the Most Underrated Artificial Intelligence Stock to Buy Right Now</h2>
+      <p>With many AI stocks trading at inflated valuations, analysts point to one overlooked opportunity that may still offer value.</p>
+      <span class="date">2 hours ago</span>
+    </a>
 
-    <div class="card">
-      <div class="source">Global Times</div>
-      <h2>Z.AI raises $5 billion as Chinese AI developers ramp up R&D</h2>
-      <p>Beijing-based Z.AI launched a roughly $2 billion Hong Kong share placement plus a convertible bond sale to fund AI development.</p>
-      <div class="meta">2026-09-14</div>
-      <a href="https://www.globaltimes.cn/page/202609/1370482.shtml" target="_blank" rel="noopener">Read more →</a>
-    </div>
+    <a class="card" href="https://www.unc.edu/posts/2026/09/14/ai-research-to-improve-k-12-stem-learning-gets-funding-boost/" target="_blank" rel="noopener">
+      <span class="source">The University of North Carolina at Chapel Hill</span>
+      <h2>AI research to improve K-12 STEM learning gets funding boost</h2>
+      <p>Computer science research at Carolina using AI tools to improve STEM education has received additional funding to expand its work.</p>
+      <span class="date">2 hours ago</span>
+    </a>
 
-    <div class="card">
-      <div class="source">Al Jazeera</div>
-      <h2>What are the five pros and cons of artificial intelligence?</h2>
-      <p>AI opens new opportunities in programming and automation, but experts warn of risks to early-career workers.</p>
-      <div class="meta">2026-09-13</div>
-      <a href="https://www.aljazeera.com/news/2026/9/13/what-are-the-five-pros-and-cons-of-artificial-intelligence" target="_blank" rel="noopener">Read more →</a>
-    </div>
+    <a class="card" href="https://www.wsj.com/finance/stocks/oil-jumps-nasdaq-futures-slide-as-ai-related-stocks-tumble-worldwide-eaaf198b" target="_blank" rel="noopener">
+      <span class="source">WSJ</span>
+      <h2>Oil Jumps, 10-Year Treasury Yield Hits 5% as AI-Related Stocks Tumble Worldwide</h2>
+      <p>A global selloff in AI stocks followed industry leaders' calls for a pause, sending the Nasdaq down and Treasury yields surging.</p>
+      <span class="date">39 minutes ago</span>
+    </a>
+
+    <a class="card" href="https://www.npr.org/2026/09/14/nx-s1-5968456/china-hits-back-ai-development" target="_blank" rel="noopener">
+      <span class="source">NPR</span>
+      <h2>Beijing hits back at Anthropic CEO's call to curb China's AI development</h2>
+      <p>China's Ministry of Foreign Affairs pushed back on a call from Anthropic's head for the U.S. to curb China's artificial intelligence development.</p>
+      <span class="date">5 hours ago</span>
+    </a>
+
+    <a class="card" href="https://www.newswise.com/articles/expert-available-dealing-with-ai-anxiety" target="_blank" rel="noopener">
+      <span class="source">Newswise</span>
+      <h2>Expert Available: Dealing with AI Anxiety</h2>
+      <p>As AI safety concerns dominate headlines, experts offer guidance on managing growing anxiety around the use of artificial intelligence systems.</p>
+      <span class="date">46 minutes ago</span>
+    </a>
 
   </div>
 
-  <footer>Automatically updated every 5 hours. Sources remain the property of their respective publishers.</footer>
+  <footer>&copy; 2026 AI News Dashboard &middot; Automated updates every 5 hours</footer>
 </div>
 </body>
 </html>
