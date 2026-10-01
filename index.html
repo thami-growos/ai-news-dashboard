@@ -3,136 +3,176 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI News Dashboard</title>
+<title>Global AI News Dashboard</title>
 <style>
+  :root {
+    --bg-start: #4c1d95;
+    --bg-end: #7c3aed;
+    --card-bg: #ffffff;
+    --text-main: #1f2937;
+    --text-muted: #6b7280;
+    --accent: #7c3aed;
+  }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: linear-gradient(135deg, #4c1d95 0%, #7c3aed 50%, #a855f7 100%);
+    background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
     min-height: 100vh;
-    padding: 40px 20px;
-    color: #1e1b2e;
+    padding: 32px 16px;
+    color: var(--text-main);
   }
-  .container { max-width: 980px; margin: 0 auto; }
-  header {
-    text-align: center;
-    color: #fff;
-    margin-bottom: 32px;
-  }
+  .container { max-width: 920px; margin: 0 auto; }
+  header { text-align: center; color: #ffffff; margin-bottom: 36px; }
   header h1 { font-size: 2.2rem; font-weight: 700; letter-spacing: -0.5px; }
-  header p { margin-top: 8px; opacity: 0.9; font-size: 0.95rem; }
-  .updated {
+  header p { margin-top: 8px; opacity: 0.9; font-size: 1rem; }
+  .timestamp {
     display: inline-block;
-    margin-top: 12px;
+    margin-top: 14px;
     background: rgba(255,255,255,0.18);
-    padding: 6px 14px;
+    border: 1px solid rgba(255,255,255,0.3);
     border-radius: 999px;
+    padding: 6px 16px;
     font-size: 0.85rem;
-    font-weight: 600;
   }
-  .grid { display: grid; grid-template-columns: 1fr; gap: 18px; }
-  @media (min-width: 640px) { .grid { grid-template-columns: 1fr 1fr; } }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
   .card {
-    background: #fff;
+    background: var(--card-bg);
     border-radius: 16px;
     padding: 22px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.14);
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.18);
     display: flex;
     flex-direction: column;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
-  .card:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(0,0,0,0.2); }
-  .source {
+  .card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.24); }
+  .card .source {
     font-size: 0.75rem;
-    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    color: #7c3aed;
-    margin-bottom: 10px;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 8px;
   }
-  .card h2 { font-size: 1.12rem; line-height: 1.35; margin-bottom: 10px; color: #2d2440; }
-  .card p { font-size: 0.92rem; line-height: 1.5; color: #555; flex: 1; }
+  .card h2 {
+    font-size: 1.1rem;
+    line-height: 1.35;
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  .card .summary {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    flex: 1;
+  }
+  .card .meta { margin-top: 16px; font-size: 0.78rem; color: var(--text-muted); }
   .card a {
-    margin-top: 14px;
-    font-size: 0.88rem;
+    display: inline-block;
+    margin-top: 12px;
+    color: var(--accent);
     font-weight: 600;
-    color: #7c3aed;
     text-decoration: none;
+    font-size: 0.85rem;
   }
   .card a:hover { text-decoration: underline; }
-  footer { text-align: center; margin-top: 32px; color: rgba(255,255,255,0.75); font-size: 0.82rem; }
+  footer { text-align: center; color: #ffffff; opacity: 0.85; margin-top: 40px; font-size: 0.82rem; }
 </style>
 </head>
 <body>
-<div class="container">
-  <header>
-    <h1>AI News Dashboard</h1>
-    <p>Recent global artificial intelligence headlines</p>
-    <span class="updated">Last updated: 22:00 SAST, 14 Sep 2026</span>
-  </header>
-  <div class="grid">
-    <div class="card">
-      <div class="source">Gates Notes</div>
-      <h2>The turbulent AI era is here. The choices we make now are critical.</h2>
-      <p>Bill Gates reflects on AI's rapid advance, arguing the decisions society makes now will shape whether the technology empowers or destabilizes us.</p>
-      <a href="https://www.gatesnotes.com/a-turbulent-ai-era-and-critical-choices-to-make" target="_blank" rel="noopener">Read more</a>
+  <div class="container">
+    <header>
+      <h1>Global AI News</h1>
+      <p>Latest headlines on artificial intelligence, refreshed automatically</p>
+      <span class="timestamp">Last updated: Oct 1, 2026, 02:00 AM SAST</span>
+    </header>
+
+    <div class="grid">
+      <div class="card">
+        <div class="source">California State Portal</div>
+        <h2>California's nation-leading AI framework just got stronger</h2>
+        <p class="summary">Governor Newsom signs first-in-the-nation worker protections, creating stronger safeguards governing AI involvement in the workplace.</p>
+        <span class="meta">Sep 30, 2026</span>
+        <a href="https://www.gov.ca.gov/2026/09/30/californias-nation-leading-ai-framework-just-got-stronger-governor-newsom-signs-more-first-in-the-nation-worker-protections-and-more/" target="_blank" rel="noopener">Read more &rarr;</a>
+      </div>
+
+      <div class="card">
+        <div class="source">KREM</div>
+        <h2>Senate discusses new guardrails for artificial intelligence</h2>
+        <p class="summary">An expert panel warned that much of the work building and safety-monitoring AI models is now being done by AI itself.</p>
+        <span class="meta">Sep 30, 2026</span>
+        <a href="https://www.krem.com/video/tech/senate-discusses-new-guardrails-for-artificial-intelligence/293-e2045495-2da0-4139-a420-fe575731ea63" target="_blank" rel="noopener">Read more &rarr;</a>
+      </div>
+
+      <div class="card">
+        <div class="source">American Enterprise Institute</div>
+        <h2>Artificial Intelligence Meets Real-World Frictions</h2>
+        <p class="summary">Amid talk of AI and catastrophic risks, a look at the technology's practical, everyday frictions and limitations.</p>
+        <span class="meta">Sep 30, 2026</span>
+        <a href="https://www.aei.org/economics/artificial-intelligence-meets-real-world-frictions/" target="_blank" rel="noopener">Read more &rarr;</a>
+      </div>
+
+      <div class="card">
+        <div class="source">The National Law Review</div>
+        <h2>The Board Director's Playbook: Responsible AI Use</h2>
+        <p class="summary">AI is helping directors research, draft, summarize and test assumptions; a practical framework for responsible use.</p>
+        <span class="meta">Sep 30, 2026</span>
+        <a href="https://natlawreview.com/article/board-directors-playbook-responsible-director-use-artificial-intelligence" target="_blank" rel="noopener">Read more &rarr;</a>
+      </div>
+
+      <div class="card">
+        <div class="source">CancerNetwork</div>
+        <h2>The Evolution of AI in Oncology</h2>
+        <p class="summary">AI is increasingly used in mammography and lung cancer screening to better identify early-stage cancers in patients.</p>
+        <span class="meta">Sep 30, 2026</span>
+        <a href="https://www.cancernetwork.com/view/the-evolution-of-artificial-intelligence-in-oncology-impact-on-trials-workflows-and-outcomes" target="_blank" rel="noopener">Read more &rarr;</a>
+      </div>
+
+      <div class="card">
+        <div class="source">Civic Media</div>
+        <h2>Sheriff's office introduces AI dispatch system named Ava</h2>
+        <p class="summary">Ozaukee County's Communications Center adopted a new AI system to streamline dispatch and maintain focus on emergencies.</p>
+        <span class="meta">Sep 30, 2026</span>
+        <a href="https://civicmedia.us/news/2026/09/30/the-ozaukee-county-sheriffs-office-consolidated-communications-center-has-introduced-a-new-artificial-intelligence-system-named-ava" target="_blank" rel="noopener">Read more &rarr;</a>
+      </div>
+
+      <div class="card">
+        <div class="source">WRAL</div>
+        <h2>NC's AI-powered audit watchdog</h2>
+        <p class="summary">North Carolina's spending watchdog released reports roughly every three days, while experts urge human oversight of AI audits.</p>
+        <span class="meta">Sep 30, 2026</span>
+        <a href="https://www.wral.com/news/local/auditor-artificial-intelligence-watchdog-human-oversight-september-2026/" target="_blank" rel="noopener">Read more &rarr;</a>
+      </div>
+
+      <div class="card">
+        <div class="source">The Fletcher Forum</div>
+        <h2>Common Heritage principles applied to AI</h2>
+        <p class="summary">Following OpenAI's announcement to place five percent of company value in public hands, a look at shared heritage principles for AI.</p>
+        <span class="meta">Sep 30, 2026</span>
+        <a href="https://www.fletcherforum.org/home/month/day/year/title-bex8w-j5x6w-r3by4" target="_blank" rel="noopener">Read more &rarr;</a>
+      </div>
+
+      <div class="card">
+        <div class="source">Frontiers</div>
+        <h2>The Rise of Super-Emotional Intelligence</h2>
+        <p class="summary">The AI future debate is often framed around cognitive capability, overlooking the emerging role of emotional intelligence.</p>
+        <span class="meta">Sep 30, 2026</span>
+        <a href="https://www.frontiersin.org/journals/artificial-intelligence/articles/10.3389/frai.2026.1975692/full" target="_blank" rel="noopener">Read more &rarr;</a>
+      </div>
+
+      <div class="card">
+        <div class="source">Yahoo Finance</div>
+        <h2>Billionaire Englander buys AI stocks up 405% and 575%</h2>
+        <p class="summary">Israel Englander bought stakes in Palantir and Astera Labs in Q2, both strong AI-driven performers.</p>
+        <span class="meta">Sep 30, 2026</span>
+        <a href="https://finance.yahoo.com/markets/stocks/articles/billionaire-israel-englander-buys-2-090402585.html" target="_blank" rel="noopener">Read more &rarr;</a>
+      </div>
     </div>
-    <div class="card">
-      <div class="source">The New York Times</div>
-      <h2>Obama Urges Democrats to Move A.I. Oversight to the Center of Their Agenda</h2>
-      <p>Former President Obama warned at a private fundraiser that AI could be "dangerous" without proper safeguards, urging Democrats to prioritize oversight.</p>
-      <a href="https://www.nytimes.com/2026/09/13/us/politics/obama-democrats-ai.html" target="_blank" rel="noopener">Read more</a>
-    </div>
-    <div class="card">
-      <div class="source">Reuters</div>
-      <h2>Germany says halting AI development not 'viable' as Europe weighs safety of new tech</h2>
-      <p>Berlin said halting AI development is not a viable option for Europe, calling instead for US and China involvement in coordinated safety efforts.</p>
-      <a href="https://www.reuters.com/legal/litigation/germany-says-halting-ai-development-not-viable-calls-us-china-involvement-2026-09-14/" target="_blank" rel="noopener">Read more</a>
-    </div>
-    <div class="card">
-      <div class="source">Newswise</div>
-      <h2>Argonne puts artificial intelligence to work on biology's big challenges</h2>
-      <p>The U.S. Department of Energy's Argonne National Laboratory is leading three projects applying AI to major biological research challenges.</p>
-      <a href="https://www.newswise.com/articles/argonne-puts-artificial-intelligence-to-work-on-biology-s-big-challenges" target="_blank" rel="noopener">Read more</a>
-    </div>
-    <div class="card">
-      <div class="source">Catholic Standard</div>
-      <h2>At Georgetown University dialogue, future of AI seen as 'something we have to tackle together'</h2>
-      <p>Tech leaders and scholars gathered at Georgetown this week as the industry debated slowing its race toward an uncertain, potentially apocalyptic future.</p>
-      <a href="https://www.cathstan.org/local/at-georgetown-university-dialogue-future-of-artificial-intelligence-seen-as-something-we-have-to-tackle-together" target="_blank" rel="noopener">Read more</a>
-    </div>
-    <div class="card">
-      <div class="source">OHCHR</div>
-      <h2>Türk calls for urgent, meaningful action to tackle unprecedented AI risks</h2>
-      <p>UN Human Rights Chief Volker Türk urged states and frontier AI companies to act urgently to ensure human rights are protected from emerging AI risks.</p>
-      <a href="https://www.ohchr.org/en/press-releases/2026/09/turk-calls-urgent-meaningful-action-tackle-unprecedented-ai-risks" target="_blank" rel="noopener">Read more</a>
-    </div>
-    <div class="card">
-      <div class="source">Law.com</div>
-      <h2>Morgan &amp; Morgan Has Been 'Quietly Building' Its Own In-House AI Platform</h2>
-      <p>The personal injury giant has sunk $300 million into its MX2 AI program and plans a $1 billion investment over the next decade.</p>
-      <a href="https://www.law.com/americanlawyer/2026/09/14/morgan--morgan-has-been-quietly-building-its-own-in-house-artificial-intelligence-platform-/" target="_blank" rel="noopener">Read more</a>
-    </div>
-    <div class="card">
-      <div class="source">NBC News</div>
-      <h2>Trump downplays need for guardrails on artificial intelligence</h2>
-      <p>President Trump downplayed the need for AI regulatory guardrails in a social media post, instead saying a "high IQ" president is what is required.</p>
-      <a href="https://www.nbcnews.com/video/trump-downplays-need-for-guardrails-on-artificial-intelligence-269823557996" target="_blank" rel="noopener">Read more</a>
-    </div>
-    <div class="card">
-      <div class="source">University of Texas at Arlington</div>
-      <h2>UTA launches AI degree programs for business</h2>
-      <p>UTA redesigned its bachelor's and master's programs to prepare students to use AI effectively and responsibly in business settings.</p>
-      <a href="https://www.uta.edu/news/news-releases/2026/09/14/uta-launches-ai-degree-programs-for-business" target="_blank" rel="noopener">Read more</a>
-    </div>
-    <div class="card">
-      <div class="source">Elon University</div>
-      <h2>Elon survey finds most Americans believe human purpose is in peril in the 'age of AI'</h2>
-      <p>A national survey found US adults fear AI will undermine meaning and weaken social bonds, even as daily users report some personal benefits.</p>
-      <a href="https://www.elon.edu/u/news/2026/09/14/elon-survey-finds-most-americans-believe-human-purpose-is-in-peril-in-the-age-of-ai/" target="_blank" rel="noopener">Read more</a>
-    </div>
+
+    <footer>Automated AI news dashboard &middot; Updates every 5 hours</footer>
   </div>
-  <footer>Auto-updating every 5 hours &middot; Hosted via GitHub Pages</footer>
-</div>
 </body>
 </html>
