@@ -3,176 +3,133 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Global AI News Dashboard</title>
+<title>AI News Dashboard</title>
 <style>
-  :root {
-    --bg-start: #4c1d95;
-    --bg-end: #7c3aed;
-    --card-bg: #ffffff;
-    --text-main: #1f2937;
-    --text-muted: #6b7280;
-    --accent: #7c3aed;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+    color: #1f2430;
+    background: linear-gradient(135deg, #3b1d6e 0%, #6d28d9 50%, #9333ea 100%);
     min-height: 100vh;
-    padding: 32px 16px;
-    color: var(--text-main);
+    padding: 2rem 1rem;
   }
-  .container { max-width: 920px; margin: 0 auto; }
-  header { text-align: center; color: #ffffff; margin-bottom: 36px; }
-  header h1 { font-size: 2.2rem; font-weight: 700; letter-spacing: -0.5px; }
-  header p { margin-top: 8px; opacity: 0.9; font-size: 1rem; }
-  .timestamp {
-    display: inline-block;
-    margin-top: 14px;
-    background: rgba(255,255,255,0.18);
-    border: 1px solid rgba(255,255,255,0.3);
-    border-radius: 999px;
-    padding: 6px 16px;
-    font-size: 0.85rem;
+  .wrap { max-width: 960px; margin: 0 auto; }
+  header { text-align: center; color: #fff; margin-bottom: 2rem; }
+  header h1 { font-size: 2.2rem; font-weight: 700; letter-spacing: -0.02em; }
+  header p { margin-top: 0.5rem; opacity: 0.85; font-size: 0.95rem; }
+  .meta {
+    display: inline-block; margin-top: 1rem; background: rgba(255,255,255,0.15);
+    padding: 0.4rem 1rem; border-radius: 999px; font-size: 0.85rem;
   }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
-  }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.25rem; }
   .card {
-    background: var(--card-bg);
-    border-radius: 16px;
-    padding: 22px;
+    background: #fff; border-radius: 14px; padding: 1.25rem 1.4rem;
     box-shadow: 0 10px 30px rgba(0,0,0,0.18);
-    display: flex;
-    flex-direction: column;
+    display: flex; flex-direction: column; justify-content: space-between;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
-  .card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.24); }
-  .card .source {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(--accent);
-    font-weight: 700;
-    margin-bottom: 8px;
-  }
-  .card h2 {
-    font-size: 1.1rem;
-    line-height: 1.35;
-    margin-bottom: 10px;
-    font-weight: 700;
-  }
-  .card .summary {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    line-height: 1.5;
-    flex: 1;
-  }
-  .card .meta { margin-top: 16px; font-size: 0.78rem; color: var(--text-muted); }
-  .card a {
-    display: inline-block;
-    margin-top: 12px;
-    color: var(--accent);
-    font-weight: 600;
-    text-decoration: none;
-    font-size: 0.85rem;
-  }
-  .card a:hover { text-decoration: underline; }
-  footer { text-align: center; color: #ffffff; opacity: 0.85; margin-top: 40px; font-size: 0.82rem; }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 16px 38px rgba(0,0,0,0.25); }
+  .card h2 { font-size: 1.05rem; font-weight: 650; line-height: 1.35; margin-bottom: 0.6rem; color: #2b2440; }
+  .card h2 a { color: inherit; text-decoration: none; }
+  .card h2 a:hover { color: #7c3aed; }
+  .card p { font-size: 0.9rem; color: #4b5563; line-height: 1.5; }
+  .foot { margin-top: 1rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; }
+  .source { color: #7c3aed; font-weight: 600; }
+  .date { color: #9ca3af; }
+  footer { text-align: center; color: rgba(255,255,255,0.7); margin-top: 2.5rem; font-size: 0.8rem; }
 </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>Global AI News</h1>
-      <p>Latest headlines on artificial intelligence, refreshed automatically</p>
-      <span class="timestamp">Last updated: Oct 1, 2026, 02:00 AM SAST</span>
-    </header>
+<div class="wrap">
+  <header>
+    <h1>AI News Dashboard</h1>
+    <p>Recent global artificial intelligence headlines</p>
+    <div class="meta">Last updated: 07:00 SAST, 01 Oct 2026</div>
+  </header>
 
-    <div class="grid">
-      <div class="card">
-        <div class="source">California State Portal</div>
-        <h2>California's nation-leading AI framework just got stronger</h2>
-        <p class="summary">Governor Newsom signs first-in-the-nation worker protections, creating stronger safeguards governing AI involvement in the workplace.</p>
-        <span class="meta">Sep 30, 2026</span>
-        <a href="https://www.gov.ca.gov/2026/09/30/californias-nation-leading-ai-framework-just-got-stronger-governor-newsom-signs-more-first-in-the-nation-worker-protections-and-more/" target="_blank" rel="noopener">Read more &rarr;</a>
+  <div class="grid">
+    <div class="card">
+      <div>
+        <h2><a href="https://trinitonian.com/2026/09/30/the-pros-of-artificial-intelligence/" target="_blank" rel="noopener">The pros of artificial intelligence</a></h2>
+        <p>An opinion piece weighing the benefits of AI integration against widespread public concerns about its societal impact.</p>
       </div>
-
-      <div class="card">
-        <div class="source">KREM</div>
-        <h2>Senate discusses new guardrails for artificial intelligence</h2>
-        <p class="summary">An expert panel warned that much of the work building and safety-monitoring AI models is now being done by AI itself.</p>
-        <span class="meta">Sep 30, 2026</span>
-        <a href="https://www.krem.com/video/tech/senate-discusses-new-guardrails-for-artificial-intelligence/293-e2045495-2da0-4139-a420-fe575731ea63" target="_blank" rel="noopener">Read more &rarr;</a>
-      </div>
-
-      <div class="card">
-        <div class="source">American Enterprise Institute</div>
-        <h2>Artificial Intelligence Meets Real-World Frictions</h2>
-        <p class="summary">Amid talk of AI and catastrophic risks, a look at the technology's practical, everyday frictions and limitations.</p>
-        <span class="meta">Sep 30, 2026</span>
-        <a href="https://www.aei.org/economics/artificial-intelligence-meets-real-world-frictions/" target="_blank" rel="noopener">Read more &rarr;</a>
-      </div>
-
-      <div class="card">
-        <div class="source">The National Law Review</div>
-        <h2>The Board Director's Playbook: Responsible AI Use</h2>
-        <p class="summary">AI is helping directors research, draft, summarize and test assumptions; a practical framework for responsible use.</p>
-        <span class="meta">Sep 30, 2026</span>
-        <a href="https://natlawreview.com/article/board-directors-playbook-responsible-director-use-artificial-intelligence" target="_blank" rel="noopener">Read more &rarr;</a>
-      </div>
-
-      <div class="card">
-        <div class="source">CancerNetwork</div>
-        <h2>The Evolution of AI in Oncology</h2>
-        <p class="summary">AI is increasingly used in mammography and lung cancer screening to better identify early-stage cancers in patients.</p>
-        <span class="meta">Sep 30, 2026</span>
-        <a href="https://www.cancernetwork.com/view/the-evolution-of-artificial-intelligence-in-oncology-impact-on-trials-workflows-and-outcomes" target="_blank" rel="noopener">Read more &rarr;</a>
-      </div>
-
-      <div class="card">
-        <div class="source">Civic Media</div>
-        <h2>Sheriff's office introduces AI dispatch system named Ava</h2>
-        <p class="summary">Ozaukee County's Communications Center adopted a new AI system to streamline dispatch and maintain focus on emergencies.</p>
-        <span class="meta">Sep 30, 2026</span>
-        <a href="https://civicmedia.us/news/2026/09/30/the-ozaukee-county-sheriffs-office-consolidated-communications-center-has-introduced-a-new-artificial-intelligence-system-named-ava" target="_blank" rel="noopener">Read more &rarr;</a>
-      </div>
-
-      <div class="card">
-        <div class="source">WRAL</div>
-        <h2>NC's AI-powered audit watchdog</h2>
-        <p class="summary">North Carolina's spending watchdog released reports roughly every three days, while experts urge human oversight of AI audits.</p>
-        <span class="meta">Sep 30, 2026</span>
-        <a href="https://www.wral.com/news/local/auditor-artificial-intelligence-watchdog-human-oversight-september-2026/" target="_blank" rel="noopener">Read more &rarr;</a>
-      </div>
-
-      <div class="card">
-        <div class="source">The Fletcher Forum</div>
-        <h2>Common Heritage principles applied to AI</h2>
-        <p class="summary">Following OpenAI's announcement to place five percent of company value in public hands, a look at shared heritage principles for AI.</p>
-        <span class="meta">Sep 30, 2026</span>
-        <a href="https://www.fletcherforum.org/home/month/day/year/title-bex8w-j5x6w-r3by4" target="_blank" rel="noopener">Read more &rarr;</a>
-      </div>
-
-      <div class="card">
-        <div class="source">Frontiers</div>
-        <h2>The Rise of Super-Emotional Intelligence</h2>
-        <p class="summary">The AI future debate is often framed around cognitive capability, overlooking the emerging role of emotional intelligence.</p>
-        <span class="meta">Sep 30, 2026</span>
-        <a href="https://www.frontiersin.org/journals/artificial-intelligence/articles/10.3389/frai.2026.1975692/full" target="_blank" rel="noopener">Read more &rarr;</a>
-      </div>
-
-      <div class="card">
-        <div class="source">Yahoo Finance</div>
-        <h2>Billionaire Englander buys AI stocks up 405% and 575%</h2>
-        <p class="summary">Israel Englander bought stakes in Palantir and Astera Labs in Q2, both strong AI-driven performers.</p>
-        <span class="meta">Sep 30, 2026</span>
-        <a href="https://finance.yahoo.com/markets/stocks/articles/billionaire-israel-englander-buys-2-090402585.html" target="_blank" rel="noopener">Read more &rarr;</a>
-      </div>
+      <div class="foot"><span class="source">Trinitonian</span><span class="date">7 min ago</span></div>
     </div>
 
-    <footer>Automated AI news dashboard &middot; Updates every 5 hours</footer>
+    <div class="card">
+      <div>
+        <h2><a href="https://www.aei.org/economics/artificial-intelligence-meets-real-world-frictions/" target="_blank" rel="noopener">Artificial Intelligence Meets Real-World Frictions</a></h2>
+        <p>An economic analysis arguing that practical implementation hurdles, not Hollywood-style catastrophe, are the real barrier to AI adoption.</p>
+      </div>
+      <div class="foot"><span class="source">AEI</span><span class="date">8 hr ago</span></div>
+    </div>
+
+    <div class="card">
+      <div>
+        <h2><a href="https://pfluger.house.gov/news/documentsingle.aspx?DocumentID=3047" target="_blank" rel="noopener">Pfluger Introduces Reliable Artificial Intelligence Research Act</a></h2>
+        <p>Congressman August Pfluger introduced the RAIRA bill to prevent bad actors from exploiting AI research.</p>
+      </div>
+      <div class="foot"><span class="source">Congress.gov</span><span class="date">10 hr ago</span></div>
+    </div>
+
+    <div class="card">
+      <div>
+        <h2><a href="https://www.reuters.com/world/india/ai-pressure-client-caution-cloud-indian-it-earnings-september-quarter-2026-10-01/" target="_blank" rel="noopener">AI pressure, client caution cloud Indian IT earnings</a></h2>
+        <p>India's top IT firms brace for another weak quarter and possible cuts to revenue forecasts as AI disruption and cautious clients weigh.</p>
+      </div>
+      <div class="foot"><span class="source">Reuters</span><span class="date">22 min ago</span></div>
+    </div>
+
+    <div class="card">
+      <div>
+        <h2><a href="https://pro.stateaffairs.com/ca/ai-tech/newsom-executive-order-artificial-intelligence-not-super-intelligence" target="_blank" rel="noopener">Newsom Directs State To Keep Using Term Artificial Intelligence</a></h2>
+        <p>California's governor ordered state agencies to continue using "artificial intelligence," rejecting a rebrand to "super intelligence."</p>
+      </div>
+      <div class="foot"><span class="source">State Affairs Pro</span><span class="date">4 hr ago</span></div>
+    </div>
+
+    <div class="card">
+      <div>
+        <h2><a href="https://amsterdamnews.com/news/2026/10/01/pope-leo-raises-concerns-about-artificial-intellegence/" target="_blank" rel="noopener">Pope Leo raises concerns about artificial intelligence</a></h2>
+        <p>An editorial joining Pope Leo XIV in raising ethical questions about AI, framed around the "super intelligence" debate.</p>
+      </div>
+      <div class="foot"><span class="source">Amsterdam News</span><span class="date">1 hr ago</span></div>
+    </div>
+
+    <div class="card">
+      <div>
+        <h2><a href="https://abc7news.com/post/san-francisco-tech-nonprofit-faces-156-rent-hike-ai-fuels-office-demand/19894028/" target="_blank" rel="noopener">SF nonprofit faces 156% rent hike as AI fuels office demand</a></h2>
+        <p>San Francisco's AI boom is driving up commercial real estate demand and squeezing out nonprofits facing steep rent increases.</p>
+      </div>
+      <div class="foot"><span class="source">ABC7</span><span class="date">39 min ago</span></div>
+    </div>
+
+    <div class="card">
+      <div>
+        <h2><a href="https://www.war.gov/News/News-Stories/Article/Article/4615232/government-ai-models-advancing-increasing-productivity/" target="_blank" rel="noopener">Government AI Models Advancing, Increasing Productivity</a></h2>
+        <p>The War Department is working with industry to deploy advanced American AI models to boost productivity, officials said.</p>
+      </div>
+      <div class="foot"><span class="source">Dept. of War</span><span class="date">5 hr ago</span></div>
+    </div>
+
+    <div class="card">
+      <div>
+        <h2><a href="https://civicmedia.us/news/2026/09/30/the-ozaukee-county-sheriffs-office-consolidated-communications-center-has-introduced-a-new-artificial-intelligence-system-named-ava" target="_blank" rel="noopener">Ozaukee County Sheriff introduces AI dispatch system "Ava"</a></h2>
+        <p>A Wisconsin sheriff's office deployed an AI system to streamline emergency dispatch and keep focus on critical calls.</p>
+      </div>
+      <div class="foot"><span class="source">Civic Media</span><span class="date">11 hr ago</span></div>
+    </div>
+
+    <div class="card">
+      <div>
+        <h2><a href="https://calmatters.org/economy/technology/2026/09/on-ai-newsom-gives-labor-only-some-of-what-it-demanded/" target="_blank" rel="noopener">On AI, Newsom gives labor only some of what it demanded</a></h2>
+        <p>California enacted AI regulations limiting how workers can be terminated, overridden, or surveilled, though labor pushed for more.</p>
+      </div>
+      <div class="foot"><span class="source">CalMatters</span><span class="date">5 hr ago</span></div>
+    </div>
   </div>
+
+  <footer>Automatically refreshed every 5 hours</footer>
+</div>
 </body>
 </html>
