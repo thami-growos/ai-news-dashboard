@@ -5,169 +5,132 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI News Dashboard</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --purple-deep: #3b1d60;
+    --purple-mid: #6d3fb8;
+    --purple-light: #9b6fe0;
+    --card-bg: #ffffff;
+    --text: #2b2233;
+    --muted: #6e6280;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: linear-gradient(135deg, #4a1d96 0%, #7c3aed 50%, #a855f7 100%);
+    background: linear-gradient(135deg, #2a1650 0%, #4a2178 45%, #7a3ec0 100%);
     min-height: 100vh;
-    color: #1f2937;
-    padding: 2rem 1rem;
+    color: var(--text);
+    padding: 2rem 1.25rem;
   }
-  .container { max-width: 900px; margin: 0 auto; }
-  header {
-    text-align: center;
-    color: #fff;
-    margin-bottom: 2rem;
-  }
-  header h1 { font-size: 2.2rem; font-weight: 700; letter-spacing: -0.5px; }
-  header p { opacity: 0.9; margin-top: 0.4rem; font-size: 0.95rem; }
-  .updated {
-    display: inline-block;
-    background: rgba(255,255,255,0.18);
-    padding: 0.3rem 0.9rem;
-    border-radius: 999px;
-    font-size: 0.8rem;
-    margin-top: 0.8rem;
+  .wrap { max-width: 900px; margin: 0 auto; }
+  header { text-align: center; color: #fff; margin-bottom: 2rem; }
+  header h1 { font-size: 2.1rem; font-weight: 700; letter-spacing: -0.02em; }
+  header p { margin-top: 0.5rem; opacity: 0.85; }
+  .meta {
+    display: inline-block; margin-top: 0.9rem; background: rgba(255,255,255,0.16);
+    border: 1px solid rgba(255,255,255,0.25); color: #fff;
+    padding: 0.35rem 0.9rem; border-radius: 999px; font-size: 0.85rem;
   }
   .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 1.1rem;
+    display: grid; grid-template-columns: 1fr; gap: 1rem;
   }
   .card {
-    background: #fff;
-    border-radius: 14px;
-    padding: 1.25rem 1.25rem 1rem;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    background: var(--card-bg); border-radius: 14px; padding: 1.25rem 1.4rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18); transition: transform 0.15s ease;
   }
-  .card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.24); }
-  .source {
-    font-size: 0.72rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.6px;
-    color: #7c3aed;
-    margin-bottom: 0.5rem;
+  .card:hover { transform: translateY(-2px); }
+  .card .source {
+    font-size: 0.78rem; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.04em; color: var(--purple-mid); margin-bottom: 0.4rem;
   }
-  .card h2 {
-    font-size: 1.05rem;
-    font-weight: 600;
-    line-height: 1.35;
-    color: #111827;
-    margin-bottom: 0.5rem;
-  }
+  .card h2 { font-size: 1.12rem; line-height: 1.35; margin-bottom: 0.5rem; color: #241636; }
   .card h2 a { color: inherit; text-decoration: none; }
-  .card h2 a:hover { color: #7c3aed; }
-  .summary {
-    font-size: 0.85rem;
-    line-height: 1.5;
-    color: #4b5563;
-    flex: 1;
-  }
-  .meta {
-    margin-top: 0.85rem;
-    font-size: 0.75rem;
-    color: #9ca3af;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid #f3f4f6;
-    padding-top: 0.6rem;
-  }
-  .meta a { color: #7c3aed; font-weight: 600; text-decoration: none; }
-  .meta a:hover { text-decoration: underline; }
-  footer {
-    text-align: center;
-    color: rgba(255,255,255,0.75);
-    margin-top: 2.5rem;
-    font-size: 0.8rem;
-  }
+  .card h2 a:hover { color: var(--purple-mid); }
+  .card p { font-size: 0.93rem; line-height: 1.55; color: var(--muted); }
+  .card .foot { margin-top: 0.7rem; font-size: 0.8rem; color: #a78fc0; }
+  footer { text-align: center; color: rgba(255,255,255,0.75); margin-top: 2.5rem; font-size: 0.85rem; }
 </style>
 </head>
 <body>
-<div class="container">
+<div class="wrap">
   <header>
     <h1>AI News Dashboard</h1>
     <p>Latest global artificial intelligence headlines</p>
-    <span class="updated">Last updated: 12:00 SAST, 01 October 2026</span>
+    <div class="meta">Last updated: 05:00 PM SAST, October 01, 2026</div>
   </header>
-
   <div class="grid">
-    <div class="card">
-      <div class="source">Reuters</div>
-      <h2><a href="https://www.reuters.com/legal/government/chinese-hackers-impersonated-ex-us-official-steal-emails-ai-experts-2026-10-01/" target="_blank" rel="noopener">Chinese hackers impersonated ex-US official to steal emails from AI experts</a></h2>
-      <p class="summary">Chinese hackers impersonated a former US government official and other AI experts to target emails from researchers at think tanks.</p>
-      <div class="meta"><span>42 minutes ago</span><a href="https://www.reuters.com/legal/government/chinese-hackers-impersonated-ex-us-official-steal-emails-ai-experts-2026-10-01/" target="_blank" rel="noopener">Read more</a></div>
-    </div>
 
-    <div class="card">
-      <div class="source">The Guardian</div>
-      <h2><a href="https://www.theguardian.com/us-news/2026/sep/29/trump-ai-deal-tech-ceos-superintelligence" target="_blank" rel="noopener">Trump AI deal rebrands 'artificial intelligence' as 'superintelligence'</a></h2>
-      <p class="summary">The US president announced a vague, 'morally binding' AI agreement among tech CEOs for what he called 'tremendous self-policing'.</p>
-      <div class="meta"><span>16 hours ago</span><a href="https://www.theguardian.com/us-news/2026/sep/29/trump-ai-deal-tech-ceos-superintelligence" target="_blank" rel="noopener">Read more</a></div>
-    </div>
+    <article class="card">
+      <div class="source">The Independent · 7h ago</div>
+      <h2><a href="https://www.independent.co.uk/voices/ai-artificial-intelligence-human-extinction-response-b3049134.html" target="_blank" rel="noopener">We asked AI whether it would lead to human extinction in a decade. Here's what it said</a></h2>
+      <p>The tool put the probability of human extinction mercifully lower than the forecasts of some AI engineers and experts.</p>
+      <div class="foot">Oct 01, 2026</div>
+    </article>
 
-    <div class="card">
-      <div class="source">The New York Times</div>
-      <h2><a href="https://www.nytimes.com/2026/10/01/opinion/ai-huang-gates-superintelligence.html" target="_blank" rel="noopener">Opinion: The Dawn of A.I. Comes at the Dusk of American Sanity</a></h2>
-      <p class="summary">Bret Stephens warns that Americans are growing hostile to artificial intelligence, calling unchecked reliance on AI 'brain-eating'.</p>
-      <div class="meta"><span>54 minutes ago</span><a href="https://www.nytimes.com/2026/10/01/opinion/ai-huang-gates-superintelligence.html" target="_blank" rel="noopener">Read more</a></div>
-    </div>
-
-    <div class="card">
-      <div class="source">CT News Junkie</div>
-      <h2><a href="https://ctnewsjunkie.com/2026/10/01/71-of-voters-want-stricter-ai-guardrails-q-poll-finds/" target="_blank" rel="noopener">71% of voters want stricter AI guardrails, poll finds</a></h2>
-      <p class="summary">A Quinnipiac poll finds strong bi-partisan appetite for stronger AI regulation, with disagreements on which party would handle it best.</p>
-      <div class="meta"><span>1 hour ago</span><a href="https://ctnewsjunkie.com/2026/10/01/71-of-voters-want-stricter-ai-guardrails-q-poll-finds/" target="_blank" rel="noopener">Read more</a></div>
-    </div>
-
-    <div class="card">
-      <div class="source">ACAMS</div>
-      <h2><a href="https://www.acams.org/en/news/irs-artificial-intelligence-drives-sar-clearance-95-percent" target="_blank" rel="noopener">At IRS, artificial intelligence drives SAR clearance to 95 percent</a></h2>
-      <p class="summary">The IRS is using AI to clear Suspicious Activity Reports at a 95 percent rate, a major efficiency gain for financial monitoring.</p>
-      <div class="meta"><span>4 hours ago</span><a href="https://www.acams.org/en/news/irs-artificial-intelligence-drives-sar-clearance-95-percent" target="_blank" rel="noopener">Read more</a></div>
-    </div>
-
-    <div class="card">
-      <div class="source">American Enterprise Institute</div>
-      <h2><a href="https://www.aei.org/economics/artificial-intelligence-meets-real-world-frictions/" target="_blank" rel="noopener">Artificial Intelligence Meets Real-World Frictions</a></h2>
-      <p class="summary">AEI explores the gap between Hollywood-level AI hype and the technology's practical, everyday limitations.</p>
-      <div class="meta"><span>13 hours ago</span><a href="https://www.aei.org/economics/artificial-intelligence-meets-real-world-frictions/" target="_blank" rel="noopener">Read more</a></div>
-    </div>
-
-    <div class="card">
-      <div class="source">Living Lutheran</div>
+    <article class="card">
+      <div class="source">Living Lutheran · 7h ago</div>
       <h2><a href="https://www.livinglutheran.org/theology-beliefs/elca-releases-paper-on-artificial-intelligence-considerations/" target="_blank" rel="noopener">ELCA releases paper on artificial intelligence considerations</a></h2>
-      <p class="summary">The ELCA published a theological foundation document aimed at expanding dialogue on the growing implications of AI.</p>
-      <div class="meta"><span>2 hours ago</span><a href="https://www.livinglutheran.org/theology-beliefs/elca-releases-paper-on-artificial-intelligence-considerations/" target="_blank" rel="noopener">Read more</a></div>
-    </div>
+      <p>The ELCA published a theological foundation document aimed at expanding dialogue on the growing implications of AI.</p>
+      <div class="foot">Oct 01, 2026</div>
+    </article>
 
-    <div class="card">
-      <div class="source">2 Minute Medicine</div>
-      <h2><a href="https://www.2minutemedicine.com/artificial-intelligence-ai-capable-of-identifying-uncommon-gastrointestinal-pathologies-despite-no-targeted-disease-training/" target="_blank" rel="noopener">AI identifies uncommon GI pathologies despite no targeted disease training</a></h2>
-      <p class="summary">Researchers found AI detection models can spot infrequent pathological changes on GI biopsies without disease-specific training.</p>
-      <div class="meta"><span>8 hours ago</span><a href="https://www.2minutemedicine.com/artificial-intelligence-ai-capable-of-identifying-uncommon-gastrointestinal-pathologies-despite-no-targeted-disease-training/" target="_blank" rel="noopener">Read more</a></div>
-    </div>
+    <article class="card">
+      <div class="source">Clemson News · 3h ago</div>
+      <h2><a href="https://news.clemson.edu/new-safeguards-could-help-protect-young-people-from-unsafe-content-generated-by-artificial-intelligence/" target="_blank" rel="noopener">New safeguards could help protect young people from unsafe AI-generated content</a></h2>
+      <p>The rise of AI has created new opportunities in coding and research, and researchers are proposing safeguards for younger users.</p>
+      <div class="foot">Oct 01, 2026</div>
+    </article>
 
-    <div class="card">
-      <div class="source">Frontiers</div>
-      <h2><a href="https://www.frontiersin.org/articles/10.3389/feduc.2026.1964629" target="_blank" rel="noopener">AI in university physics education: a systematic review</a></h2>
-      <p class="summary">A systematic review of empirical studies on how AI is being integrated into university physics teaching.</p>
-      <div class="meta"><span>5 hours ago</span><a href="https://www.frontiersin.org/articles/10.3389/feduc.2026.1964629" target="_blank" rel="noopener">Read more</a></div>
-    </div>
+    <article class="card">
+      <div class="source">PR Newswire · 2h ago</div>
+      <h2><a href="https://www.prnewswire.com/news-releases/longer-lives-uncertain-costs-americans-split-on-how-artificial-intelligence-and-medical-advancements-will-affect-retirement-tiaa-survey-finds-302896051.html" target="_blank" rel="noopener">Americans split on how AI and medical advancements will affect retirement, TIAA survey finds</a></h2>
+      <p>New TIAA research, "Retirement in the Age of AI and GLP-1s," reveals divided views on longer lives and uncertain costs.</p>
+      <div class="foot">Oct 01, 2026</div>
+    </article>
 
-    <div class="card">
-      <div class="source">Trinitonian</div>
+    <article class="card">
+      <div class="source">Trinitonian · 10h ago</div>
       <h2><a href="https://trinitonian.com/2026/09/30/the-pros-of-artificial-intelligence/" target="_blank" rel="noopener">The pros of artificial intelligence</a></h2>
-      <p class="summary">A reflection on the benefits of AI integration amid broader concerns about its societal impact.</p>
-      <div class="meta"><span>5 hours ago</span><a href="https://trinitonian.com/2026/09/30/the-pros-of-artificial-intelligence/" target="_blank" rel="noopener">Read more</a></div>
-    </div>
-  </div>
+      <p>An opinion piece weighs the advantages of AI integration against widespread concerns about its societal impact.</p>
+      <div class="foot">Sep 30, 2026</div>
+    </article>
 
-  <footer>AI News Dashboard &bull; Updates automatically every 5 hours</footer>
+    <article class="card">
+      <div class="source">Nature · 2h ago</div>
+      <h2><a href="https://www.nature.com/articles/s44287-026-00332-4" target="_blank" rel="noopener">Towards system-level artificial intelligence in perovskite photovoltaics</a></h2>
+      <p>Researchers apply AI to advance halide perovskite solar cells, which offer tunable properties and low fabrication costs.</p>
+      <div class="foot">Oct 01, 2026</div>
+    </article>
+
+    <article class="card">
+      <div class="source">OMFIF · 46m ago</div>
+      <h2><a href="https://www.omfif.org/2026/10/giving-artificial-intelligence-the-power-to-pay/" target="_blank" rel="noopener">Giving artificial intelligence the power to pay</a></h2>
+      <p>The OMFIF Digital Monetary Institute Journal examines what must change before agentic payments can advance.</p>
+      <div class="foot">Oct 01, 2026</div>
+    </article>
+
+    <article class="card">
+      <div class="source">Darden Report · 2h ago</div>
+      <h2><a href="https://news.darden.virginia.edu/articles/uva-darden-joins-verizon-ai-skills-for-america-initiative" target="_blank" rel="noopener">UVA Darden joins Verizon's AI Skills for America initiative</a></h2>
+      <p>Darden is providing an "Artificial Intelligence in Marketing" online course led by Professor Raj Venkatesan.</p>
+      <div class="foot">Oct 01, 2026</div>
+    </article>
+
+    <article class="card">
+      <div class="source">The Harvard Crimson · 3h ago</div>
+      <h2><a href="https://www.thecrimson.com/article/2026/9/25/harvard-thesis-ai-policies/" target="_blank" rel="noopener">Harvard departments split on AI use in senior theses</a></h2>
+      <p>Only 18 of Harvard College's 50 concentrations have department-wide restrictions on AI use in senior theses.</p>
+      <div class="foot">Oct 01, 2026</div>
+    </article>
+
+    <article class="card">
+      <div class="source">Pew Research Center · 3h ago</div>
+      <h2><a href="https://www.pewresearch.org/internet/2026/10/01/welcoming-machines-as-audience-a-guide-for-nonprofit-communicators-thinking-about-ai/" target="_blank" rel="noopener">Welcoming machines as audience: a guide for nonprofit communicators thinking about AI</a></h2>
+      <p>Pew Research Center offers an AI best-practices guide and checklist for nonprofit communicators.</p>
+      <div class="foot">Oct 01, 2026</div>
+    </article>
+
+  </div>
+  <footer>Automatically refreshed every 5 hours · Hosted on GitHub Pages</footer>
 </div>
 </body>
 </html>
