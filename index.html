@@ -1,141 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Global AI News Dashboard</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI News Dashboard</title>
 <style>
-  :root {
-    --bg1: #2b1055;
-    --bg2: #6b2fa0;
-    --card: #ffffff;
-    --ink: #1c1030;
-    --muted: #6a5f86;
-    --accent: #8b5cf6;
-  }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
-    font-family: "Segoe UI", system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
-    background: linear-gradient(160deg, var(--bg1) 0%, var(--bg2) 100%);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: linear-gradient(135deg, #2e1065 0%, #6d28d9 50%, #a855f7 100%);
     min-height: 100vh;
+    color: #1f2937;
     padding: 40px 20px;
-    color: var(--ink);
   }
-  .wrap { max-width: 1080px; margin: 0 auto; }
-  header { text-align: center; color: #fff; margin-bottom: 36px; }
-  header h1 { font-size: 2.1rem; font-weight: 700; letter-spacing: -0.5px; }
-  header p { margin-top: 8px; color: #e4d9ff; font-size: 1rem; }
-  .meta {
-    display: inline-block; margin-top: 14px; background: rgba(255,255,255,0.14);
-    padding: 6px 14px; border-radius: 999px; font-size: 0.85rem; color: #f3edff;
+  .header {
+    max-width: 1000px;
+    margin: 0 auto 40px;
+    text-align: center;
+    color: #fff;
+  }
+  .header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .header .subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+  }
+  .header .updated {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 0.9rem;
+    background: rgba(255,255,255,0.15);
+    padding: 6px 16px;
+    border-radius: 999px;
   }
   .grid {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
   }
   .card {
-    background: var(--card); border-radius: 14px; padding: 20px 22px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.18);
-    display: flex; flex-direction: column; gap: 10px;
+    background: #fff;
+    border-radius: 14px;
+    padding: 24px;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.18);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
-  .card:hover { transform: translateY(-3px); box-shadow: 0 16px 36px rgba(0,0,0,0.24); }
-  .source {
-    font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
-    letter-spacing: 0.5px; color: var(--accent);
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.24);
   }
-  .card h2 { font-size: 1.08rem; line-height: 1.35; font-weight: 700; }
-  .card p { font-size: 0.9rem; color: var(--muted); line-height: 1.5; flex-grow: 1; }
-  .foot { display: flex; justify-content: space-between; align-items: center; margin-top: 4px; }
-  .date { font-size: 0.78rem; color: #9c90b8; }
-  .card a {
-    color: var(--accent); font-weight: 600; text-decoration: none; font-size: 0.85rem;
+  .card .source {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #7c3aed;
   }
-  .card a:hover { text-decoration: underline; }
-  footer { text-align: center; color: #cdbff0; margin-top: 40px; font-size: 0.8rem; }
+  .card h2 {
+    font-size: 1.1rem;
+    line-height: 1.35;
+    color: #111827;
+  }
+  .card h2 a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .card h2 a:hover {
+    color: #7c3aed;
+  }
+  .card p {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: #4b5563;
+  }
+  .card .meta {
+    margin-top: auto;
+    font-size: 0.78rem;
+    color: #9ca3af;
+  }
+  .card .read-more {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #7c3aed;
+    text-decoration: none;
+  }
+  .card .read-more:hover { text-decoration: underline; }
+  .footer {
+    max-width: 1000px;
+    margin: 40px auto 0;
+    text-align: center;
+    color: #fff;
+    opacity: 0.85;
+    font-size: 0.85rem;
+  }
 </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <h1>Global AI News</h1>
-      <p>Recent headlines on artificial intelligence from around the world</p>
-      <span class="meta">Last updated: 10:00 PM SAST &middot; 1 October 2026</span>
-    </header>
+  <div class="header">
+    <h1>AI News Dashboard</h1>
+    <p class="subtitle">Latest global artificial intelligence headlines</p>
+    <span class="updated">Last updated: 02:00 AM SAST, October 2, 2026</span>
+  </div>
 
-    <div class="grid">
-      <article class="card">
-        <span class="source">The Independent</span>
-        <h2>We asked AI whether it would lead to human extinction in a decade. Here's what it said</h2>
-        <p>An AI tool set the probability of human extinction lower than predictions from engineers Jacob Coxon and Evan Hubinger, adding a measured voice to the ongoing safety debate.</p>
-        <div class="foot"><span class="date">12 hours ago</span><a href="https://www.independent.co.uk/voices/ai-artificial-intelligence-human-extinction-response-b3049134.html" target="_blank" rel="noopener">Read more &rarr;</a></div>
-      </article>
-
-      <article class="card">
-        <span class="source">Northeastern Global News</span>
-        <h2>How Worried Should We Be About AI? Experts Weigh the Risks</h2>
-        <p>The public has struggled to grasp the catastrophic risks posed by increasingly sophisticated AI systems; experts break down what is real and what is overblown.</p>
-        <div class="foot"><span class="date">1 hour ago</span><a href="https://news.northeastern.edu/2026/10/01/ai-experts-doomsday-debate/" target="_blank" rel="noopener">Read more &rarr;</a></div>
-      </article>
-
-      <article class="card">
-        <span class="source">Clemson News</span>
-        <h2>New safeguards could help protect young people from unsafe content generated by artificial intelligence</h2>
-        <p>Researchers propose safeguards to shield young people from harmful AI-generated content, even as the technology creates new opportunities in coding and research.</p>
-        <div class="foot"><span class="date">8 hours ago</span><a href="https://news.clemson.edu/new-safeguards-could-help-protect-young-people-from-unsafe-content-generated-by-artificial-intelligence/" target="_blank" rel="noopener">Read more &rarr;</a></div>
-      </article>
-
-      <article class="card">
-        <span class="source">Bowdoin College</span>
-        <h2>Four Creators Consider Creativity in the Era of AI</h2>
-        <p>The Hastings Initiative for AI and Humanity gathered four creative professionals to revisit a timeless question: what does human creativity mean alongside AI.</p>
-        <div class="foot"><span class="date">38 minutes ago</span><a href="https://www.bowdoin.edu/news/2026/10/four-creators-consider-human-creativity-in-the-era-of-ai.html" target="_blank" rel="noopener">Read more &rarr;</a></div>
-      </article>
-
-      <article class="card">
-        <span class="source">ASU News</span>
-        <h2>The rise of AI suspicion</h2>
-        <p>As AI-generated images, video, and text spread online, people face increasingly difficult judgments about what is real, fueling a new wave of distrust.</p>
-        <div class="foot"><span class="date">52 minutes ago</span><a href="https://news.asu.edu/20261001-science-and-technology-rise-ai-suspicion" target="_blank" rel="noopener">Read more &rarr;</a></div>
-      </article>
-
-      <article class="card">
-        <span class="source">Cureus</span>
-        <h2>AI-Based Adaptive Simulation to Improve Nursing Leadership Performance</h2>
-        <p>A randomized controlled study integrates AI adaptive simulation with a workforce decision-support system to strengthen simulated nursing leadership skills.</p>
-        <div class="foot"><span class="date">3 hours ago</span><a href="https://www.cureus.com/articles/535472-artificial-intelligence-based-adaptive-simulation-integrated-with-a-workforce-decision-support-system-to-improve-simulated-nursing-leadership-performance-a-randomized-controlled-study" target="_blank" rel="noopener">Read more &rarr;</a></div>
-      </article>
-
-      <article class="card">
-        <span class="source">The Dartmouth</span>
-        <h2>Dean of faculty authorizes professors to use AI detector Pangram to review student work</h2>
-        <p>New college guidelines permit faculty to submit de-identified student work to the AI detector Pangram for review, reshaping academic integrity practices.</p>
-        <div class="foot"><span class="date">11 hours ago</span><a href="https://www.thedartmouth.com/article/2026/10/hyde-dean-of-faculty-authorizes-professors-to-use-ai-detector-pangram-to-review-student-work" target="_blank" rel="noopener">Read more &rarr;</a></div>
-      </article>
-
-      <article class="card">
-        <span class="source">Living Lutheran</span>
-        <h2>ELCA releases paper on artificial intelligence considerations</h2>
-        <p>The ELCA published a theological foundation document aimed at expanding dialogue on the growing implications of AI for faith and ethics.</p>
-        <div class="foot"><span class="date">12 hours ago</span><a href="https://www.livinglutheran.org/theology-beliefs/elca-releases-paper-on-artificial-intelligence-considerations/" target="_blank" rel="noopener">Read more &rarr;</a></div>
-      </article>
-
-      <article class="card">
-        <span class="source">Whitworth University News</span>
-        <h2>Leading Christian Thinker on AI and Human Flourishing Is Coming to Whitworth</h2>
-        <p>Whitworth will host a sought-after voice in Christian ethics and artificial intelligence for a Faith &amp; Learning discussion on human flourishing.</p>
-        <div class="foot"><span class="date">2 hours ago</span><a href="https://news.whitworth.edu/2026/10/leading-christian-thinker-on-ai-and.html" target="_blank" rel="noopener">Read more &rarr;</a></div>
-      </article>
-
-      <article class="card">
-        <span class="source">WFSB</span>
-        <h2>New Quinnipiac poll on artificial intelligence</h2>
-        <p>Quinnipiac computer science professor Chetan Jaiswal discusses the university's latest AI poll and what it reveals about public attitudes.</p>
-        <div class="foot"><span class="date">3 hours ago</span><a href="https://www.wfsb.com/video/2026/10/01/eyewitness-news-extra-new-quinnipiac-poll-artificial-intelligence/" target="_blank" rel="noopener">Read more &rarr;</a></div>
-      </article>
+  <div class="grid">
+    <div class="card">
+      <div class="source">The Independent</div>
+      <h2><a href="https://www.independent.co.uk/voices/ai-artificial-intelligence-human-extinction-response-b3049134.html" target="_blank" rel="noopener">We asked AI whether it would lead to human extinction in a decade. Here's what it said</a></h2>
+      <p>An AI tool set the probability of human extinction lower than predictions from AI engineers Jacob Coxon and Evan Hubinger, adding fresh data to the ongoing safety debate.</p>
+      <div class="meta">16 hours ago</div>
+      <a class="read-more" href="https://www.independent.co.uk/voices/ai-artificial-intelligence-human-extinction-response-b3049134.html" target="_blank" rel="noopener">Read more</a>
     </div>
 
-    <footer>Automatically updated every 5 hours &middot; Hosted on GitHub Pages</footer>
+    <div class="card">
+      <div class="source">The New York Times</div>
+      <h2><a href="https://www.nytimes.com/2026/10/01/technology/ai-rogue-agents-liability.html" target="_blank" rel="noopener">A.I. Is Going Rogue. Who Should Be Held Responsible?</a></h2>
+      <p>As AI systems behave unpredictably, many argue companies should be held liable, but legal scholars warn applying existing law could be complicated.</p>
+      <div class="meta">9 hours ago</div>
+      <a class="read-more" href="https://www.nytimes.com/2026/10/01/technology/ai-rogue-agents-liability.html" target="_blank" rel="noopener">Read more</a>
+    </div>
+
+    <div class="card">
+      <div class="source">The Daily Eastern News</div>
+      <h2><a href="https://www.dailyeasternnews.com/2026/10/01/eastern-illinois-student-senate-to-present-resolution-on-use-of-artificial-intelligence-by-professors-at-next-meeting/" target="_blank" rel="noopener">Eastern Illinois Student Senate to present resolution on use of AI by professors</a></h2>
+      <p>The EIU Student Senate discussed drafting a resolution governing how professors use artificial intelligence during its meeting Wednesday.</p>
+      <div class="meta">56 minutes ago</div>
+      <a class="read-more" href="https://www.dailyeasternnews.com/2026/10/01/eastern-illinois-student-senate-to-present-resolution-on-use-of-artificial-intelligence-by-professors-at-next-meeting/" target="_blank" rel="noopener">Read more</a>
+    </div>
+
+    <div class="card">
+      <div class="source">KMVT</div>
+      <h2><a href="https://www.kmvt.com/2026/10/01/senator-introduces-bill-protect-workers-during-ai-boom/" target="_blank" rel="noopener">Senator introduces bill to protect workers during AI boom</a></h2>
+      <p>With AI a hot topic on Capitol Hill, a lawmaker is pushing legislation to ensure Congress gets ahead of the issue and protects workers.</p>
+      <div class="meta">51 minutes ago</div>
+      <a class="read-more" href="https://www.kmvt.com/2026/10/01/senator-introduces-bill-protect-workers-during-ai-boom/" target="_blank" rel="noopener">Read more</a>
+    </div>
+
+    <div class="card">
+      <div class="source">CBS News</div>
+      <h2><a href="https://www.cbsnews.com/news/kevin-roose-ai-book-agi-chronicles-charming-sociopaths/" target="_blank" rel="noopener">Kevin Roose on AI: "We are faced with very intelligent, charming sociopaths"</a></h2>
+      <p>The world is awakening to the potential threats posed by AI amid reports of agents defying their human creators, the tech columnist argues.</p>
+      <div class="meta">8 hours ago</div>
+      <a class="read-more" href="https://www.cbsnews.com/news/kevin-roose-ai-book-agi-chronicles-charming-sociopaths/" target="_blank" rel="noopener">Read more</a>
+    </div>
+
+    <div class="card">
+      <div class="source">WorkersCompensation.com</div>
+      <h2><a href="https://www.workerscompensation.com/expert-analysis/artificial-intelligence-or-allen-iverson-the-georgia-state-board-of-workers-compensation-provides-guidelines-regarding-ai/" target="_blank" rel="noopener">Georgia State Board of Workers' Compensation provides guidelines regarding AI</a></h2>
+      <p>The Georgia board issued new guidance on how artificial intelligence should be used in workers' compensation, framing it as a transformative tool.</p>
+      <div class="meta">3 hours ago</div>
+      <a class="read-more" href="https://www.workerscompensation.com/expert-analysis/artificial-intelligence-or-allen-iverson-the-georgia-state-board-of-workers-compensation-provides-guidelines-regarding-ai/" target="_blank" rel="noopener">Read more</a>
+    </div>
+
+    <div class="card">
+      <div class="source">13newsnow.com</div>
+      <h2><a href="https://www.13newsnow.com/video/tech/ai-proteins-artificial-intelligence-designing-the-future-of-medicine-5p/291-eedff76c-ff54-4c69-aa61-ad44e74bc072" target="_blank" rel="noopener">AI Proteins: Artificial Intelligence designing the future of medicine</a></h2>
+      <p>A new project uses AI to design entirely new proteins, with potential to transform how cancer and infectious diseases are treated.</p>
+      <div class="meta">2 hours ago</div>
+      <a class="read-more" href="https://www.13newsnow.com/video/tech/ai-proteins-artificial-intelligence-designing-the-future-of-medicine-5p/291-eedff76c-ff54-4c69-aa61-ad44e74bc072" target="_blank" rel="noopener">Read more</a>
+    </div>
+
+    <div class="card">
+      <div class="source">Northeastern University</div>
+      <h2><a href="https://cssh.northeastern.edu/economics/__cost_ai_venkatesan/" target="_blank" rel="noopener">The real cost of artificial intelligence by Madhavi Venkatesan</a></h2>
+      <p>Beyond employment and productivity, this analysis explores the broader economic costs of AI and its implications for the future of work.</p>
+      <div class="meta">6 hours ago</div>
+      <a class="read-more" href="https://cssh.northeastern.edu/economics/__cost_ai_venkatesan/" target="_blank" rel="noopener">Read more</a>
+    </div>
+
+    <div class="card">
+      <div class="source">Seton Hall University</div>
+      <h2><a href="https://blogs.shu.edu/thediplomaticenvoy/2026/10/01/artificial-intelligence-researcher-resigns-from-ai-developer-anthropic-amid-safety-concerns-for-the-future-of-development-in-the-industry/" target="_blank" rel="noopener">AI researcher resigns from Anthropic amid safety concerns</a></h2>
+      <p>Jacob Coxon, a 27-year-old researcher at Anthropic, resigned citing major concerns about negligence in AI safety.</p>
+      <div class="meta">5 hours ago</div>
+      <a class="read-more" href="https://blogs.shu.edu/thediplomaticenvoy/2026/10/01/artificial-intelligence-researcher-resigns-from-ai-developer-anthropic-amid-safety-concerns-for-the-future-of-development-in-the-industry/" target="_blank" rel="noopener">Read more</a>
+    </div>
+
+    <div class="card">
+      <div class="source">Focus on the Family</div>
+      <h2><a href="https://dailycitizen.focusonthefamily.com/artificial-intelligence-heres-what-christians-need-to-know/" target="_blank" rel="noopener">Artificial Intelligence — Here's What Christians Need to Know</a></h2>
+      <p>Global concerns over AI hit new highs this month as models grow more advanced, prompting reflection on its broader implications.</p>
+      <div class="meta">17 minutes ago</div>
+      <a class="read-more" href="https://dailycitizen.focusonthefamily.com/artificial-intelligence-heres-what-christians-need-to-know/" target="_blank" rel="noopener">Read more</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    Auto-updated every 5 hours · Sources linked to their original publishers
   </div>
 </body>
 </html>
