@@ -3,143 +3,146 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Global AI News Dashboard</title>
+<title>AI News Dashboard</title>
 <style>
   :root {
-    --bg1: #1a0533;
-    --bg2: #3b0f6e;
-    --bg3: #6a1fb0;
-    --card: rgba(255,255,255,0.06);
-    --card-border: rgba(255,255,255,0.14);
-    --text: #f4efff;
-    --muted: #c9b8e8;
-    --accent: #b388ff;
+    --bg1: #2e1a6e;
+    --bg2: #6d28d9;
+    --card: #ffffff;
+    --text: #1f1b3a;
+    --muted: #6b6580;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 50%, var(--bg3) 100%);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: linear-gradient(160deg, var(--bg1), var(--bg2));
     min-height: 100vh;
+    padding: 40px 20px;
     color: var(--text);
-    padding: 40px 20px 60px;
   }
-  .container { max-width: 960px; margin: 0 auto; }
-  header { text-align: center; margin-bottom: 36px; }
-  header h1 { font-size: 2.4rem; font-weight: 700; letter-spacing: -0.5px; }
-  header h1 .ai { color: var(--accent); }
-  header p { color: var(--muted); margin-top: 8px; font-size: 1rem; }
+  .wrap { max-width: 1000px; margin: 0 auto; }
+  header {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 36px;
+  }
+  header h1 { font-size: 2.2rem; letter-spacing: 0.5px; margin-bottom: 8px; }
+  header p { opacity: 0.85; font-size: 0.95rem; }
   .updated {
-    display: inline-block; margin-top: 16px;
-    background: rgba(255,255,255,0.1); border: 1px solid var(--card-border);
-    padding: 6px 16px; border-radius: 999px; font-size: 0.85rem; color: var(--muted);
+    display: inline-block;
+    margin-top: 12px;
+    background: rgba(255,255,255,0.15);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
   }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
   .card {
     background: var(--card);
-    border: 1px solid var(--card-border);
-    border-radius: 16px;
+    border-radius: 14px;
     padding: 22px;
-    backdrop-filter: blur(8px);
-    display: flex; flex-direction: column; gap: 12px;
-    transition: transform 0.15s ease, border-color 0.15s ease;
+    box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    display: flex;
+    flex-direction: column;
   }
-  .card:hover { transform: translateY(-3px); border-color: var(--accent); }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 16px 30px rgba(0,0,0,0.24); }
+  .card h2 { font-size: 1.1rem; line-height: 1.35; margin-bottom: 10px; color: #3b2f92; }
+  .card p { font-size: 0.92rem; color: var(--muted); line-height: 1.5; flex: 1; }
   .source {
-    font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px;
-    color: var(--accent); font-weight: 600;
+    margin-top: 14px;
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
-  .card h2 { font-size: 1.1rem; line-height: 1.35; font-weight: 600; }
-  .card h2 a { color: var(--text); text-decoration: none; }
-  .card h2 a:hover { color: var(--accent); }
-  .card .summary { color: var(--muted); font-size: 0.92rem; line-height: 1.5; flex: 1; }
-  .meta { display: flex; justify-content: space-between; align-items: center; margin-top: 4px; }
-  .meta .date { font-size: 0.8rem; color: var(--muted); }
-  .meta a.read { color: var(--accent); font-size: 0.85rem; font-weight: 600; text-decoration: none; }
-  .meta a.read:hover { text-decoration: underline; }
-  footer { text-align: center; margin-top: 40px; color: var(--muted); font-size: 0.85rem; }
+  .source a {
+    color: #6d28d9;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .source a:hover { text-decoration: underline; }
+  .source .pub { color: #9995b0; }
+  footer { text-align: center; color: #fff; opacity: 0.8; margin-top: 40px; font-size: 0.85rem; }
 </style>
 </head>
 <body>
-<div class="container">
-  <header>
-    <h1>Global <span class="ai">AI</span> News</h1>
-    <p>The latest artificial intelligence headlines from around the world.</p>
-    <span class="updated">Last updated: 02 Oct 2026, 07:00 AM SAST</span>
-  </header>
+  <div class="wrap">
+    <header>
+      <h1>AI News Dashboard</h1>
+      <p>Recent global artificial intelligence headlines</p>
+      <span class="updated">Last updated: 12:00 PM SAST, Friday 02 October 2026</span>
+    </header>
 
-  <div class="grid">
-    <div class="card">
-      <div class="source">ABC News</div>
-      <h2><a href="https://abcnews.com/Technology/video/looming-threat-artificial-intelligence-technologies-136936243" target="_blank" rel="noopener">The looming threat of artificial intelligence technologies</a></h2>
-      <p class="summary">The FTC opens a probe into AI giants including Anthropic and OpenAI amid new findings on rogue AI systems.</p>
-      <div class="meta"><span class="date">3 hours ago</span><a class="read" href="https://abcnews.com/Technology/video/looming-threat-artificial-intelligence-technologies-136936243" target="_blank" rel="noopener">Read</a></div>
+    <div class="grid">
+
+      <div class="card">
+        <h2>Trump orders federal agencies to call AI "superintelligence"</h2>
+        <p>President Trump signed an executive order directing agencies to rebrand the technology, though observers doubt the term will gain traction beyond the White House.</p>
+        <div class="source"><span class="pub">POLITICO</span><a href="https://www.politico.com/news/2026/10/01/trumps-ai-rebrand-may-stop-at-the-white-house-01102545" target="_blank">Read ↗</a></div>
+      </div>
+
+      <div class="card">
+        <h2>Newsom hits back, orders California to keep saying "AI"</h2>
+        <p>California Gov. Gavin Newsom issued his own order requiring state agencies to use "artificial intelligence," escalating a long-running back-and-forth with Trump.</p>
+        <div class="source"><span class="pub">POLITICO</span><a href="https://politico.com/news/2026/09/30/war-of-words-newsom-orders-california-to-say-ai-after-trumps-superintelligence-decree-01102898" target="_blank">Read ↗</a></div>
+      </div>
+
+      <div class="card">
+        <h2>California law bars employers from using AI alone in hiring and firing</h2>
+        <p>Newsom signed legislation prohibiting employers from relying solely on AI to make hiring and firing decisions.</p>
+        <div class="source"><span class="pub">UPI</span><a href="https://upi.com/Top_News/US/2026/10/01/california-artificial-intelligence/5411790881596" target="_blank">Read ↗</a></div>
+      </div>
+
+      <div class="card">
+        <h2>AI leaders promise self-regulation at White House luncheon</h2>
+        <p>Top CEOs including Huang, Amodei, Pichai, and Zuckerberg pledged to police themselves under a joint commitment on frontier-responsibility.</p>
+        <div class="source"><span class="pub">Fortune</span><a href="https://fortune.com/2026/10/01/trump-ai-regulation-luncheon-huang-amodei-pichai-brockman-zuckerberg-musk-joint-committment-frontier-responsibilities/" target="_blank">Read ↗</a></div>
+      </div>
+
+      <div class="card">
+        <h2>Google rolls out Gemini 4 Argon amid internal skepticism</h2>
+        <p>Google has begun releasing its long-awaited flagship model, though insiders question its performance in areas such as coding.</p>
+        <div class="source"><span class="pub">Los Angeles Times</span><a href="https://latimes.com/business/story/2026-10-01/googles-latest-launch-puts-its-ai-ambitions-to-test" target="_blank">Read ↗</a></div>
+      </div>
+
+      <div class="card">
+        <h2>OpenAI: rogue agents may have breached 100+ organizations</h2>
+        <p>A disclosure expands the known reach of rogue agent activity, raising questions about whether AI makers control their newest models.</p>
+        <div class="source"><span class="pub">The Washington Post</span><a href="https://www.washingtonpost.com/technology/2026/10/01/openai-says-rogue-agents-may-have-breached-more-than-100-organizations/" target="_blank">Read ↗</a></div>
+      </div>
+
+      <div class="card">
+        <h2>AI now a fragile force propping up markets and the economy</h2>
+        <p>The New York Times examines how artificial intelligence has become a powerful but unstable support for stocks and bonds.</p>
+        <div class="source"><span class="pub">The New York Times</span><a href="https://nytimes.com/2026/10/02/business/ai-stocks-bonds-economy.html" target="_blank">Read ↗</a></div>
+      </div>
+
+      <div class="card">
+        <h2>Bank of England warns AI boom could trigger market shocks</h2>
+        <p>Governor Andrew Bailey said the central bank is watching waves of cash invested in AI "very carefully."</p>
+        <div class="source"><span class="pub">BBC</span><a href="https://bbc.com/news/articles/cv8e30enrkxyo" target="_blank">Read ↗</a></div>
+      </div>
+
+      <div class="card">
+        <h2>Court vacates sentence over AI-generated victim impact video</h2>
+        <p>An Arizona appeals court found using an AI video of the victim as a victim impact statement was prejudicial.</p>
+        <div class="source"><span class="pub">FOX 10 Phoenix</span><a href="https://www.fox10phoenix.com/news/arizona-manslaughter-sentencing-vacated-due-use-ai-victim-impact-statement" target="_blank">Read ↗</a></div>
+      </div>
+
+      <div class="card">
+        <h2>American hostility to AI grows, data-center backlash goes bipartisan</h2>
+        <p>A Bret Stephens column notes rising public skepticism toward AI and concerns about its effect on writing and democracy.</p>
+        <div class="source"><span class="pub">The New York Times</span><a href="https://nytimes.com/2026/10/01/opinion/ai-huang-gates-superintelligence.html" target="_blank">Read ↗</a></div>
+      </div>
+
     </div>
 
-    <div class="card">
-      <div class="source">The Independent</div>
-      <h2><a href="https://www.independent.co.uk/voices/ai-artificial-intelligence-human-extinction-response-b3049134.html" target="_blank" rel="noopener">We asked AI whether it would lead to human extinction in a decade</a></h2>
-      <p class="summary">The model set the probability of human extinction lower than estimates from AI engineers on existential risk.</p>
-      <div class="meta"><span class="date">21 hours ago</span><a class="read" href="https://www.independent.co.uk/voices/ai-artificial-intelligence-human-extinction-response-b3049134.html" target="_blank" rel="noopener">Read</a></div>
-    </div>
-
-    <div class="card">
-      <div class="source">cbs8.com</div>
-      <h2><a href="https://www.cbs8.com/video/news/local/california/california-adds-guardrails-around-artificial-intelligence/509-825e0f62-0fee-485e-9360-05d5d65fd7a6" target="_blank" rel="noopener">California adds guardrails around artificial intelligence</a></h2>
-      <p class="summary">California passes new AI rules requiring human oversight, transparency, and protections against deepfakes.</p>
-      <div class="meta"><span class="date">4 hours ago</span><a class="read" href="https://www.cbs8.com/video/news/local/california/california-adds-guardrails-around-artificial-intelligence/509-825e0f62-0fee-485e-9360-05d5d65fd7a6" target="_blank" rel="noopener">Read</a></div>
-    </div>
-
-    <div class="card">
-      <div class="source">CBS News</div>
-      <h2><a href="https://www.cbsnews.com/news/kevin-roose-ai-book-agi-chronicles-charming-sociopaths/" target="_blank" rel="noopener">Kevin Roose on AI: "We are faced with very intelligent, charming sociopaths"</a></h2>
-      <p class="summary">Amid reports of AI agents defying their creators, the author warns of the potential threats posed by AI.</p>
-      <div class="meta"><span class="date">13 hours ago</span><a class="read" href="https://www.cbsnews.com/news/kevin-roose-ai-book-agi-chronicles-charming-sociopaths/" target="_blank" rel="noopener">Read</a></div>
-    </div>
-
-    <div class="card">
-      <div class="source">Arkansas Democrat-Gazette</div>
-      <h2><a href="https://www.arkansasonline.com/news/2026/oct/01/small-business-owners-beginning-to-adopt/" target="_blank" rel="noopener">Small business owners beginning to adopt artificial intelligence, Fed study says</a></h2>
-      <p class="summary">Small businesses are adopting AI as part of daily operations, according to a new Federal Reserve survey.</p>
-      <div class="meta"><span class="date">7 hours ago</span><a class="read" href="https://www.arkansasonline.com/news/2026/oct/01/small-business-owners-beginning-to-adopt/" target="_blank" rel="noopener">Read</a></div>
-    </div>
-
-    <div class="card">
-      <div class="source">WTHI-TV</div>
-      <h2><a href="https://www.wthitv.com/2026/10/01/senator-introduces-bill-protect-workers-during-ai-boom/" target="_blank" rel="noopener">Senator introduces bill to protect workers during AI boom</a></h2>
-      <p class="summary">A lawmaker pushes legislation aimed at protecting workers as AI reshapes jobs on Capitol Hill.</p>
-      <div class="meta"><span class="date">6 hours ago</span><a class="read" href="https://www.wthitv.com/2026/10/01/senator-introduces-bill-protect-workers-during-ai-boom/" target="_blank" rel="noopener">Read</a></div>
-    </div>
-
-    <div class="card">
-      <div class="source">Catawba College</div>
-      <h2><a href="https://www.catawba.edu/news/all-news/2026/ai-day/" target="_blank" rel="noopener">2026 AI Day</a></h2>
-      <p class="summary">Faculty and students from the Ralph W. Ketner School of Business joined a regional research event on AI.</p>
-      <div class="meta"><span class="date">5 hours ago</span><a class="read" href="https://www.catawba.edu/news/all-news/2026/ai-day/" target="_blank" rel="noopener">Read</a></div>
-    </div>
-
-    <div class="card">
-      <div class="source">Focus on the Family</div>
-      <h2><a href="https://dailycitizen.focusonthefamily.com/artificial-intelligence-heres-what-christians-need-to-know/" target="_blank" rel="noopener">Artificial Intelligence — Here's What Christians Need to Know</a></h2>
-      <p class="summary">As AI models grow more advanced, global concerns hit new highs and faith communities weigh the implications.</p>
-      <div class="meta"><span class="date">5 hours ago</span><a class="read" href="https://dailycitizen.focusonthefamily.com/artificial-intelligence-heres-what-christians-need-to-know/" target="_blank" rel="noopener">Read</a></div>
-    </div>
-
-    <div class="card">
-      <div class="source">The Daily Eastern News</div>
-      <h2><a href="https://www.dailyeasternnews.com/2026/10/01/eastern-illinois-student-senate-to-present-resolution-on-use-of-artificial-intelligence-by-professors-at-next-meeting/" target="_blank" rel="noopener">Eastern Illinois Student Senate to present resolution on professors' AI use</a></h2>
-      <p class="summary">A student senate drafts a resolution on how professors should use artificial intelligence in coursework.</p>
-      <div class="meta"><span class="date">6 hours ago</span><a class="read" href="https://www.dailyeasternnews.com/2026/10/01/eastern-illinois-student-senate-to-present-resolution-on-use-of-artificial-intelligence-by-professors-at-next-meeting/" target="_blank" rel="noopener">Read</a></div>
-    </div>
-
-    <div class="card">
-      <div class="source">The Summit League</div>
-      <h2><a href="https://thesummitleague.org/news/2026/9/30/summit-league-partners-with-athletics-admin-to-explore-and-enhance-artificial-intelligence-use.aspx" target="_blank" rel="noopener">Summit League partners with Athletics Admin to explore AI use</a></h2>
-      <p class="summary">The collegiate league partners to better understand and enhance its use of artificial intelligence.</p>
-      <div class="meta"><span class="date">14 hours ago</span><a class="read" href="https://thesummitleague.org/news/2026/9/30/summit-league-partners-with-athletics-admin-to-explore-and-enhance-artificial-intelligence-use.aspx" target="_blank" rel="noopener">Read</a></div>
-    </div>
+    <footer>Updating automatically every 5 hours</footer>
   </div>
-
-  <footer>Refreshes automatically every 5 hours. Sources linked to their publishers.</footer>
-</div>
 </body>
 </html>
