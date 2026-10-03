@@ -6,216 +6,175 @@
 <title>AI News Dashboard</title>
 <style>
   :root {
-    --purple-dark: #3b1d5e;
-    --purple-mid: #6b2fa8;
-    --purple-light: #9b5fd4;
-    --accent: #c79bff;
-    --card-bg: #ffffff;
-    --text: #2a1740;
-    --muted: #6b5b80;
+    --bg1: #2b1055;
+    --bg2: #7597de;
+    --card: #ffffff;
+    --ink: #1e1e2f;
+    --muted: #6b6b84;
+    --accent: #5b3fa8;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: linear-gradient(135deg, var(--purple-dark) 0%, var(--purple-mid) 55%, var(--purple-light) 100%);
-    background-attachment: fixed;
-    color: var(--text);
+    background: linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 100%);
     min-height: 100vh;
-    padding: 40px 20px;
+    padding: 2rem 1rem;
+    color: var(--ink);
   }
-  .container { max-width: 900px; margin: 0 auto; }
+  .wrap { max-width: 980px; margin: 0 auto; }
   header {
     text-align: center;
     color: #fff;
-    margin-bottom: 36px;
+    margin-bottom: 2rem;
   }
   header h1 {
     font-size: 2.4rem;
     font-weight: 700;
     letter-spacing: -0.5px;
-    margin-bottom: 8px;
+    margin-bottom: 0.4rem;
   }
-  header .subtitle {
-    font-size: 1.05rem;
-    opacity: 0.9;
-  }
-  header .timestamp {
+  header p { opacity: 0.9; font-size: 1rem; }
+  .meta {
     display: inline-block;
-    margin-top: 14px;
-    background: rgba(255,255,255,0.16);
-    padding: 7px 16px;
+    margin-top: 1rem;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: 0.4rem 1rem;
     border-radius: 999px;
-    font-size: 0.9rem;
-    font-weight: 500;
+    font-size: 0.85rem;
   }
   .grid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 18px;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 1.25rem;
   }
   .card {
-    background: var(--card-bg);
-    border-radius: 16px;
-    padding: 22px 24px;
-    box-shadow: 0 8px 24px rgba(20, 8, 40, 0.22);
+    background: var(--card);
+    border-radius: 14px;
+    padding: 1.25rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
   .card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 14px 32px rgba(20, 8, 40, 0.3);
+    box-shadow: 0 14px 30px rgba(0,0,0,0.24);
   }
   .card .source {
     font-size: 0.78rem;
     font-weight: 600;
+    color: var(--accent);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(--purple-mid);
-    margin-bottom: 8px;
+    letter-spacing: 0.4px;
   }
   .card h2 {
-    font-size: 1.18rem;
-    line-height: 1.35;
-    margin-bottom: 10px;
-    color: var(--text);
+    font-size: 1.12rem;
+    line-height: 1.3;
+    font-weight: 700;
   }
-  .card p.summary {
-    font-size: 0.95rem;
-    line-height: 1.55;
-    color: var(--muted);
-    margin-bottom: 14px;
-  }
-  .card .meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.82rem;
-    color: #9a8aad;
-  }
-  .card a.read {
-    color: var(--purple-mid);
-    font-weight: 600;
+  .card h2 a {
+    color: var(--ink);
     text-decoration: none;
   }
-  .card a.read:hover { text-decoration: underline; }
+  .card h2 a:hover { color: var(--accent); }
+  .card .summary {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.5;
+    flex-grow: 1;
+  }
+  .card .date { font-size: 0.78rem; color: #a3a3b8; }
   footer {
     text-align: center;
-    color: rgba(255,255,255,0.8);
-    margin-top: 40px;
+    color: rgba(255,255,255,0.75);
+    margin-top: 2.5rem;
     font-size: 0.85rem;
   }
 </style>
 </head>
 <body>
-<div class="container">
+<div class="wrap">
   <header>
     <h1>AI News Dashboard</h1>
-    <p class="subtitle">Latest global artificial intelligence headlines, refreshed automatically.</p>
-    <span class="timestamp">Last updated: 03 October 2026, 05:00 PM SAST</span>
+    <p>Recent global headlines on artificial intelligence</p>
+    <div class="meta">Last updated: 10:00 PM SAST, 03 Oct 2026</div>
   </header>
-
   <div class="grid">
+
     <div class="card">
-      <div class="source">The Guardian</div>
-      <h2>California's new laws target workers' biggest fear of AI taking their jobs</h2>
-      <p class="summary">The state, home to many AI companies, is among the first to roll out workplace regulations aimed at the technology.</p>
-      <div class="meta">
-        <span>03 Oct 2026</span>
-        <a class="read" href="https://www.theguardian.com/technology/2026/oct/03/california-ai-laws-worker-protection" target="_blank" rel="noopener">Read article &rarr;</a>
-      </div>
+      <div class="source">The Atlantic</div>
+      <h2><a href="https://www.theatlantic.com/technology/2026/10/meet-the-ai-writing-hypocrites/688872/" target="_blank" rel="noopener">Meet the AI-Writing Hypocrites</a></h2>
+      <p class="summary">The university where "artificial intelligence" was coined marks the field's 70th birthday, but researchers and instructors who criticize AI use are quietly relying on it themselves.</p>
+      <div class="date">Published 39 minutes ago</div>
     </div>
 
     <div class="card">
-      <div class="source">NBC News</div>
-      <h2>Global tech policymakers agree to embrace AI in science</h2>
-      <p class="summary">The U.S. plans a joint statement with 15 other countries outlining a shared vision for a "golden age of science" that embraces artificial intelligence.</p>
-      <div class="meta">
-        <span>03 Oct 2026</span>
-        <a class="read" href="https://www.nbcnews.com/tech/tech-news/global-tech-policymakers-embrace-ai-science-rcna600974" target="_blank" rel="noopener">Read article &rarr;</a>
-      </div>
+      <div class="source">The New York Times</div>
+      <h2><a href="https://www.nytimes.com/2026/10/01/technology/ai-rogue-agents-liability.html" target="_blank" rel="noopener">A.I. Is Going Rogue. Who Should Be Held Responsible?</a></h2>
+      <p class="summary">As AI systems behave in unexpected ways, legal scholars weigh whether companies should be liable for runaway technology and how existing law might apply.</p>
+      <div class="date">Published 5 hours ago</div>
     </div>
 
     <div class="card">
-      <div class="source">The Motley Fool</div>
-      <h2>Better Artificial Intelligence Stock: NVIDIA vs. SK Hynix</h2>
-      <p class="summary">As the AI boom continues, analysts compare two key players in AI market expansion: NVIDIA and SK Hynix.</p>
-      <div class="meta">
-        <span>03 Oct 2026</span>
-        <a class="read" href="https://www.fool.com/coverage/better-buy/2026/10/02/better-artificial-intelligence-stock-nvidia-vs-sk-hynix/" target="_blank" rel="noopener">Read article &rarr;</a>
-      </div>
+      <div class="source">KOTA Territory News</div>
+      <h2><a href="https://www.kotatv.com/2026/10/03/sen-rounds-anthropic-leaders-talk-ais-future-south-dakota-mines/" target="_blank" rel="noopener">Sen. Rounds, Anthropic leaders talk AI's future at South Dakota Mines</a></h2>
+      <p class="summary">Senator Mike Rounds joined Anthropic leaders to discuss AI's impact on jobs, healthcare, security, and intellectual property at South Dakota Mines.</p>
+      <div class="date">Published 2 hours ago</div>
     </div>
 
     <div class="card">
-      <div class="source">ABC News</div>
-      <h2>How the Smithsonian is using AI to connect artifacts from the American Revolution</h2>
-      <p class="summary">The Smithsonian Institution is using artificial intelligence to better understand its collection related to the American Revolution.</p>
-      <div class="meta">
-        <span>03 Oct 2026</span>
-        <a class="read" href="https://abcnews.com/US/wireStory/smithsonian-ai-connect-artifacts-american-revolution-136966980" target="_blank" rel="noopener">Read article &rarr;</a>
-      </div>
+      <div class="source">The Suffolk Times</div>
+      <h2><a href="https://suffolktimes.timesreview.com/2026/10/guest-column-a-caution-about-artificial-intelligence/" target="_blank" rel="noopener">Guest column: A caution about artificial intelligence</a></h2>
+      <p class="summary">A columnist reflects on computing's decades-long arc, from slide rules and FORTRAN to modern AI, urging careful thought about where the technology is heading.</p>
+      <div class="date">Published 3 hours ago</div>
     </div>
 
     <div class="card">
-      <div class="source">2 Minute Medicine</div>
-      <h2>AI-triggered rapid response notifications were associated with lower mortality among inpatients</h2>
-      <p class="summary">Researchers evaluated an AI-powered alert system that automatically activated rapid response teams, finding a link to lower mortality.</p>
-      <div class="meta">
-        <span>03 Oct 2026</span>
-        <a class="read" href="https://www.2minutemedicine.com/artificial-intelligence-ai-triggered-rapid-response-notifications-were-associated-with-lower-mortality-among-inpatients/" target="_blank" rel="noopener">Read article &rarr;</a>
-      </div>
+      <div class="source">UNN News of the World</div>
+      <h2><a href="https://unn.ua/en/amp/north-korea-reported-using-artificial-intelligence-during-a-missile-test" target="_blank" rel="noopener">North Korea reported using artificial intelligence during a missile test</a></h2>
+      <p class="summary">Pyongyang said it tested a medium-range missile capable of changing trajectory at low altitude, while Seoul reported its flight details.</p>
+      <div class="date">Published 3 hours ago</div>
     </div>
 
     <div class="card">
-      <div class="source">Cureus</div>
-      <h2>AI for Automated Analysis of Intravascular Ultrasound in Coronary Artery Disease</h2>
-      <p class="summary">A systematic review examines how artificial intelligence can automate analysis and interpretation of intravascular ultrasound for coronary artery disease.</p>
-      <div class="meta">
-        <span>03 Oct 2026</span>
-        <a class="read" href="https://www.cureus.com/articles/535230-artificial-intelligence-for-automated-analysis-and-interpretation-of-intravascular-ultrasound-in-coronary-artery-disease-a-systematic-review" target="_blank" rel="noopener">Read article &rarr;</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="source">sectsco.org</div>
-      <h2>SCO Expert Forum on Artificial Intelligence</h2>
-      <p class="summary">The AI &amp; Digital Bridge 2026 International Forum was held in Astana, bringing together representatives of government agencies.</p>
-      <div class="meta">
-        <span>03 Oct 2026</span>
-        <a class="read" href="https://eng.sectsco.org/20261003/2547187.html" target="_blank" rel="noopener">Read article &rarr;</a>
-      </div>
+      <div class="source">Compliance Week</div>
+      <h2><a href="https://www.complianceweek.com/artificial-intelligence/fca-warns-ai-may-reveal-more-cyber-vulnerabilities-firms-can-cope-with/" target="_blank" rel="noopener">FCA warns AI may reveal more cyber vulnerabilities firms can cope with</a></h2>
+      <p class="summary">The UK's financial regulator cautions that AI's rapid development is exposing cybersecurity gaps across firms at a pace they may struggle to manage.</p>
+      <div class="date">Published 2 hours ago</div>
     </div>
 
     <div class="card">
       <div class="source">The Regulatory Review</div>
-      <h2>Should Schools Ban AI in the Classroom?</h2>
-      <p class="summary">Scholars assess the risks and benefits of artificial intelligence in education.</p>
-      <div class="meta">
-        <span>03 Oct 2026</span>
-        <a class="read" href="https://www.theregreview.org/2026/10/03/seminar-should-schools-ban-ai-in-the-classroom/" target="_blank" rel="noopener">Read article &rarr;</a>
-      </div>
+      <h2><a href="https://www.theregreview.org/2026/10/03/seminar-should-schools-ban-ai-in-the-classroom/" target="_blank" rel="noopener">Should Schools Ban AI in the Classroom?</a></h2>
+      <p class="summary">Scholars assess the risks and benefits of artificial intelligence in education, debating whether restrictions or guidance serve students best.</p>
+      <div class="date">Published 11 hours ago</div>
     </div>
 
     <div class="card">
-      <div class="source">wtvcfox</div>
-      <h2>Fact Check Team: What's the difference between artificial intelligence &amp; superintelligence</h2>
-      <p class="summary">A fact-check team explains the distinction as the U.S. government weighs new terminology for artificial intelligence.</p>
-      <div class="meta">
-        <span>03 Oct 2026</span>
-        <a class="read" href="https://foxchattanooga.com/news/nation-world/fact-check-team-whats-the-difference-between-artificial-intelligence-superintelligence-intellectual-technology" target="_blank" rel="noopener">Read article &rarr;</a>
-      </div>
+      <div class="source">The Motley Fool</div>
+      <h2><a href="https://www.fool.com/investing/2026/10/03/should-you-forget-palantir-and-buy-these-2-artific/" target="_blank" rel="noopener">Should You Forget Palantir and Buy These 2 AI Stocks Instead?</a></h2>
+      <p class="summary">Palantir has become a marquee AI name, but the current boom is creating investment opportunities well beyond the biggest players.</p>
+      <div class="date">Published 8 hours ago</div>
     </div>
 
     <div class="card">
-      <div class="source">Substack</div>
-      <h2>Your Grocer Has AI. You Have a Budget.</h2>
-      <p class="summary">The food industry is learning to price with artificial intelligence while consumers still shop with a calculator.</p>
-      <div class="meta">
-        <span>03 Oct 2026</span>
-        <a class="read" href="https://agrifoodanalyticslab.substack.com/p/your-grocer-has-ai-you-have-a-budget" target="_blank" rel="noopener">Read article &rarr;</a>
-      </div>
+      <div class="source">2 Minute Medicine</div>
+      <h2><a href="https://www.2minutemedicine.com/artificial-intelligence-ai-triggered-rapid-response-notifications-were-associated-with-lower-mortality-among-inpatients/" target="_blank" rel="noopener">AI-triggered rapid response notifications were associated with lower mortality</a></h2>
+      <p class="summary">A study found that an AI-powered alert system automatically activating rapid response teams was linked to lower inpatient mortality rates.</p>
+      <div class="date">Published 18 hours ago</div>
     </div>
+
+    <div class="card">
+      <div class="source">Cureus</div>
+      <h2><a href="https://www.cureus.com/articles/535230-artificial-intelligence-for-automated-analysis-and-interpretation-of-intravascular-ultrasound-in-coronary-artery-disease-a-systematic-review" target="_blank" rel="noopener">AI for Automated Analysis of Intravascular Ultrasound in Coronary Artery Disease</a></h2>
+      <p class="summary">A systematic review examines how AI can automate the analysis of intravascular ultrasound imaging to aid coronary artery disease diagnosis.</p>
+      <div class="date">Published 8 hours ago</div>
+    </div>
+
   </div>
-
-  <footer>Updated automatically every 5 hours.</footer>
+  <footer>Automatically refreshed every 5 hours. Hosted on GitHub Pages.</footer>
 </div>
 </body>
 </html>
