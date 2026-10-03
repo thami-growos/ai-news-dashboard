@@ -5,61 +5,103 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI News Dashboard</title>
 <style>
+  :root {
+    --purple-dark: #3b1d5e;
+    --purple-mid: #6b2fa8;
+    --purple-light: #9b5fd4;
+    --accent: #c79bff;
+    --card-bg: #ffffff;
+    --text: #2a1740;
+    --muted: #6b5b80;
+  }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    background: linear-gradient(135deg, var(--purple-dark) 0%, var(--purple-mid) 55%, var(--purple-light) 100%);
+    background-attachment: fixed;
+    color: var(--text);
     min-height: 100vh;
-    color: #1a1a2e;
-    padding: 24px;
+    padding: 40px 20px;
   }
-  .container { max-width: 1000px; margin: 0 auto; }
+  .container { max-width: 900px; margin: 0 auto; }
   header {
-    color: #fff;
     text-align: center;
-    margin-bottom: 28px;
+    color: #fff;
+    margin-bottom: 36px;
   }
-  header h1 { font-size: 2rem; font-weight: 700; margin-bottom: 6px; }
-  header p { font-size: 0.95rem; opacity: 0.9; }
+  header h1 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+  header .subtitle {
+    font-size: 1.05rem;
+    opacity: 0.9;
+  }
+  header .timestamp {
+    display: inline-block;
+    margin-top: 14px;
+    background: rgba(255,255,255,0.16);
+    padding: 7px 16px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: 1fr;
     gap: 18px;
   }
   .card {
-    background: #fff;
-    border-radius: 14px;
-    padding: 20px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.15s ease;
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 22px 24px;
+    box-shadow: 0 8px 24px rgba(20, 8, 40, 0.22);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
-  .card:hover { transform: translateY(-3px); }
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 32px rgba(20, 8, 40, 0.3);
+  }
   .card .source {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: #2575fc;
+    font-size: 0.78rem;
     font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--purple-mid);
     margin-bottom: 8px;
   }
-  .card h2 { font-size: 1.05rem; line-height: 1.3; margin-bottom: 10px; color: #1a1a2e; }
-  .card .summary { font-size: 0.9rem; line-height: 1.5; color: #444; flex-grow: 1; }
-  .card a {
-    margin-top: 14px;
-    font-size: 0.85rem;
+  .card h2 {
+    font-size: 1.18rem;
+    line-height: 1.35;
+    margin-bottom: 10px;
+    color: var(--text);
+  }
+  .card p.summary {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+  .card .meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.82rem;
+    color: #9a8aad;
+  }
+  .card a.read {
+    color: var(--purple-mid);
     font-weight: 600;
-    color: #6a11cb;
     text-decoration: none;
   }
-  .card a:hover { text-decoration: underline; }
+  .card a.read:hover { text-decoration: underline; }
   footer {
     text-align: center;
-    color: #fff;
-    margin-top: 32px;
+    color: rgba(255,255,255,0.8);
+    margin-top: 40px;
     font-size: 0.85rem;
-    opacity: 0.9;
   }
 </style>
 </head>
@@ -67,75 +109,113 @@
 <div class="container">
   <header>
     <h1>AI News Dashboard</h1>
-    <p>Latest global artificial intelligence headlines</p>
+    <p class="subtitle">Latest global artificial intelligence headlines, refreshed automatically.</p>
+    <span class="timestamp">Last updated: 03 October 2026, 05:00 PM SAST</span>
   </header>
 
   <div class="grid">
     <div class="card">
-      <div class="source">The Irish Times</div>
-      <h2>Will artificial intelligence kill off the desk job?</h2>
-      <div class="summary">Predictions that white-collar work will soon be automated reveal an underappreciation of what other people's jobs actually entail.</div>
-      <a href="https://www.irishtimes.com/business/2026/10/03/will-artificial-intelligence-kill-off-the-desk-job/" target="_blank">Read more &rarr;</a>
+      <div class="source">The Guardian</div>
+      <h2>California's new laws target workers' biggest fear of AI taking their jobs</h2>
+      <p class="summary">The state, home to many AI companies, is among the first to roll out workplace regulations aimed at the technology.</p>
+      <div class="meta">
+        <span>03 Oct 2026</span>
+        <a class="read" href="https://www.theguardian.com/technology/2026/oct/03/california-ai-laws-worker-protection" target="_blank" rel="noopener">Read article &rarr;</a>
+      </div>
     </div>
+
     <div class="card">
-      <div class="source">Wiley Law</div>
-      <h2>Executive Order Rebrands AI as "Super Intelligence" and Signals Federal Legislative Changes</h2>
-      <div class="summary">President Trump's Executive Order 14434, Inaugurating the Era of Super Intelligence, directs executive departments and signals potential federal legislative changes.</div>
-      <a href="https://www.wiley.law/alert-Executive-Order-Rebrands-AI-as-Super-Intelligence-and-Signals-Potential-Federal-Legislative-Changes" target="_blank">Read more &rarr;</a>
+      <div class="source">NBC News</div>
+      <h2>Global tech policymakers agree to embrace AI in science</h2>
+      <p class="summary">The U.S. plans a joint statement with 15 other countries outlining a shared vision for a "golden age of science" that embraces artificial intelligence.</p>
+      <div class="meta">
+        <span>03 Oct 2026</span>
+        <a class="read" href="https://www.nbcnews.com/tech/tech-news/global-tech-policymakers-embrace-ai-science-rcna600974" target="_blank" rel="noopener">Read article &rarr;</a>
+      </div>
     </div>
+
     <div class="card">
       <div class="source">The Motley Fool</div>
       <h2>Better Artificial Intelligence Stock: NVIDIA vs. SK Hynix</h2>
-      <div class="summary">As the AI boom continues, analysis weighs NVIDIA against SK Hynix, two companies playing key roles in AI market expansion.</div>
-      <a href="https://www.fool.com/coverage/better-buy/2026/10/02/better-artificial-intelligence-stock-nvidia-vs-sk-hynix/" target="_blank">Read more &rarr;</a>
+      <p class="summary">As the AI boom continues, analysts compare two key players in AI market expansion: NVIDIA and SK Hynix.</p>
+      <div class="meta">
+        <span>03 Oct 2026</span>
+        <a class="read" href="https://www.fool.com/coverage/better-buy/2026/10/02/better-artificial-intelligence-stock-nvidia-vs-sk-hynix/" target="_blank" rel="noopener">Read article &rarr;</a>
+      </div>
     </div>
-    <div class="card">
-      <div class="source">2 Minute Medicine</div>
-      <h2>AI-triggered rapid response notifications linked to lower in-patient mortality</h2>
-      <div class="summary">A study evaluated an AI-powered electronic alert system that automatically activated rapid response teams, finding an association with lower mortality among inpatients.</div>
-      <a href="https://www.2minutemedicine.com/artificial-intelligence-ai-triggered-rapid-response-notifications-were-associated-with-lower-mortality-among-inpatients/" target="_blank">Read more &rarr;</a>
-    </div>
-    <div class="card">
-      <div class="source">FOX 26 Houston</div>
-      <h2>Rice University launching AI master's program</h2>
-      <div class="summary">Rice University has announced a dedicated Master of Artificial Intelligence (MAI) program, set to launch next fall.</div>
-      <a href="https://www.fox26houston.com/news/rice-university-launching-dedicated-masters-degree-program-artificial-intelligence" target="_blank">Read more &rarr;</a>
-    </div>
+
     <div class="card">
       <div class="source">ABC News</div>
       <h2>How the Smithsonian is using AI to connect artifacts from the American Revolution</h2>
-      <div class="summary">The Smithsonian Institution is using artificial intelligence to better understand its collection related to the American Revolution.</div>
-      <a href="https://abcnews.com/US/wireStory/smithsonian-ai-connect-artifacts-american-revolution-136966980" target="_blank">Read more &rarr;</a>
+      <p class="summary">The Smithsonian Institution is using artificial intelligence to better understand its collection related to the American Revolution.</p>
+      <div class="meta">
+        <span>03 Oct 2026</span>
+        <a class="read" href="https://abcnews.com/US/wireStory/smithsonian-ai-connect-artifacts-american-revolution-136966980" target="_blank" rel="noopener">Read article &rarr;</a>
+      </div>
     </div>
+
+    <div class="card">
+      <div class="source">2 Minute Medicine</div>
+      <h2>AI-triggered rapid response notifications were associated with lower mortality among inpatients</h2>
+      <p class="summary">Researchers evaluated an AI-powered alert system that automatically activated rapid response teams, finding a link to lower mortality.</p>
+      <div class="meta">
+        <span>03 Oct 2026</span>
+        <a class="read" href="https://www.2minutemedicine.com/artificial-intelligence-ai-triggered-rapid-response-notifications-were-associated-with-lower-mortality-among-inpatients/" target="_blank" rel="noopener">Read article &rarr;</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="source">Cureus</div>
+      <h2>AI for Automated Analysis of Intravascular Ultrasound in Coronary Artery Disease</h2>
+      <p class="summary">A systematic review examines how artificial intelligence can automate analysis and interpretation of intravascular ultrasound for coronary artery disease.</p>
+      <div class="meta">
+        <span>03 Oct 2026</span>
+        <a class="read" href="https://www.cureus.com/articles/535230-artificial-intelligence-for-automated-analysis-and-interpretation-of-intravascular-ultrasound-in-coronary-artery-disease-a-systematic-review" target="_blank" rel="noopener">Read article &rarr;</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="source">sectsco.org</div>
+      <h2>SCO Expert Forum on Artificial Intelligence</h2>
+      <p class="summary">The AI &amp; Digital Bridge 2026 International Forum was held in Astana, bringing together representatives of government agencies.</p>
+      <div class="meta">
+        <span>03 Oct 2026</span>
+        <a class="read" href="https://eng.sectsco.org/20261003/2547187.html" target="_blank" rel="noopener">Read article &rarr;</a>
+      </div>
+    </div>
+
     <div class="card">
       <div class="source">The Regulatory Review</div>
       <h2>Should Schools Ban AI in the Classroom?</h2>
-      <div class="summary">Scholars assess the risks and benefits of artificial intelligence in education.</div>
-      <a href="https://www.theregreview.org/2026/10/03/seminar-should-schools-ban-ai-in-the-classroom/" target="_blank">Read more &rarr;</a>
+      <p class="summary">Scholars assess the risks and benefits of artificial intelligence in education.</p>
+      <div class="meta">
+        <span>03 Oct 2026</span>
+        <a class="read" href="https://www.theregreview.org/2026/10/03/seminar-should-schools-ban-ai-in-the-classroom/" target="_blank" rel="noopener">Read article &rarr;</a>
+      </div>
     </div>
+
     <div class="card">
       <div class="source">wtvcfox</div>
-      <h2>Fact Check Team: The difference between AI and superintelligence</h2>
-      <div class="summary">A fact check explains the distinction between artificial intelligence and superintelligence, amid debate over government naming.</div>
-      <a href="https://foxchattanooga.com/news/nation-world/fact-check-team-whats-the-difference-between-artificial-intelligence-superintelligence-intellectual-technology" target="_blank">Read more &rarr;</a>
+      <h2>Fact Check Team: What's the difference between artificial intelligence &amp; superintelligence</h2>
+      <p class="summary">A fact-check team explains the distinction as the U.S. government weighs new terminology for artificial intelligence.</p>
+      <div class="meta">
+        <span>03 Oct 2026</span>
+        <a class="read" href="https://foxchattanooga.com/news/nation-world/fact-check-team-whats-the-difference-between-artificial-intelligence-superintelligence-intellectual-technology" target="_blank" rel="noopener">Read article &rarr;</a>
+      </div>
     </div>
+
     <div class="card">
-      <div class="source">Focus on the Family</div>
-      <h2>Artificial Intelligence — How Can Christians Respond?</h2>
-      <div class="summary">A perspective piece argues Christians need not be tech experts to weigh in on artificial intelligence, and it is important that they do.</div>
-      <a href="https://dailycitizen.focusonthefamily.com/artificial-intelligence-how-can-christians-respond/" target="_blank">Read more &rarr;</a>
-    </div>
-    <div class="card">
-      <div class="source">Lieber Institute West Point</div>
-      <h2>AI and Attribution of Non-State Actors' Conduct to States</h2>
-      <div class="summary">A legal analysis catalogs the bases for attributing non-state actor conduct and examines how AI affects attribution.</div>
-      <a href="https://lieber.westpoint.edu/artificial-intelligence-attribution-non-state-actors-conduct-states/" target="_blank">Read more &rarr;</a>
+      <div class="source">Substack</div>
+      <h2>Your Grocer Has AI. You Have a Budget.</h2>
+      <p class="summary">The food industry is learning to price with artificial intelligence while consumers still shop with a calculator.</p>
+      <div class="meta">
+        <span>03 Oct 2026</span>
+        <a class="read" href="https://agrifoodanalyticslab.substack.com/p/your-grocer-has-ai-you-have-a-budget" target="_blank" rel="noopener">Read article &rarr;</a>
+      </div>
     </div>
   </div>
 
-  <footer>
-    <p>Last updated: Saturday, 03 October 2026 at 12:00 PM SAST</p>
-  </footer>
+  <footer>Updated automatically every 5 hours.</footer>
 </div>
 </body>
 </html>
