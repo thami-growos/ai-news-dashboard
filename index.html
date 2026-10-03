@@ -5,188 +5,137 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI News Dashboard</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: linear-gradient(135deg, #2e1065 0%, #6d28d9 45%, #9333ea 100%);
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
     min-height: 100vh;
-    color: #1e1b2e;
-    padding: 40px 20px;
+    color: #1a1a2e;
+    padding: 24px;
   }
-  .wrap { max-width: 980px; margin: 0 auto; }
+  .container { max-width: 1000px; margin: 0 auto; }
   header {
+    color: #fff;
     text-align: center;
-    color: #fff;
-    margin-bottom: 36px;
+    margin-bottom: 28px;
   }
-  header h1 {
-    font-size: 2.4rem;
-    font-weight: 800;
-    letter-spacing: -0.5px;
-  }
-  header .sub {
-    margin-top: 8px;
-    font-size: 1rem;
-    color: #e9d5ff;
-  }
-  header .stamp {
-    display: inline-block;
-    margin-top: 14px;
-    background: rgba(255,255,255,0.15);
-    color: #fff;
-    padding: 6px 16px;
-    border-radius: 999px;
-    font-size: 0.85rem;
-  }
+  header h1 { font-size: 2rem; font-weight: 700; margin-bottom: 6px; }
+  header p { font-size: 0.95rem; opacity: 0.9; }
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
+    gap: 18px;
   }
   .card {
     background: #fff;
-    border-radius: 16px;
-    padding: 22px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
     display: flex;
     flex-direction: column;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    transition: transform 0.15s ease;
   }
-  .card:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(0,0,0,0.24); }
+  .card:hover { transform: translateY(-3px); }
   .card .source {
     font-size: 0.75rem;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    font-weight: 700;
-    color: #9333ea;
-    margin-bottom: 10px;
+    letter-spacing: 0.04em;
+    color: #2575fc;
+    font-weight: 600;
+    margin-bottom: 8px;
   }
-  .card h2 {
-    font-size: 1.15rem;
-    line-height: 1.35;
-    margin-bottom: 10px;
-  }
-  .card p {
-    font-size: 0.92rem;
-    color: #4b4563;
-    line-height: 1.5;
-    flex: 1;
-  }
-  .card .meta {
-    margin-top: 16px;
-    font-size: 0.78rem;
-    color: #8b86a1;
-  }
-  .card a.read {
-    margin-top: 10px;
-    display: inline-block;
-    color: #7c3aed;
-    font-weight: 700;
+  .card h2 { font-size: 1.05rem; line-height: 1.3; margin-bottom: 10px; color: #1a1a2e; }
+  .card .summary { font-size: 0.9rem; line-height: 1.5; color: #444; flex-grow: 1; }
+  .card a {
+    margin-top: 14px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #6a11cb;
     text-decoration: none;
-    font-size: 0.9rem;
   }
-  .card a.read:hover { text-decoration: underline; }
+  .card a:hover { text-decoration: underline; }
   footer {
     text-align: center;
-    color: #d8b4fe;
-    margin-top: 40px;
-    font-size: 0.82rem;
+    color: #fff;
+    margin-top: 32px;
+    font-size: 0.85rem;
+    opacity: 0.9;
   }
 </style>
 </head>
 <body>
-<div class="wrap">
+<div class="container">
   <header>
     <h1>AI News Dashboard</h1>
-    <p class="sub">Recent global artificial intelligence headlines</p>
-    <span class="stamp">Last updated: October 03, 2026 07:00 AM SAST</span>
+    <p>Latest global artificial intelligence headlines</p>
   </header>
 
   <div class="grid">
-
     <div class="card">
-      <div class="source">ABC7 San Francisco</div>
-      <h2>Trump insists he's not downplaying AI risk, says there is a 'sick conspiracy' against data centers</h2>
-      <p>OpenAI CEO Sam Altman joined industry leaders in saying his company would welcome a slower pace, while the former president pushed back on the characterization of his AI risk stance.</p>
-      <div class="meta">3 hours ago</div>
-      <a class="read" href="https://abc7news.com/story/openai-ceo-calls-ai-pacing-trump-insists-hes-not-downplaying-risk-saying-is-sick-conspiracy-data-centers/19830333/" target="_blank">Read more &rarr;</a>
+      <div class="source">The Irish Times</div>
+      <h2>Will artificial intelligence kill off the desk job?</h2>
+      <div class="summary">Predictions that white-collar work will soon be automated reveal an underappreciation of what other people's jobs actually entail.</div>
+      <a href="https://www.irishtimes.com/business/2026/10/03/will-artificial-intelligence-kill-off-the-desk-job/" target="_blank">Read more &rarr;</a>
     </div>
-
     <div class="card">
-      <div class="source">KHGI</div>
-      <h2>Fact Check Team: What's the difference between AI and superintelligence</h2>
-      <p>As the administration pushes to rename artificial intelligence, fact-checkers explain the distinctions between AI, superintelligence, and intellectual technology.</p>
-      <div class="meta">2 hours ago</div>
-      <a class="read" href="https://nebraska.tv/news/nation-world/fact-check-team-whats-the-difference-between-artificial-intelligence-superintelligence-intellectual-technology" target="_blank">Read more &rarr;</a>
+      <div class="source">Wiley Law</div>
+      <h2>Executive Order Rebrands AI as "Super Intelligence" and Signals Federal Legislative Changes</h2>
+      <div class="summary">President Trump's Executive Order 14434, Inaugurating the Era of Super Intelligence, directs executive departments and signals potential federal legislative changes.</div>
+      <a href="https://www.wiley.law/alert-Executive-Order-Rebrands-AI-as-Super-Intelligence-and-Signals-Potential-Federal-Legislative-Changes" target="_blank">Read more &rarr;</a>
     </div>
-
     <div class="card">
-      <div class="source">WHSV</div>
-      <h2>Sen. Warner files new legislation on AI regulations</h2>
-      <p>Virginia Senator Mark Warner and two other Democrats filed the Artificial Intelligence Risk Management and Security Act of 2026, proposing new guardrails for the technology.</p>
-      <div class="meta">5 hours ago</div>
-      <a class="read" href="https://www.whsv.com/2026/10/03/sen-warner-files-new-legislation-ai-regulations/" target="_blank">Read more &rarr;</a>
+      <div class="source">The Motley Fool</div>
+      <h2>Better Artificial Intelligence Stock: NVIDIA vs. SK Hynix</h2>
+      <div class="summary">As the AI boom continues, analysis weighs NVIDIA against SK Hynix, two companies playing key roles in AI market expansion.</div>
+      <a href="https://www.fool.com/coverage/better-buy/2026/10/02/better-artificial-intelligence-stock-nvidia-vs-sk-hynix/" target="_blank">Read more &rarr;</a>
     </div>
-
+    <div class="card">
+      <div class="source">2 Minute Medicine</div>
+      <h2>AI-triggered rapid response notifications linked to lower in-patient mortality</h2>
+      <div class="summary">A study evaluated an AI-powered electronic alert system that automatically activated rapid response teams, finding an association with lower mortality among inpatients.</div>
+      <a href="https://www.2minutemedicine.com/artificial-intelligence-ai-triggered-rapid-response-notifications-were-associated-with-lower-mortality-among-inpatients/" target="_blank">Read more &rarr;</a>
+    </div>
     <div class="card">
       <div class="source">FOX 26 Houston</div>
       <h2>Rice University launching AI master's program</h2>
-      <p>Rice University announced a dedicated Master of Artificial Intelligence (MAI) program that will launch next fall to meet growing demand for AI talent.</p>
-      <div class="meta">5 hours ago</div>
-      <a class="read" href="https://www.fox26houston.com/news/rice-university-launching-dedicated-masters-degree-program-artificial-intelligence" target="_blank">Read more &rarr;</a>
+      <div class="summary">Rice University has announced a dedicated Master of Artificial Intelligence (MAI) program, set to launch next fall.</div>
+      <a href="https://www.fox26houston.com/news/rice-university-launching-dedicated-masters-degree-program-artificial-intelligence" target="_blank">Read more &rarr;</a>
     </div>
-
     <div class="card">
-      <div class="source">The Motley Fool</div>
-      <h2>Better AI stock: NVIDIA vs. SK Hynix</h2>
-      <p>As the AI boom continues, analysts weigh two key players in AI infrastructure expansion, NVIDIA and SK Hynix, and which offers the stronger investment case.</p>
-      <div class="meta">2 hours ago</div>
-      <a class="read" href="https://www.fool.com/coverage/better-buy/2026/10/02/better-artificial-intelligence-stock-nvidia-vs-sk-hynix/" target="_blank">Read more &rarr;</a>
+      <div class="source">ABC News</div>
+      <h2>How the Smithsonian is using AI to connect artifacts from the American Revolution</h2>
+      <div class="summary">The Smithsonian Institution is using artificial intelligence to better understand its collection related to the American Revolution.</div>
+      <a href="https://abcnews.com/US/wireStory/smithsonian-ai-connect-artifacts-american-revolution-136966980" target="_blank">Read more &rarr;</a>
     </div>
-
     <div class="card">
-      <div class="source">2 Minute Medicine</div>
-      <h2>AI-triggered rapid response alerts linked to lower inpatient mortality</h2>
-      <p>Researchers found that an AI-powered electronic alert system that automatically activated rapid response teams was associated with lower mortality among inpatients.</p>
-      <div class="meta">3 hours ago</div>
-      <a class="read" href="https://www.2minutemedicine.com/artificial-intelligence-ai-triggered-rapid-response-notifications-were-associated-with-lower-mortality-among-inpatients/" target="_blank">Read more &rarr;</a>
+      <div class="source">The Regulatory Review</div>
+      <h2>Should Schools Ban AI in the Classroom?</h2>
+      <div class="summary">Scholars assess the risks and benefits of artificial intelligence in education.</div>
+      <a href="https://www.theregreview.org/2026/10/03/seminar-should-schools-ban-ai-in-the-classroom/" target="_blank">Read more &rarr;</a>
     </div>
-
     <div class="card">
-      <div class="source">CU Denver News</div>
-      <h2>As AI changes the workplace, CU Denver prepares students</h2>
-      <p>Organizations are rapidly adopting new AI technologies, and universities like CU Denver are working to prepare students for an evolving job market shaped by AI.</p>
-      <div class="meta">7 hours ago</div>
-      <a class="read" href="https://news.ucdenver.edu/as-ai-changes-the-workplace-cu-denver-prepares-students-to-navigate-what-comes-next/" target="_blank">Read more &rarr;</a>
+      <div class="source">wtvcfox</div>
+      <h2>Fact Check Team: The difference between AI and superintelligence</h2>
+      <div class="summary">A fact check explains the distinction between artificial intelligence and superintelligence, amid debate over government naming.</div>
+      <a href="https://foxchattanooga.com/news/nation-world/fact-check-team-whats-the-difference-between-artificial-intelligence-superintelligence-intellectual-technology" target="_blank">Read more &rarr;</a>
     </div>
-
-    <div class="card">
-      <div class="source">Lieber Institute West Point</div>
-      <h2>AI and attribution of non-state actors' conduct to states</h2>
-      <p>A new study catalogs the legal bases for attributing non-state actor conduct to states and examines how the involvement of AI affects those attribution rules.</p>
-      <div class="meta">12 hours ago</div>
-      <a class="read" href="https://lieber.westpoint.edu/artificial-intelligence-attribution-non-state-actors-conduct-states/" target="_blank">Read more &rarr;</a>
-    </div>
-
     <div class="card">
       <div class="source">Focus on the Family</div>
-      <h2>Artificial intelligence: how can Christians respond?</h2>
-      <p>Commentators argue that people of faith need not be tech experts to meaningfully weigh in on artificial intelligence and its societal implications.</p>
-      <div class="meta">7 hours ago</div>
-      <a class="read" href="https://dailycitizen.focusonthefamily.com/artificial-intelligence-how-can-christians-respond/" target="_blank">Read more &rarr;</a>
+      <h2>Artificial Intelligence — How Can Christians Respond?</h2>
+      <div class="summary">A perspective piece argues Christians need not be tech experts to weigh in on artificial intelligence, and it is important that they do.</div>
+      <a href="https://dailycitizen.focusonthefamily.com/artificial-intelligence-how-can-christians-respond/" target="_blank">Read more &rarr;</a>
     </div>
-
     <div class="card">
-      <div class="source">KOCO</div>
-      <h2>Oklahoma gubernatorial candidates debate AI and healthcare</h2>
-      <p>Gubernatorial candidates Cyndi Munson and Mike Mazzei shared differing views on education, healthcare, and artificial intelligence during a Thursday debate.</p>
-      <div class="meta">3 hours ago</div>
-      <a class="read" href="https://www.koco.com/article/oklahoma-gubernatorial-candidates-mazzei-munson-debate-key-issues/74000168" target="_blank">Read more &rarr;</a>
+      <div class="source">Lieber Institute West Point</div>
+      <h2>AI and Attribution of Non-State Actors' Conduct to States</h2>
+      <div class="summary">A legal analysis catalogs the bases for attributing non-state actor conduct and examines how AI affects attribution.</div>
+      <a href="https://lieber.westpoint.edu/artificial-intelligence-attribution-non-state-actors-conduct-states/" target="_blank">Read more &rarr;</a>
     </div>
-
   </div>
 
-  <footer>Automatically refreshed every 5 hours &middot; Sources linked to original publishers</footer>
+  <footer>
+    <p>Last updated: Saturday, 03 October 2026 at 12:00 PM SAST</p>
+  </footer>
 </div>
 </body>
 </html>
