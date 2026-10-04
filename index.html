@@ -5,138 +5,187 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI News Dashboard</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg1: #2a1a4a;
+    --bg2: #4a2a7a;
+    --bg3: #1a1030;
+    --card: rgba(255,255,255,0.08);
+    --card-hover: rgba(255,255,255,0.14);
+    --text: #f2eefb;
+    --muted: #c9bde8;
+    --accent: #8b5cf6;
+    --accent2: #c084fc;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: linear-gradient(135deg, #4a1d8f 0%, #6d28d9 40%, #3b1d5e 100%);
+    background: linear-gradient(160deg, var(--bg1), var(--bg2) 50%, var(--bg3));
     min-height: 100vh;
-    color: #1f1b2e;
-    padding: 2rem 1rem;
+    color: var(--text);
+    padding: 2rem 1.5rem;
   }
   .wrap { max-width: 1000px; margin: 0 auto; }
-  header { text-align: center; color: #fff; margin-bottom: 2rem; }
-  header h1 { font-size: 2.2rem; font-weight: 700; letter-spacing: -0.5px; }
-  header p { color: #d9cbf5; margin-top: 0.5rem; font-size: 0.95rem; }
-  .last-updated {
-    display: inline-block; margin-top: 0.9rem; padding: 0.4rem 0.9rem;
-    background: rgba(255,255,255,0.15); border-radius: 999px;
-    font-size: 0.85rem; color: #fff;
+  header { text-align: center; margin-bottom: 2.5rem; }
+  header h1 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    background: linear-gradient(90deg, #fff, var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.25rem; }
+  header p { color: var(--muted); margin-top: 0.5rem; font-size: 1rem; }
+  .meta {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.4rem 1rem;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 999px;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 1.25rem;
+  }
   .card {
-    background: #fff; border-radius: 14px; padding: 1.35rem;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.22);
-    display: flex; flex-direction: column; gap: 0.7rem;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 14px;
+    padding: 1.25rem;
+    transition: background 0.2s ease, transform 0.2s ease;
+    display: flex;
+    flex-direction: column;
   }
-  .card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(0,0,0,0.28); }
-  .card .source {
-    font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px;
-    color: #6d28d9;
+  .card:hover { background: var(--card-hover); transform: translateY(-3px); }
+  .source {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent2);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
   }
-  .card .date { font-size: 0.72rem; color: #8a8296; }
-  .card h2 { font-size: 1.05rem; line-height: 1.3; color: #241d3b; }
-  .card p { font-size: 0.88rem; line-height: 1.45; color: #4b4459; flex: 1; }
+  .card h2 { font-size: 1.05rem; line-height: 1.35; margin-bottom: 0.5rem; }
+  .card p { color: var(--muted); font-size: 0.88rem; line-height: 1.5; flex-grow: 1; }
   .card a {
-    text-decoration: none; color: #6d28d9; font-weight: 600; font-size: 0.85rem;
+    margin-top: 1rem;
+    color: var(--accent2);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
   }
   .card a:hover { text-decoration: underline; }
-  footer { text-align: center; color: #c9bcf0; margin-top: 2rem; font-size: 0.8rem; }
+  .date {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.5);
+    margin-top: 0.5rem;
+  }
+  footer {
+    text-align: center;
+    margin-top: 2.5rem;
+    color: rgba(255,255,255,0.45);
+    font-size: 0.8rem;
+  }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <h1>AI News Dashboard</h1>
-    <p>Latest global artificial intelligence headlines</p>
-    <span class="last-updated">Last updated: 02:00 AM SAST, Sunday October 04 2026</span>
-  </header>
+  <div class="wrap">
+    <header>
+      <h1>AI News Dashboard</h1>
+      <p>Latest global artificial intelligence headlines</p>
+      <div class="meta">Last updated: October 04, 2026, 07:00 AM SAST</div>
+    </header>
 
-  <div class="grid">
+    <div class="grid">
 
-    <div class="card">
-      <div class="source">CNBC</div>
-      <div class="date">23 minutes ago</div>
-      <h2>Trump taps Director of National Intelligence Jay Clayton as AI czar</h2>
-      <p>Jay Clayton has been picked to serve as AI czar, leading a new task force to address growing concerns about artificial intelligence, WSJ reports.</p>
-      <a href="https://www.cnbc.com/2026/10/03/trump-jay-clayton-ai-czar.html" target="_blank" rel="noopener">Read more</a>
+      <div class="card">
+        <div class="source">The New York Times</div>
+        <h2>A.I. Is Going Rogue. Who Should Be Held Responsible?</h2>
+        <p>Many argue AI companies should be liable for runaway technology, but legal scholars say applying existing law to autonomous agents is far from straightforward.</p>
+        <div class="date">25 minutes ago</div>
+        <a href="https://www.nytimes.com/2026/10/01/technology/ai-rogue-agents-liability.html" target="_blank" rel="noopener">Read article &rarr;</a>
+      </div>
+
+      <div class="card">
+        <div class="source">CNBC / WSJ</div>
+        <h2>Trump Taps Jay Clayton as AI Czar</h2>
+        <p>Director of National Intelligence Jay Clayton has been picked to serve as AI czar, leading a task force to address growing concerns about artificial intelligence.</p>
+        <div class="date">5 hours ago</div>
+        <a href="https://www.cnbc.com/2026/10/03/trump-jay-clayton-ai-czar.html" target="_blank" rel="noopener">Read article &rarr;</a>
+      </div>
+
+      <div class="card">
+        <div class="source">The Fulcrum</div>
+        <h2>AI Is Making People More Productive — But What Happens to Jobs?</h2>
+        <p>A look at how AI is redefining workplace roles like the "directly responsible individual" and what rising individual productivity means for the future of work.</p>
+        <div class="date">9 minutes ago</div>
+        <a href="https://thefulcrum.us/media-technology/when-one-person-can-do-the-work-of-a-team" target="_blank" rel="noopener">Read article &rarr;</a>
+      </div>
+
+      <div class="card">
+        <div class="source">Daily Bruin</div>
+        <h2>UCLA Alumnus Turns Med-School Frustrations Into AI Study App</h2>
+        <p>Arman Hussain struggled to combine patient-interaction skills with practical knowledge, so he built "Neural Consult," an AI assistant for medical students.</p>
+        <div class="date">17 minutes ago</div>
+        <a href="https://dailybruin.com/2026/10/03/ucla-alumnus-turns-medical-school-frustrations-into-ai-study-app-neural-consult/" target="_blank" rel="noopener">Read article &rarr;</a>
+      </div>
+
+      <div class="card">
+        <div class="source">The Motley Fool</div>
+        <h2>Better AI Stock: Alphabet vs. Meta Platforms</h2>
+        <p>As AI reshapes digital advertising and how people find information, investors weigh which of the two tech giants is positioned better for the AI era.</p>
+        <div class="date">4 hours ago</div>
+        <a href="https://www.fool.com/coverage/better-buy/2026/10/03/better-artificial-intelligence-stock-alphabet-vs-meta-platforms/" target="_blank" rel="noopener">Read article &rarr;</a>
+      </div>
+
+      <div class="card">
+        <div class="source">KOTA Territory News</div>
+        <h2>Sen. Rounds and Anthropic Leaders Talk AI's Future</h2>
+        <p>At South Dakota Mines, Sen. Mike Rounds and Anthropic leadership discussed AI's impact on jobs, healthcare, security, and intellectual property.</p>
+        <div class="date">11 hours ago</div>
+        <a href="https://www.kotatv.com/2026/10/03/sen-rounds-anthropic-leaders-talk-ais-future-south-dakota-mines/" target="_blank" rel="noopener">Read article &rarr;</a>
+      </div>
+
+      <div class="card">
+        <div class="source">ABC7 Chicago</div>
+        <h2>Is AI to Blame for Hiring Woes Facing College Graduates?</h2>
+        <p>Analysts disagree over whether artificial intelligence is a meaningful factor in the hiring crunch hitting recent college graduates.</p>
+        <div class="date">6 hours ago</div>
+        <a href="https://abc7chicago.com/post/is-ai-blame-hiring-woes-faced-college-graduates/19186503/" target="_blank" rel="noopener">Read article &rarr;</a>
+      </div>
+
+      <div class="card">
+        <div class="source">Hindustan Times</div>
+        <h2>AI Moves From Tech Showcase to Real Estate Construction Sites</h2>
+        <p>Developers and tech leaders at CREDAI NATCON 2026 say AI is advancing beyond demos into practical, on-site construction applications.</p>
+        <div class="date">Today</div>
+        <a href="https://hindustantimes.com/real-estate/ai-moves-from-tech-showcase-to-real-estate-construction-sites-say-developers-and-techies-at-credai-natcon-2026-101791013655691.html" target="_blank" rel="noopener">Read article &rarr;</a>
+      </div>
+
+      <div class="card">
+        <div class="source">Tech AI Magazine</div>
+        <h2>DeepMind Proposes "Artificial Symbiotic Intelligence" Concept</h2>
+        <p>DeepMind introduced a concept aimed at promoting a symbiotic, responsibly managed relationship between AI systems and human society.</p>
+        <div class="date">Today</div>
+        <a href="https://www.techaimag.com/ai-news/deepmind-proposes-artificial-symbiotic-intelligence-concept" target="_blank" rel="noopener">Read article &rarr;</a>
+      </div>
+
+      <div class="card">
+        <div class="source">Cureus</div>
+        <h2>AI for Automated Analysis of Intravascular Ultrasound</h2>
+        <p>A systematic review examines how artificial intelligence can automate interpretation of IVUS imaging in coronary artery disease care.</p>
+        <div class="date">17 hours ago</div>
+        <a href="https://www.cureus.com/articles/535230-artificial-intelligence-for-automated-analysis-and-interpretation-of-intravascular-ultrasound-in-coronary-artery-disease-a-systematic-review" target="_blank" rel="noopener">Read article &rarr;</a>
+      </div>
+
     </div>
 
-    <div class="card">
-      <div class="source">WSJ</div>
-      <div class="date">42 minutes ago</div>
-      <h2>New AI czar unveils goals, members of White House task force</h2>
-      <p>The newly formed group, created after industry and public concerns, will be led by Director of National Intelligence Jay Clayton.</p>
-      <a href="https://www.wsj.com/tech/ai/new-ai-task-force-to-report-on-risks-of-technology-after-public-and-industry-concerns-b6308bef" target="_blank" rel="noopener">Read more</a>
-    </div>
-
-    <div class="card">
-      <div class="source">The New York Times</div>
-      <div class="date">9 hours ago</div>
-      <h2>A.I. is going rogue. Who should be held responsible?</h2>
-      <p>Many think AI companies should be held liable for their runaway technology, but legal scholars say applying existing law could be complicated.</p>
-      <a href="https://www.nytimes.com/2026/10/01/technology/ai-rogue-agents-liability.html" target="_blank" rel="noopener">Read more</a>
-    </div>
-
-    <div class="card">
-      <div class="source">DW.com</div>
-      <div class="date">2 hours ago</div>
-      <h2>AI giants not 'careful enough,' ex-OpenAI engineer warns</h2>
-      <p>Days after the US president signed a voluntary pact with AI giants, a former OpenAI worker said his industry needs the same level of caution.</p>
-      <a href="https://www.dw.com/en/ai-giants-not-being-nearly-careful-enough-warns-outgoing-openai-safety-engineer/a-79533080" target="_blank" rel="noopener">Read more</a>
-    </div>
-
-    <div class="card">
-      <div class="source">KOTA Territory News</div>
-      <div class="date">6 hours ago</div>
-      <h2>Sen. Rounds, Anthropic leaders talk AI's future at South Dakota Mines</h2>
-      <p>Sen. Mike Rounds and Anthropic leaders discussed AI jobs, healthcare, security, and intellectual property at South Dakota Mines.</p>
-      <a href="https://www.kotatv.com/2026/10/03/sen-rounds-anthropic-leaders-talk-ais-future-south-dakota-mines/" target="_blank" rel="noopener">Read more</a>
-    </div>
-
-    <div class="card">
-      <div class="source">Ukrainian National News</div>
-      <div class="date">7 hours ago</div>
-      <h2>North Korea reported using AI during a missile test</h2>
-      <p>Pyongyang said it tested a medium-range missile capable of changing its trajectory at low altitude; Seoul reported the flight details.</p>
-      <a href="https://unn.ua/en/amp/north-korea-reported-using-artificial-intelligence-during-a-missile-test" target="_blank" rel="noopener">Read more</a>
-    </div>
-
-    <div class="card">
-      <div class="source">The Motley Fool</div>
-      <div class="date">7 hours ago</div>
-      <h2>ASML vs. TSMC: What revenue trends tell investors</h2>
-      <p>TSMC has outpaced ASML in absolute revenue across eight quarters, but ASML's recent acceleration hints at a shifting competitive dynamic.</p>
-      <a href="https://www.fool.com/coverage/charts/2026/10/03/asml-vs-taiwan-semiconductor-manufacturing-company-what-revenue-trends-tell-investors-about-these-companies-tied-to-artificial-intelligence/" target="_blank" rel="noopener">Read more</a>
-    </div>
-
-    <div class="card">
-      <div class="source">CBC</div>
-      <div class="date">55 minutes ago</div>
-      <h2>Our AI panelists look at governance in light of the new U.S. accord</h2>
-      <p>Breaking news and analysis on the governance of artificial intelligence following the new U.S. accord, from the CBC News panel.</p>
-      <a href="https://www.cbc.ca/player/play/video/9.7368403" target="_blank" rel="noopener">Read more</a>
-    </div>
-
-    <div class="card">
-      <div class="source">The Suffolk Times</div>
-      <div class="date">57 minutes ago</div>
-      <h2>Guest column: A caution about artificial intelligence</h2>
-      <p>A columnist reflects on decades of computing, from slide rules and FORTRAN to modern AI, and urges measured caution.</p>
-      <a href="https://suffolktimes.timesreview.com/2026/10/guest-column-a-caution-about-artificial-intelligence/" target="_blank" rel="noopener">Read more</a>
-    </div>
-
-    <div class="card">
-      <div class="source">Cureus</div>
-      <div class="date">12 hours ago</div>
-      <h2>AI for automated intravascular ultrasound analysis in coronary disease</h2>
-      <p>A systematic review examines how AI can automate the analysis and interpretation of intravascular ultrasound in coronary artery disease.</p>
-      <a href="https://www.cureus.com/articles/535230-artificial-intelligence-for-automated-analysis-and-interpretation-of-intravascular-ultrasound-in-coronary-artery-disease-a-systematic-review" target="_blank" rel="noopener">Read more</a>
-    </div>
-
+    <footer>
+      <p>Automatically refreshed every 5 hours &middot; Sources linked inline</p>
+    </footer>
   </div>
-
-  <footer>Updated automatically every 5 hours</footer>
-</div>
 </body>
 </html>
