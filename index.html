@@ -5,45 +5,38 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI News Dashboard</title>
 <style>
-  :root {
-    --bg1: #2a1a4a;
-    --bg2: #4a2a7a;
-    --bg3: #1a1030;
-    --card: rgba(255,255,255,0.08);
-    --card-hover: rgba(255,255,255,0.14);
-    --text: #f2eefb;
-    --muted: #c9bde8;
-    --accent: #8b5cf6;
-    --accent2: #c084fc;
-  }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: linear-gradient(160deg, var(--bg1), var(--bg2) 50%, var(--bg3));
+    background: linear-gradient(135deg, #2b1055 0%, #6633aa 50%, #7597de 100%);
     min-height: 100vh;
-    color: var(--text);
+    color: #1a1a2e;
     padding: 2rem 1.5rem;
   }
-  .wrap { max-width: 1000px; margin: 0 auto; }
-  header { text-align: center; margin-bottom: 2.5rem; }
-  header h1 {
-    font-size: 2.4rem;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-    background: linear-gradient(90deg, #fff, var(--accent2));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  .container { max-width: 980px; margin: 0 auto; }
+  header {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #ffffff;
   }
-  header p { color: var(--muted); margin-top: 0.5rem; font-size: 1rem; }
-  .meta {
+  header h1 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+  }
+  header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+  }
+  .updated {
     display: inline-block;
-    margin-top: 1rem;
+    margin-top: 0.75rem;
+    background: rgba(255,255,255,0.18);
     padding: 0.4rem 1rem;
-    border: 1px solid rgba(255,255,255,0.2);
     border-radius: 999px;
     font-size: 0.85rem;
-    color: var(--muted);
+    font-weight: 500;
   }
   .grid {
     display: grid;
@@ -51,141 +44,152 @@
     gap: 1.25rem;
   }
   .card {
-    background: var(--card);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 14px;
-    padding: 1.25rem;
-    transition: background 0.2s ease, transform 0.2s ease;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 1.35rem 1.4rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
     display: flex;
     flex-direction: column;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
-  .card:hover { background: var(--card-hover); transform: translateY(-3px); }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px rgba(0,0,0,0.24);
+  }
   .source {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--accent2);
-    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: #7c3aed;
     margin-bottom: 0.5rem;
   }
-  .card h2 { font-size: 1.05rem; line-height: 1.35; margin-bottom: 0.5rem; }
-  .card p { color: var(--muted); font-size: 0.88rem; line-height: 1.5; flex-grow: 1; }
+  .date {
+    font-size: 0.72rem;
+    color: #8a8a9e;
+    margin-bottom: 0.6rem;
+  }
+  .card h2 {
+    font-size: 1.08rem;
+    line-height: 1.3;
+    margin-bottom: 0.6rem;
+    color: #1a1a2e;
+  }
+  .card p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #4a4a5e;
+    flex-grow: 1;
+  }
   .card a {
     margin-top: 1rem;
-    color: var(--accent2);
-    text-decoration: none;
+    font-size: 0.88rem;
     font-weight: 600;
-    font-size: 0.85rem;
+    color: #7c3aed;
+    text-decoration: none;
   }
   .card a:hover { text-decoration: underline; }
-  .date {
-    font-size: 0.75rem;
-    color: rgba(255,255,255,0.5);
-    margin-top: 0.5rem;
-  }
   footer {
     text-align: center;
     margin-top: 2.5rem;
-    color: rgba(255,255,255,0.45);
-    font-size: 0.8rem;
+    color: rgba(255,255,255,0.8);
+    font-size: 0.85rem;
   }
 </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <h1>AI News Dashboard</h1>
-      <p>Latest global artificial intelligence headlines</p>
-      <div class="meta">Last updated: October 04, 2026, 07:00 AM SAST</div>
-    </header>
+<div class="container">
+  <header>
+    <h1>AI News Dashboard</h1>
+    <div class="subtitle">The latest global headlines in artificial intelligence</div>
+    <div class="updated">Last updated: Sunday, October 04, 2026 12:00 PM SAST</div>
+  </header>
 
-    <div class="grid">
+  <div class="grid">
 
-      <div class="card">
-        <div class="source">The New York Times</div>
-        <h2>A.I. Is Going Rogue. Who Should Be Held Responsible?</h2>
-        <p>Many argue AI companies should be liable for runaway technology, but legal scholars say applying existing law to autonomous agents is far from straightforward.</p>
-        <div class="date">25 minutes ago</div>
-        <a href="https://www.nytimes.com/2026/10/01/technology/ai-rogue-agents-liability.html" target="_blank" rel="noopener">Read article &rarr;</a>
-      </div>
-
-      <div class="card">
-        <div class="source">CNBC / WSJ</div>
-        <h2>Trump Taps Jay Clayton as AI Czar</h2>
-        <p>Director of National Intelligence Jay Clayton has been picked to serve as AI czar, leading a task force to address growing concerns about artificial intelligence.</p>
-        <div class="date">5 hours ago</div>
-        <a href="https://www.cnbc.com/2026/10/03/trump-jay-clayton-ai-czar.html" target="_blank" rel="noopener">Read article &rarr;</a>
-      </div>
-
-      <div class="card">
-        <div class="source">The Fulcrum</div>
-        <h2>AI Is Making People More Productive — But What Happens to Jobs?</h2>
-        <p>A look at how AI is redefining workplace roles like the "directly responsible individual" and what rising individual productivity means for the future of work.</p>
-        <div class="date">9 minutes ago</div>
-        <a href="https://thefulcrum.us/media-technology/when-one-person-can-do-the-work-of-a-team" target="_blank" rel="noopener">Read article &rarr;</a>
-      </div>
-
-      <div class="card">
-        <div class="source">Daily Bruin</div>
-        <h2>UCLA Alumnus Turns Med-School Frustrations Into AI Study App</h2>
-        <p>Arman Hussain struggled to combine patient-interaction skills with practical knowledge, so he built "Neural Consult," an AI assistant for medical students.</p>
-        <div class="date">17 minutes ago</div>
-        <a href="https://dailybruin.com/2026/10/03/ucla-alumnus-turns-medical-school-frustrations-into-ai-study-app-neural-consult/" target="_blank" rel="noopener">Read article &rarr;</a>
-      </div>
-
-      <div class="card">
-        <div class="source">The Motley Fool</div>
-        <h2>Better AI Stock: Alphabet vs. Meta Platforms</h2>
-        <p>As AI reshapes digital advertising and how people find information, investors weigh which of the two tech giants is positioned better for the AI era.</p>
-        <div class="date">4 hours ago</div>
-        <a href="https://www.fool.com/coverage/better-buy/2026/10/03/better-artificial-intelligence-stock-alphabet-vs-meta-platforms/" target="_blank" rel="noopener">Read article &rarr;</a>
-      </div>
-
-      <div class="card">
-        <div class="source">KOTA Territory News</div>
-        <h2>Sen. Rounds and Anthropic Leaders Talk AI's Future</h2>
-        <p>At South Dakota Mines, Sen. Mike Rounds and Anthropic leadership discussed AI's impact on jobs, healthcare, security, and intellectual property.</p>
-        <div class="date">11 hours ago</div>
-        <a href="https://www.kotatv.com/2026/10/03/sen-rounds-anthropic-leaders-talk-ais-future-south-dakota-mines/" target="_blank" rel="noopener">Read article &rarr;</a>
-      </div>
-
-      <div class="card">
-        <div class="source">ABC7 Chicago</div>
-        <h2>Is AI to Blame for Hiring Woes Facing College Graduates?</h2>
-        <p>Analysts disagree over whether artificial intelligence is a meaningful factor in the hiring crunch hitting recent college graduates.</p>
-        <div class="date">6 hours ago</div>
-        <a href="https://abc7chicago.com/post/is-ai-blame-hiring-woes-faced-college-graduates/19186503/" target="_blank" rel="noopener">Read article &rarr;</a>
-      </div>
-
-      <div class="card">
-        <div class="source">Hindustan Times</div>
-        <h2>AI Moves From Tech Showcase to Real Estate Construction Sites</h2>
-        <p>Developers and tech leaders at CREDAI NATCON 2026 say AI is advancing beyond demos into practical, on-site construction applications.</p>
-        <div class="date">Today</div>
-        <a href="https://hindustantimes.com/real-estate/ai-moves-from-tech-showcase-to-real-estate-construction-sites-say-developers-and-techies-at-credai-natcon-2026-101791013655691.html" target="_blank" rel="noopener">Read article &rarr;</a>
-      </div>
-
-      <div class="card">
-        <div class="source">Tech AI Magazine</div>
-        <h2>DeepMind Proposes "Artificial Symbiotic Intelligence" Concept</h2>
-        <p>DeepMind introduced a concept aimed at promoting a symbiotic, responsibly managed relationship between AI systems and human society.</p>
-        <div class="date">Today</div>
-        <a href="https://www.techaimag.com/ai-news/deepmind-proposes-artificial-symbiotic-intelligence-concept" target="_blank" rel="noopener">Read article &rarr;</a>
-      </div>
-
-      <div class="card">
-        <div class="source">Cureus</div>
-        <h2>AI for Automated Analysis of Intravascular Ultrasound</h2>
-        <p>A systematic review examines how artificial intelligence can automate interpretation of IVUS imaging in coronary artery disease care.</p>
-        <div class="date">17 hours ago</div>
-        <a href="https://www.cureus.com/articles/535230-artificial-intelligence-for-automated-analysis-and-interpretation-of-intravascular-ultrasound-in-coronary-artery-disease-a-systematic-review" target="_blank" rel="noopener">Read article &rarr;</a>
-      </div>
-
+    <div class="card">
+      <div class="source">WSJ</div>
+      <div class="date">~8 hours ago</div>
+      <h2>New AI Czar Unveils Goals, Members of White House Task Force</h2>
+      <p>The group will examine the technology's risks and opportunities and focus on keeping the U.S. first in the field.</p>
+      <a href="https://www.wsj.com/tech/ai/new-ai-task-force-to-report-on-risks-of-technology-after-public-and-industry-concerns-b6308bef" target="_blank" rel="noopener">Read more &rarr;</a>
     </div>
 
-    <footer>
-      <p>Automatically refreshed every 5 hours &middot; Sources linked inline</p>
-    </footer>
+    <div class="card">
+      <div class="source">CNBC</div>
+      <div class="date">~10 hours ago</div>
+      <h2>Trump Taps Jay Clayton as AI Czar</h2>
+      <p>Director of National Intelligence Jay Clayton has been picked to lead a task force addressing growing AI concerns.</p>
+      <a href="https://www.cnbc.com/2026/10/03/trump-jay-clayton-ai-czar.html" target="_blank" rel="noopener">Read more &rarr;</a>
+    </div>
+
+    <div class="card">
+      <div class="source">Arab News</div>
+      <div class="date">~1 hour ago</div>
+      <h2>White House AI Task Force Will Prevent 'Overregulation'</h2>
+      <p>The new White House task force will assess AI's risks and opportunities while preventing overregulation, per WSJ.</p>
+      <a href="https://www.arabnews.com/world/white-house-ai-task-force-will-prevent-overregulation-wsj-3004531" target="_blank" rel="noopener">Read more &rarr;</a>
+    </div>
+
+    <div class="card">
+      <div class="source">The Motley Fool</div>
+      <div class="date">~8 hours ago</div>
+      <h2>Better AI Stock: Alphabet vs. Meta Platforms</h2>
+      <p>The digital advertising landscape is shifting as AI transforms how users find information and connect online.</p>
+      <a href="https://www.fool.com/coverage/better-buy/2026/10/03/better-artificial-intelligence-stock-alphabet-vs-meta-platforms/" target="_blank" rel="noopener">Read more &rarr;</a>
+    </div>
+
+    <div class="card">
+      <div class="source">UA.NEWS</div>
+      <div class="date">~3 hours ago</div>
+      <h2>ESMA Launches Supervisory Priority for AI and Tokenisation</h2>
+      <p>The EU regulator focuses first on artificial intelligence and tokenisation in the financial sector.</p>
+      <a href="https://ua.news/en/world/esma-zapustilo-prioritet-nagliadu-za-shi-ta-tokenizatsiieiu-cyprus-mail" target="_blank" rel="noopener">Read more &rarr;</a>
+    </div>
+
+    <div class="card">
+      <div class="source">Gazeta Express</div>
+      <div class="date">~5 hours ago</div>
+      <h2>BMW Begins Restructuring With More AI</h2>
+      <p>The German automaker aims to cut costs and restructure as it prepares new electric models and more AI.</p>
+      <a href="https://www.gazetaexpress.com/en/BMW-begins-restructuring--8-jobs-at-risk-and-more-artificial-intelligence/" target="_blank" rel="noopener">Read more &rarr;</a>
+    </div>
+
+    <div class="card">
+      <div class="source">Qazinform</div>
+      <div class="date">~2 hours ago</div>
+      <h2>Kazakh Filmmaker Wins at International AI Film Festival</h2>
+      <p>Myrzakhan Zhumakhan won Best Character at the Astana AI Film Festival for his comedy.</p>
+      <a href="https://qazinform.com/news/kazakhstani-flmmaker-wins-best-character-award-at-international-ai-film-festival-339935" target="_blank" rel="noopener">Read more &rarr;</a>
+    </div>
+
+    <div class="card">
+      <div class="source">Libya Update News</div>
+      <div class="date">~15 hours ago</div>
+      <h2>Omar Al-Mukhtar University Wins Two AI Awards</h2>
+      <p>The university took first place for Best Research Presentation at an international AI conference in South Africa.</p>
+      <a href="https://libyaupdate.com/omar-al-mukhtar-university-wins-two-awards-at-international-artificial-intelligence-conference-in-south-africa/" target="_blank" rel="noopener">Read more &rarr;</a>
+    </div>
+
+    <div class="card">
+      <div class="source">The News Pakistan</div>
+      <div class="date">~9 hours ago</div>
+      <h2>History in the Age of Artificial Intelligence</h2>
+      <p>A look at how machines that can search millions of records are reshaping the study of history.</p>
+      <a href="https://www.thenews.pk/tns/detail/1440843-history-in-the-age-of-artificial-intelligence" target="_blank" rel="noopener">Read more &rarr;</a>
+    </div>
+
+    <div class="card">
+      <div class="source">The Suffolk Times</div>
+      <div class="date">~5 hours ago</div>
+      <h2>A Caution About Artificial Intelligence</h2>
+      <p>A guest column reflecting on technology's rapid advance, from slide rules to modern AI.</p>
+      <a href="https://suffolktimes.timesreview.com/2026/10/guest-column-a-caution-about-artificial-intelligence/" target="_blank" rel="noopener">Read more &rarr;</a>
+    </div>
+
   </div>
+
+  <footer>Updates automatically every 5 hours</footer>
+</div>
 </body>
 </html>
