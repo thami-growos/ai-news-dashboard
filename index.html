@@ -5,176 +5,138 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI News Dashboard</title>
 <style>
-  :root {
-    --bg1: #2b1055;
-    --bg2: #7597de;
-    --card: #ffffff;
-    --ink: #1e1e2f;
-    --muted: #6b6b84;
-    --accent: #5b3fa8;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 100%);
+    background: linear-gradient(135deg, #4a1d8f 0%, #6d28d9 40%, #3b1d5e 100%);
     min-height: 100vh;
+    color: #1f1b2e;
     padding: 2rem 1rem;
-    color: var(--ink);
   }
-  .wrap { max-width: 980px; margin: 0 auto; }
-  header {
-    text-align: center;
-    color: #fff;
-    margin-bottom: 2rem;
+  .wrap { max-width: 1000px; margin: 0 auto; }
+  header { text-align: center; color: #fff; margin-bottom: 2rem; }
+  header h1 { font-size: 2.2rem; font-weight: 700; letter-spacing: -0.5px; }
+  header p { color: #d9cbf5; margin-top: 0.5rem; font-size: 0.95rem; }
+  .last-updated {
+    display: inline-block; margin-top: 0.9rem; padding: 0.4rem 0.9rem;
+    background: rgba(255,255,255,0.15); border-radius: 999px;
+    font-size: 0.85rem; color: #fff;
   }
-  header h1 {
-    font-size: 2.4rem;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-    margin-bottom: 0.4rem;
-  }
-  header p { opacity: 0.9; font-size: 1rem; }
-  .meta {
-    display: inline-block;
-    margin-top: 1rem;
-    background: rgba(255,255,255,0.15);
-    border: 1px solid rgba(255,255,255,0.25);
-    padding: 0.4rem 1rem;
-    border-radius: 999px;
-    font-size: 0.85rem;
-  }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-    gap: 1.25rem;
-  }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.25rem; }
   .card {
-    background: var(--card);
-    border-radius: 14px;
-    padding: 1.25rem;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
+    background: #fff; border-radius: 14px; padding: 1.35rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.22);
+    display: flex; flex-direction: column; gap: 0.7rem;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
-  .card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 14px 30px rgba(0,0,0,0.24);
-  }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(0,0,0,0.28); }
   .card .source {
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.4px;
+    font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px;
+    color: #6d28d9;
   }
-  .card h2 {
-    font-size: 1.12rem;
-    line-height: 1.3;
-    font-weight: 700;
+  .card .date { font-size: 0.72rem; color: #8a8296; }
+  .card h2 { font-size: 1.05rem; line-height: 1.3; color: #241d3b; }
+  .card p { font-size: 0.88rem; line-height: 1.45; color: #4b4459; flex: 1; }
+  .card a {
+    text-decoration: none; color: #6d28d9; font-weight: 600; font-size: 0.85rem;
   }
-  .card h2 a {
-    color: var(--ink);
-    text-decoration: none;
-  }
-  .card h2 a:hover { color: var(--accent); }
-  .card .summary {
-    font-size: 0.9rem;
-    color: var(--muted);
-    line-height: 1.5;
-    flex-grow: 1;
-  }
-  .card .date { font-size: 0.78rem; color: #a3a3b8; }
-  footer {
-    text-align: center;
-    color: rgba(255,255,255,0.75);
-    margin-top: 2.5rem;
-    font-size: 0.85rem;
-  }
+  .card a:hover { text-decoration: underline; }
+  footer { text-align: center; color: #c9bcf0; margin-top: 2rem; font-size: 0.8rem; }
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
     <h1>AI News Dashboard</h1>
-    <p>Recent global headlines on artificial intelligence</p>
-    <div class="meta">Last updated: 10:00 PM SAST, 03 Oct 2026</div>
+    <p>Latest global artificial intelligence headlines</p>
+    <span class="last-updated">Last updated: 02:00 AM SAST, Sunday October 04 2026</span>
   </header>
+
   <div class="grid">
 
     <div class="card">
-      <div class="source">The Atlantic</div>
-      <h2><a href="https://www.theatlantic.com/technology/2026/10/meet-the-ai-writing-hypocrites/688872/" target="_blank" rel="noopener">Meet the AI-Writing Hypocrites</a></h2>
-      <p class="summary">The university where "artificial intelligence" was coined marks the field's 70th birthday, but researchers and instructors who criticize AI use are quietly relying on it themselves.</p>
-      <div class="date">Published 39 minutes ago</div>
+      <div class="source">CNBC</div>
+      <div class="date">23 minutes ago</div>
+      <h2>Trump taps Director of National Intelligence Jay Clayton as AI czar</h2>
+      <p>Jay Clayton has been picked to serve as AI czar, leading a new task force to address growing concerns about artificial intelligence, WSJ reports.</p>
+      <a href="https://www.cnbc.com/2026/10/03/trump-jay-clayton-ai-czar.html" target="_blank" rel="noopener">Read more</a>
+    </div>
+
+    <div class="card">
+      <div class="source">WSJ</div>
+      <div class="date">42 minutes ago</div>
+      <h2>New AI czar unveils goals, members of White House task force</h2>
+      <p>The newly formed group, created after industry and public concerns, will be led by Director of National Intelligence Jay Clayton.</p>
+      <a href="https://www.wsj.com/tech/ai/new-ai-task-force-to-report-on-risks-of-technology-after-public-and-industry-concerns-b6308bef" target="_blank" rel="noopener">Read more</a>
     </div>
 
     <div class="card">
       <div class="source">The New York Times</div>
-      <h2><a href="https://www.nytimes.com/2026/10/01/technology/ai-rogue-agents-liability.html" target="_blank" rel="noopener">A.I. Is Going Rogue. Who Should Be Held Responsible?</a></h2>
-      <p class="summary">As AI systems behave in unexpected ways, legal scholars weigh whether companies should be liable for runaway technology and how existing law might apply.</p>
-      <div class="date">Published 5 hours ago</div>
+      <div class="date">9 hours ago</div>
+      <h2>A.I. is going rogue. Who should be held responsible?</h2>
+      <p>Many think AI companies should be held liable for their runaway technology, but legal scholars say applying existing law could be complicated.</p>
+      <a href="https://www.nytimes.com/2026/10/01/technology/ai-rogue-agents-liability.html" target="_blank" rel="noopener">Read more</a>
+    </div>
+
+    <div class="card">
+      <div class="source">DW.com</div>
+      <div class="date">2 hours ago</div>
+      <h2>AI giants not 'careful enough,' ex-OpenAI engineer warns</h2>
+      <p>Days after the US president signed a voluntary pact with AI giants, a former OpenAI worker said his industry needs the same level of caution.</p>
+      <a href="https://www.dw.com/en/ai-giants-not-being-nearly-careful-enough-warns-outgoing-openai-safety-engineer/a-79533080" target="_blank" rel="noopener">Read more</a>
     </div>
 
     <div class="card">
       <div class="source">KOTA Territory News</div>
-      <h2><a href="https://www.kotatv.com/2026/10/03/sen-rounds-anthropic-leaders-talk-ais-future-south-dakota-mines/" target="_blank" rel="noopener">Sen. Rounds, Anthropic leaders talk AI's future at South Dakota Mines</a></h2>
-      <p class="summary">Senator Mike Rounds joined Anthropic leaders to discuss AI's impact on jobs, healthcare, security, and intellectual property at South Dakota Mines.</p>
-      <div class="date">Published 2 hours ago</div>
+      <div class="date">6 hours ago</div>
+      <h2>Sen. Rounds, Anthropic leaders talk AI's future at South Dakota Mines</h2>
+      <p>Sen. Mike Rounds and Anthropic leaders discussed AI jobs, healthcare, security, and intellectual property at South Dakota Mines.</p>
+      <a href="https://www.kotatv.com/2026/10/03/sen-rounds-anthropic-leaders-talk-ais-future-south-dakota-mines/" target="_blank" rel="noopener">Read more</a>
     </div>
 
     <div class="card">
-      <div class="source">The Suffolk Times</div>
-      <h2><a href="https://suffolktimes.timesreview.com/2026/10/guest-column-a-caution-about-artificial-intelligence/" target="_blank" rel="noopener">Guest column: A caution about artificial intelligence</a></h2>
-      <p class="summary">A columnist reflects on computing's decades-long arc, from slide rules and FORTRAN to modern AI, urging careful thought about where the technology is heading.</p>
-      <div class="date">Published 3 hours ago</div>
-    </div>
-
-    <div class="card">
-      <div class="source">UNN News of the World</div>
-      <h2><a href="https://unn.ua/en/amp/north-korea-reported-using-artificial-intelligence-during-a-missile-test" target="_blank" rel="noopener">North Korea reported using artificial intelligence during a missile test</a></h2>
-      <p class="summary">Pyongyang said it tested a medium-range missile capable of changing trajectory at low altitude, while Seoul reported its flight details.</p>
-      <div class="date">Published 3 hours ago</div>
-    </div>
-
-    <div class="card">
-      <div class="source">Compliance Week</div>
-      <h2><a href="https://www.complianceweek.com/artificial-intelligence/fca-warns-ai-may-reveal-more-cyber-vulnerabilities-firms-can-cope-with/" target="_blank" rel="noopener">FCA warns AI may reveal more cyber vulnerabilities firms can cope with</a></h2>
-      <p class="summary">The UK's financial regulator cautions that AI's rapid development is exposing cybersecurity gaps across firms at a pace they may struggle to manage.</p>
-      <div class="date">Published 2 hours ago</div>
-    </div>
-
-    <div class="card">
-      <div class="source">The Regulatory Review</div>
-      <h2><a href="https://www.theregreview.org/2026/10/03/seminar-should-schools-ban-ai-in-the-classroom/" target="_blank" rel="noopener">Should Schools Ban AI in the Classroom?</a></h2>
-      <p class="summary">Scholars assess the risks and benefits of artificial intelligence in education, debating whether restrictions or guidance serve students best.</p>
-      <div class="date">Published 11 hours ago</div>
+      <div class="source">Ukrainian National News</div>
+      <div class="date">7 hours ago</div>
+      <h2>North Korea reported using AI during a missile test</h2>
+      <p>Pyongyang said it tested a medium-range missile capable of changing its trajectory at low altitude; Seoul reported the flight details.</p>
+      <a href="https://unn.ua/en/amp/north-korea-reported-using-artificial-intelligence-during-a-missile-test" target="_blank" rel="noopener">Read more</a>
     </div>
 
     <div class="card">
       <div class="source">The Motley Fool</div>
-      <h2><a href="https://www.fool.com/investing/2026/10/03/should-you-forget-palantir-and-buy-these-2-artific/" target="_blank" rel="noopener">Should You Forget Palantir and Buy These 2 AI Stocks Instead?</a></h2>
-      <p class="summary">Palantir has become a marquee AI name, but the current boom is creating investment opportunities well beyond the biggest players.</p>
-      <div class="date">Published 8 hours ago</div>
+      <div class="date">7 hours ago</div>
+      <h2>ASML vs. TSMC: What revenue trends tell investors</h2>
+      <p>TSMC has outpaced ASML in absolute revenue across eight quarters, but ASML's recent acceleration hints at a shifting competitive dynamic.</p>
+      <a href="https://www.fool.com/coverage/charts/2026/10/03/asml-vs-taiwan-semiconductor-manufacturing-company-what-revenue-trends-tell-investors-about-these-companies-tied-to-artificial-intelligence/" target="_blank" rel="noopener">Read more</a>
     </div>
 
     <div class="card">
-      <div class="source">2 Minute Medicine</div>
-      <h2><a href="https://www.2minutemedicine.com/artificial-intelligence-ai-triggered-rapid-response-notifications-were-associated-with-lower-mortality-among-inpatients/" target="_blank" rel="noopener">AI-triggered rapid response notifications were associated with lower mortality</a></h2>
-      <p class="summary">A study found that an AI-powered alert system automatically activating rapid response teams was linked to lower inpatient mortality rates.</p>
-      <div class="date">Published 18 hours ago</div>
+      <div class="source">CBC</div>
+      <div class="date">55 minutes ago</div>
+      <h2>Our AI panelists look at governance in light of the new U.S. accord</h2>
+      <p>Breaking news and analysis on the governance of artificial intelligence following the new U.S. accord, from the CBC News panel.</p>
+      <a href="https://www.cbc.ca/player/play/video/9.7368403" target="_blank" rel="noopener">Read more</a>
+    </div>
+
+    <div class="card">
+      <div class="source">The Suffolk Times</div>
+      <div class="date">57 minutes ago</div>
+      <h2>Guest column: A caution about artificial intelligence</h2>
+      <p>A columnist reflects on decades of computing, from slide rules and FORTRAN to modern AI, and urges measured caution.</p>
+      <a href="https://suffolktimes.timesreview.com/2026/10/guest-column-a-caution-about-artificial-intelligence/" target="_blank" rel="noopener">Read more</a>
     </div>
 
     <div class="card">
       <div class="source">Cureus</div>
-      <h2><a href="https://www.cureus.com/articles/535230-artificial-intelligence-for-automated-analysis-and-interpretation-of-intravascular-ultrasound-in-coronary-artery-disease-a-systematic-review" target="_blank" rel="noopener">AI for Automated Analysis of Intravascular Ultrasound in Coronary Artery Disease</a></h2>
-      <p class="summary">A systematic review examines how AI can automate the analysis of intravascular ultrasound imaging to aid coronary artery disease diagnosis.</p>
-      <div class="date">Published 8 hours ago</div>
+      <div class="date">12 hours ago</div>
+      <h2>AI for automated intravascular ultrasound analysis in coronary disease</h2>
+      <p>A systematic review examines how AI can automate the analysis and interpretation of intravascular ultrasound in coronary artery disease.</p>
+      <a href="https://www.cureus.com/articles/535230-artificial-intelligence-for-automated-analysis-and-interpretation-of-intravascular-ultrasound-in-coronary-artery-disease-a-systematic-review" target="_blank" rel="noopener">Read more</a>
     </div>
 
   </div>
-  <footer>Automatically refreshed every 5 hours. Hosted on GitHub Pages.</footer>
+
+  <footer>Updated automatically every 5 hours</footer>
 </div>
 </body>
 </html>
