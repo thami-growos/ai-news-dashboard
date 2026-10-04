@@ -5,121 +5,135 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI News Dashboard</title>
 <style>
-  :root {
-    --bg1: #1a1033;
-    --bg2: #3b1d6e;
-    --accent: #a855f7;
-    --card: rgba(255,255,255,0.06);
-    --border: rgba(255,255,255,0.12);
-    --text: #f1eaff;
-    --muted: #c7b8e8;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: linear-gradient(135deg, var(--bg1), var(--bg2));
+    background: linear-gradient(135deg, #2b1055 0%, #7597de 100%);
     min-height: 100vh;
-    color: var(--text);
-    padding: 2rem 1rem;
+    color: #1a1a2e;
+    padding: 40px 20px;
   }
-  .container { max-width: 960px; margin: 0 auto; }
-  header { text-align: center; margin-bottom: 2rem; }
-  header h1 { font-size: 2.2rem; background: linear-gradient(90deg, #e9d5ff, #c084fc); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-  header p { color: var(--muted); margin-top: 0.5rem; font-size: 0.95rem; }
-  .meta { margin-top: 0.75rem; font-size: 0.8rem; color: var(--muted); }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  header { text-align: center; color: #fff; margin-bottom: 40px; }
+  header h1 { font-size: 2.4rem; font-weight: 700; letter-spacing: -0.5px; }
+  header p { opacity: 0.85; margin-top: 8px; font-size: 1rem; }
+  .timestamp {
+    display: inline-block; margin-top: 14px; font-size: 0.85rem;
+    background: rgba(255,255,255,0.15); padding: 6px 14px; border-radius: 20px;
+  }
+  .grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px;
+  }
   .card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 1.25rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-    transition: transform 0.15s ease, border-color 0.15s ease;
-    backdrop-filter: blur(6px);
+    background: #fff; border-radius: 14px; padding: 22px; box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    display: flex; flex-direction: column; transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
-  .card:hover { transform: translateY(-3px); border-color: var(--accent); }
-  .card h2 { font-size: 1.05rem; line-height: 1.3; }
-  .card h2 a { color: var(--text); text-decoration: none; }
-  .card h2 a:hover { color: var(--accent); }
-  .summary { color: var(--muted); font-size: 0.88rem; line-height: 1.5; flex: 1; }
-  .footer { display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; color: var(--muted); }
-  .source { color: var(--accent); }
-  a.read-more { color: #d8b4fe; text-decoration: none; font-weight: 600; }
-  a.read-more:hover { text-decoration: underline; }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(0,0,0,0.22); }
+  .source { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.6px; color: #7c3aed; font-weight: 700; margin-bottom: 10px; }
+  .card h2 { font-size: 1.15rem; font-weight: 600; line-height: 1.35; margin-bottom: 12px; color: #1a1a2e; }
+  .summary { font-size: 0.92rem; color: #444; line-height: 1.5; flex-grow: 1; margin-bottom: 16px; }
+  .date { font-size: 0.78rem; color: #888; margin-bottom: 12px; }
+  .card a {
+    text-decoration: none; color: #6d28d9; font-weight: 600; font-size: 0.88rem;
+    align-self: flex-start; border-bottom: 2px solid transparent; transition: border-color 0.15s ease;
+  }
+  .card a:hover { border-color: #6d28d9; }
+  footer { text-align: center; color: #fff; opacity: 0.7; margin-top: 40px; font-size: 0.85rem; }
 </style>
 </head>
 <body>
 <div class="container">
   <header>
     <h1>AI News Dashboard</h1>
-    <p>Recent global headlines in artificial intelligence</p>
-    <div class="meta">Last updated: Sunday, October 04, 2026 &middot; 5:00 PM SAST</div>
+    <p>Latest global artificial intelligence headlines, updated automatically</p>
+    <div class="timestamp">Last updated: Sunday, October 04, 2026 10:00 PM SAST</div>
   </header>
+
   <div class="grid">
 
     <div class="card">
-      <h2><a href="https://www.cbsnews.com/news/ai-super-intelligence-force-trump-jay-clayton/" target="_blank" rel="noopener">Trump announces formation of AI "Super Intelligence Force"</a></h2>
-      <p class="summary">The White House unveiled a new "Super Intelligence Force" tasked with coordinating federal AI policy after meetings with leaders of the country's largest AI companies.</p>
-      <div class="footer"><span class="source">CBS News</span><a class="read-more" href="https://www.cbsnews.com/news/ai-super-intelligence-force-trump-jay-clayton/" target="_blank" rel="noopener">Read &rarr;</a></div>
+      <div class="source">Politico</div>
+      <h2>Trump gives spy chief new title: AI czar</h2>
+      <p class="summary">President Trump named Director of National Intelligence Jay Clayton to the newly created role of artificial intelligence czar, centralizing federal AI policy under one official.</p>
+      <p class="date">October 4, 2026</p>
+      <a href="https://www.politico.com/news/2026/10/04/jay-clayton-ai-trump-01106137" target="_blank" rel="noopener">Read more</a>
     </div>
 
     <div class="card">
-      <h2><a href="https://fox23.com/news/nation-world/trump-launches-super-intelligence-force-sif-to-keep-us-leading-ai-names-top-officials-federal-trade-commission-andrew-ferguson-pentagon-chiefl-technology-officer-emil-michael-director-of-the-office-of-personnel-management-scott-kupor" target="_blank" rel="noopener">Trump launches Super Intelligence Force, names top officials</a></h2>
-      <p class="summary">The new Super Intelligence Force (SIF) has already named its leadership, including the FTC's Andrew Ferguson, Pentagon CTO Emil Michael, and OPM Director Scott Kupor, aimed at keeping the U.S. ahead in AI.</p>
-      <div class="footer"><span class="source">KOKI FOX 23</span><a class="read-more" href="https://fox23.com/news/nation-world/trump-launches-super-intelligence-force-sif-to-keep-us-leading-ai-names-top-officials-federal-trade-commission-andrew-ferguson-pentagon-chiefl-technology-officer-emil-michael-director-of-the-office-of-personnel-management-scott-kupor" target="_blank" rel="noopener">Read &rarr;</a></div>
+      <div class="source">CBS News</div>
+      <h2>Trump announces formation of AI "Super Intelligence Force"</h2>
+      <p class="summary">After meeting with leaders of the country's largest AI companies, President Trump announced a new "Super Intelligence Force" task force to coordinate government engagement with artificial intelligence.</p>
+      <p class="date">October 4, 2026</p>
+      <a href="https://www.cbsnews.com/news/ai-super-intelligence-force-trump-jay-clayton/" target="_blank" rel="noopener">Read more</a>
     </div>
 
     <div class="card">
-      <h2><a href="https://www.wsj.com/tech/ai/new-ai-task-force-to-report-on-risks-of-technology-after-public-and-industry-concerns-b6308bef" target="_blank" rel="noopener">New AI Czar Unveils Goals, Members of White House Task Force</a></h2>
-      <p class="summary">The newly named AI czar laid out the task force's goals, examining the technology's risks and opportunities while prioritizing keeping the U.S. first in the field.</p>
-      <div class="footer"><span class="source">WSJ</span><a class="read-more" href="https://www.wsj.com/tech/ai/new-ai-task-force-to-report-on-risks-of-technology-after-public-and-industry-concerns-b6308bef" target="_blank" rel="noopener">Read &rarr;</a></div>
+      <div class="source">PBS</div>
+      <h2>Trump names Jay Clayton to lead a new federal AI task force</h2>
+      <p class="summary">The move follows a White House gathering of top AI executives last week, where companies signed a voluntary accord on how they engage with government on AI.</p>
+      <p class="date">October 4, 2026</p>
+      <a href="https://www.pbs.org/newshour/amp/politics/trump-names-national-intelligence-director-jay-clayton-to-lead-a-new-federal-ai-task-force" target="_blank" rel="noopener">Read more</a>
     </div>
 
     <div class="card">
-      <h2><a href="https://thehill.com/homenews/administration/6128176-trump-creates-super-intelligence-force/" target="_blank" rel="noopener">Trump announces 'Super Intelligence Force' led by DNI Jay Clayton</a></h2>
-      <p class="summary">President Trump launched the Super Intelligence Force to coordinate federal work on "super intelligence," his rebrand for artificial intelligence, under Director of National Intelligence Jay Clayton.</p>
-      <div class="footer"><span class="source">The Hill</span><a class="read-more" href="https://thehill.com/homenews/administration/6128176-trump-creates-super-intelligence-force/" target="_blank" rel="noopener">Read &rarr;</a></div>
+      <div class="source">UPI</div>
+      <h2>Trump names Jay Clayton to new AI czar post</h2>
+      <p class="summary">President Trump named Director of National Intelligence Jay Clayton to the newly created position of artificial intelligence czar, according to UPI.</p>
+      <p class="date">October 4, 2026</p>
+      <a href="https://www.upi.com/Top_News/US/2026/10/04/trump-artificial-intelligence/1231791134807/" target="_blank" rel="noopener">Read more</a>
     </div>
 
     <div class="card">
-      <h2><a href="https://www.france24.com/en/live-news/20261004-trump-confirms-national-intelligence-chief-as-new-ai-czar" target="_blank" rel="noopener">Trump confirms national intelligence chief as new AI czar</a></h2>
-      <p class="summary">President Trump confirmed national intelligence chief Jay Clayton as head of a new White House task force on artificial intelligence, signaling a coordinated federal push on the technology.</p>
-      <div class="footer"><span class="source">France 24</span><a class="read-more" href="https://www.france24.com/en/live-news/20261004-trump-confirms-national-intelligence-chief-as-new-ai-czar" target="_blank" rel="noopener">Read &rarr;</a></div>
+      <div class="source">ABC11 News</div>
+      <h2>Trump announces creation of 'Super Intelligence Force' AI task force</h2>
+      <p class="summary">President Trump formally announced what he called a "Super Intelligence Force," an AI task force to coordinate the government's work on artificial intelligence.</p>
+      <p class="date">October 4, 2026</p>
+      <a href="https://abc11.com/story/president-donald-trump-announces-creation-super-intelligence-force-ai-task/19907473/" target="_blank" rel="noopener">Read more</a>
     </div>
 
     <div class="card">
-      <h2><a href="https://www.weau.com/2026/10/04/trump-names-national-intelligence-director-jay-clayton-lead-new-federal-ai-task-force/" target="_blank" rel="noopener">Trump names Jay Clayton to lead new federal AI task force</a></h2>
-      <p class="summary">The president tapped his director of national intelligence, Jay Clayton, to lead a new government task force on artificial intelligence as Washington formalizes its approach to AI.</p>
-      <div class="footer"><span class="source">WEAU</span><a class="read-more" href="https://www.weau.com/2026/10/04/trump-names-national-intelligence-director-jay-clayton-lead-new-federal-ai-task-force/" target="_blank" rel="noopener">Read &rarr;</a></div>
+      <div class="source">WUFT</div>
+      <h2>Trump names Jay Clayton as new AI czar</h2>
+      <p class="summary">Clayton will lead the White House's new "Super Intelligence Force," coordinating government engagement with artificial intelligence across agencies.</p>
+      <p class="date">October 4, 2026</p>
+      <a href="https://www.wuft.org/2026-10-04/trump-names-national-intelligence-chief-jay-clayton-as-new-ai-czar?_amp=true" target="_blank" rel="noopener">Read more</a>
     </div>
 
     <div class="card">
-      <h2><a href="https://www.nytimes.com/2026/10/01/technology/ai-rogue-agents-liability.html" target="_blank" rel="noopener">A.I. Is Going Rogue. Who Should Be Held Responsible?</a></h2>
-      <p class="summary">As AI systems behave in unexpected ways, legal scholars debate whether AI companies should be held liable for runaway technology and how existing law might apply.</p>
-      <div class="footer"><span class="source">The New York Times</span><a class="read-more" href="https://www.nytimes.com/2026/10/01/technology/ai-rogue-agents-liability.html" target="_blank" rel="noopener">Read &rarr;</a></div>
+      <div class="source">WSJ</div>
+      <h2>Think of artificial intelligence like a weapon</h2>
+      <p class="summary">A Wall Street Journal opinion piece weighs in on AI liability, arguing that comparing AI to a weapon may be the right lens for who should pay for its dangers.</p>
+      <p class="date">October 4, 2026</p>
+      <a href="https://www.wsj.com/opinion/think-of-artificial-intelligence-like-a-weapon-0d541abc" target="_blank" rel="noopener">Read more</a>
     </div>
 
     <div class="card">
-      <h2><a href="https://www.fool.com/investing/2026/10/04/wall-street-ai-decimate-software-stocks-tripled-lo/" target="_blank" rel="noopener">Software Stock Triples From 52-Week Low on AI Advantage</a></h2>
-      <p class="summary">Wall Street worried AI would decimate software stocks, but one company is proving it can use artificial intelligence to its advantage, tripling off its 52-week low.</p>
-      <div class="footer"><span class="source">The Motley Fool</span><a class="read-more" href="https://www.fool.com/investing/2026/10/04/wall-street-ai-decimate-software-stocks-tripled-lo/" target="_blank" rel="noopener">Read &rarr;</a></div>
+      <div class="source">Washington State Standard</div>
+      <h2>Commentary: Artificial intelligence in the classroom</h2>
+      <p class="summary">Three experts argue a considered approach to AI is needed if teachers are to make classroom-level decisions rooted in student learning.</p>
+      <p class="date">October 4, 2026</p>
+      <a href="https://washingtonstatestandard.com/2026/10/04/artificial-intelligence-in-the-classroom/" target="_blank" rel="noopener">Read more</a>
     </div>
 
     <div class="card">
-      <h2><a href="https://www.newsfromthestates.com/article/artificial-intelligence-classroom" target="_blank" rel="noopener">Artificial intelligence in the classroom</a></h2>
-      <p class="summary">Teachers are again at the forefront of the debate over artificial intelligence, grappling with how the technology should shape learning and its impact on students.</p>
-      <div class="footer"><span class="source">News From The States</span><a class="read-more" href="https://www.newsfromthestates.com/article/artificial-intelligence-classroom" target="_blank" rel="noopener">Read &rarr;</a></div>
+      <div class="source">The National Herald</div>
+      <h2>Are we smarter than artificial intelligence?</h2>
+      <p class="summary">A reflective piece on how much of the public deals with AI daily while rarely understanding what it actually is or how it works.</p>
+      <p class="date">October 4, 2026</p>
+      <a href="https://www.thenationalherald.com/are-we-smarter-than-ai/" target="_blank" rel="noopener">Read more</a>
     </div>
 
     <div class="card">
-      <h2><a href="https://suffolktimes.timesreview.com/2026/10/guest-column-a-caution-about-artificial-intelligence/" target="_blank" rel="noopener">Guest column: A caution about artificial intelligence</a></h2>
-      <p class="summary">A personal reflection on the rapid advance of artificial intelligence offers a cautionary perspective, contrasting early computing with today's AI landscape.</p>
-      <div class="footer"><span class="source">The Suffolk Times</span><a class="read-more" href="https://suffolktimes.timesreview.com/2026/10/guest-column-a-caution-about-artificial-intelligence/" target="_blank" rel="noopener">Read &rarr;</a></div>
+      <div class="source">Riverhead News Review</div>
+      <h2>Guest column: A caution about artificial intelligence</h2>
+      <p class="summary">A guest columnist reflects on technology's evolution from slide rules to AI and offers a cautionary note on where the technology is heading.</p>
+      <p class="date">October 4, 2026</p>
+      <a href="https://riverheadnewsreview.timesreview.com/2026/10/138427/guest-column-a-caution-about-artificial-intelligence/" target="_blank" rel="noopener">Read more</a>
     </div>
 
   </div>
+
+  <footer>Automatically refreshed every 5 hours &middot; Sources link out to original publishers</footer>
 </div>
 </body>
 </html>
