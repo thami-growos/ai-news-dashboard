@@ -3,142 +3,221 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Global AI News Dashboard</title>
+<title>AI News Dashboard</title>
 <style>
-  :root {
-    --bg1: #372168;
-    --bg2: #0f1b4c;
-    --card: #ffffff;
-    --text: #1a1a2e;
-    --muted: #5a5a72;
-    --accent: #7c5cff;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: linear-gradient(160deg, var(--bg1) 0%, var(--bg2) 100%);
+    background: linear-gradient(135deg, #2b1b5e 0%, #4a2b8f 50%, #6d3fc2 100%);
     min-height: 100vh;
+    color: #1b1b2f;
+    padding: 2rem 1rem;
+  }
+  .wrap { max-width: 1100px; margin: 0 auto; }
+  header {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 2.5rem;
+  }
+  header h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 0.5rem;
+  }
+  header p.sub {
+    color: #d8c8ff;
+    font-size: 1rem;
+  }
+  .timestamp {
+    display: inline-block;
+    margin-top: 1rem;
+    background: rgba(255,255,255,0.15);
+    padding: 0.4rem 1rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
     color: #fff;
-    padding: 40px 20px;
   }
-  .wrap { max-width: 960px; margin: 0 auto; }
-  header { text-align: center; margin-bottom: 36px; }
-  header h1 { font-size: 2rem; letter-spacing: -0.5px; margin-bottom: 8px; }
-  header .subtitle { color: #cdc3f0; font-size: 1rem; }
-  header .updated {
-    display: inline-block; margin-top: 14px;
-    background: rgba(255,255,255,0.12);
-    border: 1px solid rgba(255,255,255,0.2);
-    padding: 6px 14px; border-radius: 999px; font-size: 0.85rem;
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.25rem;
   }
-  .grid { display: grid; grid-template-columns: 1fr; gap: 18px; }
-  @media (min-width: 720px) { .grid { grid-template-columns: 1fr 1fr; } }
   .card {
-    background: var(--card); color: var(--text);
-    border-radius: 16px; padding: 22px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.22);
-    display: flex; flex-direction: column; gap: 10px;
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 1.4rem 1.4rem 1.2rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    display: flex;
+    flex-direction: column;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
-  .card:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(0,0,0,0.28); }
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 32px rgba(0,0,0,0.35);
+  }
   .card .source {
-    font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
-    letter-spacing: 0.6px; color: var(--accent);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #6d3fc2;
+    margin-bottom: 0.5rem;
   }
-  .card h2 { font-size: 1.15rem; line-height: 1.35; }
-  .card p { font-size: 0.92rem; color: var(--muted); line-height: 1.5; flex: 1; }
-  .card .meta { display: flex; justify-content: space-between; align-items: center; }
-  .card .date { font-size: 0.8rem; color: #9a9ab0; }
+  .card h2 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 0.7rem;
+    color: #1b1b2f;
+  }
+  .card .summary {
+    font-size: 0.92rem;
+    line-height: 1.5;
+    color: #4a4a5a;
+    flex: 1 1 auto;
+    margin-bottom: 1rem;
+  }
+  .card .meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: auto;
+  }
+  .card .date {
+    font-size: 0.78rem;
+    color: #8a8a9a;
+  }
   .card a {
-    color: var(--accent); text-decoration: none; font-weight: 600; font-size: 0.9rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #6d3fc2;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
   }
-  .card a:hover { text-decoration: underline; }
-  footer { text-align: center; margin-top: 36px; color: #b9aee0; font-size: 0.85rem; }
+  .card a:hover { border-bottom-color: #6d3fc2; }
+  footer {
+    text-align: center;
+    color: #cbbdff;
+    font-size: 0.8rem;
+    margin-top: 2.5rem;
+  }
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
-    <h1>Global AI News Dashboard</h1>
-    <div class="subtitle">The latest artificial intelligence headlines from around the world</div>
-    <div class="updated">Last updated: 05 October 2026, 07:00 AM SAST</div>
+    <h1>AI News Dashboard</h1>
+    <p class="sub">Recent global artificial intelligence headlines</p>
+    <span class="timestamp">Last updated: 05 October 2026, 12:00 PM SAST</span>
   </header>
 
   <div class="grid">
 
     <div class="card">
-      <span class="source">WSJ</span>
-      <h2>New AI Czar Unveils Goals, Members of White House Task Force</h2>
-      <p>The White House AI task force will examine the technology's risks and opportunities, with a focus on making sure the U.S. stays first in the field.</p>
-      <div class="meta"><span class="date">1 hour ago</span><a href="https://www.wsj.com/tech/ai/new-ai-task-force-to-report-on-risks-of-technology-after-public-and-industry-concerns-b6308bef" target="_blank" rel="noopener">Read more</a></div>
+      <div class="source">ABC News</div>
+      <h2>President Donald Trump announces creation of 'Super Intelligence Force' AI task force</h2>
+      <p class="summary">The White House is launching a new task force aimed at AI oversight and competitiveness, timed amid rising national security concerns about artificial intelligence.</p>
+      <div class="meta">
+        <span class="date">2 hours ago</span>
+        <a href="https://abcnews.com/Politics/president-donald-trump-announces-creation-super-intelligence-force/story?id=136986122" target="_blank" rel="noopener">Read more</a>
+      </div>
     </div>
 
     <div class="card">
-      <span class="source">ABC News</span>
-      <h2>Artificial Intelligence: FTC Opens Probe Into AI Safety, Including Anthropic</h2>
-      <p>ABC News' AI coverage includes a look at Taku, a new robot that loads washers and folds towels, plus the FTC's probe into AI safety, including Anthropic.</p>
-      <div class="meta"><span class="date">11 hours ago</span><a href="https://abcnews.com/alerts/ArtificialIntelligence" target="_blank" rel="noopener">Read more</a></div>
+      <div class="source">LiveNOW from FOX</div>
+      <h2>National intelligence chief to lead US artificial intelligence task force</h2>
+      <p class="summary">The head of US national intelligence will serve as the point person for the new federal AI task force, signaling a security-first posture toward the technology.</p>
+      <div class="meta">
+        <span class="date">11 hours ago</span>
+        <a href="https://www.livenowfox.com/news/national-intelligence-chief-lead-us-artificial-intelligence-task-force" target="_blank" rel="noopener">Read more</a>
+      </div>
     </div>
 
     <div class="card">
-      <span class="source">CBS News</span>
-      <h2>60 Minutes: Artificial Intelligence and the Future of Work</h2>
-      <p>Some Americans are working to improve AI by teaching it the skills and knowledge accrued over the course of a career.</p>
-      <div class="meta"><span class="date">4 hours ago</span><a href="https://www.cbsnews.com/news/will-ai-take-my-job-60-minutes-transcript/" target="_blank" rel="noopener">Read more</a></div>
+      <div class="source">WSJ</div>
+      <h2>Deutsche Telekom Bets on AI to Cut Costs, Boost Revenue</h2>
+      <p class="summary">The telecom giant expects to save billions of dollars through increased use of AI, betting the technology can streamline operations and grow its top line.</p>
+      <div class="meta">
+        <span class="date">3 hours ago</span>
+        <a href="https://www.wsj.com/tech/ai/deutsche-telekom-bets-on-ai-to-cut-costs-boost-revenue-22a289b8" target="_blank" rel="noopener">Read more</a>
+      </div>
     </div>
 
     <div class="card">
-      <span class="source">CancerNetwork</span>
-      <h2>The Evolution of AI in Oncology: Impact on Trials, Workflows, and Outcomes</h2>
-      <p>AI is improving mammography and early detection in lung cancer screening, helping clinicians better identify early-stage cancers.</p>
-      <div class="meta"><span class="date">8 hours ago</span><a href="https://www.cancernetwork.com/view/the-evolution-of-artificial-intelligence-in-oncology-impact-on-trials-workflows-and-outcomes" target="_blank" rel="noopener">Read more</a></div>
+      <div class="source">Punchbowl News</div>
+      <h2>The artificial intelligence revolution will be securitized</h2>
+      <p class="summary">AI's rapid expansion is largely funded by investor capital, a dynamic that is starting to raise concern among lawmakers on Capitol Hill.</p>
+      <div class="meta">
+        <span class="date">6 hours ago</span>
+        <a href="https://punchbowl.news/article/vault/ai-revolution-securitized/" target="_blank" rel="noopener">Read more</a>
+      </div>
     </div>
 
     <div class="card">
-      <span class="source">6abc Philadelphia</span>
-      <h2>OpenAI CEO Sam Altman Claims AI Singularity Has Arrived</h2>
-      <p>Sam Altman says AI has reached a long-sought threshold in which the technology can improve itself, calling it "awesome for the world."</p>
-      <div class="meta"><span class="date">3 hours ago</span><a href="https://6abc.com/post/openai-ceo-sam-altman-claims-artificial-intelligence-singularity-has-arrived/19588207/" target="_blank" rel="noopener">Read more</a></div>
+      <div class="source">CBS News</div>
+      <h2>60 Minutes Transcript: Artificial intelligence and the future of work</h2>
+      <p class="summary">Some Americans are teaching AI the skills and knowledge they've built over a career, raising questions about how the technology will reshape jobs.</p>
+      <div class="meta">
+        <span class="date">10 hours ago</span>
+        <a href="https://www.cbsnews.com/news/will-ai-take-my-job-60-minutes-transcript/" target="_blank" rel="noopener">Read more</a>
+      </div>
     </div>
 
     <div class="card">
-      <span class="source">Washington State Standard</span>
-      <h2>Commentary: Artificial Intelligence in the Classroom</h2>
-      <p>Three experts argue a considered approach to AI is necessary so teachers can make classroom-level decisions rooted in student learning.</p>
-      <div class="meta"><span class="date">10 hours ago</span><a href="https://washingtonstatestandard.com/2026/10/04/artificial-intelligence-in-the-classroom/" target="_blank" rel="noopener">Read more</a></div>
+      <div class="source">EdSource</div>
+      <h2>Cal State goes all in on AI, but some job-seeking students remain skeptical</h2>
+      <p class="summary">Cal State has rolled out AI initiatives including faculty grants and credentialing programs, though some students question how well it will translate to jobs.</p>
+      <div class="meta">
+        <span class="date">2 hours ago</span>
+        <a href="https://edsource.org/2026/csu-ai-workforce-preparedness/767404?amp=1" target="_blank" rel="noopener">Read more</a>
+      </div>
     </div>
 
     <div class="card">
-      <span class="source">Monthly Review</span>
-      <h2>Reclaiming Workers' Ownership Over AI and Technologies</h2>
-      <p>An essay exploring how workers can reclaim ownership over artificial intelligence and the technologies shaping their livelihoods.</p>
-      <div class="meta"><span class="date">1 hour ago</span><a href="https://mronline.org/2026/10/04/reclaiming-workers-ownership-over-artificial-intelligence-and-technologies/" target="_blank" rel="noopener">Read more</a></div>
+      <div class="source">CancerNetwork</div>
+      <h2>The Evolution of Artificial Intelligence in Oncology: Impact on Trials, Workflows, and Outcomes</h2>
+      <p class="summary">AI is helping identify early-stage cancers, supporting mammography and lung cancer screening trends and improving detection workflows in clinical trials.</p>
+      <div class="meta">
+        <span class="date">14 hours ago</span>
+        <a href="https://www.cancernetwork.com/view/the-evolution-of-artificial-intelligence-in-oncology-impact-on-trials-workflows-and-outcomes" target="_blank" rel="noopener">Read more</a>
+      </div>
     </div>
 
     <div class="card">
-      <span class="source">Riverhead News Review</span>
-      <h2>Guest Column: A Caution About Artificial Intelligence</h2>
-      <p>A reflective piece drawing on decades of computing history, from slide rules to mainframe FORTRAN, to offer a measured word of caution on AI.</p>
-      <div class="meta"><span class="date">11 hours ago</span><a href="https://riverheadnewsreview.timesreview.com/2026/10/138427/guest-column-a-caution-about-artificial-intelligence/" target="_blank" rel="noopener">Read more</a></div>
+      <div class="source">Penn State</div>
+      <h2>Contest invites examples of innovative use of AI in research</h2>
+      <p class="summary">Penn State's Center for Socially Responsible AI is running a "Research-a-thon" competition with cash prizes to showcase innovative AI use in research.</p>
+      <div class="meta">
+        <span class="date">1 hour ago</span>
+        <a href="https://www.psu.edu/news/campus-life/story/contest-invites-examples-innovative-use-ai-research" target="_blank" rel="noopener">Read more</a>
+      </div>
     </div>
 
     <div class="card">
-      <span class="source">LiveNOW from FOX</span>
-      <h2>National Intelligence Chief to Lead US Artificial Intelligence Task Force</h2>
-      <p>The official in charge of national intelligence for the United States is now the point person on the new AI task force.</p>
-      <div class="meta"><span class="date">6 hours ago</span><a href="https://www.livenowfox.com/news/national-intelligence-chief-lead-us-artificial-intelligence-task-force.amp" target="_blank" rel="noopener">Read more</a></div>
+      <div class="source">Washington State Standard</div>
+      <h2>Commentary: Artificial intelligence in the classroom</h2>
+      <p class="summary">Three experts argue a considered approach to AI is essential if teachers are to make classroom decisions rooted in student learning.</p>
+      <div class="meta">
+        <span class="date">15 hours ago</span>
+        <a href="https://washingtonstatestandard.com/2026/10/04/artificial-intelligence-in-the-classroom/" target="_blank" rel="noopener">Read more</a>
+      </div>
     </div>
 
     <div class="card">
-      <span class="source">NBC News</span>
-      <h2>Trump Announces Members of 'Super Intelligence Force' for AI Policy</h2>
-      <p>President Trump announced the formation of an AI task force, naming National Intelligence Director Jay Clayton to lead it.</p>
-      <div class="meta"><span class="date">5 hours ago</span><a href="https://www.nbcnews.com/politics/trump-administration/trump-announces-members-ai-task-force-rcna601494" target="_blank" rel="noopener">Read more</a></div>
+      <div class="source">Riverhead News Review</div>
+      <h2>Guest column: A caution about artificial intelligence</h2>
+      <p class="summary">A reflective column traces computing's arc from slide rules and FORTRAN to today's AI, urging caution about the technology's rapid advance.</p>
+      <div class="meta">
+        <span class="date">11 hours ago</span>
+        <a href="https://riverheadnewsreview.timesreview.com/2026/10/138427/guest-column-a-caution-about-artificial-intelligence/" target="_blank" rel="noopener">Read more</a>
+      </div>
     </div>
 
   </div>
 
-  <footer>Automatically refreshed by GrowOS &bull; Sources linked to their original publishers</footer>
+  <footer>Automated dashboard &middot; updates every 5 hours</footer>
 </div>
 </body>
 </html>
