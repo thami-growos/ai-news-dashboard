@@ -1,139 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>AI News Dashboard</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg1: #2b1055;
+    --bg2: #7597de;
+    --card: #ffffff;
+    --text: #1f2430;
+    --muted: #5b6270;
+    --accent: #5b3cc4;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: linear-gradient(135deg, #2b1055 0%, #7597de 100%);
+    background: linear-gradient(135deg, var(--bg1), var(--bg2));
     min-height: 100vh;
-    color: #1a1a2e;
-    padding: 40px 20px;
+    color: #fff;
+    padding: 2rem 1rem;
   }
-  .container { max-width: 1100px; margin: 0 auto; }
-  header { text-align: center; color: #fff; margin-bottom: 40px; }
-  header h1 { font-size: 2.4rem; font-weight: 700; letter-spacing: -0.5px; }
-  header p { opacity: 0.85; margin-top: 8px; font-size: 1rem; }
-  .timestamp {
-    display: inline-block; margin-top: 14px; font-size: 0.85rem;
-    background: rgba(255,255,255,0.15); padding: 6px 14px; border-radius: 20px;
+  .wrap { max-width: 980px; margin: 0 auto; }
+  header { margin-bottom: 2rem; }
+  h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.4rem; }
+  .subtitle { color: rgba(255,255,255,0.85); font-size: 1rem; }
+  .updated {
+    display: inline-block; margin-top: 0.75rem;
+    background: rgba(255,255,255,0.16);
+    padding: 0.3rem 0.8rem; border-radius: 999px;
+    font-size: 0.85rem;
   }
-  .grid {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px;
-  }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1.25rem; }
   .card {
-    background: #fff; border-radius: 14px; padding: 22px; box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-    display: flex; flex-direction: column; transition: transform 0.15s ease, box-shadow 0.15s ease;
+    background: var(--card); color: var(--text);
+    border-radius: 14px; padding: 1.25rem;
+    display: flex; flex-direction: column;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+    transition: transform 0.15s ease;
   }
-  .card:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(0,0,0,0.22); }
-  .source { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.6px; color: #7c3aed; font-weight: 700; margin-bottom: 10px; }
-  .card h2 { font-size: 1.15rem; font-weight: 600; line-height: 1.35; margin-bottom: 12px; color: #1a1a2e; }
-  .summary { font-size: 0.92rem; color: #444; line-height: 1.5; flex-grow: 1; margin-bottom: 16px; }
-  .date { font-size: 0.78rem; color: #888; margin-bottom: 12px; }
-  .card a {
-    text-decoration: none; color: #6d28d9; font-weight: 600; font-size: 0.88rem;
-    align-self: flex-start; border-bottom: 2px solid transparent; transition: border-color 0.15s ease;
-  }
-  .card a:hover { border-color: #6d28d9; }
-  footer { text-align: center; color: #fff; opacity: 0.7; margin-top: 40px; font-size: 0.85rem; }
+  .card:hover { transform: translateY(-3px); }
+  .card h2 { font-size: 1.05rem; line-height: 1.35; margin-bottom: 0.6rem; }
+  .card p { font-size: 0.9rem; color: var(--muted); line-height: 1.5; flex: 1; }
+  .meta { display: flex; align-items: center; justify-content: space-between; margin-top: 0.9rem; gap: 0.5rem; }
+  .source { font-size: 0.8rem; font-weight: 600; color: var(--accent); }
+  .date { font-size: 0.75rem; color: #9aa0ab; }
+  .card a { font-size: 0.82rem; color: var(--accent); text-decoration: none; font-weight: 600; }
+  .card a:hover { text-decoration: underline; }
+  footer { text-align: center; margin-top: 2.5rem; font-size: 0.8rem; color: rgba(255,255,255,0.7); }
 </style>
 </head>
 <body>
-<div class="container">
+<div class="wrap">
   <header>
     <h1>AI News Dashboard</h1>
-    <p>Latest global artificial intelligence headlines, updated automatically</p>
-    <div class="timestamp">Last updated: Sunday, October 04, 2026 10:00 PM SAST</div>
+    <p class="subtitle">The latest global developments in artificial intelligence.</p>
+    <span class="updated">Last updated: 02:00 AM SAST, 5 Oct 2026</span>
   </header>
 
   <div class="grid">
-
     <div class="card">
-      <div class="source">Politico</div>
-      <h2>Trump gives spy chief new title: AI czar</h2>
-      <p class="summary">President Trump named Director of National Intelligence Jay Clayton to the newly created role of artificial intelligence czar, centralizing federal AI policy under one official.</p>
-      <p class="date">October 4, 2026</p>
-      <a href="https://www.politico.com/news/2026/10/04/jay-clayton-ai-trump-01106137" target="_blank" rel="noopener">Read more</a>
+      <h2>New AI Czar Unveils Goals and Members of White House Task Force</h2>
+      <p>The group will examine the technology's risks and opportunities, with a focus on keeping the U.S. first in the field.</p>
+      <div class="meta"><span class="source">WSJ</span><span class="date">4 hours ago</span></div>
+      <a href="https://www.wsj.com/tech/ai/new-ai-task-force-to-report-on-risks-of-technology-after-public-and-industry-concerns-b6308bef" target="_blank" rel="noopener">Read more</a>
     </div>
-
     <div class="card">
-      <div class="source">CBS News</div>
-      <h2>Trump announces formation of AI "Super Intelligence Force"</h2>
-      <p class="summary">After meeting with leaders of the country's largest AI companies, President Trump announced a new "Super Intelligence Force" task force to coordinate government engagement with artificial intelligence.</p>
-      <p class="date">October 4, 2026</p>
-      <a href="https://www.cbsnews.com/news/ai-super-intelligence-force-trump-jay-clayton/" target="_blank" rel="noopener">Read more</a>
+      <h2>The Evolution of AI in Oncology</h2>
+      <p>AI is being used to better identify early-stage cancers in patients, aligned with mammography and lung cancer screening trends.</p>
+      <div class="meta"><span class="source">CancerNetwork</span><span class="date">4 hours ago</span></div>
+      <a href="https://www.cancernetwork.com/view/the-evolution-of-artificial-intelligence-in-oncology-impact-on-trials-workflows-and-outcomes" target="_blank" rel="noopener">Read more</a>
     </div>
-
     <div class="card">
-      <div class="source">PBS</div>
-      <h2>Trump names Jay Clayton to lead a new federal AI task force</h2>
-      <p class="summary">The move follows a White House gathering of top AI executives last week, where companies signed a voluntary accord on how they engage with government on AI.</p>
-      <p class="date">October 4, 2026</p>
-      <a href="https://www.pbs.org/newshour/amp/politics/trump-names-national-intelligence-director-jay-clayton-to-lead-a-new-federal-ai-task-force" target="_blank" rel="noopener">Read more</a>
-    </div>
-
-    <div class="card">
-      <div class="source">UPI</div>
-      <h2>Trump names Jay Clayton to new AI czar post</h2>
-      <p class="summary">President Trump named Director of National Intelligence Jay Clayton to the newly created position of artificial intelligence czar, according to UPI.</p>
-      <p class="date">October 4, 2026</p>
-      <a href="https://www.upi.com/Top_News/US/2026/10/04/trump-artificial-intelligence/1231791134807/" target="_blank" rel="noopener">Read more</a>
-    </div>
-
-    <div class="card">
-      <div class="source">ABC11 News</div>
-      <h2>Trump announces creation of 'Super Intelligence Force' AI task force</h2>
-      <p class="summary">President Trump formally announced what he called a "Super Intelligence Force," an AI task force to coordinate the government's work on artificial intelligence.</p>
-      <p class="date">October 4, 2026</p>
-      <a href="https://abc11.com/story/president-donald-trump-announces-creation-super-intelligence-force-ai-task/19907473/" target="_blank" rel="noopener">Read more</a>
-    </div>
-
-    <div class="card">
-      <div class="source">WUFT</div>
-      <h2>Trump names Jay Clayton as new AI czar</h2>
-      <p class="summary">Clayton will lead the White House's new "Super Intelligence Force," coordinating government engagement with artificial intelligence across agencies.</p>
-      <p class="date">October 4, 2026</p>
-      <a href="https://www.wuft.org/2026-10-04/trump-names-national-intelligence-chief-jay-clayton-as-new-ai-czar?_amp=true" target="_blank" rel="noopener">Read more</a>
-    </div>
-
-    <div class="card">
-      <div class="source">WSJ</div>
-      <h2>Think of artificial intelligence like a weapon</h2>
-      <p class="summary">A Wall Street Journal opinion piece weighs in on AI liability, arguing that comparing AI to a weapon may be the right lens for who should pay for its dangers.</p>
-      <p class="date">October 4, 2026</p>
-      <a href="https://www.wsj.com/opinion/think-of-artificial-intelligence-like-a-weapon-0d541abc" target="_blank" rel="noopener">Read more</a>
-    </div>
-
-    <div class="card">
-      <div class="source">Washington State Standard</div>
-      <h2>Commentary: Artificial intelligence in the classroom</h2>
-      <p class="summary">Three experts argue a considered approach to AI is needed if teachers are to make classroom-level decisions rooted in student learning.</p>
-      <p class="date">October 4, 2026</p>
+      <h2>Commentary: Artificial Intelligence in the Classroom</h2>
+      <p>Three experts argue a considered approach is needed so teachers can make classroom decisions rooted in student learning.</p>
+      <div class="meta"><span class="source">Washington State Standard</span><span class="date">5 hours ago</span></div>
       <a href="https://washingtonstatestandard.com/2026/10/04/artificial-intelligence-in-the-classroom/" target="_blank" rel="noopener">Read more</a>
     </div>
-
     <div class="card">
-      <div class="source">The National Herald</div>
-      <h2>Are we smarter than artificial intelligence?</h2>
-      <p class="summary">A reflective piece on how much of the public deals with AI daily while rarely understanding what it actually is or how it works.</p>
-      <p class="date">October 4, 2026</p>
-      <a href="https://www.thenationalherald.com/are-we-smarter-than-ai/" target="_blank" rel="noopener">Read more</a>
+      <h2>Trump Announces 'Super Intelligence Force' AI Task Force</h2>
+      <p>The announcement comes amid rising concerns about AI, with the President noting AI leaders signed a 'constitution' to police themselves.</p>
+      <div class="meta"><span class="source">ABC News</span><span class="date">35 minutes ago</span></div>
+      <a href="https://abcnews.com/Politics/president-donald-trump-announces-creation-super-intelligence-force/story?id=136986122" target="_blank" rel="noopener">Read more</a>
     </div>
-
     <div class="card">
-      <div class="source">Riverhead News Review</div>
-      <h2>Guest column: A caution about artificial intelligence</h2>
-      <p class="summary">A guest columnist reflects on technology's evolution from slide rules to AI and offers a cautionary note on where the technology is heading.</p>
-      <p class="date">October 4, 2026</p>
+      <h2>Guest Column: A Caution About Artificial Intelligence</h2>
+      <p>A reflective take on technology's march from slide rules and FORTRAN to today's AI and the need for measured caution.</p>
+      <div class="meta"><span class="source">Riverhead News Review</span><span class="date">7 hours ago</span></div>
       <a href="https://riverheadnewsreview.timesreview.com/2026/10/138427/guest-column-a-caution-about-artificial-intelligence/" target="_blank" rel="noopener">Read more</a>
     </div>
-
+    <div class="card">
+      <h2>The AI Revolution Will Be Securitized</h2>
+      <p>The AI revolution is largely funded by investor capital, which is starting to spark worry on Capitol Hill.</p>
+      <div class="meta"><span class="source">Punchbowl News</span><span class="date">2 hours ago</span></div>
+      <a href="https://punchbowl.news/article/vault/ai-revolution-securitized/" target="_blank" rel="noopener">Read more</a>
+    </div>
+    <div class="card">
+      <h2>National Intelligence Chief to Lead US AI Task Force</h2>
+      <p>The man in charge of U.S. national intelligence is now point person on a new federal AI task force.</p>
+      <div class="meta"><span class="source">FOX 4 Dallas-Fort Worth</span><span class="date">1 hour ago</span></div>
+      <a href="https://www.fox4news.com/news/national-intelligence-chief-lead-us-artificial-intelligence-task-force" target="_blank" rel="noopener">Read more</a>
+    </div>
+    <div class="card">
+      <h2>AI Is Being Taught How To Do Your Job</h2>
+      <p>A booming industry teaches AI to get better at all kinds of jobs, raising fresh questions about replacement versus change.</p>
+      <div class="meta"><span class="source">CBS News</span><span class="date">7 minutes ago</span></div>
+      <a href="https://www.cbsnews.com/news/artificial-intelligence-trained-to-help-with-careers-60-minutes/" target="_blank" rel="noopener">Read more</a>
+    </div>
+    <div class="card">
+      <h2>AI and Data Science Leaders Join Cornell Initiative</h2>
+      <p>Cornell expands its AI and data science expertise with new faculty under the Radical Collaboration initiative.</p>
+      <div class="meta"><span class="source">Cornell Chronicle</span><span class="date">3 hours ago</span></div>
+      <a href="https://news.cornell.edu/stories/2026/10/ai-data-science-leaders-join-cornells-radical-collaboration-initiative" target="_blank" rel="noopener">Read more</a>
+    </div>
+    <div class="card">
+      <h2>Trump Launches 'Super Intelligence Force' After Calls for AI Slowdown</h2>
+      <p>Leaders from the intelligence community, the Pentagon, FTC and OPM will serve on the new task force.</p>
+      <div class="meta"><span class="source">The Washington Post</span><span class="date">3 hours ago</span></div>
+      <a href="https://www.washingtonpost.com/politics/2026/10/04/trump-launches-super-intelligence-force-after-calls-ai-slowdown/" target="_blank" rel="noopener">Read more</a>
+    </div>
   </div>
 
-  <footer>Automatically refreshed every 5 hours &middot; Sources link out to original publishers</footer>
+  <footer>Updated automatically every 5 hours.</footer>
 </div>
 </body>
 </html>
