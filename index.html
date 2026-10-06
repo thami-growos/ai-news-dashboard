@@ -8,120 +8,128 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: linear-gradient(135deg, #4a1d96 0%, #7c3aed 45%, #a855f7 100%);
+    background: linear-gradient(135deg, #4b2a78 0%, #7b3fa0 45%, #b25bc0 100%);
+    color: #1f1a2e;
     min-height: 100vh;
     padding: 40px 20px;
-    color: #1e1b2e;
   }
-  .container { max-width: 960px; margin: 0 auto; }
-  header { text-align: center; margin-bottom: 36px; color: #fff; }
-  header h1 { font-size: 2.4rem; font-weight: 700; letter-spacing: -0.5px; }
-  header p { margin-top: 8px; font-size: 1rem; opacity: 0.9; }
-  .timestamp {
-    display: inline-block; margin-top: 14px; padding: 6px 14px;
-    background: rgba(255,255,255,0.18); border-radius: 999px; font-size: 0.85rem;
+  .container { max-width: 1000px; margin: 0 auto; }
+  header { text-align: center; color: #fff; margin-bottom: 32px; }
+  header h1 { font-size: 2.2rem; font-weight: 700; letter-spacing: -0.5px; }
+  header p { margin-top: 8px; font-size: 0.95rem; opacity: 0.9; }
+  .last-updated {
+    display: inline-block;
+    margin-top: 14px;
+    background: rgba(255,255,255,0.16);
+    padding: 6px 16px;
+    border-radius: 999px;
+    font-size: 0.85rem;
   }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
   .card {
-    background: #ffffff; border-radius: 14px; padding: 22px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15); display: flex; flex-direction: column;
-    transition: transform 0.15s ease;
+    background: #fff;
+    border-radius: 14px;
+    padding: 22px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.16);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
-  .card:hover { transform: translateY(-4px); }
-  .card .source {
-    font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px;
-    color: #7c3aed; margin-bottom: 10px;
+  .card:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(0,0,0,0.22); }
+  .card h2 { font-size: 1.12rem; line-height: 1.35; font-weight: 700; color: #3b2263; }
+  .card p.summary { font-size: 0.92rem; color: #4a4360; line-height: 1.55; flex: 1; }
+  .card .meta { font-size: 0.78rem; color: #8a82a0; display: flex; justify-content: space-between; align-items: center; }
+  .card a.source {
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #7b3fa0;
+    margin-top: 2px;
   }
-  .card h2 { font-size: 1.1rem; line-height: 1.35; margin-bottom: 10px; color: #1e1b2e; }
-  .card p { font-size: 0.9rem; line-height: 1.55; color: #4b4a57; flex: 1; }
-  .card .meta { margin-top: 16px; display: flex; justify-content: space-between; align-items: center; }
-  .card .date { font-size: 0.8rem; color: #8a8996; }
-  .card a { font-size: 0.85rem; font-weight: 600; color: #7c3aed; text-decoration: none; }
-  .card a:hover { text-decoration: underline; }
-  footer { text-align: center; margin-top: 40px; color: #fff; font-size: 0.8rem; opacity: 0.75; }
+  .card a.source:hover { text-decoration: underline; }
+  footer { text-align: center; color: rgba(255,255,255,0.8); margin-top: 40px; font-size: 0.82rem; }
 </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>AI News Dashboard</h1>
-      <p>Recent global artificial intelligence headlines</p>
-      <div class="timestamp">Last updated: 06 Oct 2026, 5:00 PM SAST</div>
-    </header>
-    <div class="grid">
+<div class="container">
+  <header>
+    <h1>AI News Dashboard</h1>
+    <p>Fresh global headlines on artificial intelligence, updated automatically.</p>
+    <span class="last-updated">Last updated: 2026-10-06 22:00 SAST</span>
+  </header>
 
-      <div class="card">
-        <div class="source">France 24</div>
-        <h2>US payroll data shows young workers' jobs most affected by AI</h2>
-        <p>Employment in roles most exposed to AI for people aged 22 to 25 shrank 4.4% year-on-year in August, signaling early labor-market pressure on younger workers.</p>
-        <div class="meta"><span class="date">3 hours ago</span><a href="https://www.france24.com/en/tv-shows/business/20261006-us-payroll-data-shows-young-workers-jobs-most-affected-by-artificial-intelligence" target="_blank">Read more →</a></div>
-      </div>
-
-      <div class="card">
-        <div class="source">CalMatters</div>
-        <h2>AI 'evaluators' tasked with keeping AI from killing us all</h2>
-        <p>California and dozens of countries want mandatory AI audits conducted by specialist evaluators, though lawmakers are still learning about the pitfalls of the approach.</p>
-        <div class="meta"><span class="date">3 hours ago</span><a href="https://calmatters.org/economy/technology/2026/10/evaluators-are-supposed-to-keep-ai-from-killing-us-all-no-pressure/" target="_blank">Read more →</a></div>
-      </div>
-
-      <div class="card">
-        <div class="source">Utah News Dispatch</div>
-        <h2>AI may soon be in more healthcare processes in Utah</h2>
-        <p>The Utah Office of Artificial Intelligence Policy signed agreements with University of Utah Health and Intermountain Health to pilot AI tools in clinical workflows.</p>
-        <div class="meta"><span class="date">4 hours ago</span><a href="https://utahnewsdispatch.com/2026/10/06/utah-ai-in-healthcare-agreements-pilot-programs/" target="_blank">Read more →</a></div>
-      </div>
-
-      <div class="card">
-        <div class="source">ABC7 Eyewitness News</div>
-        <h2>AI resume building: tips to avoid pitfalls in a job search</h2>
-        <p>As artificial intelligence becomes common in applications, experts warn job seekers to be careful about how AI-generated resumes may misrepresent or undermine them.</p>
-        <div class="meta"><span class="date">1 hour ago</span><a href="https://abc7ny.com/post/ai-resume-building-tips-careful-when-using-artificial-intelligence-job-search/19910215/" target="_blank">Read more →</a></div>
-      </div>
-
-      <div class="card">
-        <div class="source">Auburn University Engineering</div>
-        <h2>Collaborative research uses AI to optimize assembly lines</h2>
-        <p>Researchers are exploring how artificial intelligence can detect manufacturing errors earlier, before they travel through multiple workstations on the assembly line.</p>
-        <div class="meta"><span class="date">2 hours ago</span><a href="https://eng.auburn.edu/news/2026/10/collaborative-research-using-ai-to-optimize-assembly-line-production" target="_blank">Read more →</a></div>
-      </div>
-
-      <div class="card">
-        <div class="source">Yahoo Finance</div>
-        <h2>Two AI stocks to buy with $1,000 and never sell</h2>
-        <p>An investor screener focused on low market-cap companies with high revenue growth highlights two artificial intelligence stocks as long-term holds.</p>
-        <div class="meta"><span class="date">2 hours ago</span><a href="https://finance.yahoo.com/technology/ai/articles/only-2-artificial-intelligence-ai-125300853.html" target="_blank">Read more →</a></div>
-      </div>
-
-      <div class="card">
-        <div class="source">The Cavalier Daily</div>
-        <h2>How U.Va. should respond to the changing AI landscape</h2>
-        <p>An opinion piece argues generative AI is a "mirage" in higher education and should not hold a place in general higher-education curricula.</p>
-        <div class="meta"><span class="date">11 hours ago</span><a href="https://www.cavalierdaily.com/article/2026/10/opinions-how-uva-should-respond-to-the-changing-artificial-intelligence-landscape" target="_blank">Read more →</a></div>
-      </div>
-
-      <div class="card">
-        <div class="source">Ball State Daily News</div>
-        <h2>Stricter guidelines are needed on artificial intelligence</h2>
-        <p>A student columnist argues for tighter rules around artificial intelligence as its presence in daily life and media grows.</p>
-        <div class="meta"><span class="date">1 hour ago</span><a href="https://www.ballstatedaily.com/article/there-must-be-stricter-guidelines-on-artificial-intelligence-daily-news-ball-state-20261006" target="_blank">Read more →</a></div>
-      </div>
-
-      <div class="card">
-        <div class="source">The Motley Fool</div>
-        <h2>Two AI stocks worth a $1,000 long-term investment</h2>
-        <p>A growth-focused framework centered on small market caps and strong revenue growth points to two artificial intelligence stocks for patient investors.</p>
-        <div class="meta"><span class="date">1 hour ago</span><a href="https://www.fool.com/investing/2026/10/06/the-only-2-artificial-intelligence-ai-stocks-id-bu/" target="_blank">Read more →</a></div>
-      </div>
-
-      <div class="card">
-        <div class="source">Marquette Today</div>
-        <h2>Ignatian Examen on artificial intelligence, Oct. 7</h2>
-        <p>Marquette's Office of Faculty Affairs and the Jesuit Community invite the campus to a reflective Examen centered on artificial intelligence.</p>
-        <div class="meta"><span class="date">14 hours ago</span><a href="https://today.marquette.edu/2026/10/ignatian-examen-on-artificial-intelligence-oct-7/" target="_blank">Read more →</a></div>
-      </div>
-
+  <div class="grid">
+    <div class="card">
+      <h2>Justice Department tells employees to adopt Trump's AI rebrand</h2>
+      <p class="summary">A top official has directed Justice Department staff to adopt the administration's rebranding of artificial intelligence.</p>
+      <div class="meta"><span>NBC News</span><span>2026-10-06</span></div>
+      <a class="source" href="https://www.nbcnews.com/politics/justice-department/justice-department-tells-employees-adopt-trumps-ai-rebrand-rcna601923" target="_blank" rel="noopener">Read source</a>
     </div>
-    <footer>Auto-refreshed every 5 hours · Hosted on GitHub Pages</footer>
+
+    <div class="card">
+      <h2>AI resume building: Tips for careful use in a job search</h2>
+      <p class="summary">Experts warn applicants about the pitfalls of relying on AI-generated resumes amid a growing problem of automated applications.</p>
+      <div class="meta"><span>ABC7 Eyewitness News</span><span>2026-10-06</span></div>
+      <a class="source" href="https://abc7ny.com/post/ai-resume-building-tips-careful-when-using-artificial-intelligence-job-search/19910215/" target="_blank" rel="noopener">Read source</a>
+    </div>
+
+    <div class="card">
+      <h2>AI use among veterinary professionals more than doubles in 2 years</h2>
+      <p class="summary">A new benchmark study shows AI has moved from experiment to everyday tool in veterinary medicine.</p>
+      <div class="meta"><span>DVM 360</span><span>2026-10-06</span></div>
+      <a class="source" href="https://www.dvm360.com/view/artificial-intelligence-use-among-veterinary-professionals-more-than-doubles-in-2-years" target="_blank" rel="noopener">Read source</a>
+    </div>
+
+    <div class="card">
+      <h2>$12.8m grant to bring genomics to the clinic via machine learning and AI</h2>
+      <p class="summary">A Vanderbilt-led, NIH-funded initiative aims to match pathogenic gene variants with clinical solutions using AI.</p>
+      <div class="meta"><span>Vanderbilt Health News</span><span>2026-10-06</span></div>
+      <a class="source" href="https://news.vumc.org/2026/10/06/12-8m-grant-to-lead-initiative-to-get-genomics-toward-the-clinic-via-machine-learning-and-ai/" target="_blank" rel="noopener">Read source</a>
+    </div>
+
+    <div class="card">
+      <h2>Collaborative research uses AI to optimize assembly line production</h2>
+      <p class="summary">Auburn researchers are applying AI to catch manufacturing errors before they travel through multiple workstations.</p>
+      <div class="meta"><span>Auburn University Engineering</span><span>2026-10-06</span></div>
+      <a class="source" href="https://eng.auburn.edu/news/2026/10/collaborative-research-using-ai-to-optimize-assembly-line-production" target="_blank" rel="noopener">Read source</a>
+    </div>
+
+    <div class="card">
+      <h2>AI, psychology and the future: students offer differing perspectives</h2>
+      <p class="summary">Freshmen and seniors weigh in on how the AI boom is reshaping psychology and the broader news cycle.</p>
+      <div class="meta"><span>The Badger Herald</span><span>2026-10-06</span></div>
+      <a class="source" href="https://badgerherald.com/indepth/2026/10/06/artificial-intelligence-psychology-and-the-future-freshmen-and-seniors-offer-differing-perspectives/" target="_blank" rel="noopener">Read source</a>
+    </div>
+
+    <div class="card">
+      <h2>Best practices for SageMaker HyperPod administration and governance</h2>
+      <p class="summary">AWS shares guidance for ML teams managing large pools of accelerated compute for training and fine-tuning.</p>
+      <div class="meta"><span>Amazon Web Services (AWS)</span><span>2026-10-06</span></div>
+      <a class="source" href="https://aws.amazon.com/blogs/machine-learning/best-practices-for-amazon-sagemaker-hyperpod-administration-and-governance/" target="_blank" rel="noopener">Read source</a>
+    </div>
+
+    <div class="card">
+      <h2>Behind the Investigation: Artificial intelligence warnings</h2>
+      <p class="summary">A news investigation explores the emerging warnings and risks tied to artificial intelligence.</p>
+      <div class="meta"><span>WREG.com</span><span>2026-10-06</span></div>
+      <a class="source" href="https://wreg.com/video/behind-the-investigation-artificial-intelligence-warnings/12240077/" target="_blank" rel="noopener">Read source</a>
+    </div>
+
+    <div class="card">
+      <h2>UW-Stevens Point to host panels on navigating AI misinformation</h2>
+      <p class="summary">The university launches a community series with lectures and panels on strategies to counter AI misinformation.</p>
+      <div class="meta"><span>UW-Stevens Point</span><span>2026-10-06</span></div>
+      <a class="source" href="https://www.uwsp.edu/news/article/uw-stevens-point-to-host-lectures-panels-on-strategies-to-navigate-ai-misinformation/" target="_blank" rel="noopener">Read source</a>
+    </div>
   </div>
+
+  <footer>AI News Dashboard — automated updates every 5 hours</footer>
+</div>
 </body>
 </html>
