@@ -8,213 +8,120 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: linear-gradient(135deg, #2b0a3d 0%, #6b21a8 45%, #9333ea 100%);
+    background: linear-gradient(135deg, #1a0b2e 0%, #3b1d6e 45%, #5b2d9e 100%);
     min-height: 100vh;
-    color: #1f2937;
-    padding: 40px 20px;
+    color: #1e1b2e;
+    padding: 32px 16px 64px;
   }
-  .container { max-width: 960px; margin: 0 auto; }
-  header {
-    text-align: center;
-    color: #ffffff;
-    margin-bottom: 36px;
+  .wrap { max-width: 1000px; margin: 0 auto; }
+  header { text-align: center; color: #fff; margin-bottom: 36px; }
+  header h1 { font-size: 2.3rem; font-weight: 700; letter-spacing: -0.02em; }
+  header p.sub { margin-top: 8px; color: #d8c8f2; font-size: 0.95rem; }
+  header .stamp {
+    display: inline-block; margin-top: 14px; font-size: 0.82rem;
+    background: rgba(255,255,255,0.12); padding: 6px 14px; border-radius: 999px;
+    color: #efe6ff;
   }
-  header h1 {
-    font-size: 2.2rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-  }
-  header p {
-    margin-top: 8px;
-    font-size: 1rem;
-    color: #e9d5ff;
-  }
-  .timestamp {
-    display: inline-block;
-    margin-top: 14px;
-    background: rgba(255,255,255,0.15);
-    padding: 6px 14px;
-    border-radius: 999px;
-    font-size: 0.85rem;
-    color: #f5f3ff;
-  }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-    gap: 20px;
-  }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 18px; }
   .card {
-    background: #ffffff;
-    border-radius: 14px;
-    padding: 22px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.18);
-    display: flex;
-    flex-direction: column;
+    background: #ffffff; border-radius: 14px; padding: 20px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.22);
+    display: flex; flex-direction: column;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
-  .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 40px rgba(0,0,0,0.25);
+  .card:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(0,0,0,0.28); }
+  .card .source {
+    font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.05em; color: #7a3fd6; margin-bottom: 10px;
   }
-  .source {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: #7c3aed;
-    font-weight: 700;
-    margin-bottom: 10px;
-  }
-  .card h2 {
-    font-size: 1.1rem;
-    font-weight: 700;
-    line-height: 1.35;
-    margin-bottom: 10px;
-    color: #111827;
-  }
-  .card p {
-    font-size: 0.9rem;
-    line-height: 1.55;
-    color: #4b5563;
-    flex-grow: 1;
-  }
-  .meta {
-    margin-top: 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .date {
-    font-size: 0.78rem;
-    color: #9ca3af;
-  }
-  .read-link {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: #6d28d9;
-    text-decoration: none;
-  }
-  .read-link:hover { text-decoration: underline; }
-  footer {
-    text-align: center;
-    color: #e9d5ff;
-    margin-top: 40px;
-    font-size: 0.85rem;
-  }
+  .card h2 { font-size: 1.12rem; line-height: 1.35; margin-bottom: 10px; color: #1e1b2e; }
+  .card p { font-size: 0.9rem; line-height: 1.5; color: #4a455e; flex: 1; }
+  .card .meta { margin-top: 14px; display: flex; justify-content: space-between; align-items: center; }
+  .card .date { font-size: 0.75rem; color: #928ca6; }
+  .card a { font-size: 0.82rem; font-weight: 600; color: #7a3fd6; text-decoration: none; }
+  .card a:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
-<div class="container">
-  <header>
-    <h1>AI News Dashboard</h1>
-    <p>The latest global artificial intelligence headlines, refreshed every 5 hours.</p>
-    <span class="timestamp">Last updated: 06 Oct 2026, 02:00 SAST</span>
-  </header>
+  <div class="wrap">
+    <header>
+      <h1>AI News Dashboard</h1>
+      <p class="sub">Latest global artificial intelligence headlines</p>
+      <span class="stamp">Last updated: 2026-10-06 07:00 SAST</span>
+    </header>
+    <div class="grid">
 
-  <div class="grid">
-    <div class="card">
-      <div class="source">WSJ</div>
-      <h2>New AI Czar Unveils Goals, Members of White House Task Force</h2>
-      <p>The White House task force will examine AI's risks and opportunities while working to keep the U.S. first in the field.</p>
-      <div class="meta">
-        <span class="date">2 hours ago</span>
-        <a class="read-link" href="https://www.wsj.com/tech/ai/new-ai-task-force-to-report-on-risks-of-technology-after-public-and-industry-concerns-b6308bef" target="_blank" rel="noopener">Read more</a>
+      <div class="card">
+        <div class="source">Reuters</div>
+        <h2>South Korea to develop $3.5 billion frontier AI model</h2>
+        <p>South Korea will launch a 4.7 trillion won program to build a frontier AI model starting March 2027, its science ministry said, in a major state-backed push into advanced AI.</p>
+        <div class="meta"><span class="date">3 hours ago</span><a href="https://www.reuters.com/world/asia-pacific/south-korea-plans-develop-35-billion-frontier-ai-model-starting-next-year-2026-10-06/" target="_blank">Read more →</a></div>
       </div>
-    </div>
 
-    <div class="card">
-      <div class="source">The Japan Times</div>
-      <h2>Preventing artificial intelligence from triggering a world war</h2>
-      <p>Commentary on how AI governance took center stage during recent U.S.-China talks and its role in averting conflict.</p>
-      <div class="meta">
-        <span class="date">5 hours ago</span>
-        <a class="read-link" href="https://www.japantimes.co.jp/commentary/2026/10/05/world/ai-world-war/" target="_blank" rel="noopener">Read more</a>
+      <div class="card">
+        <div class="source">Federal News Network</div>
+        <h2>Trump names Jay Clayton to lead new federal AI task force</h2>
+        <p>National intelligence director Jay Clayton has been tapped to lead a new federal AI task force that will engage consumers, public interest groups, religious organizations, critical infrastructure and AI companies.</p>
+        <div class="meta"><span class="date">2 hours ago</span><a href="https://federalnewsnetwork.com/artificial-intelligence/2026/10/trump-names-national-intelligence-director-jay-clayton-to-lead-a-new-federal-ai-task-force/" target="_blank">Read more →</a></div>
       </div>
-    </div>
 
-    <div class="card">
-      <div class="source">ABC7 Eyewitness News</div>
-      <h2>AI whistleblowers join Google, Meta, OpenAI at NYC hearing</h2>
-      <p>The New York City Council weighs a series of bills to establish safeguards for AI as city leaders hear from top firms and researchers.</p>
-      <div class="meta">
-        <span class="date">4 hours ago</span>
-        <a class="read-link" href="https://abc7ny.com/post/google-meta-openai-among-firms-appearing-nyc-ai-hearing/19909409/" target="_blank" rel="noopener">Read more</a>
+      <div class="card">
+        <div class="source">ABC11 News</div>
+        <h2>AI whistleblowers join Google, Meta, OpenAI at NYC hearing</h2>
+        <p>The New York City Council is weighing a series of bills to establish safeguards for artificial intelligence, with whistleblowers adding testimony alongside major tech firms on AI safety.</p>
+        <div class="meta"><span class="date">1 hour ago</span><a href="https://abc11.com/19909409/" target="_blank">Read more →</a></div>
       </div>
-    </div>
 
-    <div class="card">
-      <div class="source">Bloomberg</div>
-      <h2>India's Gen Z Faces Down the Artificial Intelligence Future</h2>
-      <p>Opinion on how India's young workforce confronts AI-driven change after centuries of technological disruption.</p>
-      <div class="meta">
-        <span class="date">4 hours ago</span>
-        <a class="read-link" href="https://www.bloomberg.com/opinion/articles/2026-10-05/india-s-gen-z-faces-down-the-artificial-intelligence-future" target="_blank" rel="noopener">Read more</a>
+      <div class="card">
+        <div class="source">The Daily Pennsylvanian</div>
+        <h2>Penn professor: 0.48% chance AI kills a tenth of humanity by 2030</h2>
+        <p>Forecaster Philip Tetlock places the risk of an AI catastrophe as "somewhat higher" than nuclear armageddon, quantifying a small but nonzero chance of a major incident by 2030.</p>
+        <div class="meta"><span class="date">2 hours ago</span><a href="https://www.thedp.com/article/2026/10/penn-tetlock-forecasting-research-catastrophic-incident-artificial-intelligence" target="_blank">Read more →</a></div>
       </div>
-    </div>
 
-    <div class="card">
-      <div class="source">Natixis CIB</div>
-      <h2>The changing economics of artificial intelligence</h2>
-      <p>Rising Chinese open-weight AI models are reshaping the economics of the global AI industry, analysis finds.</p>
-      <div class="meta">
-        <span class="date">8 hours ago</span>
-        <a class="read-link" href="https://home.cib.natixis.com/articles/the-changing-economics-of-artificial-intelligence" target="_blank" rel="noopener">Read more</a>
+      <div class="card">
+        <div class="source">American Hospital Association</div>
+        <h2>AHA pushes back on report linking AI documentation to higher costs</h2>
+        <p>The American Hospital Association responded to a Blue Cross Blue Shield report suggesting hospitals' use of AI-enabled documentation tools drives increased healthcare costs.</p>
+        <div class="meta"><span class="date">1 hour ago</span><a href="https://www.aha.org/news/headline/2026-10-05-aha-blog-responds-bcbs-report-suggesting-hospitals-use-ai-documentation-tools-drives-increased" target="_blank">Read more →</a></div>
       </div>
-    </div>
 
-    <div class="card">
-      <div class="source">RAND</div>
-      <h2>Infinite Potential: Insights on AI Loss of Control Across Five Scenarios</h2>
-      <p>Researchers analyze game-based observations of AI loss of control to identify risks, capabilities, and policy recommendations.</p>
-      <div class="meta">
-        <span class="date">11 hours ago</span>
-        <a class="read-link" href="https://www.rand.org/pubs/research_reports/RRA4767-3.html" target="_blank" rel="noopener">Read more</a>
+      <div class="card">
+        <div class="source">The Cavalier Daily</div>
+        <h2>How U.Va. should respond to the changing AI landscape</h2>
+        <p>An opinion piece argues generative AI is "a mirage in higher education" and questions whether it should hold a place in general university education.</p>
+        <div class="meta"><span class="date">2 hours ago</span><a href="https://www.cavalierdaily.com/article/2026/10/opinions-how-uva-should-respond-to-the-changing-artificial-intelligence-landscape" target="_blank">Read more →</a></div>
       </div>
-    </div>
 
-    <div class="card">
-      <div class="source">Marquette Today</div>
-      <h2>Ignatian Examen on artificial intelligence, Oct. 7</h2>
-      <p>The Marquette community is invited to a reflective Ignatian Examen centered on the topic of artificial intelligence.</p>
-      <div class="meta">
-        <span class="date">5 hours ago</span>
-        <a class="read-link" href="https://today.marquette.edu/2026/10/ignatian-examen-on-artificial-intelligence-oct-7/" target="_blank" rel="noopener">Read more</a>
+      <div class="card">
+        <div class="source">Louisiana Illuminator</div>
+        <h2>Louisiana congressional candidates vague on AI regulation</h2>
+        <p>Most candidates running for Congress in Louisiana agree on some federal AI regulation, but few offer concrete positions on how far it should go.</p>
+        <div class="meta"><span class="date">4 hours ago</span><a href="https://lailluminator.com/2026/10/05/ai-apocalypse-most-louisiana-candidates-for-congress-stay-vague-on-regulation/" target="_blank">Read more →</a></div>
       </div>
-    </div>
 
-    <div class="card">
-      <div class="source">The Times of Israel</div>
-      <h2>Where Are You? A Jewish-Christian Dialogue in the Age of AI</h2>
-      <p>An essay exploring faith, identity, and dialogue through the lens of artificial intelligence and modern technology.</p>
-      <div class="meta">
-        <span class="date">1 hour ago</span>
-        <a class="read-link" href="https://blogs.timesofisrael.com/where-are-you-a-jewish-christian-dialogue-in-the-age-of-artificial-intelligence/" target="_blank" rel="noopener">Read more</a>
+      <div class="card">
+        <div class="source">Seattle's Child</div>
+        <h2>Artificial intelligence in the classroom</h2>
+        <p>As debate over AI's role in schools continues, teachers find themselves on the front lines of a discussion about the technology's impact on learning.</p>
+        <div class="meta"><span class="date">5 hours ago</span><a href="https://www.seattleschild.com/ai-washington-schools-teachers/" target="_blank">Read more →</a></div>
       </div>
-    </div>
 
-    <div class="card">
-      <div class="source">Riverhead News Review</div>
-      <h2>Guest column: A caution about artificial intelligence</h2>
-      <p>A guest writer reflects on decades of technological change and urges caution around the rapid rise of AI.</p>
-      <div class="meta">
-        <span class="date">14 hours ago</span>
-        <a class="read-link" href="https://riverheadnewsreview.timesreview.com/2026/10/138427/guest-column-a-caution-about-artificial-intelligence/" target="_blank" rel="noopener">Read more</a>
+      <div class="card">
+        <div class="source">Marquette Today</div>
+        <h2>Ignatian Examen on artificial intelligence, Oct. 7</h2>
+        <p>Marquette's Office of Faculty Affairs and the Jesuit Community invite the campus to an Ignatian Examen reflection centered on the topic of artificial intelligence.</p>
+        <div class="meta"><span class="date">4 hours ago</span><a href="https://today.marquette.edu/2026/10/ignatian-examen-on-artificial-intelligence-oct-7/" target="_blank">Read more →</a></div>
       </div>
-    </div>
 
-    <div class="card">
-      <div class="source">Reuters Connect</div>
-      <h2>AI company representatives testify at NYC Council hearing</h2>
-      <p>Photo coverage of an AI risks and regulation hearing at New York City Hall, with industry representatives testifying.</p>
-      <div class="meta">
-        <span class="date">5 hours ago</span>
-        <a class="read-link" href="https://www.reutersconnect.com/item/representatives-of-artificial-intelligence-companies-testify-during-a-new-york-city-council-committee-hearing-in-new-york/dGFnOnJldXRlcnMuY29tLDIwMjY6bmV3c21sX1JDMjdYTkFFQzE3UQ" target="_blank" rel="noopener">Read more</a>
+      <div class="card">
+        <div class="source">The Times of Israel</div>
+        <h2>A Jewish-Christian dialogue in the age of AI</h2>
+        <p>A reflection on how an exchange between faith traditions speaks to central questions of meaning and identity raised by the growing presence of artificial intelligence.</p>
+        <div class="meta"><span class="date">6 hours ago</span><a href="https://blogs.timesofisrael.com/where-are-you-a-jewish-christian-dialogue-in-the-age-of-artificial-intelligence/" target="_blank">Read more →</a></div>
       </div>
+
     </div>
   </div>
-
-  <footer>
-    Dashboard auto-updates every 5 hours. Hosted on GitHub Pages.
-  </footer>
-</div>
 </body>
 </html>
