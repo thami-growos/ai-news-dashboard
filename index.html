@@ -5,122 +5,123 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI News Dashboard</title>
 <style>
-  :root {
-    --bg1: #2b1a5e;
-    --bg2: #1a0b3b;
-    --card: #ffffff;
-    --text: #1f1735;
-    --muted: #6b6580;
-    --accent: #7c4dff;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: linear-gradient(160deg, var(--bg1), var(--bg2));
+    background: linear-gradient(135deg, #4a1d96 0%, #7c3aed 45%, #a855f7 100%);
     min-height: 100vh;
-    color: #fff;
-    padding: 2rem 1.5rem;
+    padding: 40px 20px;
+    color: #1e1b2e;
   }
-  .wrap { max-width: 980px; margin: 0 auto; }
-  header { margin-bottom: 2rem; }
-  h1 { font-size: 2.2rem; font-weight: 700; letter-spacing: -0.02em; }
-  .subtitle { color: #cfc6e8; margin-top: 0.4rem; font-size: 0.95rem; }
+  .container { max-width: 960px; margin: 0 auto; }
+  header { text-align: center; margin-bottom: 36px; color: #fff; }
+  header h1 { font-size: 2.4rem; font-weight: 700; letter-spacing: -0.5px; }
+  header p { margin-top: 8px; font-size: 1rem; opacity: 0.9; }
   .timestamp {
-    display: inline-block; margin-top: 0.9rem; font-size: 0.8rem;
-    background: rgba(255,255,255,0.12); padding: 0.35rem 0.8rem; border-radius: 999px;
+    display: inline-block; margin-top: 14px; padding: 6px 14px;
+    background: rgba(255,255,255,0.18); border-radius: 999px; font-size: 0.85rem;
   }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.1rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
   .card {
-    background: var(--card); color: var(--text); border-radius: 14px;
-    padding: 1.25rem 1.25rem 1.1rem; display: flex; flex-direction: column;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    background: #ffffff; border-radius: 14px; padding: 22px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15); display: flex; flex-direction: column;
+    transition: transform 0.15s ease;
   }
-  .card:hover { transform: translateY(-3px); box-shadow: 0 16px 38px rgba(0,0,0,0.32); }
-  .card h2 { font-size: 1.05rem; line-height: 1.35; font-weight: 700; margin-bottom: 0.55rem; }
-  .card p { font-size: 0.88rem; color: var(--muted); line-height: 1.5; flex: 1; margin-bottom: 0.9rem; }
-  .meta { display: flex; align-items: center; justify-content: space-between; font-size: 0.75rem; color: #9a91b5; }
-  .source { color: var(--accent); font-weight: 600; }
-  .card a {
-    text-decoration: none; color: var(--accent); font-weight: 600; font-size: 0.82rem;
-    border-top: 1px solid #eee; padding-top: 0.6rem; margin-top: 0.6rem;
+  .card:hover { transform: translateY(-4px); }
+  .card .source {
+    font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px;
+    color: #7c3aed; margin-bottom: 10px;
   }
+  .card h2 { font-size: 1.1rem; line-height: 1.35; margin-bottom: 10px; color: #1e1b2e; }
+  .card p { font-size: 0.9rem; line-height: 1.55; color: #4b4a57; flex: 1; }
+  .card .meta { margin-top: 16px; display: flex; justify-content: space-between; align-items: center; }
+  .card .date { font-size: 0.8rem; color: #8a8996; }
+  .card a { font-size: 0.85rem; font-weight: 600; color: #7c3aed; text-decoration: none; }
   .card a:hover { text-decoration: underline; }
-  footer { margin-top: 2.5rem; text-align: center; color: #b9aee0; font-size: 0.8rem; }
+  footer { text-align: center; margin-top: 40px; color: #fff; font-size: 0.8rem; opacity: 0.75; }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <h1>AI News Dashboard</h1>
-    <p class="subtitle">Latest global artificial intelligence headlines</p>
-    <span class="timestamp">Last updated: 2026-10-06 14:00 SAST</span>
-  </header>
+  <div class="container">
+    <header>
+      <h1>AI News Dashboard</h1>
+      <p>Recent global artificial intelligence headlines</p>
+      <div class="timestamp">Last updated: 06 Oct 2026, 5:00 PM SAST</div>
+    </header>
+    <div class="grid">
 
-  <div class="grid">
-    <article class="card">
-      <h2>White House launches Super Intelligence Force</h2>
-      <p>GovCon expert Chuck Brooks examines the strategic weight of the new Super Intelligence Force initiative and its role in America's AI and quantum national security push.</p>
-      <div class="meta"><span class="source">GovCon Wire</span><span>20m ago</span></div>
-      <a href="https://www.govconwire.com/articles/chuck-brooks-govcon-expert-white-house-super-intelligence-force-ai-quantum-national-security" target="_blank" rel="noopener">Read source</a>
-    </article>
-    <article class="card">
-      <h2>California enacts broad AI laws</h2>
-      <p>California has signed a package of laws and executive measures regulating AI across employment, healthcare, and biosecurity statewide.</p>
-      <div class="meta"><span class="source">Distilled Post</span><span>28m ago</span></div>
-      <a href="https://www.distilledpost.com/post/california-enacts-laws-regulating-artificial-intelligence-in-employment-healthcare-and-biosecurity" target="_blank" rel="noopener">Read source</a>
-    </article>
-    <article class="card">
-      <h2>China struggles to recruit foreign AI researchers</h2>
-      <p>Despite a booming domestic AI sector, China is finding it difficult to attract overseas scientists amid its race with the US.</p>
-      <div class="meta"><span class="source">The New York Times</span><span>58m ago</span></div>
-      <a href="https://www.nytimes.com/2026/10/06/science/in-race-with-us-china-struggles-to-recruit-foreign-ai-researchers.html" target="_blank" rel="noopener">Read source</a>
-    </article>
-    <article class="card">
-      <h2>Mistral CEO claims new model beats Chinese rivals</h2>
-      <p>French AI firm Mistral says its newest model outperforms Chinese competitors on cybersecurity, CEO Arthur Mensch told a conference in Abu Dhabi.</p>
-      <div class="meta"><span class="source">Reuters</span><span>2h ago</span></div>
-      <a href="https://www.reuters.com/world/china/mistral-ceo-says-new-ai-model-beats-chinese-ones-some-areas-2026-10-06/" target="_blank" rel="noopener">Read source</a>
-    </article>
-    <article class="card">
-      <h2>What happens when Chinese AI goes rogue?</h2>
-      <p>Commentary asks what safeguards exist as Beijing dismisses slower-development warnings as "fearmongering" meant to hold China back.</p>
-      <div class="meta"><span class="source">The Japan Times</span><span>4h ago</span></div>
-      <a href="https://www.japantimes.co.jp/commentary/2026/10/06/world/when-chinese-ai-goes-rogue/" target="_blank" rel="noopener">Read source</a>
-    </article>
-    <article class="card">
-      <h2>Jay Clayton tapped to lead federal AI task force</h2>
-      <p>Trump named national intelligence director Jay Clayton to head a new federal AI task force reaching consumers, public interest groups, and AI companies.</p>
-      <div class="meta"><span class="source">Federal News Network</span><span>6h ago</span></div>
-      <a href="https://federalnewsnetwork.com/artificial-intelligence/2026/10/trump-names-national-intelligence-director-jay-clayton-to-lead-a-new-federal-ai-task-force/" target="_blank" rel="noopener">Read source</a>
-    </article>
-    <article class="card">
-      <h2>U.Va. opinion: generative AI is a "mirage" in education</h2>
-      <p>An op-ed argues generative AI does not belong in general higher education as universities weigh their response to the changing AI landscape.</p>
-      <div class="meta"><span class="source">The Cavalier Daily</span><span>6h ago</span></div>
-      <a href="https://www.cavalierdaily.com/article/2026/10/opinions-how-uva-should-respond-to-the-changing-artificial-intelligence-landscape" target="_blank" rel="noopener">Read source</a>
-    </article>
-    <article class="card">
-      <h2>AI fuels rising entrepreneurship</h2>
-      <p>The NYC Minority Small Business Chamber says AI is driving growth in entrepreneurship and helping small businesses compete.</p>
-      <div class="meta"><span class="source">Harlem World Magazine</span><span>7h ago</span></div>
-      <a href="https://www.harlemworldmagazine.com/artificial-intelligence-fueling-increase-in-entrepreneurship-helping-small-businesses-compete/" target="_blank" rel="noopener">Read source</a>
-    </article>
-    <article class="card">
-      <h2>Louisiana candidates vague on AI regulation</h2>
-      <p>Most congressional candidates in Louisiana agree on some federal AI regulation but remain vague about specifics despite "AI apocalypse" fears.</p>
-      <div class="meta"><span class="source">Louisiana Illuminator</span><span>7h ago</span></div>
-      <a href="https://lailluminator.com/2026/10/05/ai-apocalypse-most-louisiana-candidates-for-congress-stay-vague-on-regulation/" target="_blank" rel="noopener">Read source</a>
-    </article>
-    <article class="card">
-      <h2>Marquette hosts Ignatian Examen on AI</h2>
-      <p>Marquette University's community is invited to an Ignatian Examen centered on the topic of artificial intelligence on Oct. 7.</p>
-      <div class="meta"><span class="source">Marquette Today</span><span>9h ago</span></div>
-      <a href="https://today.marquette.edu/2026/10/ignatian-examen-on-artificial-intelligence-oct-7/" target="_blank" rel="noopener">Read source</a>
-    </article>
+      <div class="card">
+        <div class="source">France 24</div>
+        <h2>US payroll data shows young workers' jobs most affected by AI</h2>
+        <p>Employment in roles most exposed to AI for people aged 22 to 25 shrank 4.4% year-on-year in August, signaling early labor-market pressure on younger workers.</p>
+        <div class="meta"><span class="date">3 hours ago</span><a href="https://www.france24.com/en/tv-shows/business/20261006-us-payroll-data-shows-young-workers-jobs-most-affected-by-artificial-intelligence" target="_blank">Read more →</a></div>
+      </div>
+
+      <div class="card">
+        <div class="source">CalMatters</div>
+        <h2>AI 'evaluators' tasked with keeping AI from killing us all</h2>
+        <p>California and dozens of countries want mandatory AI audits conducted by specialist evaluators, though lawmakers are still learning about the pitfalls of the approach.</p>
+        <div class="meta"><span class="date">3 hours ago</span><a href="https://calmatters.org/economy/technology/2026/10/evaluators-are-supposed-to-keep-ai-from-killing-us-all-no-pressure/" target="_blank">Read more →</a></div>
+      </div>
+
+      <div class="card">
+        <div class="source">Utah News Dispatch</div>
+        <h2>AI may soon be in more healthcare processes in Utah</h2>
+        <p>The Utah Office of Artificial Intelligence Policy signed agreements with University of Utah Health and Intermountain Health to pilot AI tools in clinical workflows.</p>
+        <div class="meta"><span class="date">4 hours ago</span><a href="https://utahnewsdispatch.com/2026/10/06/utah-ai-in-healthcare-agreements-pilot-programs/" target="_blank">Read more →</a></div>
+      </div>
+
+      <div class="card">
+        <div class="source">ABC7 Eyewitness News</div>
+        <h2>AI resume building: tips to avoid pitfalls in a job search</h2>
+        <p>As artificial intelligence becomes common in applications, experts warn job seekers to be careful about how AI-generated resumes may misrepresent or undermine them.</p>
+        <div class="meta"><span class="date">1 hour ago</span><a href="https://abc7ny.com/post/ai-resume-building-tips-careful-when-using-artificial-intelligence-job-search/19910215/" target="_blank">Read more →</a></div>
+      </div>
+
+      <div class="card">
+        <div class="source">Auburn University Engineering</div>
+        <h2>Collaborative research uses AI to optimize assembly lines</h2>
+        <p>Researchers are exploring how artificial intelligence can detect manufacturing errors earlier, before they travel through multiple workstations on the assembly line.</p>
+        <div class="meta"><span class="date">2 hours ago</span><a href="https://eng.auburn.edu/news/2026/10/collaborative-research-using-ai-to-optimize-assembly-line-production" target="_blank">Read more →</a></div>
+      </div>
+
+      <div class="card">
+        <div class="source">Yahoo Finance</div>
+        <h2>Two AI stocks to buy with $1,000 and never sell</h2>
+        <p>An investor screener focused on low market-cap companies with high revenue growth highlights two artificial intelligence stocks as long-term holds.</p>
+        <div class="meta"><span class="date">2 hours ago</span><a href="https://finance.yahoo.com/technology/ai/articles/only-2-artificial-intelligence-ai-125300853.html" target="_blank">Read more →</a></div>
+      </div>
+
+      <div class="card">
+        <div class="source">The Cavalier Daily</div>
+        <h2>How U.Va. should respond to the changing AI landscape</h2>
+        <p>An opinion piece argues generative AI is a "mirage" in higher education and should not hold a place in general higher-education curricula.</p>
+        <div class="meta"><span class="date">11 hours ago</span><a href="https://www.cavalierdaily.com/article/2026/10/opinions-how-uva-should-respond-to-the-changing-artificial-intelligence-landscape" target="_blank">Read more →</a></div>
+      </div>
+
+      <div class="card">
+        <div class="source">Ball State Daily News</div>
+        <h2>Stricter guidelines are needed on artificial intelligence</h2>
+        <p>A student columnist argues for tighter rules around artificial intelligence as its presence in daily life and media grows.</p>
+        <div class="meta"><span class="date">1 hour ago</span><a href="https://www.ballstatedaily.com/article/there-must-be-stricter-guidelines-on-artificial-intelligence-daily-news-ball-state-20261006" target="_blank">Read more →</a></div>
+      </div>
+
+      <div class="card">
+        <div class="source">The Motley Fool</div>
+        <h2>Two AI stocks worth a $1,000 long-term investment</h2>
+        <p>A growth-focused framework centered on small market caps and strong revenue growth points to two artificial intelligence stocks for patient investors.</p>
+        <div class="meta"><span class="date">1 hour ago</span><a href="https://www.fool.com/investing/2026/10/06/the-only-2-artificial-intelligence-ai-stocks-id-bu/" target="_blank">Read more →</a></div>
+      </div>
+
+      <div class="card">
+        <div class="source">Marquette Today</div>
+        <h2>Ignatian Examen on artificial intelligence, Oct. 7</h2>
+        <p>Marquette's Office of Faculty Affairs and the Jesuit Community invite the campus to a reflective Examen centered on artificial intelligence.</p>
+        <div class="meta"><span class="date">14 hours ago</span><a href="https://today.marquette.edu/2026/10/ignatian-examen-on-artificial-intelligence-oct-7/" target="_blank">Read more →</a></div>
+      </div>
+
+    </div>
+    <footer>Auto-refreshed every 5 hours · Hosted on GitHub Pages</footer>
   </div>
-
-  <footer>Updated automatically every 5 hours</footer>
-</div>
 </body>
 </html>
