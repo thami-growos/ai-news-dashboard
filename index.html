@@ -5,140 +5,216 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI News Dashboard</title>
 <style>
-  :root {
-    --purple-1: #6a3fb5;
-    --purple-2: #8e54e9;
-    --purple-3: #b06ab3;
-  }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: linear-gradient(135deg, #2b1055 0%, #6a3fb5 55%, #b06ab3 100%);
+    background: linear-gradient(135deg, #2b0a3d 0%, #6b21a8 45%, #9333ea 100%);
     min-height: 100vh;
-    color: #1f1235;
-    padding: 32px 20px 64px;
+    color: #1f2937;
+    padding: 40px 20px;
   }
-  .wrap { max-width: 1040px; margin: 0 auto; }
-  header { text-align: center; color: #fff; margin-bottom: 36px; }
-  header h1 { font-size: 2.4rem; font-weight: 700; letter-spacing: -0.5px; }
-  header p { margin-top: 8px; color: rgba(255,255,255,0.85); font-size: 0.95rem; }
-  .updated {
-    display: inline-block; margin-top: 14px; background: rgba(255,255,255,0.16);
-    padding: 6px 14px; border-radius: 999px; font-size: 0.82rem; letter-spacing: 0.3px;
+  .container { max-width: 960px; margin: 0 auto; }
+  header {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 36px;
   }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 18px; }
+  header h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  header p {
+    margin-top: 8px;
+    font-size: 1rem;
+    color: #e9d5ff;
+  }
+  .timestamp {
+    display: inline-block;
+    margin-top: 14px;
+    background: rgba(255,255,255,0.15);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    color: #f5f3ff;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 20px;
+  }
   .card {
-    background: #fff; border-radius: 14px; padding: 20px;
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 22px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.18);
-    display: flex; flex-direction: column; gap: 12px;
+    display: flex;
+    flex-direction: column;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
-  .card:hover { transform: translateY(-3px); box-shadow: 0 16px 36px rgba(0,0,0,0.24); }
-  .card .source { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.8px; color: #8e54e9; font-weight: 700; }
-  .card h2 { font-size: 1.08rem; line-height: 1.35; color: #2b1055; }
-  .card p.summary { font-size: 0.9rem; line-height: 1.5; color: #4a4460; flex: 1; }
-  .card .meta { font-size: 0.75rem; color: #9a93b0; }
-  .card a {
-    text-decoration: none; color: #6a3fb5; font-weight: 600; font-size: 0.88rem;
-    border-top: 1px solid #eee; padding-top: 12px;
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.25);
   }
-  .card a:hover { color: #2b1055; text-decoration: underline; }
-  footer { text-align: center; color: rgba(255,255,255,0.7); margin-top: 40px; font-size: 0.8rem; }
+  .source {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #7c3aed;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .card h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.35;
+    margin-bottom: 10px;
+    color: #111827;
+  }
+  .card p {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: #4b5563;
+    flex-grow: 1;
+  }
+  .meta {
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .date {
+    font-size: 0.78rem;
+    color: #9ca3af;
+  }
+  .read-link {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #6d28d9;
+    text-decoration: none;
+  }
+  .read-link:hover { text-decoration: underline; }
+  footer {
+    text-align: center;
+    color: #e9d5ff;
+    margin-top: 40px;
+    font-size: 0.85rem;
+  }
 </style>
 </head>
 <body>
-<div class="wrap">
+<div class="container">
   <header>
     <h1>AI News Dashboard</h1>
-    <p>Latest global artificial intelligence headlines</p>
-    <span class="updated">Last updated: 05 Oct 2026, 10:00 PM SAST</span>
+    <p>The latest global artificial intelligence headlines, refreshed every 5 hours.</p>
+    <span class="timestamp">Last updated: 06 Oct 2026, 02:00 SAST</span>
   </header>
 
   <div class="grid">
+    <div class="card">
+      <div class="source">WSJ</div>
+      <h2>New AI Czar Unveils Goals, Members of White House Task Force</h2>
+      <p>The White House task force will examine AI's risks and opportunities while working to keep the U.S. first in the field.</p>
+      <div class="meta">
+        <span class="date">2 hours ago</span>
+        <a class="read-link" href="https://www.wsj.com/tech/ai/new-ai-task-force-to-report-on-risks-of-technology-after-public-and-industry-concerns-b6308bef" target="_blank" rel="noopener">Read more</a>
+      </div>
+    </div>
 
     <div class="card">
       <div class="source">The Japan Times</div>
       <h2>Preventing artificial intelligence from triggering a world war</h2>
-      <p class="summary">As the US and China met recently in Washington, AI governance was expected to top the agenda amid growing fears of rivalry escalating into conflict.</p>
-      <div class="meta">41 minutes ago</div>
-      <a href="https://www.japantimes.co.jp/commentary/2026/10/05/world/ai-world-war/" target="_blank" rel="noopener">Read source &rarr;</a>
+      <p>Commentary on how AI governance took center stage during recent U.S.-China talks and its role in averting conflict.</p>
+      <div class="meta">
+        <span class="date">5 hours ago</span>
+        <a class="read-link" href="https://www.japantimes.co.jp/commentary/2026/10/05/world/ai-world-war/" target="_blank" rel="noopener">Read more</a>
+      </div>
     </div>
 
     <div class="card">
-      <div class="source">NBC 4 New York</div>
-      <h2>NYC Council holds rare hearing on AI risks with top tech executives</h2>
-      <p class="summary">The full New York City Council convened for a high-profile hearing where top tech leaders testified on AI risks and regulation.</p>
-      <div class="meta">5 hours ago</div>
-      <a href="https://www.nbcnewyork.com/new-york-city/nyc-council-hearing-ai-dangers/6555627/" target="_blank" rel="noopener">Read source &rarr;</a>
+      <div class="source">ABC7 Eyewitness News</div>
+      <h2>AI whistleblowers join Google, Meta, OpenAI at NYC hearing</h2>
+      <p>The New York City Council weighs a series of bills to establish safeguards for AI as city leaders hear from top firms and researchers.</p>
+      <div class="meta">
+        <span class="date">4 hours ago</span>
+        <a class="read-link" href="https://abc7ny.com/post/google-meta-openai-among-firms-appearing-nyc-ai-hearing/19909409/" target="_blank" rel="noopener">Read more</a>
+      </div>
     </div>
 
     <div class="card">
-      <div class="source">Federal News Network</div>
-      <h2>Trump names Jay Clayton to lead a new federal AI task force</h2>
-      <p class="summary">The national intelligence director will head a task force reaching out to consumers, public interest groups, critical infrastructure and AI companies.</p>
-      <div class="meta">4 hours ago</div>
-      <a href="https://federalnewsnetwork.com/artificial-intelligence/2026/10/trump-names-national-intelligence-director-jay-clayton-to-lead-a-new-federal-ai-task-force/" target="_blank" rel="noopener">Read source &rarr;</a>
+      <div class="source">Bloomberg</div>
+      <h2>India's Gen Z Faces Down the Artificial Intelligence Future</h2>
+      <p>Opinion on how India's young workforce confronts AI-driven change after centuries of technological disruption.</p>
+      <div class="meta">
+        <span class="date">4 hours ago</span>
+        <a class="read-link" href="https://www.bloomberg.com/opinion/articles/2026-10-05/india-s-gen-z-faces-down-the-artificial-intelligence-future" target="_blank" rel="noopener">Read more</a>
+      </div>
     </div>
 
     <div class="card">
       <div class="source">Natixis CIB</div>
       <h2>The changing economics of artificial intelligence</h2>
-      <p class="summary">The rapid rise of Chinese open-weight AI models from companies is reshaping the global economics of the AI industry.</p>
-      <div class="meta">4 hours ago</div>
-      <a href="https://home.cib.natixis.com/articles/the-changing-economics-of-artificial-intelligence" target="_blank" rel="noopener">Read source &rarr;</a>
+      <p>Rising Chinese open-weight AI models are reshaping the economics of the global AI industry, analysis finds.</p>
+      <div class="meta">
+        <span class="date">8 hours ago</span>
+        <a class="read-link" href="https://home.cib.natixis.com/articles/the-changing-economics-of-artificial-intelligence" target="_blank" rel="noopener">Read more</a>
+      </div>
     </div>
 
     <div class="card">
-      <div class="source">Reuters Connect</div>
-      <h2>AI company representatives testify at NYC Council hearing</h2>
-      <p class="summary">Former Anthropic researcher Jacob Coxon and other AI company representatives testified on the risks and regulation of artificial intelligence in New York.</p>
-      <div class="meta">4 hours ago</div>
-      <a href="https://www.reutersconnect.com/item/representatives-of-artificial-intelligence-companies-testify-during-a-new-york-city-council-committee-hearing-in-new-york/dGFnOnJldXRlcnMuY29tLDIwMjY6bmV3c21sX1JDMjNYTkFMQ1IyMg" target="_blank" rel="noopener">Read source &rarr;</a>
-    </div>
-
-    <div class="card">
-      <div class="source">RAND.org</div>
-      <h2>Infinite Potential: insights on AI loss of control across five scenarios</h2>
-      <p class="summary">Researchers analyze AI loss of control observations from Infinite Potential games to identify issues, capabilities and recommended responses.</p>
-      <div class="meta">7 hours ago</div>
-      <a href="https://www.rand.org/pubs/research_reports/RRA4767-3.html" target="_blank" rel="noopener">Read source &rarr;</a>
-    </div>
-
-    <div class="card">
-      <div class="source">Louisiana Illuminator</div>
-      <h2>AI apocalypse? Most Louisiana congressional candidates stay vague on regulation</h2>
-      <p class="summary">Most candidates running for Congress in Louisiana agree federal AI regulation is needed but remain vague on specifics.</p>
-      <div class="meta">1 hour ago</div>
-      <a href="https://lailluminator.com/2026/10/05/ai-apocalypse-most-louisiana-candidates-for-congress-stay-vague-on-regulation/" target="_blank" rel="noopener">Read source &rarr;</a>
-    </div>
-
-    <div class="card">
-      <div class="source">Oklahoma Policy Institute</div>
-      <h2>Oklahoma candidates debate AI; schools set classroom guardrails</h2>
-      <p class="summary">A daily policy briefing covers gubernatorial candidates debating AI and Oklahoma schools establishing guardrails for AI in the classroom.</p>
-      <div class="meta">1 hour ago</div>
-      <a href="https://okpolicy.org/in-the-know-10-05-2026/" target="_blank" rel="noopener">Read source &rarr;</a>
-    </div>
-
-    <div class="card">
-      <div class="source">City of Norfolk (.gov)</div>
-      <h2>Norfolk Police E911 division implements AI system on non-emergency lines</h2>
-      <p class="summary">The Norfolk Police Department launched an AWS-powered AI tool to assist its E911 division on non-emergency calls.</p>
-      <div class="meta">7 hours ago</div>
-      <a href="https://norfolk.gov/m/newsflash/Home/Detail/10535" target="_blank" rel="noopener">Read source &rarr;</a>
+      <div class="source">RAND</div>
+      <h2>Infinite Potential: Insights on AI Loss of Control Across Five Scenarios</h2>
+      <p>Researchers analyze game-based observations of AI loss of control to identify risks, capabilities, and policy recommendations.</p>
+      <div class="meta">
+        <span class="date">11 hours ago</span>
+        <a class="read-link" href="https://www.rand.org/pubs/research_reports/RRA4767-3.html" target="_blank" rel="noopener">Read more</a>
+      </div>
     </div>
 
     <div class="card">
       <div class="source">Marquette Today</div>
       <h2>Ignatian Examen on artificial intelligence, Oct. 7</h2>
-      <p class="summary">Marquette University's Office of Faculty Affairs and Jesuit Community invite the community to a reflection centered on artificial intelligence.</p>
-      <div class="meta">6 hours ago</div>
-      <a href="https://today.marquette.edu/2026/10/ignatian-examen-on-artificial-intelligence-oct-7/" target="_blank" rel="noopener">Read source &rarr;</a>
+      <p>The Marquette community is invited to a reflective Ignatian Examen centered on the topic of artificial intelligence.</p>
+      <div class="meta">
+        <span class="date">5 hours ago</span>
+        <a class="read-link" href="https://today.marquette.edu/2026/10/ignatian-examen-on-artificial-intelligence-oct-7/" target="_blank" rel="noopener">Read more</a>
+      </div>
     </div>
 
+    <div class="card">
+      <div class="source">The Times of Israel</div>
+      <h2>Where Are You? A Jewish-Christian Dialogue in the Age of AI</h2>
+      <p>An essay exploring faith, identity, and dialogue through the lens of artificial intelligence and modern technology.</p>
+      <div class="meta">
+        <span class="date">1 hour ago</span>
+        <a class="read-link" href="https://blogs.timesofisrael.com/where-are-you-a-jewish-christian-dialogue-in-the-age-of-artificial-intelligence/" target="_blank" rel="noopener">Read more</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="source">Riverhead News Review</div>
+      <h2>Guest column: A caution about artificial intelligence</h2>
+      <p>A guest writer reflects on decades of technological change and urges caution around the rapid rise of AI.</p>
+      <div class="meta">
+        <span class="date">14 hours ago</span>
+        <a class="read-link" href="https://riverheadnewsreview.timesreview.com/2026/10/138427/guest-column-a-caution-about-artificial-intelligence/" target="_blank" rel="noopener">Read more</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="source">Reuters Connect</div>
+      <h2>AI company representatives testify at NYC Council hearing</h2>
+      <p>Photo coverage of an AI risks and regulation hearing at New York City Hall, with industry representatives testifying.</p>
+      <div class="meta">
+        <span class="date">5 hours ago</span>
+        <a class="read-link" href="https://www.reutersconnect.com/item/representatives-of-artificial-intelligence-companies-testify-during-a-new-york-city-council-committee-hearing-in-new-york/dGFnOnJldXRlcnMuY29tLDIwMjY6bmV3c21sX1JDMjdYTkFFQzE3UQ" target="_blank" rel="noopener">Read more</a>
+      </div>
+    </div>
   </div>
 
-  <footer>Auto-updated every 5 hours &middot; Sources span global outlets</footer>
+  <footer>
+    Dashboard auto-updates every 5 hours. Hosted on GitHub Pages.
+  </footer>
 </div>
 </body>
 </html>
