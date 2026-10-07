@@ -3,133 +3,123 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI News Dashboard</title>
+<title>Global AI News Dashboard</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: linear-gradient(135deg, #4b2a78 0%, #7b3fa0 45%, #b25bc0 100%);
-    color: #1f1a2e;
+    background: linear-gradient(135deg, #4b1d6f 0%, #7b2d8b 40%, #b14aed 100%);
     min-height: 100vh;
+    color: #2d1b3a;
     padding: 40px 20px;
   }
-  .container { max-width: 1000px; margin: 0 auto; }
+  .wrap { max-width: 1080px; margin: 0 auto; }
   header { text-align: center; color: #fff; margin-bottom: 32px; }
   header h1 { font-size: 2.2rem; font-weight: 700; letter-spacing: -0.5px; }
-  header p { margin-top: 8px; font-size: 0.95rem; opacity: 0.9; }
-  .last-updated {
-    display: inline-block;
-    margin-top: 14px;
-    background: rgba(255,255,255,0.16);
-    padding: 6px 16px;
-    border-radius: 999px;
-    font-size: 0.85rem;
+  header p { opacity: 0.9; margin-top: 8px; font-size: 0.95rem; }
+  .timestamp {
+    display: inline-block; background: rgba(255,255,255,0.18);
+    padding: 6px 16px; border-radius: 20px; margin-top: 14px; font-size: 0.85rem;
   }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-  }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 18px; }
   .card {
-    background: #fff;
-    border-radius: 14px;
-    padding: 22px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.16);
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+    background: #fff; border-radius: 14px; padding: 20px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18); display: flex; flex-direction: column;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
-  .card:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(0,0,0,0.22); }
-  .card h2 { font-size: 1.12rem; line-height: 1.35; font-weight: 700; color: #3b2263; }
-  .card p.summary { font-size: 0.92rem; color: #4a4360; line-height: 1.55; flex: 1; }
-  .card .meta { font-size: 0.78rem; color: #8a82a0; display: flex; justify-content: space-between; align-items: center; }
-  .card a.source {
-    display: inline-block;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.85rem;
-    color: #7b3fa0;
-    margin-top: 2px;
+  .card:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(0,0,0,0.24); }
+  .card h2 { font-size: 1.05rem; font-weight: 650; line-height: 1.35; margin-bottom: 10px; color: #3b1457; }
+  .card .source { font-size: 0.72rem; color: #8a6a9e; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+  .card p { font-size: 0.9rem; line-height: 1.5; color: #4a3a55; flex: 1; margin-bottom: 14px; }
+  .card a {
+    align-self: flex-start; background: #7b2d8b; color: #fff; text-decoration: none;
+    padding: 8px 14px; border-radius: 8px; font-size: 0.82rem; font-weight: 600;
   }
-  .card a.source:hover { text-decoration: underline; }
-  footer { text-align: center; color: rgba(255,255,255,0.8); margin-top: 40px; font-size: 0.82rem; }
+  .card a:hover { background: #5e1f6b; }
+  footer { text-align: center; color: #fff; opacity: 0.8; margin-top: 36px; font-size: 0.8rem; }
 </style>
 </head>
 <body>
-<div class="container">
+<div class="wrap">
   <header>
-    <h1>AI News Dashboard</h1>
-    <p>Fresh global headlines on artificial intelligence, updated automatically.</p>
-    <span class="last-updated">Last updated: 2026-10-06 22:00 SAST</span>
+    <h1>Global AI News Dashboard</h1>
+    <p>Fresh headlines from around the world, updated automatically every 5 hours</p>
+    <span class="timestamp">Last updated: 07 Oct 2026, 02:00 SAST</span>
   </header>
 
   <div class="grid">
     <div class="card">
-      <h2>Justice Department tells employees to adopt Trump's AI rebrand</h2>
-      <p class="summary">A top official has directed Justice Department staff to adopt the administration's rebranding of artificial intelligence.</p>
-      <div class="meta"><span>NBC News</span><span>2026-10-06</span></div>
-      <a class="source" href="https://www.nbcnews.com/politics/justice-department/justice-department-tells-employees-adopt-trumps-ai-rebrand-rcna601923" target="_blank" rel="noopener">Read source</a>
+      <div class="source">Reuters</div>
+      <h2>US Justice Dept tells staff to call AI 'super intelligence' under Trump order</h2>
+      <p>The Justice Department directed employees to use the term "super intelligence" instead of "artificial intelligence" when referring to the technology, following a Trump administration order.</p>
+      <a href="https://www.reuters.com/legal/litigation/us-justice-dept-tells-staff-call-ai-super-intelligence-under-trump-order-2026-10-06/" target="_blank" rel="noopener">Read more</a>
     </div>
 
     <div class="card">
-      <h2>AI resume building: Tips for careful use in a job search</h2>
-      <p class="summary">Experts warn applicants about the pitfalls of relying on AI-generated resumes amid a growing problem of automated applications.</p>
-      <div class="meta"><span>ABC7 Eyewitness News</span><span>2026-10-06</span></div>
-      <a class="source" href="https://abc7ny.com/post/ai-resume-building-tips-careful-when-using-artificial-intelligence-job-search/19910215/" target="_blank" rel="noopener">Read source</a>
+      <div class="source">Utah News Dispatch</div>
+      <h2>Cox's 'pro-human AI' order directs state government to use 'responsible' artificial intelligence</h2>
+      <p>Utah's governor signed an executive order promoting "responsible AI use within government" by applying "pro-human" principles when evaluating artificial intelligence tools.</p>
+      <a href="https://utahnewsdispatch.com/2026/10/06/coxs-pro-human-ai-order-directs-state-government-to-use-responsible-artificial-intelligence/" target="_blank" rel="noopener">Read more</a>
     </div>
 
     <div class="card">
-      <h2>AI use among veterinary professionals more than doubles in 2 years</h2>
-      <p class="summary">A new benchmark study shows AI has moved from experiment to everyday tool in veterinary medicine.</p>
-      <div class="meta"><span>DVM 360</span><span>2026-10-06</span></div>
-      <a class="source" href="https://www.dvm360.com/view/artificial-intelligence-use-among-veterinary-professionals-more-than-doubles-in-2-years" target="_blank" rel="noopener">Read source</a>
+      <div class="source">Federal News Network</div>
+      <h2>5 questions with NIST's Kat Megas on AI, cybersecurity and managing risk</h2>
+      <p>The National Institute of Standards and Technology discusses how agencies can harness the benefits of AI adoption while avoiding new security and risk pitfalls.</p>
+      <a href="https://federalnewsnetwork.com/artificial-intelligence/2026/10/5-questions-with-nists-kat-megas-on-ai-cybersecurity-and-managing-risk/" target="_blank" rel="noopener">Read more</a>
     </div>
 
     <div class="card">
-      <h2>$12.8m grant to bring genomics to the clinic via machine learning and AI</h2>
-      <p class="summary">A Vanderbilt-led, NIH-funded initiative aims to match pathogenic gene variants with clinical solutions using AI.</p>
-      <div class="meta"><span>Vanderbilt Health News</span><span>2026-10-06</span></div>
-      <a class="source" href="https://news.vumc.org/2026/10/06/12-8m-grant-to-lead-initiative-to-get-genomics-toward-the-clinic-via-machine-learning-and-ai/" target="_blank" rel="noopener">Read source</a>
+      <div class="source">Nextgov/FCW</div>
+      <h2>Experts hope new AI czar's leadership can move the needle on regulation</h2>
+      <p>Former officials and experts suggest the new AI czar could work with Congress to shape governance and laws covering artificial intelligence.</p>
+      <a href="https://www.nextgov.com/artificial-intelligence/2026/10/experts-hope-new-ai-czars-leadership-can-move-needle-regulation/416454/?oref=ng-homepage-river" target="_blank" rel="noopener">Read more</a>
     </div>
 
     <div class="card">
-      <h2>Collaborative research uses AI to optimize assembly line production</h2>
-      <p class="summary">Auburn researchers are applying AI to catch manufacturing errors before they travel through multiple workstations.</p>
-      <div class="meta"><span>Auburn University Engineering</span><span>2026-10-06</span></div>
-      <a class="source" href="https://eng.auburn.edu/news/2026/10/collaborative-research-using-ai-to-optimize-assembly-line-production" target="_blank" rel="noopener">Read source</a>
+      <div class="source">Georgia Tech News Center</div>
+      <h2>Georgia Tech announces new online master's degree in artificial intelligence</h2>
+      <p>The University System of Georgia's Board of Regents approved a new Online Master of Science in Artificial Intelligence (OMS AI) at Georgia Tech.</p>
+      <a href="https://news.gatech.edu/news/2026/10/06/georgia-tech-announces-new-online-masters-degree-artificial-intelligence" target="_blank" rel="noopener">Read more</a>
     </div>
 
     <div class="card">
-      <h2>AI, psychology and the future: students offer differing perspectives</h2>
-      <p class="summary">Freshmen and seniors weigh in on how the AI boom is reshaping psychology and the broader news cycle.</p>
-      <div class="meta"><span>The Badger Herald</span><span>2026-10-06</span></div>
-      <a class="source" href="https://badgerherald.com/indepth/2026/10/06/artificial-intelligence-psychology-and-the-future-freshmen-and-seniors-offer-differing-perspectives/" target="_blank" rel="noopener">Read source</a>
+      <div class="source">ABC7 Eyewitness News</div>
+      <h2>AI resume building: tips to be careful using artificial intelligence for a job search</h2>
+      <p>Job seekers face a growing challenge as more applicants rely on AI-generated resumes, prompting cautions about quality, authenticity, and standing out.</p>
+      <a href="https://abc7ny.com/post/ai-resume-building-tips-careful-when-using-artificial-intelligence-job-search/19910215/" target="_blank" rel="noopener">Read more</a>
     </div>
 
     <div class="card">
-      <h2>Best practices for SageMaker HyperPod administration and governance</h2>
-      <p class="summary">AWS shares guidance for ML teams managing large pools of accelerated compute for training and fine-tuning.</p>
-      <div class="meta"><span>Amazon Web Services (AWS)</span><span>2026-10-06</span></div>
-      <a class="source" href="https://aws.amazon.com/blogs/machine-learning/best-practices-for-amazon-sagemaker-hyperpod-administration-and-governance/" target="_blank" rel="noopener">Read source</a>
+      <div class="source">ABC News</div>
+      <h2>RFK Jr.'s embrace of AI confounds some MAHA allies and medical experts</h2>
+      <p>Robert F. Kennedy Jr.'s enthusiasm for artificial intelligence has surprised some of his MAHA allies and drawn scrutiny from medical experts.</p>
+      <a href="https://abcnews.com/alerts/ArtificialIntelligence" target="_blank" rel="noopener">Read more</a>
     </div>
 
     <div class="card">
-      <h2>Behind the Investigation: Artificial intelligence warnings</h2>
-      <p class="summary">A news investigation explores the emerging warnings and risks tied to artificial intelligence.</p>
-      <div class="meta"><span>WREG.com</span><span>2026-10-06</span></div>
-      <a class="source" href="https://wreg.com/video/behind-the-investigation-artificial-intelligence-warnings/12240077/" target="_blank" rel="noopener">Read source</a>
+      <div class="source">Coachella Valley Independent</div>
+      <h2>A note from the editor: will artificial intelligence kill us all?</h2>
+      <p>A reflection from the Independent News Sustainability Summit on the existential questions local publishers now face about AI's impact on journalism.</p>
+      <a href="https://cvindependent.com/2026/10/a-note-from-the-editor-will-artificial-intelligence-kill-us-all/" target="_blank" rel="noopener">Read more</a>
     </div>
 
     <div class="card">
-      <h2>UW-Stevens Point to host panels on navigating AI misinformation</h2>
-      <p class="summary">The university launches a community series with lectures and panels on strategies to counter AI misinformation.</p>
-      <div class="meta"><span>UW-Stevens Point</span><span>2026-10-06</span></div>
-      <a class="source" href="https://www.uwsp.edu/news/article/uw-stevens-point-to-host-lectures-panels-on-strategies-to-navigate-ai-misinformation/" target="_blank" rel="noopener">Read source</a>
+      <div class="source">Ball State Daily News</div>
+      <h2>There must be stricter guidelines on artificial intelligence</h2>
+      <p>A student opinion column argues for stronger rules and guardrails governing the use of artificial intelligence.</p>
+      <a href="https://www.ballstatedailynews.com/article/there-must-be-stricter-guidelines-on-artificial-intelligence-daily-news-ball-state-20261006" target="_blank" rel="noopener">Read more</a>
+    </div>
+
+    <div class="card">
+      <div class="source">Amazon Web Services (AWS)</div>
+      <h2>Building a context-aware AI assistant on AgentCore and OpenClaw</h2>
+      <p>AWS engineers explore how to move past stateless assistants by building an AI helper that maintains continuity and context across conversations.</p>
+      <a href="https://aws.amazon.com/blogs/machine-learning/building-a-context-aware-ai-assistant-on-agentcore-and-openclaw/" target="_blank" rel="noopener">Read more</a>
     </div>
   </div>
 
-  <footer>AI News Dashboard — automated updates every 5 hours</footer>
+  <footer>Global AI News Dashboard &middot; Hosted on GitHub Pages &middot; Auto-refreshes every 5 hours</footer>
 </div>
 </body>
 </html>
